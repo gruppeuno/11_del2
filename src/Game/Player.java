@@ -35,10 +35,6 @@ public class Player  {
     }
 
 
-    public String getPlayerName() {
-        return playerName;
-    }
-
     //set og get  PlayerPlendingWin
     public void setPlayerPendingWin(boolean playerPendingWin) {
         this.playerPendingWin = playerPendingWin;
@@ -70,6 +66,9 @@ public class Player  {
         this.playerName = playerName;
     }
 
-
-
+    public String toString() {
+        return "Player{" +
+                "playerName='" + playerName + '\'' +
+                '}';
+    }
 }

@@ -29,7 +29,7 @@ public class GameController {
                 //loop til afvente spillerens roll commando i consollen
                 String rollInput;
                 do {
-                    System.out.println("Det er din tur " + playerArray[turnCount].getPlayerName() + "\nSkriv \"Roll\" og tryk enter for slå med terningerne!");
+                    System.out.println("Det er din tur " + playerArray[turnCount].toString() + "\nSkriv \"Roll\" og tryk enter for slå med terningerne!");
 
                     rollInput = scan.nextLine();
                 }
