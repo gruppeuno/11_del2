@@ -5,12 +5,11 @@ import java.util.Scanner;
 
 public class PlayerCreator {
 
-    final int MAX = 8;
-    final int MIN = 2;
-
+    private final int MAX = 8;
+    private final int MIN = 2;
     private String currentName;
+    private final int numberOfPlayers;
 
-    private int numberOfPlayers;
     Scanner scan = new Scanner(System.in);
 
 
