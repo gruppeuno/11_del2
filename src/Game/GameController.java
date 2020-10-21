@@ -7,7 +7,7 @@ public class GameController {
     private int turnCount = 0;
 
     //skaber nye objekter af hhv. GameTurn, Player for hver spille, RaffleCup og Scanner
-    private final GameTurn turn = new GameTurn();
+    private final Field turn = new Field();
     private final Player player1 = new Player();
     private final Player player2 = new Player();
     private final RaffleCup cup = new RaffleCup();
@@ -49,7 +49,7 @@ public class GameController {
 
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
                 //som sørger for at der sker det rigtige ud fra hvad terningerne viser
-                turn.gameTurn(cup.getDie1(),cup.getDie2(), playerArray[turnCount]);
+                turn.Field(cup.getDie1(),cup.getDie2(), playerArray[turnCount]);
 
                 //køre igennem flere gange hvis man slår dobbelt
             }while (playerArray[turnCount].getRollAgain());
