@@ -1,3 +1,5 @@
+package PlayerCreator;
+
 import Game.Player;
 
 import java.util.Arrays;
