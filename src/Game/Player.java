@@ -1,6 +1,7 @@
 package Game;
 
-public class Player{
+public class Player  {
+
 
     //værdier der skal gemmes og de er private så deres scope er klassen
     private String playerName;
@@ -11,36 +12,39 @@ public class Player{
     //til at tælle om man slog 2x6 sidste tur
     private int sixes = 0;
 
+    public Player(String playerName) {
+        this.playerName = playerName;
+    }
+
     //set og get Points
     public void setPoints(int totalValue) {
-        this.points=totalValue;
+        this.points = totalValue;
     }
-    public int getPoints(){
+
+    public int getPoints() {
         return points;
     }
 
     //set og get PlayerWin
-    public void setPlayerWin(boolean playerWin){
-        this.playerWin=true;
+    public void setPlayerWin(boolean playerWin) {
+        this.playerWin = true;
     }
-    public boolean getPlayerWin(){
+
+    public boolean getPlayerWin() {
         return playerWin;
     }
 
-    //set og get PlayerNavn
-    public void setPlayerName(String name){
-        this.playerName = name;
-    }
 
-    public String getPlayerName(){
+    public String getPlayerName() {
         return playerName;
     }
 
     //set og get  PlayerPlendingWin
-    public void setPlayerPendingWin(boolean playerPendingWin){
-        this.playerPendingWin=playerPendingWin;
+    public void setPlayerPendingWin(boolean playerPendingWin) {
+        this.playerPendingWin = playerPendingWin;
     }
-    public boolean getPlayerPendingWin(){
+
+    public boolean getPlayerPendingWin() {
         return playerPendingWin;
     }
 
@@ -62,6 +66,9 @@ public class Player{
         return sixes;
     }
 
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
 
 
 
