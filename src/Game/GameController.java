@@ -18,22 +18,21 @@ public class GameController {
     public void gameController() {
 
         System.out.println("Player 1 skriv dit navn og tryk enter:");
-        String vPlayer1 = scan.nextLine();
-        player1.setPlayerName(vPlayer1);
+        String namePlayer1 = scan.nextLine();
+        player1.setPlayerName(namePlayer1);
         System.out.println("\nPlayer 2 skriv dit navn og tryk enter:");
-        String vPlayer2 = scan.nextLine();
+        String namePlayer2 = scan.nextLine();
 
-        while (vPlayer1.toLowerCase().equals(vPlayer2.toLowerCase())) {
+        while (namePlayer1.toLowerCase().equals(namePlayer2.toLowerCase())) {
             System.out.println("Begge spillere kan ikke have samme nav. Player 2 vælg nyt navn.");
-            vPlayer2 = scan.nextLine();
+            namePlayer2 = scan.nextLine();
         }
 
-        player2.setPlayerName(vPlayer2);
+        player2.setPlayerName(namePlayer2);
         System.out.println("\nSpillet starter....");
 
         while (!playerArray[turnCount].getPlayerWin()){
             do {
-
 
                 //loop til afvente spillerens roll commando i consollen
                 String rollInput;
@@ -49,7 +48,8 @@ public class GameController {
 
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
                 //som sørger for at der sker det rigtige ud fra hvad terningerne viser
-                turn.Field(cup.getDie(), playerArray[turnCount]);
+
+                turn.FieldValue(/*BankKnonto balance her*/, playerArray[turnCount]);
 
                 //køre igennem flere gange hvis man slår dobbelt
             }while (playerArray[turnCount].getRollAgain());

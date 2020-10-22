@@ -10,7 +10,7 @@ public class Field {
 
     }
 
-    public int FieldValue(int balance, String player) {
+    public int FieldValue(int balance, Player player) {
 
         Scanner scan = new Scanner(System.in);
 
