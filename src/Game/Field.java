@@ -6,10 +6,6 @@ public class Field {
 
     private String msg;
 
-    public Field() {
-
-    }
-
     public int FieldValue(int balance, Player player) {
 
         Scanner scan = new Scanner(System.in);
