@@ -2,21 +2,30 @@ package Game;
 
 public class BankAccount {
 
-        private final Field updateFieldValue = new Field();
+        private MyFieldTest field;
+        private Player player;
 
         private int balance;
-        public BankAccount(int balance,int fieldValue) {
+
+        public BankAccount(Player p, int b1, MyFieldTest f) {
+                field = f;
+                player = p;
+                balance = b1;
         }
-        public int newBalance(int balance, int FieldValue) {
-            return balance += FieldValue;
+
+        public int newBalance() {
+                field.setMyFieldValue(player);
+                return balance += field.getMyFieldValue();
         }
 
 
-}
-
-class test1 {
         public static void main(String[] args) {
-                BankAccount b = new BankAccount(1000, 100);
-                System.out.println(b.newBalance(1000,100));
+
+                Player playerrolf = new Player("rolf");
+                MyFieldTest test = new MyFieldTest();
+
+                BankAccount b = new BankAccount(playerrolf, 1000, test);
+                System.out.println(b.newBalance());
         }
+
 }
