@@ -3,6 +3,7 @@ package Game;
 public class Player  {
 
 
+
     //værdier der skal gemmes og de er private så deres scope er klassen
     private String playerName;
     private int points = 0;
@@ -64,6 +65,10 @@ public class Player  {
 
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
+    }
+
+    public String getPlayerName() {
+        return playerName;
     }
 
     public String toString() {
