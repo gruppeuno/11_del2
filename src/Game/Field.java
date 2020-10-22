@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Field {
 
-    String msg;
+    private String msg;
 
     public Field() {
 

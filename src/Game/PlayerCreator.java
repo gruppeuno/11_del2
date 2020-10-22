@@ -58,7 +58,7 @@ public class PlayerCreator {
 
     }
 
-    //til senere brug 8===========D--
+    //til senere brug
     public int getNumberOfPlayers() {
         return numberOfPlayers;
     }
