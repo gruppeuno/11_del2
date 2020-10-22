@@ -13,9 +13,9 @@ public class GameController {
     private final RaffleCup cup = new RaffleCup();
     private final Scanner scan = new Scanner(System.in);
     //array med spillere, bruges sammen med turncount for at skifte spiller
-    private final Player[] playerArray = {player1,player2};
+    private final Player[] playerArray = {player1, player2};
 
-    public void gameController(){
+    public void gameController() {
 
         System.out.println("Player 1 skriv dit navn og tryk enter:");
         String vPlayer1 = scan.nextLine();
