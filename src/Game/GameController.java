@@ -10,7 +10,6 @@ public class GameController {
     private Field field = new Field();
     PlayerCreator playerCreator = new PlayerCreator();
     private RaffleCup cup = new RaffleCup();
-    Player[] playerArray;
     private String rollInput;
 
 
@@ -22,15 +21,14 @@ public class GameController {
         //test metode til 2 spillere
         //playerCreator.testPlayerCreator();
 
-        this.playerArray = playerCreator.playerArray;
         Scanner scan2 = new Scanner(System.in);
 
-        while (!playerArray[turnCount].getPlayerWin()){
+        while (!playerCreator.playerArray[turnCount].getPlayerWin()){
             do {
 
                 //loop til afvente spillerens roll commando i consollen
                 do {
-                    System.out.println("Det er din tur " + playerArray[turnCount].getPlayerName() + "\nSkriv \"Roll\" og tryk enter for slå med terningerne!");
+                    System.out.println("Det er din tur " + playerCreator.playerArray[turnCount].getPlayerName() + "\nSkriv \"Roll\" og tryk enter for slå med terningerne!");
 
                     rollInput = scan2.nextLine();
                 }
@@ -42,20 +40,20 @@ public class GameController {
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
                 //som sørger for at der sker det rigtige ud fra hvad terningerne viser
 
-                playerArray[turnCount].b.newBalance();
+                playerCreator.playerArray[turnCount].b.newBalance();
 
 
                 //køre igennem flere gange hvis man slår dobbelt
-            }while (playerArray[turnCount].getRollAgain());
+            }while (playerCreator.playerArray[turnCount].getRollAgain());
 
             //checker om der er fundet en vinder efter turen
-            if (playerArray[turnCount].getPlayerWin()){
+            if (playerCreator.playerArray[turnCount].getPlayerWin()){
                 break;
             }
 
             //giver mulighed for at tilføje flere spillere, turn turnCount+1%playerArray.length
             //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2
-            turnCount= (turnCount+1)%playerArray.length;
+            turnCount= (turnCount+1)%playerCreator.playerArray.length;
             System.out.println("========================================");
             System.out.println();
         }
