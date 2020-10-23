@@ -9,13 +9,16 @@ public class PlayerCreator {
     private final int MIN = 2;
     private String currentName;
     private int numberOfPlayers;
+
+    //ARRAY
     Player[] playerArray;
 
     Scanner scan = new Scanner(System.in);
 
     public void playerCreator(){
 
-        Player[] playerArray = new Player[numberOfPlayers];
+        //ARRAY
+        this.playerArray = new Player[numberOfPlayers];
 
         for (int i = 0; i < playerArray.length; i++){
             int nr = i+1;

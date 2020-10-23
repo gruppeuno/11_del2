@@ -18,12 +18,16 @@ public class Field {
 
         String roll;
 
+        /*
         do {
             System.out.println(player + " kast terningen!");
 
             roll = scan.nextLine();
         }
         while (!roll.toLowerCase().equals("kast"));
+
+
+         */
 
         switch (dieSum) {
             case 2:
@@ -81,6 +85,7 @@ public class Field {
                 FieldValue = 650;
                 break;
         }
+        /*
         System.out.println("Terningsummen er: " + dieSum);
 
         System.out.println(msg);
@@ -91,7 +96,7 @@ public class Field {
             //balance = value.myFieldValue(balance, player);
         }
 
-            /*
+            
             if (balance >= 3000) {
                 System.out.println(player + " har vundet spillet!");
                 balance = -1;

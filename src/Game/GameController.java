@@ -11,16 +11,17 @@ public class GameController {
     PlayerCreator playerCreator = new PlayerCreator();
     private final RaffleCup cup = new RaffleCup();
     private final Scanner scan = new Scanner(System.in);
+    Player[] playerArray;
     //array med spillere, bruges sammen med turncount for at skifte spiller
 
     public void gameController() {
 
-
         playerCreator.numberOfPlayers();
         playerCreator.playerCreator();
+        this.playerArray = playerCreator.playerArray;
 
 
-        Player[] playerArray = playerCreator.playerArray;
+
 
         while (!playerArray[turnCount].getPlayerWin()){
             do {
