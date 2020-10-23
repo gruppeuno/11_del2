@@ -23,23 +23,22 @@ public class GameController {
         playerCreator.testPlayerCreator();
 
         while (!playerCreator.playerArray[turnCount].getPlayerWin()){
+            String currentPlayerName = playerCreator.playerArray[turnCount].getPlayerName();
             do {
 
                 //loop til afvente spillerens roll commando i consollen
                 playerRollInput();
 
                 //ruller terninger med RaffleCup samt sætter fieldNumber = terningeværdien
+                //og kalder på setField
                 field.setFieldNumber(cup.roll());
-
-                field.setField();
-                System.out.println("Du landede på felt " + field.getFieldNumber() + "\n" + field.getFieldMSG());
+                System.out.println(currentPlayerName +" landede på felt " + field.getFieldNumber() + "\n" + currentPlayerName + field.getFieldMSG());
 
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
                 //som sørger for at der sker det rigtige ud fra hvad terningerne viser
 
                 playerCreator.playerArray[turnCount].b.newBalance(field.getFieldValue());
-                System.out.println(playerCreator.playerArray[turnCount].getPlayerName() + " har nu " + playerCreator.playerArray[turnCount].b.getBalance() + "kr på sin bankkonto");
-
+                System.out.println(currentPlayerName + " har nu " + playerCreator.playerArray[turnCount].b.getBalance() + "kr på sin bankkonto");
 
                 //giver mulighed for køre igennem flere gange hvis man slår dobbelt
                 //fra CDIO, Vi beholder da vi muligvis skal bruge i CDIO3
@@ -47,7 +46,7 @@ public class GameController {
 
             //checker om der er fundet en vinder efter turen
             if (playerCreator.playerArray[turnCount].getPlayerWin()){
-                System.out.println("WINNER!!!!! =  " + playerCreator.playerArray[turnCount].getPlayerName());
+                System.out.println("WINNER!!!!! =  " + currentPlayerName);
                 break;
             }
 
