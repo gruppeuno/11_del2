@@ -5,20 +5,14 @@ import java.util.Scanner;
 public class Field {
 
     private String msg;
+
+
     int fieldValue = 0;
-
-    //TODO: slet efter test
-    public int getFieldNumber() {
-        return fieldNumber;
-    }
-
     private int fieldNumber;
 
-    public void setFieldNumber(int fieldNumber) {
-        this.fieldNumber = fieldNumber;
-    }
 
-    public int getFieldValue() {
+    public void setField() {
+        fieldValue=0;
 
         switch (fieldNumber) {
             case 2:
@@ -76,9 +70,23 @@ public class Field {
                 fieldValue = 650;
                 break;
         }
+    }
+
+    public int getFieldValue() {
         return fieldValue;
+    }
 
+    //TODO: slet efter test
+    public int getFieldNumber() {
+        return fieldNumber;
+    }
 
+    public void setFieldNumber(int fieldNumber) {
+        this.fieldNumber = fieldNumber;
+    }
+
+    public String getMsg() {
+        return msg;
     }
 
 }

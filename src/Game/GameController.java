@@ -40,14 +40,16 @@ public class GameController {
                  */
                 //ruller terninger med RaffleCup
                 field.setFieldNumber(cup.roll());
-                System.out.println("Field numver= " + field.getFieldNumber());
+                System.out.println("Du landede på felt " + field.getFieldNumber());
+                field.setField();
+                System.out.println(field.getMsg());
 
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
                 //som sørger for at der sker det rigtige ud fra hvad terningerne viser
 
                 //TODO: fix herfra
                 playerCreator.playerArray[turnCount].b.newBalance(field.getFieldValue());
-                System.out.println(playerCreator.playerArray[turnCount].b.getBalance());
+                System.out.println(playerCreator.playerArray[turnCount].getPlayerName() + " har nu " + playerCreator.playerArray[turnCount].b.getBalance() + "kr på sin bankkonto");
 
 
                 //køre igennem flere gange hvis man slår dobbelt
