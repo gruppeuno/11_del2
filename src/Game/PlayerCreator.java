@@ -19,7 +19,6 @@ public class PlayerCreator {
 
     }
 
-
     public void playerCreator(){
 
         Scanner scan = new Scanner(System.in);
@@ -36,29 +35,23 @@ public class PlayerCreator {
                 currentName = scan.next();
             }
             playerArray[i] = new Player(currentName);
-
         }
-        //muligt fjern
-        scan.close();
     }
 
     public int numberOfPlayers(){
-        //TODO: do while
         Scanner scan = new Scanner(System.in);
         int numberOfPlayers = 0;
         //While loop til at sikre at der er indtastet mellem 2-8 spillere
-        while (numberOfPlayers<MIN || numberOfPlayers>MAX){
-            System.out.println("Indtast et antal spillere mellem 2-8");
+        System.out.println("Indtast et antal spillere mellem 2-8");
+        do{
             numberOfPlayers = scan.nextInt();
 
             if (numberOfPlayers<MIN || numberOfPlayers>MAX)
-                System.out.println("Ugyldigt antal spillere");
-        }
+                System.out.println("Ugyldigt antal spillere. Indtast et antal spillere mellem 2-8");
+        }while (numberOfPlayers<MIN || numberOfPlayers>MAX);
         System.out.println("numberOfPlayers " + numberOfPlayers);
         System.out.println();
 
-        //muligt fjern
-        scan.close();
         return numberOfPlayers;
     }
 

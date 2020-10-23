@@ -17,7 +17,6 @@ public class GameController {
     //array med spillere, bruges sammen med turncount for at skifte spiller
     public void gameController() {
 
-        playerCreator.numberOfPlayers();
         playerCreator.playerCreator();
 
         //test metode til 2 spillere
