@@ -5,33 +5,35 @@ import java.util.Scanner;
 public class GameController {
 
     private int turnCount = 0;
-
     //skaber nye objekter af hhv. GameTurn, Player for hver spille, RaffleCup og Scanner
-    private final Field field = new Field();
+    //Final modifier?
+    private Field field = new Field();
     PlayerCreator playerCreator = new PlayerCreator();
-    private final RaffleCup cup = new RaffleCup();
-    private final Scanner scan = new Scanner(System.in);
+    private RaffleCup cup = new RaffleCup();
     Player[] playerArray;
-    //array med spillere, bruges sammen med turncount for at skifte spiller
+    private String rollInput;
 
+
+    //array med spillere, bruges sammen med turncount for at skifte spiller
     public void gameController() {
 
         playerCreator.numberOfPlayers();
         playerCreator.playerCreator();
+
+        //test metode til 2 spillere
+        //playerCreator.testPlayerCreator();
+
         this.playerArray = playerCreator.playerArray;
-
-
-
+        Scanner scan2 = new Scanner(System.in);
 
         while (!playerArray[turnCount].getPlayerWin()){
             do {
 
                 //loop til afvente spillerens roll commando i consollen
-                String rollInput;
                 do {
                     System.out.println("Det er din tur " + playerArray[turnCount].getPlayerName() + "\nSkriv \"Roll\" og tryk enter for slå med terningerne!");
 
-                    rollInput = scan.nextLine();
+                    rollInput = scan2.nextLine();
                 }
                 while (!rollInput.toLowerCase().equals("roll"));
 
@@ -59,6 +61,6 @@ public class GameController {
             System.out.println();
         }
         //lukker scanner
-        scan.close();
+        scan2.close();
     }
 }
