@@ -5,7 +5,6 @@ public class BankAccount {
         private Field field;
         private Player player;
         private int balance = 1000;
-        private String accountName;
 
         public BankAccount(Player player) {
                 this.player = player;
@@ -16,13 +15,6 @@ public class BankAccount {
                 field.getPoints(player);
                 return balance += field.getMyFieldValue();
         }
-
-        //Account name hvis vi vil bruge
-        /*
-        private void setAccountName(Player player){
-                accountName=player.getPlayerName() + "123Account";
-        }
-        */
 
         public static void main(String[] args) {
 

@@ -3,7 +3,7 @@ package Game;
 import java.util.Scanner;
 
 public class MyFieldTest {
-
+/*
     private String msg;
     private int myFieldValue = 0;
 
@@ -184,12 +184,12 @@ public class MyFieldTest {
             //balance = value.myFieldValue(balance, player);
         }
 
-            /*
+
             if (balance >= 3000) {
                 System.out.println(player + " har vundet spillet!");
                 balance = -1;
             }
-                     */
+
 
 
     }
@@ -199,7 +199,7 @@ public class MyFieldTest {
     }
 
 
-
+*/
 }
 
 

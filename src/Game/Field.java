@@ -5,12 +5,12 @@ import java.util.Scanner;
 public class Field {
 
     private String msg;
+    private int myFieldValue = 0;
 
+    public void setMyFieldValue(Player player) {
 
-    public int FieldValue(int balance, Player player) {
-
-        //controller
         Scanner scan = new Scanner(System.in);
+
         RaffleCup dice = new RaffleCup();
 
         dice.roll();
@@ -18,7 +18,6 @@ public class Field {
 
         String roll;
 
-        //skal nok også ske i controller
         do {
             System.out.println(player + " kast terningen!");
 
@@ -29,27 +28,27 @@ public class Field {
         switch (dieSum) {
             case 2:
                 msg = "Du har fundet tårnet, det sælger du for 250";
-                balance = balance + 250;
+                myFieldValue = 250;
                 break;
 
             case 3:
                 msg = "Du er faldet ned i et krater. Du betaler en mand 100 for at komme op";
-                balance = balance - 100;
+                myFieldValue = -100;
                 break;
 
             case 4:
                 msg = "Du står foran paladsets porte. Du får 100 for din fund";
-                balance = balance + 100;
+                myFieldValue = 100;
                 break;
 
             case 5:
                 msg = "Du befinder dig i en kold ørken. Du køber en poncho for 20";
-                balance = balance - 20;
+                myFieldValue = -20;
                 break;
 
             case 6:
                 msg = "Du finder en by med murer rundt om. Du får 180 for at sælge nogle mursten";
-                balance = balance + 180;
+                myFieldValue = 180;
                 break;
 
             case 7:
@@ -58,49 +57,51 @@ public class Field {
 
             case 8:
                 msg = "Du finder en mørk, sort hule, du betaler 70 for en fakkel";
-                balance = balance - 70;
+                myFieldValue = -70;
                 break;
 
             case 9:
                 msg = "Du finder en hytte i bjergene. Du får 60 for at finde det.";
-                balance = balance + 60;
+                myFieldValue = 60;
                 break;
 
             case 10:
                 msg = "Du finder en mur lavet af døde varulve. Du løber og taber derfor 80";
-                balance = balance - 80;
+                myFieldValue = -80;
 
                 break;
 
             case 11:
                 msg = "Du finder en grube, hvor du taber 50";
-                balance = balance - 50;
+                myFieldValue = -50;
                 break;
 
             case 12:
                 msg = "Du finder en guldmine, og blive belønet med 650 guldmønter";
-                balance = balance + 650;
+                myFieldValue = 650;
                 break;
         }
-
-
-        //det her skal nok være i en anden klasse, måske controller
         System.out.println("Terningsummen er: " + dieSum);
 
         System.out.println(msg);
-        System.out.println("Din balance er " +  balance);
 
         if (dieSum == 10) {
             System.out.println("\nDu ramte varulve muren. Du får en tur til");
             Field value = new Field();
-            balance = value.FieldValue(balance, player);
+            //balance = value.myFieldValue(balance, player);
         }
 
-        if (balance >= 3000) {
-            System.out.println(player + " har vundet spillet!");
-            balance = -1;
-        }
+            /*
+            if (balance >= 3000) {
+                System.out.println(player + " har vundet spillet!");
+                balance = -1;
+            }
+                     */
 
-        return balance;
+
+    }
+
+    public int getMyFieldValue(){
+        return myFieldValue;
     }
 }
