@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class GameController {
 
+    //TODO: inddel GameController i mindre metoder
     private int turnCount = 0;
     //skaber nye objekter af hhv. GameTurn, Player for hver spille, RaffleCup og Scanner
     //Final modifier?
@@ -16,10 +17,11 @@ public class GameController {
     //array med spillere, bruges sammen med turncount for at skifte spiller
     public void gameController() {
 
-        playerCreator.playerCreator();
+        //Rigtige metode til at køre med 2-8 spillere samt tildele navne
+        //playerCreator.playerCreator();
 
         //test metode til 2 spillere
-        //playerCreator.testPlayerCreator();
+        playerCreator.testPlayerCreator();
 
         Scanner scan2 = new Scanner(System.in);
 
@@ -27,20 +29,25 @@ public class GameController {
             do {
 
                 //loop til afvente spillerens roll commando i consollen
+                //TODO: comment ind igen efter test
+                /*
                 do {
                     System.out.println("Det er din tur " + playerCreator.playerArray[turnCount].getPlayerName() + "\nSkriv \"Roll\" og tryk enter for slå med terningerne!");
 
                     rollInput = scan2.nextLine();
                 }
                 while (!rollInput.toLowerCase().equals("roll"));
-
+                 */
                 //ruller terninger med RaffleCup
-                cup.roll();
+                field.setFieldNumber(cup.roll());
+                System.out.println("Field numver= " + field.getFieldNumber());
 
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
                 //som sørger for at der sker det rigtige ud fra hvad terningerne viser
 
-                playerCreator.playerArray[turnCount].b.newBalance();
+                //TODO: fix herfra
+                playerCreator.playerArray[turnCount].b.newBalance(field.getFieldValue());
+                System.out.println(playerCreator.playerArray[turnCount].b.getBalance());
 
 
                 //køre igennem flere gange hvis man slår dobbelt
@@ -48,6 +55,7 @@ public class GameController {
 
             //checker om der er fundet en vinder efter turen
             if (playerCreator.playerArray[turnCount].getPlayerWin()){
+                System.out.println("WINNER!!!!! =  " + playerCreator.playerArray[turnCount].getPlayerName());
                 break;
             }
 

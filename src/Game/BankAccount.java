@@ -5,6 +5,12 @@ public class BankAccount {
         //??
         private Field field;
         private Player player;
+
+
+        public int getBalance() {
+                return balance;
+        }
+
         private int balance = 1000;
 
         public BankAccount(Player player) {
@@ -12,10 +18,10 @@ public class BankAccount {
         }
 
         //Balance skal hentes fra Field
-        public int newBalance() {
-                balance += field.getFieldValue();
+        public void newBalance(int value) {
+                balance += value;
                 checkBalance3000();
-                return balance;
+                //return balance;
 
         }
 
