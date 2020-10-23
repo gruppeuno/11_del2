@@ -9,12 +9,11 @@ public class PlayerCreator {
     private final int MIN = 2;
     private String currentName;
     private int numberOfPlayers;
-
-    private Player[] playerArray;
+    Player[] playerArray;
 
     Scanner scan = new Scanner(System.in);
 
-    public void PlayerCreator(){
+    public void playerCreator(){
 
         Player[] playerArray = new Player[numberOfPlayers];
 

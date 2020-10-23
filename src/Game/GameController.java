@@ -12,27 +12,18 @@ public class GameController {
     private final RaffleCup cup = new RaffleCup();
     private final Scanner scan = new Scanner(System.in);
     //array med spillere, bruges sammen med turncount for at skifte spiller
-    private final Player[] playerArray = {player1, player2};
 
     public void gameController() {
 
-        System.out.println("Player 1 skriv dit navn og tryk enter:");
-        String namePlayer1 = scan.nextLine();
-        player1.setPlayerName(namePlayer1);
-        System.out.println("\nPlayer 2 skriv dit navn og tryk enter:");
-        String namePlayer2 = scan.nextLine();
 
-        while (namePlayer1.toLowerCase().equals(namePlayer2.toLowerCase())) {
-            System.out.println("Begge spillere kan ikke have samme nav. Player 2 vælg nyt navn.");
-            namePlayer2 = scan.nextLine();
-        }
+        playerCreator.numberOfPlayers();
+        playerCreator.playerCreator();
 
-        player2.setPlayerName(namePlayer2);
-        System.out.println("\nSpillet starter....");
+
+        Player[] playerArray = playerCreator.playerArray;
 
         while (!playerArray[turnCount].getPlayerWin()){
             do {
-
 
                 //loop til afvente spillerens roll commando i consollen
                 String rollInput;
