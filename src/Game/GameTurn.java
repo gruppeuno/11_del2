@@ -35,7 +35,7 @@ public class GameTurn {
 
                 //hvis man slog 2x6 sidste tur
                 if (p.getSixes() == 1) {
-                    p.setPlayerWin(true);
+                    p.setPlayerWin();
                     System.out.println("du slog to 6'ere igen!");
                 }
 
@@ -47,7 +47,7 @@ public class GameTurn {
 
             //slå 2 ens for at vinde, hvis altså du er på 40 points
             if (p.getPlayerPendingWin()) {
-                p.setPlayerWin(true);
+                p.setPlayerWin();
                 System.out.println("Du vandt!");
                 p.setRollAgain(false);
             }

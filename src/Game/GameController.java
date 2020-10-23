@@ -42,8 +42,8 @@ public class GameController {
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
                 //som sørger for at der sker det rigtige ud fra hvad terningerne viser
 
+                playerArray[turnCount].b.newBalance();
 
-                field.getFieldValue();
 
                 //køre igennem flere gange hvis man slår dobbelt
             }while (playerArray[turnCount].getRollAgain());

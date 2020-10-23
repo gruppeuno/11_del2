@@ -28,7 +28,7 @@ public class Player  {
     }
 
     //set og get PlayerWin
-    public void setPlayerWin(boolean playerWin) {
+    public void setPlayerWin() {
         this.playerWin = true;
     }
 

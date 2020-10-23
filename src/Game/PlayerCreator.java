@@ -12,6 +12,7 @@ public class PlayerCreator {
     //ARRAY
     Player[] playerArray;
 
+    //TODO: test metode
     public void testPlayerCreator(){
         this.playerArray= new Player[2];
         playerArray[0] = new Player("gab");
