@@ -2,15 +2,7 @@ package Game;
 
 public class BankAccount {
 
-        //??
-        private Field field;
         private Player player;
-
-
-        public int getBalance() {
-                return balance;
-        }
-
         private int balance = 1000;
 
         public BankAccount(Player player) {
@@ -28,5 +20,9 @@ public class BankAccount {
         public void checkBalance3000(){
                 if (balance>=3000)
                         player.setPlayerWin();
+        }
+
+        public int getBalance() {
+                return balance;
         }
 }

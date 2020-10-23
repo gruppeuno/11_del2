@@ -2,32 +2,16 @@ package Game;
 
 public class Player  {
 
-
-
-    //værdier der skal gemmes og de er private så deres scope er klassen
     private String playerName;
-    private int points = 0;
     private boolean playerWin = false;
-    private boolean playerPendingWin = false;
     private boolean rollAgain = false;
-    //til at tælle om man slog 2x6 sidste tur
-    private int sixes = 0;
     BankAccount b = new BankAccount(this);
 
     public Player(String playerName) {
         this.playerName = playerName;
     }
 
-    //set og get Points
-    public void setPoints(int totalValue) {
-        this.points = totalValue;
-    }
 
-    public int getPoints() {
-        return points;
-    }
-
-    //set og get PlayerWin
     public void setPlayerWin() {
         this.playerWin = true;
     }
@@ -36,36 +20,12 @@ public class Player  {
         return playerWin;
     }
 
-
-    //set og get  PlayerPlendingWin
-    public void setPlayerPendingWin(boolean playerPendingWin) {
-        this.playerPendingWin = playerPendingWin;
-    }
-
-    public boolean getPlayerPendingWin() {
-        return playerPendingWin;
-    }
-
-    //set og get rollAgain
+    //Skal måske bruges til CDIO3
     public void setRollAgain(boolean rollAgain) {
         this.rollAgain = rollAgain;
     }
-
     public boolean getRollAgain() {
         return rollAgain;
-    }
-
-    //set og get Sixes
-    public void setSixes(int sixes) {
-        this.sixes = sixes;
-    }
-
-    public int getSixes() {
-        return sixes;
-    }
-
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
     }
 
     public String getPlayerName() {

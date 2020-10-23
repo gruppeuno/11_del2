@@ -14,9 +14,9 @@ public class PlayerCreator {
 
     //TODO: test metode
     public void testPlayerCreator(){
-        this.playerArray= new Player[1];
+        this.playerArray= new Player[2];
         playerArray[0] = new Player("gab");
-        //playerArray[1] = new Player("dan");
+        playerArray[1] = new Player("dan");
 
     }
 
