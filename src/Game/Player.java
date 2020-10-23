@@ -12,6 +12,7 @@ public class Player  {
     private boolean rollAgain = false;
     //til at tælle om man slog 2x6 sidste tur
     private int sixes = 0;
+    BankAccount b = new BankAccount(this);
 
     public Player(String playerName) {
         this.playerName = playerName;

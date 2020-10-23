@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class Field {
 
     private String msg;
-    private int myFieldValue = 0;
+    int FieldValue = 0;
 
-    public void setMyFieldValue(Player player) {
+    public void setFieldValue(Player player) {
 
         Scanner scan = new Scanner(System.in);
 
@@ -28,27 +28,27 @@ public class Field {
         switch (dieSum) {
             case 2:
                 msg = "Du har fundet tårnet, det sælger du for 250";
-                myFieldValue = 250;
+                FieldValue = 250;
                 break;
 
             case 3:
                 msg = "Du er faldet ned i et krater. Du betaler en mand 100 for at komme op";
-                myFieldValue = -100;
+                FieldValue = -100;
                 break;
 
             case 4:
                 msg = "Du står foran paladsets porte. Du får 100 for din fund";
-                myFieldValue = 100;
+                FieldValue = 100;
                 break;
 
             case 5:
                 msg = "Du befinder dig i en kold ørken. Du køber en poncho for 20";
-                myFieldValue = -20;
+                FieldValue = -20;
                 break;
 
             case 6:
                 msg = "Du finder en by med murer rundt om. Du får 180 for at sælge nogle mursten";
-                myFieldValue = 180;
+                FieldValue = 180;
                 break;
 
             case 7:
@@ -57,28 +57,28 @@ public class Field {
 
             case 8:
                 msg = "Du finder en mørk, sort hule, du betaler 70 for en fakkel";
-                myFieldValue = -70;
+                FieldValue = -70;
                 break;
 
             case 9:
                 msg = "Du finder en hytte i bjergene. Du får 60 for at finde det.";
-                myFieldValue = 60;
+                FieldValue = 60;
                 break;
 
             case 10:
                 msg = "Du finder en mur lavet af døde varulve. Du løber og taber derfor 80";
-                myFieldValue = -80;
+                FieldValue = -80;
 
                 break;
 
             case 11:
                 msg = "Du finder en grube, hvor du taber 50";
-                myFieldValue = -50;
+                FieldValue = -50;
                 break;
 
             case 12:
                 msg = "Du finder en guldmine, og blive belønet med 650 guldmønter";
-                myFieldValue = 650;
+                FieldValue = 650;
                 break;
         }
         System.out.println("Terningsummen er: " + dieSum);
@@ -101,7 +101,7 @@ public class Field {
 
     }
 
-    public int getMyFieldValue(){
-        return myFieldValue;
+    public int getFieldValue(){
+        return FieldValue;
     }
 }

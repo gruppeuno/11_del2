@@ -10,6 +10,8 @@ public class PlayerCreator {
     private String currentName;
     private int numberOfPlayers;
 
+    private Player[] playerArray;
+
     Scanner scan = new Scanner(System.in);
 
     public void PlayerCreator(){
@@ -58,17 +60,9 @@ public class PlayerCreator {
 
     }
 
-    //til senere brug
-    public int getNumberOfPlayers() {
-        return numberOfPlayers;
-    }
+
 }
 
 
-class test {
-    public static void main(String[] args) {
-        PlayerCreator payer = new PlayerCreator();
-        payer.numberOfPlayers();
-        payer.PlayerCreator();
-    }
-}
+
+

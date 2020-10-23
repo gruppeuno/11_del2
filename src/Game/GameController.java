@@ -7,9 +7,8 @@ public class GameController {
     private int turnCount = 0;
 
     //skaber nye objekter af hhv. GameTurn, Player for hver spille, RaffleCup og Scanner
-    private final Field turn = new Field();
-    private final Player player1 = new Player("gab");
-    private final Player player2 = new Player("kris");
+    private final Field field = new Field();
+    PlayerCreator playerCreator = new PlayerCreator();
     private final RaffleCup cup = new RaffleCup();
     private final Scanner scan = new Scanner(System.in);
     //array med spillere, bruges sammen med turncount for at skifte spiller
@@ -50,7 +49,8 @@ public class GameController {
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
                 //som sørger for at der sker det rigtige ud fra hvad terningerne viser
 
-                turn.FieldValue(/*BankKnonto balance her*/, playerArray[turnCount]);
+
+                field.getFieldValue();
 
                 //køre igennem flere gange hvis man slår dobbelt
             }while (playerArray[turnCount].getRollAgain());
