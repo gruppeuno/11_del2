@@ -6,10 +6,11 @@ public class Field {
 
     private String msg;
 
+
     public int FieldValue(int balance, Player player) {
 
+        //controller
         Scanner scan = new Scanner(System.in);
-
         RaffleCup dice = new RaffleCup();
 
         dice.roll();
@@ -17,6 +18,7 @@ public class Field {
 
         String roll;
 
+        //skal nok også ske i controller
         do {
             System.out.println(player + " kast terningen!");
 
@@ -80,6 +82,9 @@ public class Field {
                 balance = balance + 650;
                 break;
         }
+
+
+        //det her skal nok være i en anden klasse, måske controller
         System.out.println("Terningsummen er: " + dieSum);
 
         System.out.println(msg);

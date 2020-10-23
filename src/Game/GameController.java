@@ -10,6 +10,7 @@ public class GameController {
     private final Field turn = new Field();
     private final Player player1 = new Player("gab");
     private final Player player2 = new Player("kris");
+    private final RaffleCup cup = new RaffleCup();
     private final Scanner scan = new Scanner(System.in);
     //array med spillere, bruges sammen med turncount for at skifte spiller
     private final Player[] playerArray = {player1, player2};
@@ -33,6 +34,7 @@ public class GameController {
         while (!playerArray[turnCount].getPlayerWin()){
             do {
 
+
                 //loop til afvente spillerens roll commando i consollen
                 String rollInput;
                 do {
@@ -42,6 +44,8 @@ public class GameController {
                 }
                 while (!rollInput.toLowerCase().equals("roll"));
 
+                //ruller terninger med RaffleCup
+                cup.roll();
 
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
                 //som sørger for at der sker det rigtige ud fra hvad terningerne viser
