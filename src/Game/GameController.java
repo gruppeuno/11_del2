@@ -1,5 +1,7 @@
 package Game;
 
+import gui_main.GUI;
+
 import java.util.Scanner;
 
 public class GameController {
@@ -11,6 +13,7 @@ public class GameController {
     private Field field = new Field();
     PlayerCreator playerCreator = new PlayerCreator();
     private RaffleCup cup = new RaffleCup();
+    GUI gui = new GUI();
 
 
     //array med spillere, bruges sammen med turncount for at skifte spiller
