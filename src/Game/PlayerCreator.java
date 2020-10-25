@@ -9,8 +9,6 @@ public class PlayerCreator {
     private final int MIN = 2;
     private String currentName;
     private int numberOfPlayers;
-
-    //ARRAY
     Player[] playerArray;
 
     //TODO: test metode
@@ -51,7 +49,7 @@ public class PlayerCreator {
                 System.out.println("Ugyldigt antal spillere. Indtast et antal spillere mellem 2-8");
         }while (numberOfPlayers<MIN || numberOfPlayers>MAX);
         System.out.println("numberOfPlayers " + numberOfPlayers);
-        System.out.println();
+
     }
 
     public boolean playerNameEquals(String name, Player[] array)

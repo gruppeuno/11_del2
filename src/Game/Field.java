@@ -6,7 +6,6 @@ public class Field {
     private int fieldValue = 0;
     private int fieldNumber;
 
-
     public void setField(int fieldNumber) {
         fieldValue=0;
 
