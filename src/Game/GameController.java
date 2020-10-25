@@ -2,6 +2,7 @@ package Game;
 
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Player;
+import gui_fields.GUI_Street;
 import gui_main.GUI;
 
 import java.awt.*;
@@ -17,10 +18,29 @@ public class GameController {
     PlayerCreator playerCreator = new PlayerCreator();
     private RaffleCup cup = new RaffleCup();
 
-    GUI gui = new GUI();
 
     //array med spillere, bruges sammen med turncount for at skifte spiller
     public void gameController() {
+
+
+        GUI_Street gs1 = new GUI_Street("START","good luck"," ", " ", Color.RED, Color.BLACK);
+        GUI_Street gs2 = new GUI_Street("1"," "," ", " ", Color.RED, Color.BLACK);
+        GUI_Street gs3 = new GUI_Street("2","TOWER","mister 300 point", "200kr", Color.BLACK, Color.GREEN);
+        GUI_Street gs4 = new GUI_Street("3","CRATER","mister 300 point", "200kr", Color.BLACK, Color.GREEN);
+        GUI_Street gs5 = new GUI_Street("4","PALACE GATES","mister 300 point", "200kr", Color.BLACK, Color.GREEN);
+        GUI_Street gs6 = new GUI_Street("5","COLD DESSERT","mister 300 point", "200kr", Color.BLACK, Color.GREEN);
+        GUI_Street gs7 = new GUI_Street("6","WALLED CITY","mister 300 point", "200kr", Color.BLACK, Color.GREEN);
+        GUI_Street gs8 = new GUI_Street("7","MONASTERY","mister 300 point", "200kr", Color.BLACK, Color.GREEN);
+        GUI_Street gs9 = new GUI_Street("8","BLACK CAVE","mister 300 point", "200kr", Color.BLACK, Color.GREEN);
+        GUI_Street gs10 = new GUI_Street("9","HUTS IN THE MOUNTAIN","mister 300 point", "200kr", Color.BLACK, Color.GREEN);
+        GUI_Street gs11 = new GUI_Street("10","THE WEREWALL","mister 300 point", "200kr", Color.BLACK, Color.GREEN);
+        GUI_Street gs12 = new GUI_Street("11","THE PIT","mister 300 point", "200kr", Color.BLACK, Color.GREEN);
+        GUI_Street gs13 = new GUI_Street("12","GOLDMINE","mister 300 point", "200kr", Color.BLACK, Color.GREEN);
+        GUI_Street gs14 = new GUI_Street("13","QUICKSAND","mister 300 point", "200kr", Color.BLACK, Color.GREEN);
+        GUI_Street gs15 = new GUI_Street("14","'RONA HOTBOX","mister 300 point", "200kr", Color.BLACK, Color.GREEN);
+        GUI_Street gs16 = new GUI_Street("15","BALLERUP PIZZA BURGER GRILL","mister 300 point", "200kr", Color.BLACK, Color.GREEN);
+
+        GUI gui = new GUI(new GUI_Street[]{gs1,gs2,gs3,gs4,gs5,gs6,gs7,gs8,gs9,gs10,gs11,gs12,gs13,gs14,gs15,gs16});
 
         //TODO: Rigtige metode til at køre med 2-8 spillere samt tildele navne
         //playerCreator.playerCreator();
@@ -35,7 +55,6 @@ public class GameController {
         //laver spillere for GUI
 
         for (int i = 0; i < playerCreator.getPlayerArrayLength(); i++){
-            System.out.println(i + "**********************'");
             myCars[i] = new GUI_Car();
             myCars[i].setPrimaryColor(myColors[i]);
             myPlayers[i] = new GUI_Player(playerCreator.playerArray[i].getPlayerName(),1000, myCars[i]);
