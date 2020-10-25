@@ -9,6 +9,7 @@ public class PlayerCreator {
     private final int MIN = 2;
     private String currentName;
     private int numberOfPlayers;
+    Scanner scan = new Scanner(System.in);
 
     //ARRAY
     Player[] playerArray;
@@ -18,13 +19,11 @@ public class PlayerCreator {
         this.playerArray= new Player[2];
         playerArray[0] = new Player("Stigh Høgh");
         playerArray[1] = new Player("Mads Nyborg");
-
     }
 
     public void playerCreator(){
 
-        Scanner scan = new Scanner(System.in);
-
+        numberOfPlayers();
         this.playerArray = new Player[numberOfPlayers];
 
         for (int i = 0; i < playerArray.length; i++){
@@ -38,10 +37,11 @@ public class PlayerCreator {
             }
             playerArray[i] = new Player(currentName);
         }
+        System.out.println("========================================\n");
     }
 
     public void numberOfPlayers(){
-        Scanner scan = new Scanner(System.in);
+
         //While loop til at sikre at der er indtastet mellem 2-8 spillere
         System.out.println("Indtast et antal spillere mellem 2-8");
         do{
@@ -66,7 +66,6 @@ public class PlayerCreator {
         else {
             return false;
         }
-
     }
 
     public int getPlayerArrayLength(){
