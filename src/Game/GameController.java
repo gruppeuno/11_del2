@@ -1,7 +1,10 @@
 package Game;
 
+import gui_fields.GUI_Car;
+import gui_fields.GUI_Player;
 import gui_main.GUI;
 
+import java.awt.*;
 import java.util.Scanner;
 
 public class GameController {
@@ -15,7 +18,6 @@ public class GameController {
     private RaffleCup cup = new RaffleCup();
     GUI gui = new GUI();
 
-
     //array med spillere, bruges sammen med turncount for at skifte spiller
     public void gameController() {
 
@@ -24,6 +26,17 @@ public class GameController {
 
         //TODO: test metode til 2 spillere
         playerCreator.testPlayerCreator();
+
+        int[] carArray = new int[2];
+        //laver spillere for GUI
+        for (int i = 0; i < playerCreator.getPlayerArrayLength(); i++){
+
+            GUI_Car car = new GUI_Car();
+            car.setPrimaryColor(Color.PINK); //Lad den være gul
+            GUI_Player player = new GUI_Player(playerCreator.playerArray[turnCount].getPlayerName(),1000, car);
+            gui.addPlayer(player);
+
+        }
 
         while (!playerCreator.playerArray[turnCount].getPlayerWin()){
             String currentPlayerName = playerCreator.playerArray[turnCount].getPlayerName();

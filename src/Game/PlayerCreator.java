@@ -71,6 +71,11 @@ public class PlayerCreator {
 
     }
 
+    public int getPlayerArrayLength(){
+        return playerArray.length;
+    }
+
+
 
 }
 
