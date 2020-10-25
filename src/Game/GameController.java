@@ -27,25 +27,19 @@ public class GameController {
         //TODO: test metode til 2 spillere
         playerCreator.testPlayerCreator();
 
+        Color myColors[] = {Color.RED,Color.BLUE,Color.YELLOW,Color.PINK,Color.GREEN,Color.BLACK,Color.WHITE};
 
+        GUI_Player myPlayers[] = new GUI_Player[playerCreator.getPlayerArrayLength()];
+        GUI_Car myCars[] = new GUI_Car[playerCreator.getPlayerArrayLength()];
         //laver spillere for GUI
-        /*for (int i = 0; i < playerCreator.getPlayerArrayLength(); i++){
 
-            GUI_Car car = new GUI_Car();
-            car.setPrimaryColor(Color.PINK);
-            GUI_Player player = new GUI_Player(playerCreator.playerArray[turnCount].getPlayerName(),1000, car);
-            gui.addPlayer(player);
-        }*/
-
-        GUI_Car car1 = new GUI_Car();
-        car1.setPrimaryColor(Color.BLUE); //Lad den være gul
-        GUI_Player Stig = new GUI_Player("Stig",1000,car1);
-        gui.addPlayer(Stig);
-
-        GUI_Car car2 = new GUI_Car();
-        car2.setPrimaryColor(Color.RED); //Lad den være gul
-        GUI_Player Mads = new GUI_Player("Mads",1000,car2);
-        gui.addPlayer(Mads);
+        for (int i = 0; i < playerCreator.getPlayerArrayLength(); i++){
+            System.out.println(i + "**********************'");
+            myCars[i] = new GUI_Car();
+            myCars[i].setPrimaryColor(myColors[i]);
+            myPlayers[i] = new GUI_Player(playerCreator.playerArray[i].getPlayerName(),1000, myCars[i]);
+            gui.addPlayer(myPlayers[i]);
+        }
 
         while (!playerCreator.playerArray[turnCount].getPlayerWin()){
             String currentPlayerName = playerCreator.playerArray[turnCount].getPlayerName();
@@ -66,11 +60,9 @@ public class GameController {
                 playerCreator.playerArray[turnCount].b.newBalance(field.getFieldValue());
                 System.out.println(currentPlayerName + " har nu " + playerCreator.playerArray[turnCount].b.getBalance() + "kr på sin bankkonto");
 
-                if (turnCount == 0) {
-                    Stig.setBalance(playerCreator.playerArray[turnCount].b.getBalance());
-                } else {
-                    Mads.setBalance(playerCreator.playerArray[turnCount].b.getBalance());
-                }
+
+                    myPlayers[turnCount].setBalance(playerCreator.playerArray[turnCount].b.getBalance());
+
 
                 //giver mulighed for køre igennem flere gange hvis man slår dobbelt
                 //fra CDIO, Vi beholder da vi muligvis skal bruge i CDIO3
