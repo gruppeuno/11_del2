@@ -14,4 +14,12 @@ public class RaffleCup {
         return die1+die2;
     }
 
+    public int getDie1Value(){
+        return die1;
+    }
+
+    public int getDie2Value(){
+        return die2;
+    }
+
 }

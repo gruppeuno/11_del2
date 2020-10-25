@@ -35,6 +35,7 @@ public class GameController {
                 //ruller terninger med RaffleCup samt sætter fieldNumber = terningeværdien
                 //og kalder på setField
                 field.setFieldNumber(cup.roll());
+                gui.setDice(cup.getDie1Value(), cup.getDie2Value());
                 System.out.println(currentPlayerName +" landede på felt " + field.getFieldNumber() + "\n" + currentPlayerName + field.getFieldMSG());
 
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
