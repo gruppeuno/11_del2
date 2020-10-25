@@ -8,7 +8,7 @@ public class PlayerCreator {
     private final int MAX = 8;
     private final int MIN = 2;
     private String currentName;
-    private int numberOfPlayers;
+    private int numberOfPlayers = 0;
     Scanner scan = new Scanner(System.in);
 
     //ARRAY
