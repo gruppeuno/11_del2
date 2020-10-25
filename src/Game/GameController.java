@@ -16,7 +16,6 @@ public class GameController {
     final private Field field = new Field();
     final private PlayerCreator playerCreator = new PlayerCreator();
     final private RaffleCup cup = new RaffleCup();
-    final private GUI gui = new GUI();
     Scanner scan = new Scanner(System.in);
 
     public void gameController() {
