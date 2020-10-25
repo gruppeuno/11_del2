@@ -17,7 +17,7 @@ public class GameController {
     final private PlayerCreator playerCreator = new PlayerCreator();
     final private RaffleCup cup = new RaffleCup();
     Scanner scan = new Scanner(System.in);
-    private int numberOfPlayers = playerCreator.getPlayerArrayLength();
+
 
 
     public void gameController() {
@@ -46,6 +46,7 @@ public class GameController {
 
         //TODO: test metode til 2 spillere
         playerCreator.testPlayerCreator();
+        int numberOfPlayers = playerCreator.getPlayerArrayLength();
 
 
         Color[] myColors = {Color.RED, Color.BLUE, Color.YELLOW, Color.PINK, Color.GREEN, Color.BLACK, Color.WHITE};
