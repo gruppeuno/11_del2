@@ -2,7 +2,7 @@ package Game;
 
 public class BankAccount {
 
-        private Player player;
+        private final Player player;
         private int balance = 1000;
 
         public BankAccount(Player player) {

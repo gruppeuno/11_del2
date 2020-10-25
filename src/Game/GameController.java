@@ -28,10 +28,10 @@ public class GameController {
         //TODO: test metode til 2 spillere
         playerCreator.testPlayerCreator();
 
-        Color myColors[] = {Color.RED,Color.BLUE,Color.YELLOW,Color.PINK,Color.GREEN,Color.BLACK,Color.WHITE};
+        Color[] myColors = {Color.RED,Color.BLUE,Color.YELLOW,Color.PINK,Color.GREEN,Color.BLACK,Color.WHITE};
 
-        GUI_Player myPlayers[] = new GUI_Player[playerCreator.getPlayerArrayLength()];
-        GUI_Car myCars[] = new GUI_Car[playerCreator.getPlayerArrayLength()];
+        GUI_Player[] myPlayers = new GUI_Player[playerCreator.getPlayerArrayLength()];
+        GUI_Car[] myCars = new GUI_Car[playerCreator.getPlayerArrayLength()];
         //laver spillere for GUI
 
         for (int i = 0; i < playerCreator.getPlayerArrayLength(); i++){
