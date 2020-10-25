@@ -10,11 +10,9 @@ public class BankAccount {
         }
 
         //Balance skal hentes fra Field
-        public int newBalance(int value) {
+        public int updateBalance(int value) {
                 balance += value;
                 checkBalance3000();
-                //return balance;
-
                 return balance;
         }
 

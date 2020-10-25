@@ -16,6 +16,7 @@ public class GameController {
     private Field field = new Field();
     PlayerCreator playerCreator = new PlayerCreator();
     private RaffleCup cup = new RaffleCup();
+
     GUI gui = new GUI();
 
     //array med spillere, bruges sammen med turncount for at skifte spiller
@@ -50,14 +51,17 @@ public class GameController {
 
                 //ruller terninger med RaffleCup samt sætter fieldNumber = terningeværdien
                 //og kalder på setField
-                field.setFieldNumber(cup.roll());
+                cup.roll();
+                field.setFieldNumber(cup.getDiceValue());
+
                 gui.setDice(cup.getDie1Value(), cup.getDie2Value());
+
                 System.out.println(currentPlayerName +" landede på felt " + field.getFieldNumber() + "\n" + currentPlayerName + field.getFieldMSG());
 
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
                 //som sørger for at der sker det rigtige ud fra hvad terningerne viser
 
-                playerCreator.playerArray[turnCount].b.newBalance(field.getFieldValue());
+                playerCreator.playerArray[turnCount].b.updateBalance(field.getFieldValue());
                 System.out.println(currentPlayerName + " har nu " + playerCreator.playerArray[turnCount].b.getBalance() + "kr på sin bankkonto");
 
 

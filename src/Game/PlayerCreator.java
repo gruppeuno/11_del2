@@ -8,6 +8,7 @@ public class PlayerCreator {
     private final int MAX = 8;
     private final int MIN = 2;
     private String currentName;
+    private int numberOfPlayers;
 
     //ARRAY
     Player[] playerArray;
@@ -24,7 +25,7 @@ public class PlayerCreator {
 
         Scanner scan = new Scanner(System.in);
 
-        this.playerArray = new Player[numberOfPlayers()];
+        this.playerArray = new Player[numberOfPlayers];
 
         for (int i = 0; i < playerArray.length; i++){
             int nr = i+1;
@@ -39,9 +40,8 @@ public class PlayerCreator {
         }
     }
 
-    public int numberOfPlayers(){
+    public void numberOfPlayers(){
         Scanner scan = new Scanner(System.in);
-        int numberOfPlayers = 0;
         //While loop til at sikre at der er indtastet mellem 2-8 spillere
         System.out.println("Indtast et antal spillere mellem 2-8");
         do{
@@ -52,8 +52,6 @@ public class PlayerCreator {
         }while (numberOfPlayers<MIN || numberOfPlayers>MAX);
         System.out.println("numberOfPlayers " + numberOfPlayers);
         System.out.println();
-
-        return numberOfPlayers;
     }
 
     public boolean playerNameEquals(String name, Player[] array)
@@ -62,7 +60,7 @@ public class PlayerCreator {
         if(Arrays.asList(array).toString().contains(name.toLowerCase())){
             return true;
         }
-        else if (name.length()>12 || name.length()<3){
+        if (name.length()>12 || name.length()<3){
             return true;
         }
         else {
