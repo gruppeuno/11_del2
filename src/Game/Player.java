@@ -24,6 +24,7 @@ public class Player  {
     public void setRollAgain(boolean rollAgain) {
         this.rollAgain = rollAgain;
     }
+
     public boolean getRollAgain() {
         return rollAgain;
     }

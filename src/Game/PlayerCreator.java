@@ -9,6 +9,9 @@ public class PlayerCreator {
     private final int MIN = 2;
     private String currentName;
     private int numberOfPlayers;
+    Scanner scan = new Scanner(System.in);
+
+    //ARRAY
     Player[] playerArray;
 
     //TODO: test metode
@@ -16,7 +19,6 @@ public class PlayerCreator {
         this.playerArray= new Player[2];
         playerArray[0] = new Player("Stigh Høgh");
         playerArray[1] = new Player("Mads Nyborg");
-
     }
 
     public void playerCreator(){
@@ -49,7 +51,7 @@ public class PlayerCreator {
                 System.out.println("Ugyldigt antal spillere. Indtast et antal spillere mellem 2-8");
         }while (numberOfPlayers<MIN || numberOfPlayers>MAX);
         System.out.println("numberOfPlayers " + numberOfPlayers);
-
+        System.out.println();
     }
 
     public boolean playerNameEquals(String name, Player[] array)
@@ -64,6 +66,7 @@ public class PlayerCreator {
         else {
             return false;
         }
+
     }
 
     public int getPlayerArrayLength(){
