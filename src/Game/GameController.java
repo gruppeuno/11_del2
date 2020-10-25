@@ -17,9 +17,10 @@ public class GameController {
     final private PlayerCreator playerCreator = new PlayerCreator();
     final private RaffleCup cup = new RaffleCup();
     Scanner scan = new Scanner(System.in);
+    private int numberOfPlayers = playerCreator.getPlayerArrayLength();
+
 
     public void gameController() {
-
 
         GUI_Street gs1 = new GUI_Street("START", "GOOD LUCK", " ", " ", Color.RED, Color.BLACK);
         GUI_Street gs2 = new GUI_Street("1", " ", " ", " ", Color.RED, Color.BLACK);
@@ -46,9 +47,6 @@ public class GameController {
         //TODO: test metode til 2 spillere
         playerCreator.testPlayerCreator();
 
-        //Fokortelse af variabler
-        int playerNumber = playerCreator.getPlayerArrayLength();
-        Player currentPlayer = playerCreator.playerArray[turnCount];
 
         Color[] myColors = {Color.RED, Color.BLUE, Color.YELLOW, Color.PINK, Color.GREEN, Color.BLACK, Color.WHITE};
 
@@ -56,14 +54,16 @@ public class GameController {
         GUI_Car[] myCars = new GUI_Car[playerCreator.getPlayerArrayLength()];
         //laver spillere for GUI
 
-        for (int i = 0; i < playerNumber; i++) {
+        for (int i = 0; i < numberOfPlayers; i++) {
             myCars[i] = new GUI_Car();
             myCars[i].setPrimaryColor(myColors[i]);
             myPlayers[i] = new GUI_Player(playerCreator.playerArray[i].getPlayerName(), 1000, myCars[i]);
             gui.addPlayer(myPlayers[i]);
         }
 
-        while (!currentPlayer.getPlayerWin()) {
+        while (!playerCreator.playerArray[turnCount].getPlayerWin()) {
+            //Fokortelse af variabler
+            Player currentPlayer = playerCreator.playerArray[turnCount];
             String currentPlayerName = currentPlayer.getPlayerName();
             do {
 
@@ -102,13 +102,12 @@ public class GameController {
 
             //giver mulighed for at tilføje flere spillere, turn turnCount+1%playerArray.length
             //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2
-            turnCount = (turnCount + 1) % playerNumber;
+            turnCount = (turnCount + 1) % numberOfPlayers;
             System.out.println("========================================");
             System.out.println();
         }
-
-
     }
+
     private void playerRollInput() {
         String rollInput;
 
