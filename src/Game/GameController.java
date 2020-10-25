@@ -122,6 +122,8 @@ public class GameController {
             scan2.close();
 
          */
+
+        //hej test
     }
 
 
