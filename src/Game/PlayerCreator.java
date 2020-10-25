@@ -66,7 +66,6 @@ public class PlayerCreator {
         else {
             return false;
         }
-
     }
 
     public int getPlayerArrayLength(){
