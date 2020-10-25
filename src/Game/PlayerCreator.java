@@ -23,8 +23,6 @@ public class PlayerCreator {
 
     public void playerCreator(){
 
-        Scanner scan = new Scanner(System.in);
-
         this.playerArray = new Player[numberOfPlayers];
 
         for (int i = 0; i < playerArray.length; i++){
@@ -38,10 +36,10 @@ public class PlayerCreator {
             }
             playerArray[i] = new Player(currentName);
         }
+        System.out.println("========================================\n");
     }
 
     public void numberOfPlayers(){
-        Scanner scan = new Scanner(System.in);
         //While loop til at sikre at der er indtastet mellem 2-8 spillere
         System.out.println("Indtast et antal spillere mellem 2-8");
         do{
