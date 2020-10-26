@@ -55,8 +55,9 @@ public class PlayerCreator {
     public boolean playerNameEquals(String name, Player[] array)
     {
         //Kontrollerer om navnet allerede er brugt
-        if(Arrays.asList(array).toString().contains(name.toLowerCase())){
-            return true;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].getPlayerName().equals(name.toLowerCase()))
+                return true;
         }
         if (name.length()>12 || name.length()<3){
             return true;
