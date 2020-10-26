@@ -12,7 +12,7 @@ public class GameController {
 
     //TODO: inddel GameController i mindre metoder
     private int turnCount;
-    //skaber nye objekter af Field, RaffleCup og PlayerCreater
+    //skaber nye objekter af Field, RaffleCup og PlayerCreator
     final private Field field = new Field();
     final private PlayerCreator playerCreator = new PlayerCreator();
     final private RaffleCup cup = new RaffleCup();
@@ -49,7 +49,7 @@ public class GameController {
         int numberOfPlayers = playerCreator.getPlayerArrayLength();
 
 
-        Color[] myColors = {Color.RED, Color.BLUE, Color.YELLOW, Color.PINK, Color.GREEN, Color.BLACK, Color.WHITE};
+        Color[] myColors = {Color.RED, Color.BLUE, Color.YELLOW, Color.PINK, Color.GREEN, Color.BLACK, Color.WHITE, Color.CYAN};
 
         GUI_Player[] myPlayers = new GUI_Player[playerCreator.getPlayerArrayLength()];
         GUI_Car[] myCars = new GUI_Car[playerCreator.getPlayerArrayLength()];
