@@ -23,6 +23,8 @@ public class PlayerCreator {
 
     public void playerCreator(){
 
+        numberOfPlayers();
+
         this.playerArray = new Player[numberOfPlayers];
 
         for (int i = 0; i < playerArray.length; i++){
@@ -58,9 +60,9 @@ public class PlayerCreator {
         if(Arrays.asList(array).toString().contains(name.toLowerCase())){
             return true;
         }
-        if (name.length()>12 || name.length()<3){
-            return true;
-        }
+        //if (name.length()>12 || name.length()<3){
+        //    return true;
+        //}
         else {
             return false;
         }
