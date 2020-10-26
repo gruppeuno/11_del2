@@ -5,9 +5,6 @@ import java.util.Scanner;
 
 public class PlayerCreator {
 
-    private final int MAX = 8;
-    private final int MIN = 2;
-    private String currentName;
     private int numberOfPlayers = 0;
     Scanner scan = new Scanner(System.in);
 
@@ -28,7 +25,7 @@ public class PlayerCreator {
         for (int i = 0; i < playerArray.length; i++){
             int nr = i+1;
             System.out.println("spiller " + nr + " Indtast et navn der er mellem 3-12 tegn, spillere må ikke have samme navn:");
-            currentName = scan.next();
+            String currentName = scan.next();
 
             while (playerNameEquals(currentName,playerArray)) {
                 System.out.print("Navnet du ønsker er ugyldigt. Vælg nyt navn: ");
@@ -42,12 +39,14 @@ public class PlayerCreator {
     public void numberOfPlayers(){
         //While loop til at sikre at der er indtastet mellem 2-8 spillere
         System.out.println("Indtast et antal spillere mellem 2-8");
+        final int MAX = 8;
+        final int MIN = 2;
         do{
             numberOfPlayers = scan.nextInt();
 
-            if (numberOfPlayers<MIN || numberOfPlayers>MAX)
+            if (numberOfPlayers< MIN || numberOfPlayers> MAX)
                 System.out.println("Ugyldigt antal spillere. Indtast et antal spillere mellem 2-8");
-        }while (numberOfPlayers<MIN || numberOfPlayers>MAX);
+        }while (numberOfPlayers< MIN || numberOfPlayers> MAX);
         System.out.println("numberOfPlayers " + numberOfPlayers);
         System.out.println();
     }
