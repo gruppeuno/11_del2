@@ -3,7 +3,7 @@ package Game;
 public class Field {
 
     private String fieldMSG;
-    private int fieldValue = 0;
+    private int fieldValue;
     private int fieldNumber;
 
     public void setField(int fieldNumber) {
