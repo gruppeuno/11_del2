@@ -33,6 +33,10 @@ public class Player  {
         return playerName;
     }
 
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
     public String toString() {
         return "Player{" +
                 "playerName='" + playerName + '\'' +

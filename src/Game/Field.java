@@ -52,7 +52,6 @@ public class Field {
             case 10:
                 fieldMSG = " finder en mur lavet af døde varulve. Du løber og taber derfor 80";
                 fieldValue = -80;
-
                 break;
 
             case 11:
