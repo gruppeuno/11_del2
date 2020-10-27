@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class PlayerCreator {
 
+
     private String currentName;
     private int numberOfPlayers = 0;
     Scanner scan = new Scanner(System.in);
-
     //ARRAY
     Player[] playerArray;
 
@@ -42,6 +42,10 @@ public class PlayerCreator {
         //While loop til at sikre at der er indtastet mellem 2-8 spillere
         System.out.println("Indtast et antal spillere mellem 2-8");
         do{
+            while (!scan.hasNextInt()) {
+                System.out.println("Ugyldigt input. Indtast et antal spillere mellem 2-8");
+                scan.next();
+            }
             numberOfPlayers = scan.nextInt();
 
             if (numberOfPlayers< MIN || numberOfPlayers> MAX)
@@ -74,7 +78,6 @@ public class PlayerCreator {
             return false;
         }
     }
-
 
     public int getPlayerArrayLength(){
         return playerArray.length;
