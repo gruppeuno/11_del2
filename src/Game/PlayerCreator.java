@@ -20,7 +20,7 @@ public class PlayerCreator {
 
     public void playerCreator(){
 
-        numberOfPlayers();
+
 
         this.playerArray = new Player[getNumberOfPlayers()];
 
@@ -54,6 +54,10 @@ public class PlayerCreator {
     }
 
     public int getNumberOfPlayers(){
+
+        if (numberOfPlayers == 0) {
+            numberOfPlayers();
+        }
         return numberOfPlayers;
     }
 

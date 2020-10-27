@@ -49,6 +49,7 @@ public class GameController {
         int numberOfPlayers = playerCreator.getPlayerArrayLength();
 
 
+
         Color[] myColors = {Color.RED, Color.BLUE, Color.YELLOW, Color.PINK, Color.GREEN, Color.BLACK, Color.WHITE, Color.CYAN};
 
         GUI_Player[] myPlayers = new GUI_Player[playerCreator.getPlayerArrayLength()];
