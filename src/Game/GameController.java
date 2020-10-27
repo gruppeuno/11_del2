@@ -20,25 +20,6 @@ public class GameController {
 
     public void gameController() {
 
-        GUI_Street gs1 = new GUI_Street("START", "GOOD LUCK", " ", " ", Color.RED, Color.BLACK);
-        GUI_Street gs2 = new GUI_Street("1", " ", " ", " ", Color.RED, Color.BLACK);
-        GUI_Street gs3 = new GUI_Street("2", "TOWER", "Et helligt tårn er gemt her..", "250 kr", Color.LIGHT_GRAY, Color.BLACK);
-        GUI_Street gs4 = new GUI_Street("3", "CRATER", "Pas på krateret!!)", "-100kr", Color.YELLOW, Color.BLUE);
-        GUI_Street gs5 = new GUI_Street("4", "PALACE GATES", "Hvad gemmer sig mon bag paladsets porte?", "100 kr", Color.GRAY, Color.PINK);
-        GUI_Street gs6 = new GUI_Street("5", "COLD DESSERT", "Pak kufferten, for ellers ..", "-20 kr", Color.ORANGE, Color.BLUE);
-        GUI_Street gs7 = new GUI_Street("6", "WALLED CITY", "Det siges man skal investere i mursten ..", "180 kr", Color.PINK, Color.RED);
-        GUI_Street gs8 = new GUI_Street("7", "MONASTERY", "Hils på munke", "0 kr", Color.GREEN, Color.BLUE);
-        GUI_Street gs9 = new GUI_Street("8", "BLACK CAVE", "Sku' ha' gået til Louis Nielsen", "-70 kr", Color.BLACK, Color.GREEN);
-        GUI_Street gs10 = new GUI_Street("9", "HUTS IN THE MOUNTAIN", "Kan du finde hytten?", "60kr", Color.WHITE, Color.BLUE);
-        GUI_Street gs11 = new GUI_Street("10", "THE WEREWALL", "Vogt dig.. ikke for sarte sjæle", "-80 kr", Color.GRAY, Color.YELLOW);
-        GUI_Street gs12 = new GUI_Street("11", "THE PIT", "Take Care, man skulle jo nødig, tabe noget", "-50 kr", Color.RED, Color.BLUE);
-        GUI_Street gs13 = new GUI_Street("12", "GOLDMINE", "$$$ KACHING $$$", "650 kr", Color.ORANGE, Color.YELLOW);
-        GUI_Street gs14 = new GUI_Street("13", "QUICKSAND", "No trespassing", "-300kr", Color.YELLOW, Color.RED);
-        GUI_Street gs15 = new GUI_Street("14", "'RONA HOTBOX", "Kom og hyg", " ", Color.MAGENTA, Color.YELLOW);
-        GUI_Street gs16 = new GUI_Street("15", "BALLERUP PIZZA BURGER GRILL", "Vand til 5 kr", "200kr", Color.LIGHT_GRAY, Color.BLACK);
-
-        GUI gui = new GUI(new GUI_Street[]{gs1, gs2, gs3, gs4, gs5, gs6, gs7, gs8, gs9, gs10, gs11, gs12, gs13, gs14, gs15, gs16});
-
         //TODO: Rigtige metode til at køre med 2-8 spillere samt tildele navne
         playerController.playerCreator();
 
@@ -47,7 +28,7 @@ public class GameController {
         int numberOfPlayers = playerController.getPlayerArrayLength();
 
 
-
+        GUI gui = new GUI(FieldController.myGuiFields);
         Color[] myColors = {Color.RED, Color.BLUE, Color.YELLOW, Color.PINK, Color.GREEN, Color.BLACK, Color.WHITE, Color.CYAN};
 
         GUI_Player[] myPlayers = new GUI_Player[playerController.getPlayerArrayLength()];
