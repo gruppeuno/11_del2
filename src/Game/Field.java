@@ -5,10 +5,13 @@ public class Field {
     private String fieldMSG;
     private int fieldValue;
     private int fieldNumber;
+    private boolean rollAgain;
+
+
 
     public void setField(int fieldNumber) {
         fieldValue=0;
-
+        setRollAgain(false);
         switch (fieldNumber) {
             case 2:
                 fieldMSG = " har fundet tårnet, det sælger du for 250";
@@ -50,8 +53,9 @@ public class Field {
                 break;
 
             case 10:
-                fieldMSG = " finder en mur lavet af døde varulve. Du løber og taber derfor 80";
+                fieldMSG = " finder en mur lavet af døde varulve. Du løber og taber derfor 80\n Du får en ekstra tur!";
                 fieldValue = -80;
+                setRollAgain(true);
                 break;
 
             case 11:
@@ -83,4 +87,11 @@ public class Field {
         return fieldMSG;
     }
 
+    public boolean getRollAgain() {
+        return rollAgain;
+    }
+
+    public void setRollAgain(boolean rollAgain) {
+        this.rollAgain = rollAgain;
+    }
 }

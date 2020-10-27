@@ -56,6 +56,7 @@ public class GameController {
                 //og kalder på setField
                 cup.roll();
                 field.setFieldNumber(cup.getDiceValue());
+                currentPlayer.setRollAgain(field.getRollAgain());
 
                 gui.setDice(cup.getDie1Value(), cup.getDie2Value());
 
