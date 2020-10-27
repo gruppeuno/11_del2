@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class FieldController {
 
-    public static GUI_Street[] myGuiFields = {
+    public static final GUI_Street[] MY_GUI_FIELDS = {
             new GUI_Street("START", "GOOD LUCK", " ", " ", Color.RED, Color.BLACK),
             new GUI_Street("1", " ", " ", " ", Color.RED, Color.BLACK),
             new GUI_Street("2", "TOWER", "Et helligt tårn er gemt her..", "250 kr", Color.LIGHT_GRAY, Color.BLACK),
@@ -24,6 +24,7 @@ public class FieldController {
             new GUI_Street("15", "BALLERUP PIZZA BURGER GRILL", "Vand til 5 kr", "200kr", Color.LIGHT_GRAY, Color.BLACK)};
 
 }
+
 
 
 

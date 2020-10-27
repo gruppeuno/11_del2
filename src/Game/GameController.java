@@ -28,7 +28,7 @@ public class GameController {
         int numberOfPlayers = playerController.getPlayerArrayLength();
 
 
-        GUI gui = new GUI(FieldController.myGuiFields);
+        GUI gui = new GUI(FieldController.MY_GUI_FIELDS);
         Color[] myColors = {Color.RED, Color.BLUE, Color.YELLOW, Color.PINK, Color.GREEN, Color.BLACK, Color.WHITE, Color.CYAN};
 
         GUI_Player[] myPlayers = new GUI_Player[playerController.getPlayerArrayLength()];
