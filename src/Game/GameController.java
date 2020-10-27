@@ -6,6 +6,7 @@ import gui_main.GUI;
 
 import java.awt.*;
 import java.util.Scanner;
+import java.util.function.ToDoubleBiFunction;
 
 public class GameController {
 
@@ -46,10 +47,12 @@ public class GameController {
             Player currentPlayer = playerController.playerArray[turnCount];
             String currentPlayerName = currentPlayer.getPlayerName();
             do {
-
                 //loop til afvente spillerens roll commando i consollen
                 //TODO: edit ind når spillet skal køre med input fra consol
                 //playerRollInput();
+
+                //fjerner alle biler fra brættet (GUI)
+                FieldController.MY_GUI_FIELDS[cup.getDiceValue()].removeAllCars();
 
                 //ruller terninger med RaffleCup samt sætter fieldNumber = terningeværdien
                 //og kalder på setField
@@ -57,9 +60,17 @@ public class GameController {
                 field.setFieldNumber(cup.getDiceValue());
                 currentPlayer.setRollAgain(field.getRollAgain());
 
+                //I GUI sættes terningernes værdier
                 gui.setDice(cup.getDie1Value(), cup.getDie2Value());
 
                 System.out.println(currentPlayerName + " landede på felt " + field.getFieldNumber() + "\n" + currentPlayerName + field.getFieldMSG());
+
+                /* Mega blackbox
+                gui.showMessage(currentPlayerName + field.getFieldMSG());
+                */
+
+                //placerer spillers bil på det rette felt
+                FieldController.MY_GUI_FIELDS[cup.getDiceValue()].setCar(myPlayers[turnCount],true);
 
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
                 //som sørger for at der sker det rigtige ud fra hvad terningerne viser
@@ -67,7 +78,7 @@ public class GameController {
                 currentPlayer.b.updateBalance(field.getFieldValue());
                 System.out.println(currentPlayerName + " har nu " + currentPlayer.b.getBalance() + "kr på sin bankkonto");
 
-
+                //I GUI sættes spillers balance
                 myPlayers[turnCount].setBalance(currentPlayer.b.getBalance());
 
 
