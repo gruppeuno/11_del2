@@ -20,7 +20,9 @@ public class PlayerCreator {
 
     public void playerCreator(){
 
-        this.playerArray = new Player[numberOfPlayers()];
+
+
+        this.playerArray = new Player[getNumberOfPlayers()];
 
         for (int i = 0; i < playerArray.length; i++){
             int nr = i+1;
@@ -36,7 +38,7 @@ public class PlayerCreator {
         System.out.println("========================================\n");
     }
 
-    public int numberOfPlayers(){
+    public void numberOfPlayers(){
         //While loop til at sikre at der er indtastet mellem 2-8 spillere
         System.out.println("Indtast et antal spillere mellem 2-8");
         final int MAX = 8;
@@ -49,7 +51,13 @@ public class PlayerCreator {
         }while (numberOfPlayers< MIN || numberOfPlayers> MAX);
         System.out.println("numberOfPlayers " + numberOfPlayers);
         System.out.println();
+    }
 
+    public int getNumberOfPlayers(){
+
+        if (numberOfPlayers == 0) {
+            numberOfPlayers();
+        }
         return numberOfPlayers;
     }
 
