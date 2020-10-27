@@ -14,11 +14,9 @@ public class GameController {
     private int turnCount;
     //skaber nye objekter af Field, RaffleCup og PlayerCreator
     final private Field field = new Field();
-    final private PlayerCreator playerCreator = new PlayerCreator();
+    final private PlayerController playerController = new PlayerController();
     final private RaffleCup cup = new RaffleCup();
     Scanner scan = new Scanner(System.in);
-
-
 
     public void gameController() {
 
@@ -42,30 +40,30 @@ public class GameController {
         GUI gui = new GUI(new GUI_Street[]{gs1, gs2, gs3, gs4, gs5, gs6, gs7, gs8, gs9, gs10, gs11, gs12, gs13, gs14, gs15, gs16});
 
         //TODO: Rigtige metode til at køre med 2-8 spillere samt tildele navne
-        playerCreator.playerCreator();
+        playerController.playerCreator();
 
         //TODO: test metode til 2 spillere
         //playerCreator.testPlayerCreator();
-        int numberOfPlayers = playerCreator.getPlayerArrayLength();
+        int numberOfPlayers = playerController.getPlayerArrayLength();
 
 
 
         Color[] myColors = {Color.RED, Color.BLUE, Color.YELLOW, Color.PINK, Color.GREEN, Color.BLACK, Color.WHITE, Color.CYAN};
 
-        GUI_Player[] myPlayers = new GUI_Player[playerCreator.getPlayerArrayLength()];
-        GUI_Car[] myCars = new GUI_Car[playerCreator.getPlayerArrayLength()];
+        GUI_Player[] myPlayers = new GUI_Player[playerController.getPlayerArrayLength()];
+        GUI_Car[] myCars = new GUI_Car[playerController.getPlayerArrayLength()];
         //laver spillere for GUI
 
         for (int i = 0; i < numberOfPlayers; i++) {
             myCars[i] = new GUI_Car();
             myCars[i].setPrimaryColor(myColors[i]);
-            myPlayers[i] = new GUI_Player(playerCreator.playerArray[i].getPlayerName(), 1000, myCars[i]);
+            myPlayers[i] = new GUI_Player(playerController.playerArray[i].getPlayerName(), 1000, myCars[i]);
             gui.addPlayer(myPlayers[i]);
         }
 
-        while (!playerCreator.playerArray[turnCount].getPlayerWin()) {
+        while (!playerController.playerArray[turnCount].getPlayerWin()) {
             //Fokortelse af variabler
-            Player currentPlayer = playerCreator.playerArray[turnCount];
+            Player currentPlayer = playerController.playerArray[turnCount];
             String currentPlayerName = currentPlayer.getPlayerName();
             do {
 
@@ -114,14 +112,14 @@ public class GameController {
         String rollInput;
 
         do {
-            System.out.println("Det er din tur " + playerCreator.playerArray[turnCount].getPlayerName() + "\nSkriv \"Roll\" og tryk enter for slå med terningerne!");
+            System.out.println("Det er din tur " + playerController.playerArray[turnCount].getPlayerName() + "\nSkriv \"Roll\" og tryk enter for slå med terningerne!");
 
             rollInput = scan.nextLine();
         }
         while (!rollInput.toLowerCase().equals("roll"));
 
         //Lukker scanner hvis der er fundet en vinder
-        if (playerCreator.playerArray[turnCount].getPlayerWin())
+        if (playerController.playerArray[turnCount].getPlayerWin())
             scan.close();
     }
 

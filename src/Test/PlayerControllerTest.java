@@ -1,24 +1,23 @@
 package Test;
 
-import Game.PlayerCreator;
+import Game.PlayerController;
 import org.junit.jupiter.api.Test;
 
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PlayerCreatorTest {
+class PlayerControllerTest {
 
     @Test
     public void PlayerNameTest() {
-        PlayerCreator PNT = new PlayerCreator();
+        PlayerController PNT = new PlayerController();
 
 
     }
 
     @Test
     public void NumberOfPlayerTest() {
-        PlayerCreatorTest NPT = new PlayerCreatorTest();
+        PlayerControllerTest NPT = new PlayerControllerTest();
         assertTrue(2 <= NPT.numberOfPlayers() && NPT.numberOfPlayers()<= 8);
     }
 

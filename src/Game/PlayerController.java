@@ -2,7 +2,7 @@ package Game;
 
 import java.util.Scanner;
 
-public class PlayerCreator {
+public class PlayerController {
 
     private String currentName;
     private int numberOfPlayers = 0;
