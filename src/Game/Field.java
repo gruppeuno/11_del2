@@ -7,6 +7,8 @@ public class Field {
     private int fieldNumber;
     private boolean rollAgain;
 
+
+
     public void setField(int fieldNumber) {
         fieldValue=0;
         setRollAgain(false);
@@ -51,7 +53,7 @@ public class Field {
                 break;
 
             case 10:
-                fieldMSG = " finder en mur lavet af døde varulve. Du løber og taber derfor 80";
+                fieldMSG = " finder en mur lavet af døde varulve. Du løber og taber derfor 80\n Du får en ekstra tur!";
                 fieldValue = -80;
                 setRollAgain(true);
                 break;

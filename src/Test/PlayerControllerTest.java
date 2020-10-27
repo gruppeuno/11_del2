@@ -1,19 +1,11 @@
 package Test;
 
-import Game.PlayerController;
 import org.junit.jupiter.api.Test;
 
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerControllerTest {
-
-    @Test
-    public void PlayerNameTest() {
-        PlayerController PNT = new PlayerController();
-
-
-    }
 
     @Test
     public void NumberOfPlayerTest() {
