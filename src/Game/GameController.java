@@ -11,8 +11,8 @@ import java.util.Scanner;
 public class GameController {
 
     //TODO: inddel GameController i mindre metoder
-    private int turnCount = 0;
-    //skaber nye objekter af Field, RaffleCup og PlayerCreater
+    private int turnCount;
+    //skaber nye objekter af Field, RaffleCup og PlayerCreator
     final private Field field = new Field();
     final private PlayerCreator playerCreator = new PlayerCreator();
     final private RaffleCup cup = new RaffleCup();
@@ -42,14 +42,15 @@ public class GameController {
         GUI gui = new GUI(new GUI_Street[]{gs1, gs2, gs3, gs4, gs5, gs6, gs7, gs8, gs9, gs10, gs11, gs12, gs13, gs14, gs15, gs16});
 
         //TODO: Rigtige metode til at køre med 2-8 spillere samt tildele navne
-        //playerCreator.playerCreator();
+        playerCreator.playerCreator();
 
         //TODO: test metode til 2 spillere
-        playerCreator.testPlayerCreator();
+        //playerCreator.testPlayerCreator();
         int numberOfPlayers = playerCreator.getPlayerArrayLength();
 
 
-        Color[] myColors = {Color.RED, Color.BLUE, Color.YELLOW, Color.PINK, Color.GREEN, Color.BLACK, Color.WHITE};
+
+        Color[] myColors = {Color.RED, Color.BLUE, Color.YELLOW, Color.PINK, Color.GREEN, Color.BLACK, Color.WHITE, Color.CYAN};
 
         GUI_Player[] myPlayers = new GUI_Player[playerCreator.getPlayerArrayLength()];
         GUI_Car[] myCars = new GUI_Car[playerCreator.getPlayerArrayLength()];
