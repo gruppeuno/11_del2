@@ -51,10 +51,6 @@ public class GameController {
 
                 System.out.println(currentPlayerName + " landede på felt " + field.getFieldNumber() + "\n" + currentPlayerName + field.getFieldMSG());
 
-
-                //gui.showMessage(currentPlayerName + field.getFieldMSG());
-
-
                 //placerer spillers bil på det rette felt
                 GUIFields.MY_GUI_FIELDS[cup.getDiceValue()].setCar(guiInterface.getGUIPlayer(turnCount), true);
 
@@ -67,6 +63,7 @@ public class GameController {
                 //I GUI sættes spillers balance
                 guiInterface.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
 
+                //gui.showMessage(currentPlayerName + field.getFieldMSG());
 
                 //giver mulighed for køre igennem flere gange hvis man slår dobbelt
                 //fra CDIO, Vi beholder da vi muligvis skal bruge i CDIO3
