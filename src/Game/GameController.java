@@ -14,7 +14,7 @@ public class GameController {
     final private RaffleCup cup = new RaffleCup();
     Scanner scan = new Scanner(System.in);
     GUI gui = new GUI(GUIFields.MY_GUI_FIELDS);
-    GUIInterface guiInterface = new GUIInterface(gui);
+    GUIView guiInterface = new GUIView(gui);
 
     public void gameController() {
 

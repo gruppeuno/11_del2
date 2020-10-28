@@ -6,12 +6,12 @@ import gui_main.GUI;
 
 import java.awt.*;
 
-public class GUIInterface {
+public class GUIView {
 
     GUI myGUI;
     GUI_Player[] myPlayers;
 
-    public GUIInterface(GUI gui){
+    public GUIView(GUI gui){
         myGUI = gui;
     }
 
