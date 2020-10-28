@@ -18,7 +18,7 @@ public class GameController {
     final private PlayerController playerController = new PlayerController();
     final private RaffleCup cup = new RaffleCup();
     Scanner scan = new Scanner(System.in);
-    GUI gui = new GUI(GUIFields.MY_GUI_FIELDS);
+    GUI gui = new GUI(GUIView.MY_GUI_FIELDS);
     GUIView guiView = new GUIView(gui);
 
     public void gameController() {
@@ -43,7 +43,7 @@ public class GameController {
                 playerRollInput();
 
                 //fjerner alle biler fra brættet (GUI)
-                GUIFields.MY_GUI_FIELDS[cup.getDiceValue()].removeAllCars();
+                GUIView.MY_GUI_FIELDS[cup.getDiceValue()].removeAllCars();
 
                 //ruller terninger med RaffleCup samt sætter fieldNumber = terningeværdien
                 //og kalder på setField
@@ -57,7 +57,7 @@ public class GameController {
                 System.out.println(currentPlayerName + " landede på felt " + field.getFieldNumber() + "\n" + currentPlayerName + field.getFieldMSG());
 
                 //placerer spillers bil på det rette felt
-                GUIFields.MY_GUI_FIELDS[cup.getDiceValue()].setCar(guiView.getGUIPlayer(turnCount), true);
+                GUIView.MY_GUI_FIELDS[cup.getDiceValue()].setCar(guiView.getGUIPlayer(turnCount), true);
 
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
                 //som sørger for at der sker det rigtige ud fra hvad terningerne viser
