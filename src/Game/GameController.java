@@ -19,7 +19,7 @@ public class GameController {
     final private RaffleCup cup = new RaffleCup();
     Scanner scan = new Scanner(System.in);
     GUI gui = new GUI(GUIFields.MY_GUI_FIELDS);
-    GUIView guiInterface = new GUIView(gui);
+    GUIView guiView = new GUIView(gui);
 
     public void gameController() {
 
@@ -30,7 +30,7 @@ public class GameController {
         //playerCreator.testPlayerCreator();
         int numberOfPlayers = playerController.getPlayerArrayLength();
 
-        guiInterface.createGUIPlayers(playerController.getPlayerArrayLength(), numberOfPlayers, playerController.getPlayerNames());
+        guiView.createGUIPlayers(playerController.getPlayerArrayLength(), numberOfPlayers, playerController.getPlayerNames());
 
 
         while (!playerController.playerArray[turnCount].getPlayerWin()) {
@@ -57,7 +57,7 @@ public class GameController {
                 System.out.println(currentPlayerName + " landede på felt " + field.getFieldNumber() + "\n" + currentPlayerName + field.getFieldMSG());
 
                 //placerer spillers bil på det rette felt
-                GUIFields.MY_GUI_FIELDS[cup.getDiceValue()].setCar(guiInterface.getGUIPlayer(turnCount), true);
+                GUIFields.MY_GUI_FIELDS[cup.getDiceValue()].setCar(guiView.getGUIPlayer(turnCount), true);
 
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
                 //som sørger for at der sker det rigtige ud fra hvad terningerne viser
@@ -66,7 +66,7 @@ public class GameController {
                 System.out.println(currentPlayerName + " har nu " + currentPlayer.b.getBalance() + "kr på sin bankkonto");
 
                 //I GUI sættes spillers balance
-                guiInterface.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
+                guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
 
                 //gui.showMessage(currentPlayerName + field.getFieldMSG());
 
