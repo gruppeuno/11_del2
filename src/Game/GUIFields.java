@@ -1,8 +1,5 @@
 package Game;
-import gui_fields.GUI_Car;
-import gui_fields.GUI_Player;
 import gui_fields.GUI_Street;
-import gui_main.GUI;
 
 import java.awt.*;
 
@@ -25,8 +22,6 @@ public class GUIFields {
             new GUI_Street("13", "QUICKSAND", "No trespassing", "-300kr", Color.YELLOW, Color.RED),
             new GUI_Street("14", "'RONA HOTBOX", "Kom og hyg", " ", Color.MAGENTA, Color.YELLOW),
             new GUI_Street("15", "BALLERUP PIZZA BURGER GRILL", "Vand til 5 kr", "200kr", Color.CYAN, Color.BLACK)};
-
-
 
 }
 
