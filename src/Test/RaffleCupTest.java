@@ -27,5 +27,4 @@ class RaffleCupTest {
         RCT.roll();
         assertTrue(2 <= RCT.getDiceValue() && RCT.getDiceValue()<= 12);
     }
-
 }
