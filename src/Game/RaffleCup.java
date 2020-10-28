@@ -2,6 +2,10 @@ package Game;
 
 import gui_fields.GUI_Street;
 
+/**
+ * RaffleCup
+ * @author Gruppe11
+ */
 public class RaffleCup {
 
     private int die1;
