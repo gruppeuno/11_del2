@@ -1,19 +1,26 @@
 package Test;
 
+import Game.Player;
 import org.junit.jupiter.api.Test;
 
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 class PlayerControllerTest {
+
+    public int numberOfPlayers;
+    Player[] playerArray;
 
     @Test
     public void NumberOfPlayerTest() {
-        assertTrue(2 <= numberOfPlayers() && numberOfPlayers()<= 8);
+        numberOfPlayers();
+        createPlayers();
+        assertTrue(2 <= playerArray.length && playerArray.length <= 8);
     }
 
-    public int numberOfPlayers(){
-        int numberOfPlayers;
+    public void numberOfPlayers(){
+
 
         //While loop til at sikre at der er indtastet mellem 2-8 spillere
         System.out.println("Indtast et antal spillere mellem 2-8");
@@ -27,7 +34,11 @@ class PlayerControllerTest {
         }while (numberOfPlayers< MIN || numberOfPlayers> MAX);
         System.out.println("numberOfPlayers " + numberOfPlayers);
         System.out.println();
-
-        return numberOfPlayers;
+    }
+    public void createPlayers(){
+        this.playerArray = new Player[numberOfPlayers];
+        for (int i = 0; i < playerArray.length; i++) {
+            playerArray[i] = new Player("p" + i);
+        }
     }
 }
