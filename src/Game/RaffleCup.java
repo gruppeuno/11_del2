@@ -1,5 +1,7 @@
 package Game;
 
+import gui_fields.GUI_Street;
+
 public class RaffleCup {
 
     private int die1;
