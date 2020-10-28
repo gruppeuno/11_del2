@@ -1,5 +1,10 @@
 package Game;
 
+/**
+ * Player
+ * @author Gruppe11
+ */
+
 public class Player  {
 
     private String playerName;
@@ -7,14 +12,21 @@ public class Player  {
     private boolean rollAgain = false;
     BankAccount b = new BankAccount(this);
 
+    /**
+     * Sætter spillerens navn
+     * @param playerName
+     */
     public Player(String playerName) {
         this.playerName = playerName;
     }
 
-
+    /**
+     * sætter PlayerWin til true
+     */
     public void setPlayerWin() {
         this.playerWin = true;
     }
+
 
     public boolean getPlayerWin() {
         return playerWin;
@@ -37,6 +49,10 @@ public class Player  {
         this.playerName = playerName;
     }
 
+    /**
+     * Returnerer spillernavn i stedet for hvor spilleren er gemt i hukommelsen
+     * @return
+     */
     public String toString() {
         return "Player{" +
                 "playerName='" + playerName + '\'' +
