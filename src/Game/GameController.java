@@ -30,6 +30,7 @@ public class GameController {
         //playerCreator.testPlayerCreator();
         int numberOfPlayers = playerController.getPlayerArrayLength();
 
+        //laver spillere i GUI
         guiView.createGUIPlayers(playerController.getPlayerArrayLength(), numberOfPlayers, playerController.getPlayerNames());
 
 
