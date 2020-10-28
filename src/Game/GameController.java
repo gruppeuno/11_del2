@@ -6,7 +6,6 @@ import gui_main.GUI;
 
 import java.awt.*;
 import java.util.Scanner;
-import java.util.function.ToDoubleBiFunction;
 
 public class GameController {
 

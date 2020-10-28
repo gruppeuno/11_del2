@@ -9,8 +9,7 @@ class PlayerControllerTest {
 
     @Test
     public void NumberOfPlayerTest() {
-        PlayerControllerTest NPT = new PlayerControllerTest();
-        assertTrue(2 <= NPT.numberOfPlayers() && NPT.numberOfPlayers()<= 8);
+        assertTrue(2 <= numberOfPlayers() && numberOfPlayers()<= 8);
     }
 
     public int numberOfPlayers(){
