@@ -2,6 +2,11 @@ package Game;
 
 import java.util.Scanner;
 
+/**
+ * PlayerController
+ * @author Gruppe11
+ */
+
 public class PlayerController {
 
 
@@ -19,6 +24,10 @@ public class PlayerController {
         playerArray[1] = new Player("Mads Nyborg");
     }
 
+    /**
+     * kører for-loop og scanner hver spillers
+     * spørger nyt navn hvis checkPlayerNam() er true
+     */
     public void playerCreator(){
         numberOfPlayers();
         createPlayers();
@@ -39,6 +48,10 @@ public class PlayerController {
         System.out.println("========================================\n");
     }
 
+    /**
+     * Loop der indlæser antal spillere melle 2-8 og sørger for indtastningen er gyldig
+     */
+
     public void numberOfPlayers(){
         final int MAX = 8;
         final int MIN = 2;
@@ -57,6 +70,10 @@ public class PlayerController {
         System.out.println("numberOfPlayers " + numberOfPlayers + "\n");
     }
 
+    /**
+     * opretter spillere i playerArray
+     */
+
     public void createPlayers(){
         this.playerArray = new Player[numberOfPlayers];
         for (int i = 0; i < playerArray.length; i++) {
@@ -64,9 +81,23 @@ public class PlayerController {
         }
     }
 
+    /**
+     * returnere antallet af spillere
+     * @return
+     */
+
     public int getNumberOfPlayers(){
         return numberOfPlayers;
     }
+
+    /**
+     * Tjekker i for loop om spillerene har samme navn. Hvis de har samme navn returneres true
+     * if-statement benyttes til at tjekke om det indtastede navn er mellem 3-12 bogstaver
+     * returnerer true hvis navnet er over 12 bogstaver eller udner 3 bogstaver
+     * @param name
+     * @param array
+     * @return
+     */
 
     public boolean checkPlayerName(String name, Player[] array)
     {
@@ -81,6 +112,11 @@ public class PlayerController {
             return false;
         }
     }
+
+    /**
+     * Returnere længden af PlayerArray
+     * @return
+     */
 
     public int getPlayerArrayLength(){
         return playerArray.length;

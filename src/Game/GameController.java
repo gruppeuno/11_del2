@@ -4,6 +4,11 @@ import gui_main.GUI;
 
 import java.util.Scanner;
 
+/**
+ * GameController
+ * @author Gruppe11
+ */
+
 public class GameController {
 
     //TODO: inddel GameController i mindre metoder
@@ -83,6 +88,10 @@ public class GameController {
         }
     }
 
+    /**
+     * Loop der kører indtil spilleren har indtastet "roll"
+     * hvis spilleren har vunder lukkes scanneren
+     */
     private void playerRollInput() {
         String rollInput;
 
