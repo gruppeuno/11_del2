@@ -20,6 +20,6 @@ class BalanceTest {
         balance += game.getFieldValue();
         System.out.println(balance);
     }
-    assertTrue(3000 <= balance);
+        assertTrue(3000 <= balance);
     }
 }
