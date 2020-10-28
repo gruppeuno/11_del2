@@ -1,10 +1,7 @@
 package Game;
 
-import gui_fields.GUI_Car;
-import gui_fields.GUI_Player;
 import gui_main.GUI;
 
-import java.awt.*;
 import java.util.Scanner;
 
 public class GameController {
@@ -16,6 +13,8 @@ public class GameController {
     final private PlayerController playerController = new PlayerController();
     final private RaffleCup cup = new RaffleCup();
     Scanner scan = new Scanner(System.in);
+    GUI gui = new GUI(GUIFields.MY_GUI_FIELDS);
+    GUIInterface guiInterface = new GUIInterface(gui);
 
     public void gameController() {
 
@@ -26,20 +25,8 @@ public class GameController {
         //playerCreator.testPlayerCreator();
         int numberOfPlayers = playerController.getPlayerArrayLength();
 
+        guiInterface.createGUIPlayers(playerController.getPlayerArrayLength(), numberOfPlayers, playerController.getPlayerNames());
 
-        GUI gui = new GUI(FieldController.MY_GUI_FIELDS);
-        Color[] myColors = {Color.RED, Color.BLUE, Color.YELLOW, Color.PINK, Color.GREEN, Color.BLACK, Color.WHITE, Color.CYAN};
-
-        GUI_Player[] myPlayers = new GUI_Player[playerController.getPlayerArrayLength()];
-        GUI_Car[] myCars = new GUI_Car[playerController.getPlayerArrayLength()];
-        //laver spillere for GUI
-
-        for (int i = 0; i < numberOfPlayers; i++) {
-            myCars[i] = new GUI_Car();
-            myCars[i].setPrimaryColor(myColors[i]);
-            myPlayers[i] = new GUI_Player(playerController.playerArray[i].getPlayerName(), 1000, myCars[i]);
-            gui.addPlayer(myPlayers[i]);
-        }
 
         while (!playerController.playerArray[turnCount].getPlayerWin()) {
             //Fokortelse af variabler
@@ -48,10 +35,10 @@ public class GameController {
             do {
                 //loop til afvente spillerens roll commando i consollen
                 //TODO: edit ind når spillet skal køre med input fra consol
-                //playerRollInput();
+                playerRollInput();
 
                 //fjerner alle biler fra brættet (GUI)
-                FieldController.MY_GUI_FIELDS[cup.getDiceValue()].removeAllCars();
+                GUIFields.MY_GUI_FIELDS[cup.getDiceValue()].removeAllCars();
 
                 //ruller terninger med RaffleCup samt sætter fieldNumber = terningeværdien
                 //og kalder på setField
@@ -64,12 +51,8 @@ public class GameController {
 
                 System.out.println(currentPlayerName + " landede på felt " + field.getFieldNumber() + "\n" + currentPlayerName + field.getFieldMSG());
 
-                /* Mega blackbox
-                gui.showMessage(currentPlayerName + field.getFieldMSG());
-                */
-
                 //placerer spillers bil på det rette felt
-                FieldController.MY_GUI_FIELDS[cup.getDiceValue()].setCar(myPlayers[turnCount],true);
+                GUIFields.MY_GUI_FIELDS[cup.getDiceValue()].setCar(guiInterface.getGUIPlayer(turnCount), true);
 
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
                 //som sørger for at der sker det rigtige ud fra hvad terningerne viser
@@ -78,8 +61,9 @@ public class GameController {
                 System.out.println(currentPlayerName + " har nu " + currentPlayer.b.getBalance() + "kr på sin bankkonto");
 
                 //I GUI sættes spillers balance
-                myPlayers[turnCount].setBalance(currentPlayer.b.getBalance());
+                guiInterface.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
 
+                //gui.showMessage(currentPlayerName + field.getFieldMSG());
 
                 //giver mulighed for køre igennem flere gange hvis man slår dobbelt
                 //fra CDIO, Vi beholder da vi muligvis skal bruge i CDIO3

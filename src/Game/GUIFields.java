@@ -1,9 +1,9 @@
 package Game;
-
 import gui_fields.GUI_Street;
+
 import java.awt.*;
 
-public class FieldController {
+public class GUIFields {
 
     public static final GUI_Street[] MY_GUI_FIELDS = {
             new GUI_Street("START", "GOOD LUCK", " ", " ", Color.RED, Color.BLACK),
