@@ -16,6 +16,7 @@ public class GUIView {
         myGUI = gui;
     }
 
+    //TODO: kun brug playerarray som parameter
     public void createGUIPlayers(int playerArrayLength, int numberOfPlayers, String[] playerNames){
 
         Color[] myColors = {Color.RED, Color.BLUE, Color.YELLOW, Color.PINK, Color.GREEN, Color.BLACK, Color.WHITE, Color.CYAN};
