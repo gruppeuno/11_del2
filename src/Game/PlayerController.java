@@ -82,15 +82,6 @@ public class PlayerController {
     }
 
     /**
-     * returnere antallet af spillere
-     * @return
-     */
-
-    public int getNumberOfPlayers(){
-        return numberOfPlayers;
-    }
-
-    /**
      * Tjekker i for loop om spillerene har samme navn. Hvis de har samme navn returneres true
      * if-statement benyttes til at tjekke om det indtastede navn er mellem 3-12 bogstaver
      * returnerer true hvis navnet er over 12 bogstaver eller udner 3 bogstaver
@@ -113,20 +104,9 @@ public class PlayerController {
         }
     }
 
-    /**
-     * Returnere længden af PlayerArray
-     * @return
-     */
-
     public int getPlayerArrayLength(){
         return playerArray.length;
     }
-
-    public String[] getPlayerNames() {
-        return playerNamesArray;
-    }
-
-
 
 }
 

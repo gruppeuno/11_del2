@@ -17,19 +17,18 @@ public class GUIView {
     }
 
     //TODO: kun brug playerarray som parameter
-    public void createGUIPlayers(int playerArrayLength, int numberOfPlayers, String[] playerNames){
+    public void createGUIPlayers(Player[] players){
 
         Color[] myColors = {Color.RED, Color.BLUE, Color.YELLOW, Color.PINK, Color.GREEN, Color.BLACK, Color.WHITE, Color.CYAN};
 
-        myPlayers = new GUI_Player[playerArrayLength];
-        GUI_Car[] myCars = new GUI_Car[playerArrayLength];
+        myPlayers = new GUI_Player[players.length];
+        GUI_Car[] myCars = new GUI_Car[players.length];
         //laver spillere for GUI
 
-        for (int i = 0; i < numberOfPlayers; i++) {
+        for (int i = 0; i < players.length; i++) {
             myCars[i] = new GUI_Car();
             myCars[i].setPrimaryColor(myColors[i]);
-            myPlayers[i] = new GUI_Player(playerNames[i], 1000, myCars[i]);
-
+            myPlayers[i] = new GUI_Player(players[i].getPlayerName(), 1000, myCars[i]);
             getMyGUI().addPlayer(myPlayers[i]);
 
         }

@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class GameController {
 
-    //TODO: inddel GameController i mindre metoder
     private int turnCount;
     //skaber nye objekter af Field, RaffleCup og PlayerCreator
     final private Field field = new Field();
@@ -32,7 +31,7 @@ public class GameController {
         int numberOfPlayers = playerController.getPlayerArrayLength();
 
         //laver spillere i GUI
-        guiView.createGUIPlayers(playerController.getPlayerArrayLength(), numberOfPlayers, playerController.getPlayerNames());
+        guiView.createGUIPlayers(playerController.playerArray);
 
 
         while (!playerController.playerArray[turnCount].getPlayerWin()) {

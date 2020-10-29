@@ -11,7 +11,6 @@ public class Field {
     private int fieldNumber;
     private boolean rollAgain;
 
-
     /**
      * Dette switch loop definerer hvilket felt spilleren lander på og derfor hvad fieldValue skal være og hvad systemet skal printe.
      * @param fieldNumber
@@ -77,51 +76,11 @@ public class Field {
         }
     }
 
-    /**
-     * Returnerer fieldValue
-     * @return
-     */
-    public int getFieldValue() {
-        return fieldValue;
-    }
-
-    /**
-     * Returnerer fieldNumber
-     * @return
-     */
-    public int getFieldNumber() {
-        return fieldNumber;
-    }
-
-    /**
-     * Sætter this.fieldNumber til fieldNumber
-     * @param fieldNumber
-     */
-    public void setFieldNumber(int fieldNumber) {
-        this.fieldNumber = fieldNumber;
-        setField(fieldNumber);
-    }
-
-    /**
-     * Returnerer
-     * @return
-     */
-    public String getFieldMSG() {
-        return fieldMSG;
-    }
-
-    /**
-     * Bestemer om spilleren skal rulle igen
-     * @return
-     */
-    public boolean getRollAgain() {
-        return rollAgain;
-    }
-
-    /**
-     * Sætter this.rollAgain til rollAgain
-     * @param rollAgain
-     */
+    public int getFieldValue() { return fieldValue; }
+    public int getFieldNumber() { return fieldNumber; }
+    public void setFieldNumber(int fieldNumber) { this.fieldNumber = fieldNumber; setField(fieldNumber); }
+    public String getFieldMSG() { return fieldMSG; }
+    public boolean getRollAgain() { return rollAgain; }
     public void setRollAgain(boolean rollAgain) {
         this.rollAgain = rollAgain;
     }

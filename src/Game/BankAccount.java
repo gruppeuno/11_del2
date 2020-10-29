@@ -40,10 +40,6 @@ public class BankAccount {
                         player.setPlayerWin();
         }
 
-        /**
-         * Henter getBalance og returnerer balancen
-         * @return
-         */
         public int getBalance() {
                 return balance;
         }
