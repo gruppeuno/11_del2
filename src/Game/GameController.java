@@ -17,6 +17,10 @@ public class GameController {
     Scanner scan = new Scanner(System.in);
     GUIView guiView = new GUIView();
 
+
+    /**
+     * Main metode, kører spillet
+     */
     public void gameController() {
 
         guiView.getMyGUI();
