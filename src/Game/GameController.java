@@ -1,7 +1,5 @@
 package Game;
 
-import gui_main.GUI;
-
 import java.util.Scanner;
 
 /**
@@ -17,10 +15,11 @@ public class GameController {
     final private PlayerController playerController = new PlayerController();
     final private RaffleCup cup = new RaffleCup();
     Scanner scan = new Scanner(System.in);
-    GUI gui = new GUI(GUIView.MY_GUI_FIELDS);
-    GUIView guiView = new GUIView(gui);
+    GUIView guiView = new GUIView();
 
     public void gameController() {
+
+        guiView.getMyGUI();
 
         //TODO: Rigtige metode til at køre med 2-8 spillere samt tildele navne
         playerController.playerCreator();
@@ -52,7 +51,7 @@ public class GameController {
                 currentPlayer.setRollAgain(field.getRollAgain());
 
                 //I GUI sættes terningernes værdier
-                gui.setDice(cup.getDie1Value(), cup.getDie2Value());
+                guiView.gui.setDice(cup.getDie1Value(), cup.getDie2Value());
 
                 System.out.println(currentPlayerName + " landede på felt " + field.getFieldNumber() + "\n" + currentPlayerName + field.getFieldMSG());
 

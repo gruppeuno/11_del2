@@ -9,11 +9,11 @@ import java.awt.*;
 
 public class GUIView {
 
-    GUI myGUI;
     GUI_Player[] myPlayers;
+    GUI gui = new GUI(MY_GUI_FIELDS);
 
-    public GUIView(GUI gui){
-        myGUI = gui;
+    public GUI getMyGUI(){
+        return gui;
     }
 
     //TODO: kun brug playerarray som parameter
@@ -29,7 +29,7 @@ public class GUIView {
             myCars[i] = new GUI_Car();
             myCars[i].setPrimaryColor(myColors[i]);
             myPlayers[i] = new GUI_Player(players[i].getPlayerName(), 1000, myCars[i]);
-            myGUI.addPlayer(myPlayers[i]);
+            getMyGUI().addPlayer(myPlayers[i]);
 
         }
 
