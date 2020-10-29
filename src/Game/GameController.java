@@ -98,7 +98,7 @@ public class GameController {
     private void startMessage() {
         String start;
         String startMSG = "Spillet er klar - \nSkriv \"Start\" og tryk enter for at starte og slå de første terninger!" +
-                "\n Tryk \"OK\" for at lade turen gå videre!";
+                "\n Tryk \"OK\" på spillepladen for at lade turen gå videre!";
 
         do {
             System.out.println(startMSG);
