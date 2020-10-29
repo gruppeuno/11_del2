@@ -10,19 +10,11 @@ import java.util.Scanner;
 public class PlayerController {
 
 
-    private String currentName;
     private int numberOfPlayers = 0;
     public Scanner scan = new Scanner(System.in);
     //ARRAY
     public Player[] playerArray;
 
-
-    //TODO: test metode
-    public void testPlayerCreator(){
-        this.playerArray= new Player[2];
-        playerArray[0] = new Player("Stigh Høgh");
-        playerArray[1] = new Player("Mads Nyborg");
-    }
 
     /**
      * kører for-loop og scanner hver spillers

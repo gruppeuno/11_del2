@@ -32,7 +32,6 @@ public class GUIView {
             gui.addPlayer(myPlayers[i]);
 
         }
-
     }
 
     public GUI_Player getGUIPlayer(int currentPlayer){
@@ -56,5 +55,4 @@ public class GUIView {
             new GUI_Street("13", "QUICKSAND", "No trespassing \n(-300 kr)", "-300kr", Color.YELLOW, Color.RED),
             new GUI_Street("14", "'RONA HOTBOX", "Kom og hyg", " ", Color.MAGENTA, Color.YELLOW),
             new GUI_Street("15", "BALLERUP PIZZA BURGER GRILL", "Vand til 5 kr", "200kr", Color.CYAN, Color.BLACK)};
-
 }
