@@ -1,5 +1,6 @@
 package Game;
 
+
 import java.util.Scanner;
 
 /**
@@ -23,10 +24,13 @@ public class GameController {
      */
     public void gameController() {
 
+
+
         guiView.getMyGUI();
 
         //TODO: Rigtige metode til at køre med 2-8 spillere samt tildele navne
         playerController.playerCreator();
+
 
         //TODO: test metode til 2 spillere
         //playerCreator.testPlayerCreator();
@@ -35,6 +39,8 @@ public class GameController {
         //laver spillere i GUI
         guiView.createGUIPlayers(playerController.playerArray);
 
+        startMessage();
+
         while (!playerController.playerArray[turnCount].getPlayerWin()) {
             //Fokortelse af variabler
             Player currentPlayer = playerController.playerArray[turnCount];
@@ -42,10 +48,9 @@ public class GameController {
             do {
                 //loop til afvente spillerens roll commando i consollen
                 //TODO: edit ind når spillet skal køre med input fra consol
-                playerRollInput();
 
                 //fjerner alle biler fra brættet (GUI)
-                guiView.MY_GUI_FIELDS[cup.getDiceValue()].removeAllCars();
+                GUIView.MY_GUI_FIELDS[cup.getDiceValue()].removeAllCars();
 
                 //ruller terninger med RaffleCup samt sætter fieldNumber = terningeværdien
                 //og kalder på setField
@@ -59,7 +64,7 @@ public class GameController {
                 System.out.println(currentPlayerName + " landede på felt " + field.getFieldNumber() + "\n" + currentPlayerName + field.getFieldMSG());
 
                 //placerer spillers bil på det rette felt
-                guiView.MY_GUI_FIELDS[cup.getDiceValue()].setCar(guiView.getGUIPlayer(turnCount), true);
+                GUIView.MY_GUI_FIELDS[cup.getDiceValue()].setCar(guiView.getGUIPlayer(turnCount), true);
 
                 //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
                 //som sørger for at der sker det rigtige ud fra hvad terningerne viser
@@ -90,15 +95,34 @@ public class GameController {
         }
     }
 
-    /**
+    private void startMessage() {
+        String start;
+        String startMSG = "Spillet er klar - \nSkriv \"Start\" og tryk enter for at starte og slå de første terninger!" +
+                "\n Tryk \"OK\" for at lade turen gå videre!";
+
+        do {
+            System.out.println(startMSG);
+
+            start = scan.nextLine();
+        }
+        while (!start.toLowerCase().equals("start"));
+
+        //Lukker scanner hvis der er fundet en vinder
+        if (playerController.playerArray[turnCount].getPlayerWin())
+            scan.close();
+
+    }
+
+/*
+    *
      * Loop der kører indtil spilleren har indtastet "roll"
      * hvis spilleren har vunder lukkes scanneren
-     */
-    private void playerRollInput() {
+*/
+/*    private void playerRollInput() {
         String rollInput;
 
         do {
-            System.out.println("Det er din tur " + playerController.playerArray[turnCount].getPlayerName() + "\nSkriv \"Roll\" og tryk enter for slå med terningerne!");
+            System.out.println("Det er din tur " + playerController.playerArray[turnCount].getPlayerName() + "\nSkriv \"Roll\" og tryk enter for at slå med terningerne!");
 
             rollInput = scan.nextLine();
         }
@@ -107,6 +131,6 @@ public class GameController {
         //Lukker scanner hvis der er fundet en vinder
         if (playerController.playerArray[turnCount].getPlayerWin())
             scan.close();
-    }
+    }*/
 
 }
