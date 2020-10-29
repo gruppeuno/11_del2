@@ -51,7 +51,7 @@ public class GameController {
                 currentPlayer.setRollAgain(field.getRollAgain());
 
                 //I GUI sættes terningernes værdier
-                guiView.gui.setDice(cup.getDie1Value(), cup.getDie2Value());
+                guiView.setDice(cup.getDie1Value(),cup.getDie2Value());
 
                 System.out.println(currentPlayerName + " landede på felt " + field.getFieldNumber() + "\n" + currentPlayerName + field.getFieldMSG());
 

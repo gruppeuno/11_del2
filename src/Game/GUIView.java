@@ -29,7 +29,7 @@ public class GUIView {
             myCars[i] = new GUI_Car();
             myCars[i].setPrimaryColor(myColors[i]);
             myPlayers[i] = new GUI_Player(players[i].getPlayerName(), 1000, myCars[i]);
-            getMyGUI().addPlayer(myPlayers[i]);
+            gui.addPlayer(myPlayers[i]);
 
         }
 
@@ -37,6 +37,10 @@ public class GUIView {
 
     public GUI_Player getGUIPlayer(int currentPlayer){
         return myPlayers[currentPlayer];
+    }
+
+    public void setDice(int die1, int die2){
+        gui.setDice(die1, die2);
     }
 
     public static final GUI_Street[] MY_GUI_FIELDS = {
