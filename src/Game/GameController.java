@@ -28,7 +28,7 @@ public class GameController {
 
         guiView.getMyGUI();
 
-        //TODO: Rigtige metode til at køre med 2-8 spillere samt tildele navne
+        //TODO: Rigtige metode til at køre med 2-6 spillere samt tildele navne
         playerController.playerCreator();
 
 
