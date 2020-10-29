@@ -24,17 +24,13 @@ public class GameController {
      */
     public void gameController() {
 
-
-
-        guiView.getMyGUI();
-
         //TODO: Rigtige metode til at køre med 2-6 spillere samt tildele navne
         playerController.playerCreator();
 
 
         //TODO: test metode til 2 spillere
         //playerCreator.testPlayerCreator();
-        int numberOfPlayers = playerController.getPlayerArrayLength();
+
 
         //laver spillere i GUI
         guiView.createGUIPlayers(playerController.playerArray);
@@ -89,7 +85,7 @@ public class GameController {
 
             //giver mulighed for at tilføje flere spillere, turn turnCount+1%playerArray.length
             //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2
-            turnCount = (turnCount + 1) % numberOfPlayers;
+            turnCount = (turnCount + 1) % playerController.getPlayerArrayLength();;
             System.out.println("========================================");
             System.out.println();
         }
