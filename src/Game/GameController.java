@@ -1,7 +1,5 @@
 package Game;
 
-import gui_main.GUI;
-
 import java.util.Scanner;
 
 /**
