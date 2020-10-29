@@ -39,10 +39,6 @@ public class GUIView {
         return myPlayers[currentPlayer];
     }
 
-    public void setDice(int die1, int die2){
-        gui.setDice(die1, die2);
-    }
-
     public static final GUI_Street[] MY_GUI_FIELDS = {
             new GUI_Street("START", "GOOD LUCK", " ", " ", Color.RED, Color.BLACK),
             new GUI_Street("1", " ", " ", " ", Color.RED, Color.BLACK),
