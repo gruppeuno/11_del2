@@ -12,10 +12,10 @@ public class PlayerController {
 
     private String currentName;
     private int numberOfPlayers = 0;
-    Scanner scan = new Scanner(System.in);
+    public Scanner scan = new Scanner(System.in);
     //ARRAY
-    Player[] playerArray;
-    String[] playerNamesArray;
+    public Player[] playerArray;
+
 
     //TODO: test metode
     public void testPlayerCreator(){
@@ -31,13 +31,11 @@ public class PlayerController {
     public void playerCreator(){
         numberOfPlayers();
         createPlayers();
-        playerNamesArray = new String[playerArray.length];
 
         for (int i = 0; i < playerArray.length; i++){
             int nr = i+1;
             System.out.println("spiller " + nr + " Indtast et navn der er mellem 3-12 tegn, spillere må ikke have samme navn:");
             String currentName = scan.next();
-            playerNamesArray[i] = currentName;
 
            while (checkPlayerName(currentName,playerArray)) {
                System.out.print("Navnet du ønsker er ugyldigt. Vælg nyt navn: ");

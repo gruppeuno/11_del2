@@ -31,7 +31,6 @@ public class GameController {
         //laver spillere i GUI
         guiView.createGUIPlayers(playerController.playerArray);
 
-
         while (!playerController.playerArray[turnCount].getPlayerWin()) {
             //Fokortelse af variabler
             Player currentPlayer = playerController.playerArray[turnCount];
@@ -67,7 +66,7 @@ public class GameController {
                 //I GUI sættes spillers balance
                 guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
 
-                //gui.showMessage(currentPlayerName + field.getFieldMSG());
+                guiView.getMyGUI().showMessage(currentPlayerName + field.getFieldMSG());
 
                 //giver mulighed for køre igennem flere gange hvis man slår dobbelt
                 //fra CDIO, Vi beholder da vi muligvis skal bruge i CDIO3

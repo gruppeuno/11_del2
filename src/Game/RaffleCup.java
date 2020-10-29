@@ -23,7 +23,7 @@ public class RaffleCup {
         diceValue = die1+die2;
     }
 
-    public int getDiceValue() {return diceValue;}
+    public int getDiceValue() { return diceValue; }
     public int getDie1Value() { return die1; }
     public int getDie2Value() { return die2; }
 
