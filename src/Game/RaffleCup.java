@@ -12,6 +12,9 @@ public class RaffleCup {
     private int die2;
     private int diceValue;
 
+    /**
+     * tildeler tilfældige værdier mellem 1-6 til die1 og die2, samt lægger dem sammen i dice value
+     */
     public void roll() {
         //Max til at bruge math.random senere
         final int MAX = 6;
