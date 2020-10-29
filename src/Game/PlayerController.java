@@ -11,9 +11,9 @@ public class PlayerController {
 
 
     private int numberOfPlayers = 0;
-    public Scanner scan = new Scanner(System.in);
+    public static Scanner scan = new Scanner(System.in);
     //ARRAY
-    public Player[] playerArray;
+    public static Player[] playerArray;
 
 
     /**
