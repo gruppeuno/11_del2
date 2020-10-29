@@ -31,7 +31,7 @@ public class GameController {
         int numberOfPlayers = playerController.getPlayerArrayLength();
 
         //laver spillere i GUI
-        guiView.createGUIPlayers(playerController.getPlayerArrayLength(), numberOfPlayers, playerController.getPlayerNames());
+        guiView.createGUIPlayers(playerController.playerArray);
 
 
         while (!playerController.playerArray[turnCount].getPlayerWin()) {
