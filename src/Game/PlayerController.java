@@ -104,9 +104,7 @@ public class PlayerController {
         }
     }
 
-    public int getPlayerArrayLength(){
-        return playerArray.length;
-    }
+    public int getPlayerArrayLength(){ return playerArray.length; }
 
 }
 
