@@ -24,17 +24,11 @@ public class GameController {
      */
     public void gameController() {
 
-
-
-        guiView.getMyGUI();
-
         //TODO: Rigtige metode til at køre med 2-6 spillere samt tildele navne
         playerController.playerCreator();
 
-
         //TODO: test metode til 2 spillere
         //playerCreator.testPlayerCreator();
-        int numberOfPlayers = playerController.getPlayerArrayLength();
 
         //laver spillere i GUI
         guiView.createGUIPlayers(playerController.playerArray);
@@ -47,7 +41,7 @@ public class GameController {
             String currentPlayerName = currentPlayer.getPlayerName();
             do {
                 //loop til afvente spillerens roll commando i consollen
-                //TODO: edit ind når spillet skal køre med input fra consol
+                //TODO: edit ind her når spillet skal køre med input fra consol
 
                 //fjerner alle biler fra brættet (GUI)
                 GUIView.MY_GUI_FIELDS[cup.getDiceValue()].removeAllCars();
@@ -78,7 +72,6 @@ public class GameController {
                 guiView.getMyGUI().showMessage(currentPlayerName + field.getFieldMSG());
 
                 //giver mulighed for køre igennem flere gange hvis man slår dobbelt
-                //fra CDIO, Vi beholder da vi muligvis skal bruge i CDIO3
             } while (currentPlayer.getRollAgain());
 
             //checker om der er fundet en vinder efter turen
@@ -89,16 +82,15 @@ public class GameController {
 
             //giver mulighed for at tilføje flere spillere, turn turnCount+1%playerArray.length
             //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2
-            turnCount = (turnCount + 1) % numberOfPlayers;
-            System.out.println("========================================");
-            System.out.println();
+            turnCount = (turnCount + 1) % playerController.getPlayerArrayLength();;
+            System.out.println("========================================\n");
         }
     }
 
     private void startMessage() {
         String start;
         String startMSG = "Spillet er klar - \nSkriv \"Start\" og tryk enter for at starte og slå de første terninger!" +
-                "\n Tryk \"OK\" på spillepladen for at lade turen gå videre!";
+                "\nTryk \"OK\" på spillepladen for at lade turen gå videre!";
 
         do {
             System.out.println(startMSG);

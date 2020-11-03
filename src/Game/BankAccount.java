@@ -18,6 +18,7 @@ public class BankAccount {
         }
 
         /**
+         * Updaterer spillerens balance
          * Sikrer at spilleren ikke kan have en balance på under 0
          * @param value
          */
