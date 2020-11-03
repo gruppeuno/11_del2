@@ -29,16 +29,11 @@ public class BankAccount {
                 else if (balanceMIN<0){
                         balance = 0;
                 }
-                checkBalance3000();
         }
 
         /**
          * Checker om spilleren har en balance på 3000 eller derovre, hvis ja setPlayerWin
          */
-        public void checkBalance3000(){
-                if (balance>=3000)
-                        player.setPlayerWin();
-        }
 
         public int getBalance() {
                 return balance;

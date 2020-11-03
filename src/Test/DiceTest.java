@@ -1,30 +1,30 @@
 package Test;
 
-import Game.RaffleCup;
+import Game.Dice;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RaffleCupTest {
+class DiceTest {
 
     @Test
     public void RaffleCupTest1 () {
-        RaffleCup RCT = new RaffleCup();
+        Dice RCT = new Dice();
         RCT.roll();
         assertTrue(1 <= RCT.getDie1Value() && RCT.getDie1Value()<= 6);
     }
 
     @Test
     public void RaffleCupTest2 () {
-        RaffleCup RCT = new RaffleCup();
+        Dice RCT = new Dice();
         RCT.roll();
         assertTrue(1 <= RCT.getDie2Value() && RCT.getDie2Value()<= 6);
     }
 
     @Test
     public void RaffleCupTestSum () {
-        RaffleCup RCT = new RaffleCup();
+        Dice RCT = new Dice();
         RCT.roll();
-        assertTrue(2 <= RCT.getDiceValue() && RCT.getDiceValue()<= 12);
+        assertTrue(1<= RCT.getDiceValue() && RCT.getDiceValue()<= 6);
     }
 }
