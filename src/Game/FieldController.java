@@ -42,7 +42,6 @@ public class FieldController {
         p.setPlayerID(3);
         field.setPlayerID(playerID);
         p.b.updateBalance(field.getFieldPrice());
-
         }
 
     public void payRent(int playerID, int rent) {
