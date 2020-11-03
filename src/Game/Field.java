@@ -11,30 +11,20 @@ public class Field {
     private int fieldRent;
     private int fieldNumber;
     private int playerID;
+    private boolean ownedByPlayer;
 
-    public Field(String name, int fieldNumber, int fieldPrice, int fieldRent){
+    public Field(String name, int fieldNumber, int fieldPrice){
         this.fieldName=name;
         this.fieldNumber=fieldNumber;
         this.fieldPrice=fieldPrice;
-        this.fieldRent=fieldRent;
+        fieldRent=fieldPrice;
     }
 
     public int getFieldNumber() { return fieldNumber; }
     public int getPlayerID() { return playerID; }
-
-    public String getName() {
-        return fieldName;
-    }
-
-    public int getFieldPrice() {
-        return fieldPrice;
-    }
-
-    public void setFieldPrice(int fieldPrice) {
-        this.fieldPrice = fieldPrice;
-    }
-
-    public int getFieldRent() {
-        return fieldRent;
-    }
+    public String getName() { return fieldName; }
+    public int getFieldPrice() { return fieldPrice; }
+    public int getFieldRent() { return fieldRent; }
+    public void setPlayerID(int playerID) { this.playerID = playerID; this.ownedByPlayer=true; }
+    public boolean getOwnedByPlayer() { return ownedByPlayer; }
 }
