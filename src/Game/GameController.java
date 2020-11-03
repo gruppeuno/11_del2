@@ -14,7 +14,7 @@ public class GameController {
     //skaber nye objekter af Field, RaffleCup og PlayerCreator
     final private Field field = new Field();
     final private PlayerController playerController = new PlayerController();
-    final private RaffleCup cup = new RaffleCup();
+    final private Dice cup = new Dice();
     Scanner scan = new Scanner(System.in);
     GUIView guiView = new GUIView();
 

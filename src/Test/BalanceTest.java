@@ -11,7 +11,7 @@ class BalanceTest {
     public void NumberOfPlayerTest() {
     int balance = 1000;
 
-    RaffleCup dice = new RaffleCup();
+    Dice dice = new Dice();
     Field game = new Field();
 
     for (int i = 0; i <= 1000; i++) {
