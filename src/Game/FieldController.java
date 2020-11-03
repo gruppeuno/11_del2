@@ -34,10 +34,15 @@ public class FieldController {
         if (fields[fieldNumber].getOwnedByPlayer())
             payRent(playerID,fields[fieldNumber].getFieldRent());
         else if (100>=price)
-            buyField(playerID, price);
+            buyField(playerID,fields[fieldNumber]);
     }
 
-    public void buyField(int playerID, int price){
+    public void buyField(int playerID, Field field){
+        Player p = new Player("testPerson");
+        p.setPlayerID(3);
+        field.setPlayerID(playerID);
+        p.b.updateBalance(field.getFieldPrice());
+
         }
 
     public void payRent(int playerID, int rent) {

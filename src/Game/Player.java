@@ -10,7 +10,8 @@ public class Player  {
     private String playerName;
     private boolean playerWin = false;
     private boolean rollAgain = false;
-    BankAccount b = new BankAccount(this);
+    private int playerID;
+    public BankAccount b = new BankAccount(this);
 
 
     public Player(String playerName) {
@@ -37,4 +38,11 @@ public class Player  {
         this.playerName = playerName;
     }
 
+    public int getPlayerID() {
+        return playerID;
+    }
+
+    public void setPlayerID(int playerID) {
+        this.playerID = playerID;
+    }
 }

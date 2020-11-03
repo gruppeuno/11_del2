@@ -24,7 +24,7 @@ public class BankAccount {
          */
         //Balance skal hentes fra Field
         public void updateBalance(int value) {
-                int balanceMIN = balance + value;
+                int balanceMIN = balance - value;
                 if (balanceMIN>=0)
                 balance += value;
                 else if (balanceMIN<0){
