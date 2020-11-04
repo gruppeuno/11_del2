@@ -14,7 +14,19 @@ public class FieldController {
             new Field("CHANCE", 9,0,false),
             new Field("SKATERPARKEN", 10,2,true),
             new Field("SWIMMINGPOOLEN", 11,2,true),
-            new Field("GÅ I FÆNGSEL", 12,0,false)
+            new Field("GRATIS PARKERING", 12,0,false),
+            new Field("SPILLEHALLEN", 13,3,true),
+            new Field("BIOGRAFEN", 14,3,true),
+            new Field("CHANCE", 15,0,false),
+            new Field("LEGETØJSBUTIKKEN", 16,3,true),
+            new Field("DYREHANDLEN", 17,3,true),
+            new Field("GÅ I FÆNGSEL", 18,0,false),
+            new Field("BOWLINGHALLEN", 19,4,true),
+            new Field("ZOO", 20,4,true),
+            new Field("CHANCE", 21,0,false),
+            new Field("VANDLANDET", 22,5,true),
+            new Field("STRANDPROMENADEN", 23,5,true),
+
     };
 
     //checker om field er eget
