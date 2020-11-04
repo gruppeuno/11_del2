@@ -25,32 +25,38 @@ public class FieldController {
     }
 
     public void landOnField(int playerID, int fieldNumber){
+        Field field = fields[fieldNumber];
 
         //TODO; playerID skal føre til player og i if statement(hvor der står 100) skal være en reference
         //TODO til spillers balance
 
-        if (fields[fieldNumber].getIsProperty()){
-            if (fields[fieldNumber].getOwnedByPlayer())
-            payRent(playerID,fields[fieldNumber]);
+        if (field.getIsProperty()){
+            if (field.getOwnedByPlayer())
+            payRent(playerID,field);
 
-            else if (!fields[fieldNumber].getOwnedByPlayer())
-            buyField(playerID,fields[fieldNumber]);
+            else if (!field.getOwnedByPlayer())
+            buyField(playerID,field);
         }
-
+        else if (field.getName()=="GÅ I FÆNGSEL")
+            moveToPrison(playerID,field);
     }
 
     //mangler referance fra playerID
     public void buyField(int playerID, Field field){
         field.setPlayerID(playerID);
-        //p.b.updateBalance(field.getFieldPrice());
+        //TODO: p.b.updateBalance(field.getFieldPrice());
     }
 
     public void payRent(int playerID, Field field) {
-        //p.b.updateBalance(field.getFieldRent());
-        //field.getPlayerID().b.updateBalance(-field.getFieldRent());
+        //TODO: field.getPlayerID().b.subtractBalance(field.getFieldRent());
+        //TODO: p.b.addBalance(field.getFieldRent());
     }
 
     public void moveToPrison(int playerID, Field field){
+        if (field.getName()=="GÅ I FÆNGSEL"){
+            //TODO: move playerID til fængsel
+
+        }
 
     }
 }
