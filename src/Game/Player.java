@@ -11,6 +11,7 @@ public class Player  {
     private boolean playerWin = false;
     private boolean rollAgain = false;
     private int playerID;
+    private int fieldNumber;
     public BankAccount b = new BankAccount(this);
 
 
@@ -44,5 +45,13 @@ public class Player  {
 
     public void setPlayerID(int playerID) {
         this.playerID = playerID;
+    }
+
+    public int getFieldNumber() {
+        return fieldNumber;
+    }
+
+    public void setFieldNumber(int fieldNumber) {
+        this.fieldNumber = fieldNumber;
     }
 }

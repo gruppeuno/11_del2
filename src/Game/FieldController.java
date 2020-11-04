@@ -13,7 +13,8 @@ public class FieldController {
             new Field("BIBLIOTEKET", 8,2,true),
             new Field("CHANCE", 9,0,false),
             new Field("SKATERPARKEN", 10,2,true),
-            new Field("SWIMMINGPOOLEN", 11,2,true)
+            new Field("SWIMMINGPOOLEN", 11,2,true),
+            new Field("GÅ I FÆNGSEL", 12,0,false)
     };
 
     //checker om field er eget
@@ -25,31 +26,31 @@ public class FieldController {
 
     public void landOnField(int playerID, int fieldNumber){
 
-        movePlayer(playerID,fieldNumber);
         //TODO; playerID skal føre til player og i if statement(hvor der står 100) skal være en reference
         //TODO til spillers balance
-        int price = fields[fieldNumber].getFieldPrice();
 
         if (fields[fieldNumber].getIsProperty()){
-
             if (fields[fieldNumber].getOwnedByPlayer())
-            payRent(playerID,fields[fieldNumber].getFieldRent());
+            payRent(playerID,fields[fieldNumber]);
 
             else if (!fields[fieldNumber].getOwnedByPlayer())
             buyField(playerID,fields[fieldNumber]);
         }
+
     }
 
     //mangler referance fra playerID
     public void buyField(int playerID, Field field){
         field.setPlayerID(playerID);
         //p.b.updateBalance(field.getFieldPrice());
-        }
-
-    public void payRent(int playerID, int rent) {
-
-        }
-
-    public void movePlayer(int playerID, int fieldNumber) {
-        }
     }
+
+    public void payRent(int playerID, Field field) {
+        //p.b.updateBalance(field.getFieldRent());
+        //field.getPlayerID().b.updateBalance(-field.getFieldRent());
+    }
+
+    public void moveToPrison(int playerID, Field field){
+
+    }
+}
