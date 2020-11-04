@@ -6,16 +6,7 @@ package Game;
  */
 public class BankAccount {
 
-        private final Player player;
         private int balance = 1000;
-
-        /**
-         * Tildeler en BankAccount til en spiller
-         * @param player
-         */
-        public BankAccount(Player player) {
-                this.player = player;
-        }
 
         /**
          * Updaterer spillerens balance
