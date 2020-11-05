@@ -14,6 +14,10 @@ public class PlayerController {
     private Scanner scan = new Scanner(System.in);
     //ARRAY
     private Player[] playerArray;
+    private int turnCount = 0;
+    private int newSpot;
+    private int dieValue = 0;
+
 
 
     /**
@@ -98,6 +102,20 @@ public class PlayerController {
 
     public Player[] getPlayerArray(){
         return playerArray;
+    }
+
+    public void movePlayerToField(Player player, int dieValue){
+        if ( newSpot > 24 ) {
+            newSpot = newSpot - 24;
+        } else {
+            newSpot = player.getFieldNumber() + dieValue;
+            player.setFieldNumber(newSpot);
+        }
+    }
+
+
+    public int getNewSpot(){
+        return newSpot;
     }
 
 }
