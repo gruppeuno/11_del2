@@ -35,7 +35,8 @@ public class BankAccount {
                 balance -= value;
         }
 
-        public void setBalance() {
+        public void setBalance(int setValue) {
+                balance = setValue;
         }
 
         public int getBalance() {
