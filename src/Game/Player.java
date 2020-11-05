@@ -47,11 +47,11 @@ public class Player  {
         this.playerID = playerID;
     }
 
-    public void setFieldNumber(int fieldNumber) {
-        this.fieldNumber = fieldNumber;
-    }
-
     public int getFieldNumber() {
         return fieldNumber;
+    }
+
+    public void setFieldNumber(int fieldNumber) {
+        this.fieldNumber = fieldNumber;
     }
 }

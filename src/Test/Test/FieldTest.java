@@ -1,3 +1,5 @@
+package Test;
+
 import Game.Field;
 import org.junit.jupiter.api.Test;
 
