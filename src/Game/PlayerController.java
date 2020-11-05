@@ -11,9 +11,9 @@ public class PlayerController {
 
 
     private int numberOfPlayers = 0;
-    public static Scanner scan = new Scanner(System.in);
+    private Scanner scan = new Scanner(System.in);
     //ARRAY
-    public static Player[] playerArray;
+    private Player[] playerArray;
 
 
     /**
@@ -95,6 +95,10 @@ public class PlayerController {
     }
 
     public int getPlayerArrayLength(){ return playerArray.length; }
+
+    public Player[] getPlayerArray(){
+        return playerArray;
+    }
 
 }
 
