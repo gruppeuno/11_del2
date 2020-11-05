@@ -12,7 +12,7 @@ public class Player  {
     private boolean rollAgain = false;
     private int playerID;
     private int fieldNumber;
-    public BankAccount b = new BankAccount(this);
+    public BankAccount b = new BankAccount();
 
 
     public Player(String playerName) {
