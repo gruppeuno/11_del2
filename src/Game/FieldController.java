@@ -11,7 +11,7 @@ public class FieldController {
             new Parking("CHANCE", 4, "Du landede på chancen"),
             new Property("ISKIOSKEN", 5,1, "Du landede på iskiosken"),
             new JailVisit("PÅ FÆNGSELSBESØG", 6, "Du landede på fængsels besøg"),
-            new Property("MUSEET", 7,2, "Du landede på museet",
+            new Property("MUSEET", 7,2, "Du landede på museet"),
             new Property("BIBLIOTEKET", 8,2, "Du landede på bibioteket"),
             new Parking("CHANCE", 9, "Du landede på chancen"),
             new Property("SKATERPARKEN", 10,2, "Du landede på skaterparken"),
@@ -34,6 +34,9 @@ public class FieldController {
     //Når en spiller lander på et felt
     public void landOnField(Player player, PlayerController playerController){
         Field field = fields[player.getFieldNumber()];
+
+        System.out.println(field.getMsg());
+
         if(field instanceof Property)
             landOnProperty(player, (Property) field, playerController);
         else if(field instanceof Jail)

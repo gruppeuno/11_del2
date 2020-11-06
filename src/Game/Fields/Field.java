@@ -13,4 +13,8 @@ abstract public class Field {
         this.msg=msg;
     }
 
+    public String getMsg(){
+        return msg;
+    }
+
 }
