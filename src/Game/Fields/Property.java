@@ -8,8 +8,8 @@ public class Property extends Field {
 
     private int fieldPrice;
     private int fieldRent;
-    private String ownerName;
-    private boolean ownedByPlayer;
+    private String ownerName = "";
+    private boolean ownedByPlayer = false;
 
     public Property(String name, int fieldNumber, int fieldPrice, String msg){
         super(name,fieldNumber, msg);

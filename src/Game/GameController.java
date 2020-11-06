@@ -45,14 +45,14 @@ public void gameController() {
 
             //ruller terninger med RaffleCup samt opdaterer spillerens position
             die.roll();
+            System.out.println(currentPlayerName + " slog " + die.getDiceValue());
+
             playerController.movePlayer(currentPlayer, die.getDiceValue());
 
             fieldController.landOnField(currentPlayer,playerController);
 
             //Terningernes værdier sættes
            // guiView.gui.setDice(cup.getDiceValue());
-
-            System.out.println(currentPlayerName + " landede på felt " + currentPlayer.getFieldNumber());
 
             //placerer spillers bil på det rette felt
 //            GUIView.MY_GUI_FIELDS[die.getDiceValue()].setCar(guiView.getGUIPlayer(turnCount), true);

@@ -43,13 +43,12 @@ public class FieldController {
             moveToPrison(player, playerController);
         }
 
-
     private void landOnProperty(Player player, Property property, PlayerController playerController) {
-        if (property.getOwnedByPlayer())
+        if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName()))
             payRent(player,property, playerController);
 
             //feltet er ikke ejet, køb felt
-        else if (!property.getOwnedByPlayer())
+        else if (!property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName()))
             buyProperty(player, property);
     }
 
@@ -57,12 +56,15 @@ public class FieldController {
     public void buyProperty(Player player, Property property){
         player.b.subBalance(property.getFieldPrice());
         property.setOwner(player.getPlayerName());
+        System.out.println(player.getPlayerName() + " købte " + property.getName() + " for " + property.getFieldPrice() + "M");
     }
 
     public void payRent(Player player ,Property property, PlayerController playerController) {
         player.b.subBalance(property.getFieldRent());
         Player propertyOwner = playerController.getPlayerByName(property.getOwnerName());
         propertyOwner.b.addBalance(property.getFieldRent());
+        System.out.println(player.getPlayerName() + " betalte " + property.getFieldRent() + "M i husleje til " + propertyOwner.getPlayerName()
+                + "\n" + propertyOwner.getPlayerName() + " har nu " + propertyOwner.b.getBalance() + "M");
     }
 
     private void moveToPrison(Player player, PlayerController playerController){

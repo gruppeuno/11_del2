@@ -44,17 +44,17 @@ public class PlayerController {
     public void numberOfPlayers(){
         final int MAX = 4;
         final int MIN = 2;
-        //While loop til at sikre at der er indtastet mellem 2-6 spillere
-        System.out.println("Indtast et antal spillere mellem 2-6");
+        //While loop til at sikre at der er indtastet mellem 2-4 spillere
+        System.out.println("Indtast et antal spillere mellem 2-4");
         do{
             while (!scan.hasNextInt()) {
-                System.out.println("Ugyldigt input. Indtast et antal spillere mellem 2-6");
+                System.out.println("Ugyldigt input. Indtast et antal spillere mellem 2-4");
                 scan.next();
             }
             numberOfPlayers = scan.nextInt();
 
             if (numberOfPlayers< MIN || numberOfPlayers> MAX)
-                System.out.println("Ugyldigt antal spillere. Indtast et antal spillere mellem 2-6");
+                System.out.println("Ugyldigt antal spillere. Indtast et antal spillere mellem 2-4");
         }while (numberOfPlayers< MIN || numberOfPlayers> MAX);
         System.out.println("numberOfPlayers " + numberOfPlayers + "\n");
     }
