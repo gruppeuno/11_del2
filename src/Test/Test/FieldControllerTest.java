@@ -15,7 +15,7 @@ class FieldControllerTest {
     public void buyFieldTest1(){
         Player testPlayer = new Player("testPerson");
 
-        Property testProperty = new Property("Horsensgade", 2,5);
+        Property testProperty = new Property("Horsensgade", 2,5,"test");
         testProperty.setOwner(testPlayer.getPlayerName());
         testPlayer.b.subBalance(testProperty.getFieldPrice());
 
@@ -28,7 +28,7 @@ class FieldControllerTest {
     public void buyFieldTest2(){
         Player testPlayer = new Player("testPerson");
 
-        Property testProperty = new Property("Horsensgade", 2,5);
+        Property testProperty = new Property("Horsensgade", 2,5,"test");
         testProperty.setOwner(testPlayer.getPlayerName());
         testPlayer.b.subBalance(testProperty.getFieldPrice());
 
@@ -43,7 +43,7 @@ class FieldControllerTest {
     @Test
     public void buyPropertyBalanceTest(){
         Player testPlayer = new Player("testPerson");
-        Property testProperty = new Property("Horsensgade", 2,5);
+        Property testProperty = new Property("Horsensgade", 2,5,"test");
         FieldController testFieldController = new FieldController();
 
         testPlayer.b.setBalance(100);
@@ -58,7 +58,7 @@ class FieldControllerTest {
     @Test
     public void buyPropertyOwnerNameTest(){
         Player testPlayer = new Player("testPerson");
-        Property testProperty = new Property("Horsensgade", 2,5);
+        Property testProperty = new Property("Horsensgade", 2,5,"test");
         FieldController testFieldController = new FieldController();
 
         testPlayer.b.setBalance(100);
@@ -73,7 +73,7 @@ class FieldControllerTest {
     @Test
     public void buyPropertyOwnerTest(){
         Player testPlayer = new Player("testPerson");
-        Property testProperty = new Property("Horsensgade", 2,5);
+        Property testProperty = new Property("Horsensgade", 2,5,"test");
         FieldController testFieldController = new FieldController();
 
         testPlayer.b.setBalance(100);
@@ -91,7 +91,7 @@ class FieldControllerTest {
     public void payRentTest(){
         PlayerController testPlayerController = new PlayerController();
         Player testPlayer = new Player("testPerson");
-        Property testProperty = new Property("Horsensgade", 2,5);
+        Property testProperty = new Property("Horsensgade", 2,5,"test");
         FieldController testFieldController = new FieldController();
 
         //skaber 2 nye spillere i playerarray
@@ -114,7 +114,7 @@ class FieldControllerTest {
     public void recieveRentTest(){
         PlayerController testPlayerController = new PlayerController();
         Player testPlayer = new Player("testPerson");
-        Property testProperty = new Property("Horsensgade", 2,5);
+        Property testProperty = new Property("Horsensgade", 2,5,"test");
         FieldController testFieldController = new FieldController();
 
         //skaber 2 nye spillere i playerarray

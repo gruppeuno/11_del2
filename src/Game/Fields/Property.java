@@ -11,8 +11,8 @@ public class Property extends Field {
     private String ownerName;
     private boolean ownedByPlayer;
 
-    public Property(String name, int fieldNumber, int fieldPrice){
-        super(name,fieldNumber);
+    public Property(String name, int fieldNumber, int fieldPrice, String msg){
+        super(name,fieldNumber, msg);
         this.fieldPrice=fieldPrice;
         fieldRent=fieldPrice;
     }
