@@ -17,7 +17,7 @@ class FieldControllerTest {
 
         Property testProperty = new Property("Horsensgade", 2,5);
         testProperty.setOwner(testPlayer.getPlayerName());
-        testPlayer.b.updateBalance(testProperty.getFieldPrice());
+        testPlayer.b.subBalance(testProperty.getFieldPrice());
 
         boolean actual =true;
         assertEquals(actual, testProperty.getOwnedByPlayer());
@@ -30,7 +30,7 @@ class FieldControllerTest {
 
         Property testProperty = new Property("Horsensgade", 2,5);
         testProperty.setOwner(testPlayer.getPlayerName());
-        testPlayer.b.updateBalance(testProperty.getFieldPrice());
+        testPlayer.b.subBalance(testProperty.getFieldPrice());
 
         String actual ="testPerson";
         assertEquals(actual, testProperty.getOwnerName());
@@ -101,7 +101,7 @@ class FieldControllerTest {
         testProperty.setOwner("p0");
         //setter begge spillers balance til 100
         testPlayer.b.setBalance(100);
-        testPlayerController.getPlayer("p0").b.setBalance(100);
+        testPlayerController.getPlayerByName("p0").b.setBalance(100);
 
         testFieldController.payRent(testPlayer,testProperty,testPlayerController);
 
@@ -124,11 +124,11 @@ class FieldControllerTest {
         testProperty.setOwner("p0");
         //setter begge spillers balance til 100
         testPlayer.b.setBalance(100);
-        testPlayerController.getPlayer("p0").b.setBalance(100);
+        testPlayerController.getPlayerByName("p0").b.setBalance(100);
 
         testFieldController.payRent(testPlayer,testProperty,testPlayerController);
 
         int actual = 105;
-        assertEquals(actual,testPlayerController.getPlayer("p0").b.getBalance());
+        assertEquals(actual,testPlayerController.getPlayerByName("p0").b.getBalance());
     }
 }

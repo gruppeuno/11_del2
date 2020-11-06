@@ -30,13 +30,14 @@ public class FieldController {
             new Property("STRANDPROMENADEN", 23,5),
     };
 
+
     //Når en spiller lander på et felt
     public void landOnField(Player player, PlayerController playerController){
         Field field = fields[player.getFieldNumber()];
         if(field instanceof Property)
             landOnProperty(player, (Property) field, playerController);
-
-
+        else if(field instanceof Jail)
+            moveToPrison(player, playerController);
         }
 
 
@@ -57,12 +58,17 @@ public class FieldController {
 
     public void payRent(Player player ,Property property, PlayerController playerController) {
         player.b.subBalance(property.getFieldRent());
-        Player propertyOwner = playerController.getPlayer(property.getOwnerName());
+        Player propertyOwner = playerController.getPlayerByName(property.getOwnerName());
         propertyOwner.b.addBalance(property.getFieldRent());
     }
 
-    private void moveToPrison(Player player, Jail jail){
-        //TODO: move playerID til fængsel
+    private void moveToPrison(Player player, PlayerController playerController){
+        player.setFieldNumber(6);
+        player.b.subBalance(1);
+    }
+
+    public void passedStart(Player player){
+
     }
 
 

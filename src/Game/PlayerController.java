@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class PlayerController {
 
 
-    private int numberOfPlayers = 0;
+    private int numberOfPlayers;
     private Scanner scan = new Scanner(System.in);
     private Player[] playerArray;
 
@@ -21,6 +21,7 @@ public class PlayerController {
     public void playerCreator(){
         numberOfPlayers();
         createPlayers();
+        setStartBalance();
 
         for (int i = 0; i < playerArray.length; i++){
             int nr = i+1;
@@ -41,7 +42,7 @@ public class PlayerController {
      */
 
     public void numberOfPlayers(){
-        final int MAX = 6;
+        final int MAX = 4;
         final int MIN = 2;
         //While loop til at sikre at der er indtastet mellem 2-6 spillere
         System.out.println("Indtast et antal spillere mellem 2-6");
@@ -106,7 +107,7 @@ public class PlayerController {
         player.setFieldNumber(newSpot);
     }
 
-    public Player getPlayer(String name){
+    public Player getPlayerByName(String name){
         for (Player player: playerArray) {
             if (player.getPlayerName().equals(name))
                 return player;
@@ -120,6 +121,22 @@ public class PlayerController {
         for (int i = 0; i < playerArray.length; i++) {
             playerArray[i] = new Player("p" + i);
         }
+        setStartBalance();
+    }
+
+    public void setStartBalance(){
+        if(playerArray.length==2)
+            for (int i = 0; i < 2; i++)
+                playerArray[i].b.setBalance(20);
+
+        else if(playerArray.length==3)
+            for (int i = 0; i < 3; i++)
+                playerArray[i].b.setBalance(18);
+
+        else if(playerArray.length==4)
+            for (int i = 0; i < 4; i++)
+                playerArray[i].b.setBalance(16);
+
     }
 
 

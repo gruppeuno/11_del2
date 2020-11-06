@@ -10,7 +10,6 @@ public class Player {
     private String playerName;
     private boolean playerWin = false;
     private boolean rollAgain = false;
-    private int playerID;
     private int fieldNumber = 0;
     public BankAccount b = new BankAccount();
 

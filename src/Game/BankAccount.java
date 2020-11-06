@@ -6,25 +6,7 @@ package Game;
  */
 public class BankAccount {
 
-        private int balance = 300;
-        /**
-         * Updaterer spillerens balance
-         * Sikrer at spilleren ikke kan have en balance på under 0
-         * @param value holds value
-         */
-        //Balance skal hentes fra Field
-        public void updateBalance(int value) {
-                int balanceMIN = balance - value;
-                if (balanceMIN>=0)
-                balance += value;
-                else {
-                        balance = 0;
-                }
-        }
-
-        /**
-         * Checker om spilleren har en balance på 3000 eller derovre, hvis ja setPlayerWin
-         */
+        private int balance;
 
         public void addBalance(int value) {
                 balance += value;
