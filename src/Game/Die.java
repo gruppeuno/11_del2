@@ -6,7 +6,7 @@ import gui_fields.GUI_Street;
  * RaffleCup
  * @author Gruppe11
  */
-public class Dice {
+public class Die {
 
     private int diceValue;
 

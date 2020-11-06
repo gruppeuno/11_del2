@@ -1,6 +1,7 @@
 package Test;
 
 import Game.Player;
+import Game.PlayerController;
 import org.junit.jupiter.api.Test;
 
 
@@ -9,36 +10,37 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerControllerTest {
 
-    public int numberOfPlayers;
-    Player[] playerArray;
-
+    //test af getPlayer
     @Test
-    public void NumberOfPlayerTest() {
-        numberOfPlayers();
-        createPlayers();
-        assertTrue(2 <= playerArray.length && playerArray.length <= 6);
+    public void getPlayerTest(){
+        PlayerController playerController = new PlayerController();
+        playerController.createPlayers(2);
+        Player player =playerController.getPlayer("p1");
+
+        String actual = "p1";
+        assertEquals(actual,player.getPlayerName());
     }
 
-    public void numberOfPlayers(){
+    //test af move player fra start
+    @Test
+    public void movePlayerTest(){
+        PlayerController playerController = new PlayerController();
+        playerController.createPlayers(2);
 
-
-        //While loop til at sikre at der er indtastet mellem 2-6 spillere
-        System.out.println("Indtast et antal spillere mellem 2-6");
-        final int MAX = 6;
-        final int MIN = 2;
-        do{
-            numberOfPlayers = (int)(Math.random() * 7) + 2;
-
-            if (numberOfPlayers< MIN || numberOfPlayers> MAX)
-                System.out.println("Ugyldigt antal spillere. Indtast et antal spillere mellem 2-6");
-        }while (numberOfPlayers< MIN || numberOfPlayers> MAX);
-        System.out.println("numberOfPlayers " + numberOfPlayers);
-        System.out.println();
+        playerController.movePlayer(playerController.getPlayer("p0"),5);
+        int actual = 5;
+        assertEquals(actual,playerController.getPlayer("p0").getFieldNumber());
     }
-    public void createPlayers(){
-        this.playerArray = new Player[numberOfPlayers];
-        for (int i = 0; i < playerArray.length; i++) {
-            playerArray[i] = new Player("p" + i);
-        }
+
+    //test af move player fra sidste matadorfelt
+    @Test
+    public void movePlayerFromLastFieldTest(){
+        PlayerController playerController = new PlayerController();
+        playerController.createPlayers(2);
+        playerController.getPlayer("p0").setFieldNumber(23);
+        playerController.movePlayer(playerController.getPlayer("p0"),1);
+        int actual = 0;
+        assertEquals(actual,playerController.getPlayer("p0").getFieldNumber());
     }
+
 }

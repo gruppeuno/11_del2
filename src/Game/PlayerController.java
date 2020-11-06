@@ -13,11 +13,6 @@ public class PlayerController {
     private int numberOfPlayers = 0;
     private Scanner scan = new Scanner(System.in);
     private Player[] playerArray;
-    private int turnCount = 0;
-    private int newSpot;
-    private int dieValue = 0;
-
-
 
     /**
      * kører for-loop og scanner hver spillers
@@ -103,13 +98,12 @@ public class PlayerController {
         return playerArray;
     }
 
-    public void movePlayerToField(Player player, int dieValue){
-        if ( newSpot > 24 ) {
+    public void movePlayer(Player player, int dieValue){
+        int newSpot = player.getFieldNumber()+dieValue;
+        if ( newSpot > 23 ) {
             newSpot = newSpot - 24;
-        } else {
-            newSpot = player.getFieldNumber() + dieValue;
-            player.setFieldNumber(newSpot);
         }
+        player.setFieldNumber(newSpot);
     }
 
     public Player getPlayer(String name){
@@ -119,11 +113,6 @@ public class PlayerController {
         }
         return null;
     }
-
-    public int getNewSpot(){
-        return newSpot;
-    }
-
 
     //TODO: testmetode
     public void createPlayers(int numberOfPlayers){
