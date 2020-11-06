@@ -3,6 +3,7 @@ package Test;
 import Game.FieldController;
 import Game.Fields.Property;
 import Game.Player;
+import Game.PlayerController;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -85,6 +86,27 @@ class FieldControllerTest {
 
     /** Test af payRent*/
 
+    //Test af om payrent betaling går igennem til den modtagende spiller
+    @Test
+    public void recieveRentTest(){
+        PlayerController testPlayerController = new PlayerController();
+        Player testPlayer = new Player("testPerson");
+        Property testProperty = new Property("Horsensgade", 2,5);
+        FieldController testFieldController = new FieldController();
+
+        //skaber 2 nye spillere i playerarray
+        testPlayerController.createPlayers(2);
+
+        testProperty.setOwner("p0");
+        //setter begge spillers balance til 100
+        testPlayer.b.setBalance(100);
+        testPlayerController.getPlayer("p0").b.setBalance(100);
+
+        testFieldController.payRent(testPlayer,testProperty,testPlayerController);
+
+        int actual = 95;
+        assertEquals(actual,testPlayer.b.getBalance());
+    }
 
 
 }

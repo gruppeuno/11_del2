@@ -38,14 +38,6 @@ public class Player {
         this.playerName = playerName;
     }
 
-    public int getPlayerID() {
-        return playerID;
-    }
-
-    public void setPlayerID(int playerID) {
-        this.playerID = playerID;
-    }
-
     public int getFieldNumber() {
         return fieldNumber;
     }

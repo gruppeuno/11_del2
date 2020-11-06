@@ -12,7 +12,6 @@ public class PlayerController {
 
     private int numberOfPlayers = 0;
     private Scanner scan = new Scanner(System.in);
-    //ARRAY
     private Player[] playerArray;
     private int turnCount = 0;
     private int newSpot;
@@ -113,10 +112,28 @@ public class PlayerController {
         }
     }
 
+    public Player getPlayer(String name){
+        for (Player player: playerArray) {
+            if (player.getPlayerName().equals(name))
+                return player;
+        }
+        return null;
+    }
 
     public int getNewSpot(){
         return newSpot;
     }
+
+
+    //TODO: testmetode
+    public void createPlayers(int numberOfPlayers){
+        this.playerArray = new Player[numberOfPlayers];
+        for (int i = 0; i < playerArray.length; i++) {
+            playerArray[i] = new Player("p" + i);
+        }
+    }
+
+
 
 }
 

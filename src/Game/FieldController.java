@@ -31,18 +31,18 @@ public class FieldController {
     };
 
     //Når en spiller lander på et felt
-    public void landOnField(Player player, int fieldNumber){
+    public void landOnField(Player player, int fieldNumber, PlayerController playerController){
         Field field = fields[fieldNumber];
         if(field instanceof Property)
-            landOnProperty(player, (Property) field);
+            landOnProperty(player, (Property) field, playerController);
 
 
         }
 
 
-    private void landOnProperty(Player player, Property property) {
+    private void landOnProperty(Player player, Property property, PlayerController playerController) {
         if (property.getOwnedByPlayer())
-            payRent(player,property);
+            payRent(player,property, playerController);
 
             //feltet er ikke ejet, køb felt
         else if (!property.getOwnedByPlayer())
@@ -55,13 +55,15 @@ public class FieldController {
         property.setOwner(player.getPlayerName());
     }
 
-    public void payRent(Player player ,Property property) {
-        property.getOwnerName();
-        property.getFieldRent();
-        //TODO: Pay metode til at betale fra 1 spiller til en anden
+    public void payRent(Player player ,Property property, PlayerController playerController) {
+        player.b.subBalance(property.getFieldRent());
+        Player propertyOwner = playerController.getPlayer(property.getOwnerName());
+        propertyOwner.b.addBalance(property.getFieldRent());
     }
 
     private void moveToPrison(Player player, Jail jail){
         //TODO: move playerID til fængsel
     }
+
+
 }
