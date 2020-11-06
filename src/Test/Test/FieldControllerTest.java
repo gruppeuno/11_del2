@@ -32,7 +32,7 @@ class FieldControllerTest {
         testProperty.setOwner(testPlayer.getPlayerName());
         testPlayer.b.updateBalance(testProperty.getFieldPrice());
 
-        int actual =3;
+        String actual ="testPerson";
         assertEquals(actual, testProperty.getOwnerName());
     }
 
@@ -86,9 +86,9 @@ class FieldControllerTest {
 
     /** Test af payRent*/
 
-    //Test af om payrent betaling går igennem til den modtagende spiller
+    //Test af om payrent betaling bliver trukket fra spilleren der lander på et ejet felt
     @Test
-    public void recieveRentTest(){
+    public void payRentTest(){
         PlayerController testPlayerController = new PlayerController();
         Player testPlayer = new Player("testPerson");
         Property testProperty = new Property("Horsensgade", 2,5);
@@ -97,6 +97,7 @@ class FieldControllerTest {
         //skaber 2 nye spillere i playerarray
         testPlayerController.createPlayers(2);
 
+        //sætter owner til p0, det samme som spilleren hedder efter kald på createPlayers ovenfor.
         testProperty.setOwner("p0");
         //setter begge spillers balance til 100
         testPlayer.b.setBalance(100);
@@ -108,5 +109,26 @@ class FieldControllerTest {
         assertEquals(actual,testPlayer.b.getBalance());
     }
 
+    //Test af om payRent betaling går igennem til den modtagende spiller
+    @Test
+    public void recieveRentTest(){
+        PlayerController testPlayerController = new PlayerController();
+        Player testPlayer = new Player("testPerson");
+        Property testProperty = new Property("Horsensgade", 2,5);
+        FieldController testFieldController = new FieldController();
 
+        //skaber 2 nye spillere i playerarray
+        testPlayerController.createPlayers(2);
+
+        //sætter owner til p0, det samme som spilleren hedder efter kald på createPlayers ovenfor.
+        testProperty.setOwner("p0");
+        //setter begge spillers balance til 100
+        testPlayer.b.setBalance(100);
+        testPlayerController.getPlayer("p0").b.setBalance(100);
+
+        testFieldController.payRent(testPlayer,testProperty,testPlayerController);
+
+        int actual = 105;
+        assertEquals(actual,testPlayerController.getPlayer("p0").b.getBalance());
+    }
 }
