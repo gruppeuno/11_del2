@@ -33,9 +33,9 @@ public class FieldController {
     //Når en spiller lander på et felt
     public void landOnField(Player player, int fieldNumber){
         Field field = fields[fieldNumber];
-        if(field instanceof Property){
+        if(field instanceof Property)
+            landOnProperty(player, (Property) field);
 
-        }
 
         }
 
@@ -46,16 +46,16 @@ public class FieldController {
 
             //feltet er ikke ejet, køb felt
         else if (!property.getOwnedByPlayer())
-            buyField(player, property);
+            buyProperty(player, property);
     }
 
     /** mangler referrance fra playerID */
-    private void buyField(Player player, Property property){
-        //TODO: p.b.updateBalance(field.getFieldPrice());
+    public void buyProperty(Player player, Property property){
+        player.b.subBalance(property.getFieldPrice());
         property.setOwner(player.getPlayerName());
     }
 
-    private void payRent(Player player ,Property property) {
+    public void payRent(Player player ,Property property) {
         property.getOwnerName();
         property.getFieldRent();
         //TODO: Pay metode til at betale fra 1 spiller til en anden

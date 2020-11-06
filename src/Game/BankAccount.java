@@ -6,8 +6,7 @@ package Game;
  */
 public class BankAccount {
 
-        private int balance = 20;
-
+        private int balance = 300;
         /**
          * Updaterer spillerens balance
          * Sikrer at spilleren ikke kan have en balance på under 0
