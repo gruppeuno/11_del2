@@ -5,7 +5,7 @@ package Game;
  * @author Gruppe11
  */
 
-public class Player  {
+public class Player {
 
     private String playerName;
     private boolean playerWin = false;
@@ -13,7 +13,6 @@ public class Player  {
     private int playerID;
     private int fieldNumber = 0;
     public BankAccount b = new BankAccount();
-
 
     public Player(String playerName) {
         this.playerName = playerName;

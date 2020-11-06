@@ -1,69 +1,67 @@
 package Game;
 
+import Game.Fields.*;
+
 public class FieldController {
-    private Field[] fields= {
-            new Field("START", 0,0,false),
-            new Field("BURGERBAREN", 1,1,true),
-            new Field("PIZZARIAET", 2,1,true),
-            new Field("SLIKBUTIKKEN", 3,1,true),
-            new Field("CHANCE", 4,0,false),
-            new Field("ISKIOSKEN", 5,1,true),
-            new Field("PÅ FÆNGSELSBESØG", 6,0,false),
-            new Field("MUSEET", 7,2,true),
-            new Field("BIBLIOTEKET", 8,2,true),
-            new Field("CHANCE", 9,0,false),
-            new Field("SKATERPARKEN", 10,2,true),
-            new Field("SWIMMINGPOOLEN", 11,2,true),
-            new Field("GRATIS PARKERING", 12,0,false),
-            new Field("SPILLEHALLEN", 13,3,true),
-            new Field("BIOGRAFEN", 14,3,true),
-            new Field("CHANCE", 15,0,false),
-            new Field("LEGETØJSBUTIKKEN", 16,3,true),
-            new Field("DYREHANDLEN", 17,3,true),
-            new Field("GÅ I FÆNGSEL", 18,0,false),
-            new Field("BOWLINGHALLEN", 19,4,true),
-            new Field("ZOO", 20,4,true),
-            new Field("CHANCE", 21,0,false),
-            new Field("VANDLANDET", 22,5,true),
-            new Field("STRANDPROMENADEN", 23,5,true),
+    private Field[] fields = {
+            new Start("START",0),
+            new Property("BURGERBAREN", 1,1),
+            new Property("PIZZARIAET", 2,1),
+            new Property("SLIKBUTIKKEN", 3,1),
+            new Parking("CHANCE", 4),
+            new Property("ISKIOSKEN", 5,1),
+            new JailVisit("PÅ FÆNGSELSBESØG", 6),
+            new Property("MUSEET", 7,2),
+            new Property("BIBLIOTEKET", 8,2),
+            new Parking("CHANCE", 9),
+            new Property("SKATERPARKEN", 10,2),
+            new Property("SWIMMINGPOOLEN", 11,2),
+            new Parking("Parkering", 12),
+            new Property("SPILLEHALLEN", 13,3),
+            new Property("BIOGRAFEN", 14,3),
+            new Parking("CHANCE", 15),
+            new Property("LEGETØJSBUTIKKEN", 16,3),
+            new Property("DYREHANDLEN", 17,3),
+            new Jail("GÅ I FÆNGSEL", 18),
+            new Property("BOWLINGHALLEN", 19,4),
+            new Property("ZOO", 20,4),
+            new Parking("CHANCE", 21),
+            new Property("VANDLANDET", 22,5),
+            new Property("STRANDPROMENADEN", 23,5),
     };
 
     //Når en spiller lander på et felt
-    public void landOnField(int playerID, int fieldNumber){
+    public void landOnField(Player player, int fieldNumber){
         Field field = fields[fieldNumber];
+        if(field instanceof Property){
 
-        //TODO; playerID skal føre til player og i if statement(hvor der står 100) skal være en reference
-        //TODO til spillers balance
+        }
 
-        //er feltet en egendom?
-        if (field.getIsProperty()){
+        }
 
-            //er feltet ejet?
-            //hvis ja, betal rent
-            if (field.getOwnedByPlayer())
-            payRent(playerID,field);
+
+    private void landOnProperty(Player player, Property property) {
+        if (property.getOwnedByPlayer())
+            payRent(player,property);
 
             //feltet er ikke ejet, køb felt
-            else if (!field.getOwnedByPlayer())
-            buyField(playerID,field);
-        }
-        //gå i fængsel
-        else if (field.getName()=="GÅ I FÆNGSEL")
-            moveToPrison(playerID,field);
+        else if (!property.getOwnedByPlayer())
+            buyField(player, property);
     }
 
     /** mangler referrance fra playerID */
-    private void buyField(int playerID, Field field){
-        field.setPlayerID(playerID);
+    private void buyField(Player player, Property property){
         //TODO: p.b.updateBalance(field.getFieldPrice());
+        property.setOwner(player.getPlayerName());
     }
 
-    private void payRent(int playerID, Field field) {
-        //TODO: field.getPlayerID().b.subtractBalance(field.getFieldRent());
-        //TODO: p.b.addBalance(field.getFieldRent());
+    private void payRent(Player player ,Property property) {
+        property.getOwnerName();
+        property.getFieldRent();
+        //TODO: Pay metode til at betale fra 1 spiller til en anden
     }
 
-    private void moveToPrison(int playerID, Field field){
+    private void moveToPrison(Player player, Jail jail){
         //TODO: move playerID til fængsel
     }
 }

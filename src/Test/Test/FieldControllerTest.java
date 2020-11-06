@@ -1,7 +1,6 @@
 package Test;
 
-import Game.Field;
-import Game.FieldController;
+import Game.Fields.Property;
 import Game.Player;
 import org.junit.jupiter.api.Test;
 
@@ -15,12 +14,12 @@ class FieldControllerTest {
         Player testPlayer = new Player("testPerson");
         testPlayer.setPlayerID(3);
 
-        Field testField = new Field("Horsensgade", 2,5, true);
-        testField.setPlayerID(testPlayer.getPlayerID());
-        testPlayer.b.updateBalance(testField.getFieldPrice());
+        Property testProperty = new Property("Horsensgade", 2,5, true);
+        testProperty.setOwner(testPlayer.getPlayerID());
+        testPlayer.b.updateBalance(testProperty.getFieldPrice());
 
         boolean actual =true;
-        assertEquals(actual,testField.getOwnedByPlayer());
+        assertEquals(actual, testProperty.getOwnedByPlayer());
     }
 
     //test af om buyField opdaterer playerID i Field
@@ -29,12 +28,12 @@ class FieldControllerTest {
         Player testPlayer = new Player("testPerson");
         testPlayer.setPlayerID(3);
 
-        Field testField = new Field("Horsensgade", 2,5, true);
-        testField.setPlayerID(testPlayer.getPlayerID());
-        testPlayer.b.updateBalance(testField.getFieldPrice());
+        Property testProperty = new Property("Horsensgade", 2,5, true);
+        testProperty.setOwner(testPlayer.getPlayerID());
+        testPlayer.b.updateBalance(testProperty.getFieldPrice());
 
         int actual =3;
-        assertEquals(actual,testField.getPlayerID());
+        assertEquals(actual, testProperty.getPlayerID());
     }
 
 
