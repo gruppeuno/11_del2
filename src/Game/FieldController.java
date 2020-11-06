@@ -31,8 +31,8 @@ public class FieldController {
     };
 
     //Når en spiller lander på et felt
-    public void landOnField(Player player, int fieldNumber, PlayerController playerController){
-        Field field = fields[fieldNumber];
+    public void landOnField(Player player, PlayerController playerController){
+        Field field = fields[player.getFieldNumber()];
         if(field instanceof Property)
             landOnProperty(player, (Property) field, playerController);
 

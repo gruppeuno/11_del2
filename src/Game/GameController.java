@@ -16,7 +16,7 @@ final private FieldController fieldController = new FieldController();
 final private PlayerController playerController = new PlayerController();
 final private Die die = new Die();
 Scanner scan = new Scanner(System.in);
-GUIView guiView = new GUIView();
+//GUIView guiView = new GUIView();
 
 
 /**
@@ -31,9 +31,9 @@ public void gameController() {
     //playerCreator.testPlayerCreator();
 
     //laver spillere i GUI
-    guiView.createGUIPlayers(playerController.getPlayerArray());
-
-    startMessage();
+//    guiView.createGUIPlayers(playerController.getPlayerArray());
+//
+//    startMessage();
 
     while (!playerController.getPlayerArray()[turnCount].getPlayerWin()) {
         //Fokortelse af variabler
@@ -41,35 +41,28 @@ public void gameController() {
         String currentPlayerName = currentPlayer.getPlayerName();
         do {
             //loop til afvente spillerens roll commando i consollen
-            //TODO: edit ind her når spillet skal køre med input fra consol
+            playerRollInput();
 
-            //fjerner alle biler fra brættet (GUI)
-            GUIView.MY_GUI_FIELDS[die.getDiceValue()].removeAllCars();
-
-            //ruller terninger med RaffleCup samt sætter fieldNumber = terningeværdien
-            //og kalder på setField
+            //ruller terninger med RaffleCup samt opdaterer spillerens position
             die.roll();
-            field.setFieldNumber(die.getDiceValue());
-            currentPlayer.setRollAgain(field.getRollAgain());
+            playerController.movePlayer(currentPlayer, die.getDiceValue());
+
+            fieldController.landOnField(currentPlayer,playerController);
 
             //Terningernes værdier sættes
            // guiView.gui.setDice(cup.getDiceValue());
 
-            System.out.println(currentPlayerName + " landede på felt " + field.getFieldNumber() + "\n" + currentPlayerName + field.getFieldMSG());
+            System.out.println(currentPlayerName + " landede på felt " + currentPlayer.getFieldNumber());
 
             //placerer spillers bil på det rette felt
-            GUIView.MY_GUI_FIELDS[die.getDiceValue()].setCar(guiView.getGUIPlayer(turnCount), true);
+//            GUIView.MY_GUI_FIELDS[die.getDiceValue()].setCar(guiView.getGUIPlayer(turnCount), true);
 
-            //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
-            //som sørger for at der sker det rigtige ud fra hvad terningerne viser
-
-            currentPlayer.b.updateBalance(field.getFieldValue());
             System.out.println(currentPlayerName + " har nu " + currentPlayer.b.getBalance() + "kr på sin bankkonto");
 
             //I GUI sættes spillers balance
-            guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
-
-            guiView.getMyGUI().showMessage(currentPlayerName + field.getFieldMSG());
+ //           guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
+//
+ //           guiView.getMyGUI().showMessage(currentPlayerName + field.getFieldMSG());
 
             //giver mulighed for køre igennem flere gange hvis man slår dobbelt
         } while (currentPlayer.getRollAgain());
