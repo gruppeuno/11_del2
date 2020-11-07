@@ -39,7 +39,6 @@ public void gameController() {
         //Fokortelse af variabler
         Player currentPlayer = playerController.getPlayerArray()[turnCount];
         String currentPlayerName = currentPlayer.getPlayerName();
-        do {
             //loop til afvente spillerens roll commando i consollen
             //playerRollInput();
 
@@ -57,21 +56,18 @@ public void gameController() {
             //placerer spillers bil på det rette felt
 //            GUIView.MY_GUI_FIELDS[die.getDiceValue()].setCar(guiView.getGUIPlayer(turnCount), true);
 
-            System.out.println(currentPlayerName + " har nu " + currentPlayer.b.getBalance() + "M på sin bankkonto");
+        if(currentPlayer.b.getBankrupt()){
+            System.out.println( currentPlayerName + " ER GÅET FALLIT!!!");
+            break;
+        }
+
+
+        System.out.println(currentPlayerName + " har nu " + currentPlayer.b.getBalance() + "M på sin bankkonto");
 
             //I GUI sættes spillers balance
  //           guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
 //
  //           guiView.getMyGUI().showMessage(currentPlayerName + field.getFieldMSG());
-
-            //giver mulighed for køre igennem flere gange hvis man slår dobbelt
-        } while (currentPlayer.getRollAgain());
-
-        //checker om der er fundet en vinder efter turen
-        if(currentPlayer.b.getBankrupt()){
-            System.out.println( currentPlayerName + " ER GÅET FALLIT!!!");
-            break;
-        }
 
 
         //giver mulighed for at tilføje flere spillere, turn turnCount+1%playerArray.length

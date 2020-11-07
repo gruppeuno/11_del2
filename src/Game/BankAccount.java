@@ -14,7 +14,7 @@ public class BankAccount {
         }
 
         public void subBalance(int value) {
-                int balanceCheck = balance-=value;
+                int balanceCheck = balance-value;
                 if(balanceCheck<0)
                         bankrupt=true;
                 else if (balanceCheck>=0)
