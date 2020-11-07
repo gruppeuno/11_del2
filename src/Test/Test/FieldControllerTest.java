@@ -1,6 +1,7 @@
 package Test;
 
 import Game.FieldController;
+import Game.Fields.Field;
 import Game.Fields.Property;
 import Game.Player;
 import Game.PlayerController;
@@ -15,7 +16,7 @@ class FieldControllerTest {
     public void buyFieldTest1(){
         Player testPlayer = new Player("testPerson");
 
-        Property testProperty = new Property("Horsensgade", 2,5,"test");
+        Property testProperty = new Property("Horsensgade", 2,5,"test","test");
         testProperty.setOwner(testPlayer.getPlayerName());
         testPlayer.b.subBalance(testProperty.getFieldPrice());
 
@@ -28,7 +29,7 @@ class FieldControllerTest {
     public void buyFieldTest2(){
         Player testPlayer = new Player("testPerson");
 
-        Property testProperty = new Property("Horsensgade", 2,5,"test");
+        Property testProperty = new Property("Horsensgade", 2,5,"test","test");
         testProperty.setOwner(testPlayer.getPlayerName());
         testPlayer.b.subBalance(testProperty.getFieldPrice());
 
@@ -43,7 +44,7 @@ class FieldControllerTest {
     @Test
     public void buyPropertyBalanceTest(){
         Player testPlayer = new Player("testPerson");
-        Property testProperty = new Property("Horsensgade", 2,5,"test");
+        Property testProperty = new Property("Horsensgade", 2,5,"test","test");
         FieldController testFieldController = new FieldController();
 
         testPlayer.b.setBalance(100);
@@ -58,7 +59,7 @@ class FieldControllerTest {
     @Test
     public void buyPropertyOwnerNameTest(){
         Player testPlayer = new Player("testPerson");
-        Property testProperty = new Property("Horsensgade", 2,5,"test");
+        Property testProperty = new Property("Horsensgade", 2,5,"test","test");
         FieldController testFieldController = new FieldController();
 
         testPlayer.b.setBalance(100);
@@ -73,7 +74,7 @@ class FieldControllerTest {
     @Test
     public void buyPropertyOwnerTest(){
         Player testPlayer = new Player("testPerson");
-        Property testProperty = new Property("Horsensgade", 2,5,"test");
+        Property testProperty = new Property("Horsensgade", 2,5,"test","test");
         FieldController testFieldController = new FieldController();
 
         testPlayer.b.setBalance(100);
@@ -91,7 +92,7 @@ class FieldControllerTest {
     public void payRentTest(){
         PlayerController testPlayerController = new PlayerController();
         Player testPlayer = new Player("testPerson");
-        Property testProperty = new Property("Horsensgade", 2,5,"test");
+        Property testProperty = new Property("Horsensgade", 2,5,"test","test");
         FieldController testFieldController = new FieldController();
 
         //skaber 2 nye spillere i playerarray
@@ -114,7 +115,7 @@ class FieldControllerTest {
     public void recieveRentTest(){
         PlayerController testPlayerController = new PlayerController();
         Player testPlayer = new Player("testPerson");
-        Property testProperty = new Property("Horsensgade", 2,5,"test");
+        Property testProperty = new Property("Horsensgade", 2,5,"test","test");
         FieldController testFieldController = new FieldController();
 
         //skaber 2 nye spillere i playerarray
@@ -131,4 +132,25 @@ class FieldControllerTest {
         int actual = 105;
         assertEquals(actual,testPlayerController.getPlayerByName("p0").b.getBalance());
     }
+
+
+    /**Test af ownedBySamePlayer*/
+
+    //positiv test
+  // @Test
+  // public void ownedBySamePlayerTest(){
+  //     PlayerController playerController = new PlayerController();
+  //     FieldController fieldController = new FieldController();
+  //     playerController.createPlayers(2);
+  //     Property prop1 = (Property) fieldController.getFields()[1];
+  //     Property prop2 = (Property) fieldController.getFields()[2];
+  //     prop1.setOwner("p1");
+  //     prop2.setOwner("p1");
+  //     playerController.getPlayerArray()[0].setFieldNumber(1);
+
+  //     boolean actual = true;
+
+  //     assertEquals(actual,fieldController.ownedBySamePlayer(playerController.getPlayerByName("p0"),prop1));
+  // }
+
 }

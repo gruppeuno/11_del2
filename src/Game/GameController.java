@@ -41,7 +41,7 @@ public void gameController() {
         String currentPlayerName = currentPlayer.getPlayerName();
         do {
             //loop til afvente spillerens roll commando i consollen
-            playerRollInput();
+            //playerRollInput();
 
             //ruller terninger med RaffleCup samt opdaterer spillerens position
             die.roll();
@@ -57,7 +57,7 @@ public void gameController() {
             //placerer spillers bil på det rette felt
 //            GUIView.MY_GUI_FIELDS[die.getDiceValue()].setCar(guiView.getGUIPlayer(turnCount), true);
 
-            System.out.println(currentPlayerName + " har nu " + currentPlayer.b.getBalance() + "kr på sin bankkonto");
+            System.out.println(currentPlayerName + " har nu " + currentPlayer.b.getBalance() + "M på sin bankkonto");
 
             //I GUI sættes spillers balance
  //           guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
@@ -68,10 +68,11 @@ public void gameController() {
         } while (currentPlayer.getRollAgain());
 
         //checker om der er fundet en vinder efter turen
-        if (currentPlayer.getPlayerWin()) {
-            System.out.println("WINNER!!!!! =  " + currentPlayerName);
+        if(currentPlayer.b.getBankrupt()){
+            System.out.println( currentPlayerName + " ER GÅET FALLIT!!!");
             break;
         }
+
 
         //giver mulighed for at tilføje flere spillere, turn turnCount+1%playerArray.length
         //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2

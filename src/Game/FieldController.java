@@ -3,6 +3,7 @@ package Game;
 import Game.Fields.*;
 
 public class FieldController {
+
     private Field[] fields = {
             new Start("START",0, "Du landede på Start"),
             new Property("BURGERBAREN", 1,1, "Du landede på burgerbaren","brown"),
@@ -48,7 +49,7 @@ public class FieldController {
             payRent(player,property, playerController);
 
             //feltet er ikke ejet, køb felt
-        else if (!property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName()))
+        else if (!property.getOwnedByPlayer())
             buyProperty(player, property);
     }
 
@@ -72,8 +73,24 @@ public class FieldController {
         player.b.subBalance(1);
     }
 
+    //TODO: ikke færdigt, spørg hjælpelærer
+    public boolean ownedBySamePlayer(Player player, Property property){
+        String owner1 = property.getOwnerName();
+        for (Field field:fields) {
+            if (fields[player.getFieldNumber()] instanceof Property)
+                if(((Property) fields[player.getFieldNumber()]).getOwnerName().equals(owner1))
+                    return true;
+        }
+        return false;
+        }
+
+
     public void passedStart(Player player){
 
+    }
+
+    public Field[] getFields() {
+        return fields;
     }
 
 
