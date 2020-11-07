@@ -1,6 +1,7 @@
 package Game;
 
 import Game.Fields.*;
+import Game.Fields.Chance.Chance;
 
 public class FieldController {
     private Field[] fields = {
@@ -8,24 +9,24 @@ public class FieldController {
             new Property("BURGERBAREN", 1,1, "Du landede på burgerbaren"),
             new Property("PIZZARIAET", 2,1, "Du landede på pizzariaet"),
             new Property("SLIKBUTIKKEN", 3,1, "Du landede på slikbutikken"),
-            new Parking("CHANCE", 4, "Du landede på chancen"),
+            new Chance("CHANCE", 4, "Du landede på chancen"),
             new Property("ISKIOSKEN", 5,1, "Du landede på iskiosken"),
             new JailVisit("PÅ FÆNGSELSBESØG", 6, "Du landede på fængsels besøg"),
             new Property("MUSEET", 7,2, "Du landede på museet"),
             new Property("BIBLIOTEKET", 8,2, "Du landede på bibioteket"),
-            new Parking("CHANCE", 9, "Du landede på chancen"),
+            new Chance("CHANCE", 9, "Du landede på chancen"),
             new Property("SKATERPARKEN", 10,2, "Du landede på skaterparken"),
             new Property("SWIMMINGPOOLEN", 11,2, "Du landede på swimmingpoolen"),
             new Parking("Parkering", 12, "Du landede på parkering"),
             new Property("SPILLEHALLEN", 13,3, "Du landede på spillehallen"),
             new Property("BIOGRAFEN", 14,3, "Du landede på biografen"),
-            new Parking("CHANCE", 15, "Du landede på chancen"),
+            new Chance("CHANCE", 15, "Du landede på chancen"),
             new Property("LEGETØJSBUTIKKEN", 16,3, "Du landede på legetøjsbutikken"),
             new Property("DYREHANDLEN", 17,3, "Du landede på dyrehandlen"),
             new Jail("GÅ I FÆNGSEL", 18, "Du landede på gå i fængsel"),
             new Property("BOWLINGHALLEN", 19,4, "Du landede på bowlingehallen"),
             new Property("ZOO", 20,4, "Du landede på zoo"),
-            new Parking("CHANCE", 21, "Du landede på chancen"),
+            new Chance("CHANCE", 21, "Du landede på chancen"),
             new Property("VANDLANDET", 22,5, "Du landede på vandlandet"),
             new Property("STRANDPROMENADEN", 23,5, "Du landede på strandpromenaden")
     };
@@ -37,11 +38,12 @@ public class FieldController {
 
         System.out.println(field.getMsg());
 
-        if(field instanceof Property)
-            landOnProperty(player, (Property) field, playerController);
+        if(field instanceof Property) {
+            landOnProperty(player, (Property) field, playerController); }
         else if(field instanceof Jail)
             moveToPrison(player, playerController);
         }
+
 
     private void landOnProperty(Player player, Property property, PlayerController playerController) {
         if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName()))
@@ -70,6 +72,10 @@ public class FieldController {
     private void moveToPrison(Player player, PlayerController playerController){
         player.setFieldNumber(6);
         player.b.subBalance(1);
+    }
+
+    private void takeChance(){
+
     }
 
     public void passedStart(Player player){
