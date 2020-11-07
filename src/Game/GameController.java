@@ -28,11 +28,10 @@ public void gameController() {
     playerController.playerCreator();
 
     //TODO: test metode til 2 spillere
-    //playerCreator.testPlayerCreator();
+    //playerController.createPlayers(2);
 
     //laver spillere i GUI
 //    guiView.createGUIPlayers(playerController.getPlayerArray());
-//
 //    startMessage();
 
     while (!playerController.getPlayerArray()[turnCount].getPlayerWin()) {
@@ -61,7 +60,6 @@ public void gameController() {
             break;
         }
 
-
         System.out.println(currentPlayerName + " har nu " + currentPlayer.b.getBalance() + "M på sin bankkonto");
 
             //I GUI sættes spillers balance
@@ -69,10 +67,8 @@ public void gameController() {
 //
  //           guiView.getMyGUI().showMessage(currentPlayerName + field.getFieldMSG());
 
-
-        //giver mulighed for at tilføje flere spillere, turn turnCount+1%playerArray.length
-        //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2
-        turnCount = (turnCount + 1) % playerController.getPlayerArrayLength();;
+        //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
+        turnCount = (turnCount + 1) % playerController.getPlayerArrayLength();
         System.out.println("========================================\n");
     }
 }

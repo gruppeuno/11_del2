@@ -86,12 +86,11 @@ public class PlayerController {
             if (playerArray[i].getPlayerName().toLowerCase().equals(name.toLowerCase()))
                 return true;
         }
-        if (name.length() > 12 || name.length() < 3) {
+        if (name.length() > 12 || name.length() < 3)
             return true;
-        } else {
-            return false;
-        }
+        return false;
     }
+
 
     public int getPlayerArrayLength(){ return playerArray.length; }
 
@@ -103,6 +102,7 @@ public class PlayerController {
         int newSpot = player.getFieldNumber()+dieValue;
         if ( newSpot > 23 ) {
             newSpot = newSpot - 24;
+            player.b.addBalance(2);
         }
         player.setFieldNumber(newSpot);
     }
@@ -115,7 +115,7 @@ public class PlayerController {
         return null;
     }
 
-    //TODO: testmetode
+    //TODO: testmetode, må ikke slettes, ellers stopper integrationstest med at virke
     public void createPlayers(int numberOfPlayers){
         this.playerArray = new Player[numberOfPlayers];
         for (int i = 0; i < playerArray.length; i++) {
