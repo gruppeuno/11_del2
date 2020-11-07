@@ -57,6 +57,7 @@ public class FieldController {
     public void buyProperty(Player player, Property property){
         player.b.subBalance(property.getFieldPrice());
         property.setOwner(player.getPlayerName());
+        player.b.addPropertyValue(property.getFieldPrice());
         System.out.println(player.getPlayerName() + " købte " + property.getName() + " for " + property.getFieldPrice() + "M");
     }
 
@@ -83,11 +84,6 @@ public class FieldController {
         }
         return false;
         }
-
-
-    public void passedStart(Player player){
-
-    }
 
     public Field[] getFields() {
         return fields;

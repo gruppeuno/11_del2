@@ -34,7 +34,7 @@ public void gameController() {
 //    guiView.createGUIPlayers(playerController.getPlayerArray());
 //    startMessage();
 
-    while (!playerController.getPlayerArray()[turnCount].getPlayerWin()) {
+    while (!playerController.getPlayerArray()[turnCount].b.getBankrupt()) {
         //Fokortelse af variabler
         Player currentPlayer = playerController.getPlayerArray()[turnCount];
         String currentPlayerName = currentPlayer.getPlayerName();
@@ -65,12 +65,13 @@ public void gameController() {
             //I GUI sættes spillers balance
  //           guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
 //
- //           guiView.getMyGUI().showMessage(currentPlayerName + field.getFieldMSG());
+//           guiView.getMyGUI().showMessage(currentPlayerName + field.getFieldMSG());
 
         //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
         turnCount = (turnCount + 1) % playerController.getPlayerArrayLength();
         System.out.println("========================================\n");
     }
+
 }
 
 private void startMessage() {
@@ -88,11 +89,10 @@ private void startMessage() {
     //Lukker scanner hvis der er fundet en vinder
     if (playerController.getPlayerArray()[turnCount].getPlayerWin())
         scan.close();
-
     }
 
 /*
-    *
+
      * Loop der kører indtil spilleren har indtastet "roll"
      * hvis spilleren har vunder lukkes scanneren
 */
@@ -109,6 +109,18 @@ private void startMessage() {
         //Lukker scanner hvis der er fundet en vinder
         if (playerController.getPlayerArray()[turnCount].getPlayerWin())
             scan.close();
+    }
+
+    public void findWinner(){
+        String playerWithMostMoney = "";
+        Player winner;
+        for (Player player:playerController.getPlayerArray()) {
+            if (!player.b.getBankrupt()) {
+                playerWithMostMoney = player.getPlayerName();
+            }
+        }
+        playerController.getPlayerByName(playerWithMostMoney).setPlayerWin();
+
     }
 
 }
