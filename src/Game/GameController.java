@@ -18,7 +18,6 @@ final private Die die = new Die();
 Scanner scan = new Scanner(System.in);
 //GUIView guiView = new GUIView();
 
-
 /**
  * Main metode, kører spillet
  */
@@ -71,7 +70,6 @@ public void gameController() {
         turnCount = (turnCount + 1) % playerController.getPlayerArrayLength();
         System.out.println("========================================\n");
     }
-
 }
 
 private void startMessage() {
@@ -100,7 +98,8 @@ private void startMessage() {
         String rollInput;
 
         do {
-            System.out.println("Det er din tur " + playerController.getPlayerArray()[turnCount].getPlayerName() + "\nSkriv \"Roll\" og tryk enter for at slå med terningerne!");
+            System.out.println("Det er din tur " + playerController.getPlayerArray()[turnCount].getPlayerName()
+                    + "\nSkriv \"Roll\" og tryk enter for at slå med terningerne!");
 
             rollInput = scan.nextLine();
         }
@@ -112,15 +111,46 @@ private void startMessage() {
     }
 
     public void findWinner(){
-        String playerWithMostMoney = "";
         Player winner;
-        for (Player player:playerController.getPlayerArray()) {
-            if (!player.b.getBankrupt()) {
-                playerWithMostMoney = player.getPlayerName();
-            }
-        }
-        playerController.getPlayerByName(playerWithMostMoney).setPlayerWin();
 
+        for (int i = 1; i < playerController.getPlayerArray().length; i++) {
+            Player currentPlayer = playerController.getPlayerArray()[i-1];
+            if (!currentPlayer.b.getBankrupt())
+                if(currentPlayer.b.getBalance()>playerController.getPlayerArray()[i].b.getBalance())
+                    winner = currentPlayer;
+        }
+        for (int j = 1; j < playerController.getPlayerArray().length; j++) {
+            Player currentPlayer = playerController.getPlayerArray()[j-1];
+            if (currentPlayer.b.getBalance()==playerController.getPlayerArray()[j].b.getBalance())
+                if(currentPlayer.b.getPropertyValue()>playerController.getPlayerArray()[j].b.getPropertyValue())
+                    winner=currentPlayer;
+                else System.out.println("Spillet er uafgjort");
+
+        }
+
+    }
+
+    //TODO; findWinner testmetode
+    public void findWinner(Player[] playerArray){
+        Player winner = playerArray[3];
+
+        for (int i = 1; i < playerArray.length; i++) {
+            Player currentPlayer = playerArray[i-1];
+            if (!currentPlayer.b.getBankrupt())
+                if(currentPlayer.b.getBalance()>playerArray[i].b.getBalance())
+                    winner = currentPlayer;
+        }
+        if(winner.b.getBalance()<playerArray[playerArray.length-1].b.getBalance())
+            winner=playerArray[playerArray.length-1];
+
+        for (int j = 1; j < playerArray.length; j++) {
+            Player currentPlayer = playerArray[j-1];
+            if (currentPlayer.b.getBalance()==playerArray[j].b.getBalance())
+                if(currentPlayer.b.getPropertyValue()>playerArray[j].b.getPropertyValue())
+                    winner=currentPlayer;
+                else System.out.println("Spillet er uafgjort");
+        }
+        winner.setPlayerWin();
     }
 
 }
