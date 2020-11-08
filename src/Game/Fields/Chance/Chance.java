@@ -5,6 +5,21 @@ import Game.Fields.*;
 
 public class Chance extends Field {
 
+    /**
+     * Todo list:
+     * 1. Der skal laves en funktion der tage alle mulige chance kort og blander dem i en rækkefølge.
+     * Denne rækkefølge er den rækkefølge den skal bruge i spillet. Når 1 kort bliver taget fra toppen af bunken,
+     * så bliver det kort lagt ind i bunken igen. Nede i bunden.
+     * 2. Disse kort skal så have en effekt. Der er allerede blevet lavet en metode som hedder move, men den tager udgangspunkt i terningen.
+     * Vi kan bruge getFieldNumber, og tiløje eller trække nogle Fields fra, og så SetFieldNumber igen.
+     *
+     * Den første er den der kræver mest, og nummer to, hvis nummer 1 er lavet godt, så er nummer to bare insert, og se det virke.
+     *
+     *
+     * @param name
+     * @param fieldNumber
+     * @param msg
+     */
 
     public Chance(String name, int fieldNumber, String msg) {
         super(name, fieldNumber, msg);
