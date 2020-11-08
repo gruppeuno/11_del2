@@ -1,9 +1,13 @@
 package Game.Fields.Chance;
 
 import Game.Fields.Field;
-import Game.Fields.*;
+
+import java.util.Random;
 
 public class Chance extends Field {
+
+
+    private final int[] chanceArray = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
 
     /**
      * Todo list:
@@ -16,24 +20,55 @@ public class Chance extends Field {
      * Den første er den der kræver mest, og nummer to, hvis nummer 1 er lavet godt, så er nummer to bare insert, og se det virke.
      *
      *
+<<<<<<< HEAD
      * @param name
      * @param fieldNumber
      * @param msg
+=======
+     * @param name 1
+     * @param fieldNumber 1
+     * @param msg 1
+>>>>>>> ChanceKortClassBranchYesPlease
      */
 
     public Chance(String name, int fieldNumber, String msg) {
         super(name, fieldNumber, msg);
     }
 
+    //Tager vores arrays indhold, og sætter det i en tilfældig rækkefølge.
+    public void RandomizeChance() {
+
+        Random rand = new Random();
+
+        for (int i = 0; i < chanceArray.length; i++) {
+            int random = rand.nextInt(chanceArray.length);
+            int temp = chanceArray[random];
+            chanceArray[random] = chanceArray[i];
+            chanceArray[i] = temp;
+        }
+
+    }
+
+    public String toString() {
+
+        String arrOut = "";
+
+        for (int chArr : chanceArray) {
+
+            arrOut += chArr + " ";
+        }
+
+        return arrOut;
+    }
 
     public void ChanceCard() {
 
-        final int MAX = 20;
+        int i;
 
-        int chance = (int) (Math.random() * MAX) + 1;
+        for (i = 1; i < chanceArray.length; i++) {
 
-        //TODO: Skal laves om, så det er mindre og pænnere. Det her ligner bæ.
-        switch (chance) {
+
+        switch (chanceArray[i]) {
 
             case 1:
                 break;
@@ -78,8 +113,8 @@ public class Chance extends Field {
 
         }
 
-    }
-    private void increaseField() {
+        if (i == 20 ) { i = 1; }
+        }
 
     }
 
