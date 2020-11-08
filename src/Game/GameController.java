@@ -142,7 +142,8 @@ private void startMessage() {
             System.out.println("SPILLET ER UAFGJORT!!!");
         }
         else{
-            System.out.println(bubbleArray[bubbleArray.length-1].getPlayerName() + " HAR VUNDET!!!");
+            System.out.println(bubbleArray[bubbleArray.length-1].getPlayerName() + " HAR VUNDET MED " +bubbleArray[bubbleArray.length-1].b.getBalance() + "M SAMT "
+            + bubbleArray[bubbleArray.length-1].b.getPropertyValue() + "M I EJENDOMME!!");
         }
     }
 
