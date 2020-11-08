@@ -109,7 +109,6 @@ public class FieldController {
         }
     }
 
-    //TODO: IKKE FÆRDIG
     public void putOutJail(PlayerController playerController){
             JailVisit jailVisit = (JailVisit) fields[6];
             String[] nullArray;

@@ -20,9 +20,7 @@ public class Property extends Field {
     }
 
 
-    public int getFieldNumber() { return fieldNumber; }
     public String getOwnerName() { return ownerName; }
-    public String getName() { return name; }
     public int getFieldPrice() { return fieldPrice; }
     public int getFieldRent() { return fieldRent; }
     public void setOwner(String playerName) { this.ownerName =playerName; this.ownedByPlayer=true; }

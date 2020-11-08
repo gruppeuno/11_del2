@@ -17,4 +17,7 @@ abstract public class Field {
         return msg;
     }
 
+    public String getName(){return name;}
+
+    public int getFieldNumber(){return fieldNumber;}
 }
