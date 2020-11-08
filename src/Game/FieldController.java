@@ -34,10 +34,6 @@ public class FieldController {
 
     //Når en spiller lander på et felt
     public void landOnField(Player player, PlayerController playerController){
-        if (player.getLastFieldNumber()==6){
-            player.b.subBalance(1);
-            System.out.println(player.getPlayerName() + " betaler 1M for at komme ud af fængslet");
-        }
 
         Field field = fields[player.getFieldNumber()];
         System.out.println(field.getMsg());
