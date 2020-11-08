@@ -68,7 +68,7 @@ public class GameController {
 //           guiView.getMyGUI().showMessage(currentPlayerName + field.getFieldMSG());
 
             //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
-            turnCount = (turnCount + 1) % playerController.getPlayerArrayLength();
+            turnCount = (turnCount + 1) % playerController.getPlayerArray().length;
             System.out.println("========================================\n");
         }
     }

@@ -91,15 +91,9 @@ public class PlayerController {
         return false;
     }
 
-
-    public int getPlayerArrayLength(){ return playerArray.length; }
-
-    public Player[] getPlayerArray(){
-        return playerArray;
-    }
+    public Player[] getPlayerArray(){ return playerArray; }
 
     public void movePlayer(Player player, int dieValue){
-        player.setLastFieldNumber(player.getFieldNumber());
         int newSpot = player.getFieldNumber()+dieValue;
         if ( newSpot > 23 ) {
             newSpot = newSpot - 24;
@@ -116,7 +110,7 @@ public class PlayerController {
         return null;
     }
 
-    //TODO: testmetode, må ikke slettes, ellers stopper integrationstest med at virke
+    //TODO: testmetode, må ikke slettes, ellers stopper integrationstest og unittest med at virke
     public void createPlayers(int numberOfPlayers){
         this.playerArray = new Player[numberOfPlayers];
         for (int i = 0; i < playerArray.length; i++) {
