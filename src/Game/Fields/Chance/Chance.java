@@ -1,13 +1,12 @@
 package Game.Fields.Chance;
 
 import Game.Fields.Field;
-import Game.Fields.*;
 
 import java.util.Random;
 
 public class Chance extends Field {
 
-    private int[] chanceArray = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+    private final int[] chanceArray = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
 
     /**
      * Todo list:
@@ -20,9 +19,9 @@ public class Chance extends Field {
      * Den første er den der kræver mest, og nummer to, hvis nummer 1 er lavet godt, så er nummer to bare insert, og se det virke.
      *
      *
-     * @param name
-     * @param fieldNumber
-     * @param msg
+     * @param name 1
+     * @param fieldNumber 1
+     * @param msg 1
      */
 
     public Chance(String name, int fieldNumber, String msg) {
@@ -47,9 +46,9 @@ public class Chance extends Field {
 
         String arrOut = "";
 
-        for (int i = 0; i < chanceArray.length; i++) {
+        for (int chArr : chanceArray) {
 
-            arrOut += chanceArray[i] + " ";
+            arrOut += chArr + " ";
         }
 
         return arrOut;
@@ -59,7 +58,7 @@ public class Chance extends Field {
 
         int i;
 
-        for (i = 1; i < chanceArray.length; i++)
+        for (i = 1; i < chanceArray.length; i++) {
 
 
         switch (chanceArray[i]) {
@@ -108,9 +107,7 @@ public class Chance extends Field {
         }
 
         if (i == 20 ) { i = 1; }
-
-    }
-    private void increaseField() {
+        }
 
     }
 
