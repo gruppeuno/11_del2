@@ -99,6 +99,7 @@ public class PlayerController {
     }
 
     public void movePlayer(Player player, int dieValue){
+        player.setLastFieldNumber(player.getFieldNumber());
         int newSpot = player.getFieldNumber()+dieValue;
         if ( newSpot > 23 ) {
             newSpot = newSpot - 24;

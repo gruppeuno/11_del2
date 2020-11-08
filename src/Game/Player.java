@@ -11,6 +11,7 @@ public class Player {
     private boolean playerWin = false;
     private boolean rollAgain = false;
     private int fieldNumber = 0;
+    private int lastFieldNumber;
     public BankAccount b = new BankAccount();
 
     public Player(String playerName) {
@@ -43,5 +44,11 @@ public class Player {
 
     public void setFieldNumber(int fieldNumber) {
         this.fieldNumber = fieldNumber;
+    }
+
+    public int getLastFieldNumber() { return lastFieldNumber; }
+
+    public void setLastFieldNumber(int lastFieldNumber) {
+        this.lastFieldNumber = lastFieldNumber;
     }
 }

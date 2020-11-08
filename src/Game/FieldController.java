@@ -34,8 +34,12 @@ public class FieldController {
 
     //Når en spiller lander på et felt
     public void landOnField(Player player, PlayerController playerController){
-        Field field = fields[player.getFieldNumber()];
+        if (player.getLastFieldNumber()==6){
+            player.b.subBalance(1);
+            System.out.println(player.getPlayerName() + " betaler 1M for at komme ud af fængslet");
+        }
 
+        Field field = fields[player.getFieldNumber()];
         System.out.println(field.getMsg());
 
         if(field instanceof Property)
@@ -75,7 +79,7 @@ public class FieldController {
 
     private void moveToPrison(Player player, PlayerController playerController){
         player.setFieldNumber(6);
-        player.b.subBalance(1);
+
     }
 
     //TODO: ikke færdigt, spørg hjælpelærer
@@ -88,6 +92,34 @@ public class FieldController {
         }
         return false;
         }
+
+    public void putInJail(String playerName){
+        JailVisit jailVisit = (JailVisit) fields[6];
+        if(jailVisit.getPlayersInJailArray()!=null) {
+            String[] placeholder = new String[jailVisit.getPlayersInJailArray().length + 1];
+            for (int i = 0; i < jailVisit.getPlayersInJailArray().length; i++) {
+                placeholder[i] = jailVisit.getPlayersInJailArray()[i];
+            }
+            placeholder[placeholder.length - 1] = playerName;
+            jailVisit.setPlayersInJailArray(placeholder);
+        }
+        else if(jailVisit.getPlayersInJailArray()==null) {
+            String[] placeholder = {playerName};
+            jailVisit.setPlayersInJailArray(placeholder);
+        }
+
+    }
+
+    public void putOutJail(String playerName){
+            JailVisit jailVisit = (JailVisit) fields[6];
+            String[] nullArray;
+            nullArray=null;
+           if(jailVisit.getPlayersInJailArray().length==1)
+               jailVisit.setPlayersInJailArray(nullArray);
+           else{
+
+           }
+    }
 
     public Field[] getFields() {
         return fields;

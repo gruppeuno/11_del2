@@ -1,7 +1,7 @@
 package Test;
 
 import Game.FieldController;
-import Game.Fields.Field;
+import Game.Fields.JailVisit;
 import Game.Fields.Property;
 import Game.Player;
 import Game.PlayerController;
@@ -133,6 +133,68 @@ class FieldControllerTest {
         assertEquals(actual,testPlayerController.getPlayerByName("p0").b.getBalance());
     }
 
+    /** test af putInJail() */
+
+    //test af om spiller bliver sat i array i JailVisit
+
+    @Test
+    public void putInJailTest(){
+        FieldController fieldController = new FieldController();
+        Player testPlayer = new Player("testPerson");
+
+        fieldController.putInJail("testPerson");
+
+        String actual = "testPerson";
+        JailVisit jailVisit = (JailVisit) fieldController.getFields()[6];
+        assertEquals(actual, jailVisit.getPlayersInJailArray()[0]);
+    }
+
+    @Test
+    public void putInJailMangeSpillereTest(){
+        FieldController fieldController = new FieldController();
+        Player testPlayer = new Player("testPerson");
+        Player testPlayer1 = new Player("testPerson1");
+        Player testPlayer2 = new Player("testPerson2");
+        Player testPlayer3 = new Player("testPerson3");
+        Player testPlayer4 = new Player("testPerson4");
+        Player testPlayer5 = new Player("testPerson5");
+
+        fieldController.putInJail("testPerson1");
+        fieldController.putInJail("testPerson2");
+        fieldController.putInJail("testPerson");
+        fieldController.putInJail("testPerson3");
+        fieldController.putInJail("testPerson4");
+        fieldController.putInJail("testPerson5");
+
+        String actual = "testPerson3";
+        JailVisit jailVisit = (JailVisit) fieldController.getFields()[6];
+        assertEquals(actual, jailVisit.getPlayersInJailArray()[3]);
+    }
+
+    //Test af putOutJail fjerner spillernavnet fra playersInJail arrayet
+    @Test
+    public void putOutJailTest() {
+        FieldController fieldController = new FieldController();
+        Player testPlayer = new Player("testPerson");
+        Player testPlayer1 = new Player("testPerson1");
+        Player testPlayer2 = new Player("testPerson2");
+        Player testPlayer3 = new Player("testPerson3");
+        Player testPlayer4 = new Player("testPerson4");
+        Player testPlayer5 = new Player("testPerson5");
+
+        fieldController.putInJail("testPerson1");
+        fieldController.putInJail("testPerson2");
+        fieldController.putInJail("testPerson");
+        fieldController.putInJail("testPerson3");
+        fieldController.putInJail("testPerson4");
+        fieldController.putInJail("testPerson5");
+
+        fieldController.putOutJail("testPerson");
+
+        String actual = "testPerson3";
+        JailVisit jailVisit = (JailVisit) fieldController.getFields()[6];
+        assertEquals(actual, jailVisit.getPlayersInJailArray()[4]);
+    }
 
     /**Test af ownedBySamePlayer*/
 
