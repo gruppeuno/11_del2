@@ -29,6 +29,7 @@ public class Chance extends Field {
         super(name, fieldNumber, msg);
     }
 
+    //Tager vores arrays indhold, og sætter det i en tilfældig rækkefølge.
     public void RandomizeChance() {
 
         Random rand = new Random();
@@ -42,12 +43,23 @@ public class Chance extends Field {
 
     }
 
+    public String toString() {
+
+        String arrOut = "";
+
+        for (int i = 0; i < chanceArray.length; i++) {
+
+            arrOut += chanceArray[i] + " ";
+        }
+
+        return arrOut;
+    }
 
     public void ChanceCard() {
 
-        final int MAX = 20;
+        int i;
 
-        for (int i = 1; i < chanceArray.length; i++)
+        for (i = 1; i < chanceArray.length; i++)
 
 
         switch (chanceArray[i]) {
@@ -94,6 +106,8 @@ public class Chance extends Field {
                 break;
 
         }
+
+        if (i == 20 ) { i = 1; }
 
     }
     private void increaseField() {
