@@ -13,9 +13,11 @@ class GameControllerTest {
 
     @Test
     public void findWinnerTest(){
+
         PlayerController playerController = new PlayerController();
         playerController.createPlayers(4);
         GameController gameControllerTest = new GameController();
+        gameControllerTest.gameController();
 
         playerController.getPlayerArray()[0].b.setBalance(6);
         playerController.getPlayerArray()[1].b.setBalance(3);
@@ -29,11 +31,12 @@ class GameControllerTest {
 
         boolean actual = true;
 
-        assertEquals(actual,playerController.getPlayerArray()[3].getPlayerWin());
+        assertEquals(actual,playerController.getPlayerArray());
 
 
 
 
     }
+
 
 }

@@ -11,9 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FieldControllerTest {
 
-    //test af om buyField opdaterer ownedByPlayer i Field
+    //test af om buyProperty opdaterer ownedByPlayer i Field
     @Test
-    public void buyFieldTest1(){
+    public void buyPropertyTest1(){
         Player testPlayer = new Player("testPerson");
 
         Property testProperty = new Property("Horsensgade", 2,5,"test","test");
@@ -24,9 +24,9 @@ class FieldControllerTest {
         assertEquals(actual, testProperty.getOwnedByPlayer());
     }
 
-    //test af om buyField opdaterer playerID i Field
+    //test af om buyProperty opdaterer playerID i Field
     @Test
-    public void buyFieldTest2(){
+    public void buyPropertyTest2(){
         Player testPlayer = new Player("testPerson");
 
         Property testProperty = new Property("Horsensgade", 2,5,"test","test");

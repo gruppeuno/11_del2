@@ -112,7 +112,7 @@ private void startMessage() {
     }
 
     public void findWinner(Player[] playerArray){
-        Player[] bubbleArray = playerController.getPlayerArray();
+        Player[] bubbleArray = playerArray;
 
         boolean sorted = false;
         Player temp;
@@ -142,6 +142,7 @@ private void startMessage() {
             System.out.println("SPILLET ER UAFGJORT!!!");
         }
         else{
+            bubbleArray[bubbleArray.length-1].setPlayerWin();
             System.out.println(bubbleArray[bubbleArray.length-1].getPlayerName() + " HAR VUNDET MED " +bubbleArray[bubbleArray.length-1].b.getBalance() + "M SAMT "
             + bubbleArray[bubbleArray.length-1].b.getPropertyValue() + "M I EJENDOMME!!");
         }

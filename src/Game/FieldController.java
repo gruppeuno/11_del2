@@ -55,18 +55,22 @@ public class FieldController {
 
     /** mangler referrance fra playerID */
     public void buyProperty(Player player, Property property){
-        player.b.subBalance(property.getFieldPrice());
-        property.setOwner(player.getPlayerName());
-        player.b.addPropertyValue(property.getFieldPrice());
-        System.out.println(player.getPlayerName() + " købte " + property.getName() + " for " + property.getFieldPrice() + "M");
+        if(!player.b.getBankrupt()) {
+            player.b.subBalance(property.getFieldPrice());
+            property.setOwner(player.getPlayerName());
+            player.b.addPropertyValue(property.getFieldPrice());
+            System.out.println(player.getPlayerName() + " købte " + property.getName() + " for " + property.getFieldPrice() + "M");
+        }
     }
 
     public void payRent(Player player ,Property property, PlayerController playerController) {
         player.b.subBalance(property.getFieldRent());
-        Player propertyOwner = playerController.getPlayerByName(property.getOwnerName());
-        propertyOwner.b.addBalance(property.getFieldRent());
-        System.out.println(player.getPlayerName() + " betalte " + property.getFieldRent() + "M i husleje til " + propertyOwner.getPlayerName()
-                + "\n" + propertyOwner.getPlayerName() + " har nu " + propertyOwner.b.getBalance() + "M");
+        if(!player.b.getBankrupt()) {
+            Player propertyOwner = playerController.getPlayerByName(property.getOwnerName());
+            propertyOwner.b.addBalance(property.getFieldRent());
+            System.out.println(player.getPlayerName() + " betalte " + property.getFieldRent() + "M i husleje til " + propertyOwner.getPlayerName()
+                    + "\n" + propertyOwner.getPlayerName() + " har nu " + propertyOwner.b.getBalance() + "M");
+        }
     }
 
     private void moveToPrison(Player player, PlayerController playerController){
