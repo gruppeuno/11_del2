@@ -174,27 +174,56 @@ class FieldControllerTest {
     //Test af putOutJail fjerner spillernavnet fra playersInJail arrayet
     @Test
     public void putOutJailTest() {
+        PlayerController playerController = new PlayerController();
         FieldController fieldController = new FieldController();
-        Player testPlayer = new Player("testPerson");
-        Player testPlayer1 = new Player("testPerson1");
-        Player testPlayer2 = new Player("testPerson2");
-        Player testPlayer3 = new Player("testPerson3");
-        Player testPlayer4 = new Player("testPerson4");
-        Player testPlayer5 = new Player("testPerson5");
+        playerController.createPlayers(4);
 
-        fieldController.putInJail("testPerson1");
-        fieldController.putInJail("testPerson2");
-        fieldController.putInJail("testPerson");
-        fieldController.putInJail("testPerson3");
-        fieldController.putInJail("testPerson4");
-        fieldController.putInJail("testPerson5");
+        fieldController.putInJail("p0");
+        fieldController.putInJail("p1");
+        fieldController.putInJail("p2");
+        fieldController.putInJail("p3");
 
-        fieldController.putOutJail("testPerson");
+        fieldController.putOutJail(playerController);
 
-        String actual = "testPerson3";
+        int actual = 3;
         JailVisit jailVisit = (JailVisit) fieldController.getFields()[6];
-        assertEquals(actual, jailVisit.getPlayersInJailArray()[4]);
+        assertEquals(actual, jailVisit.getPlayersInJailArray().length);
     }
+
+    //Test af putOutJail sætter playersInJail arrayet til null efter sidste spiller er fjernet
+    @Test
+    public void putOutJailNullTest() {
+        PlayerController playerController = new PlayerController();
+        FieldController fieldController = new FieldController();
+        playerController.createPlayers(4);
+
+        fieldController.putInJail("p0");
+
+        fieldController.putOutJail(playerController);
+
+        JailVisit jailVisit = (JailVisit) fieldController.getFields()[6];
+
+        String[] actual = null;
+        assertEquals(actual, jailVisit.getPlayersInJailArray());
+    }
+
+    //Test af om spiller balance bliver mindre med 1
+    @Test
+    public void putOutJailSubBalanceTest() {
+        PlayerController playerController = new PlayerController();
+        FieldController fieldController = new FieldController();
+        playerController.createPlayers(4);
+
+        fieldController.putInJail("p0");
+
+        fieldController.putOutJail(playerController);
+
+        JailVisit jailVisit = (JailVisit) fieldController.getFields()[6];
+
+        int actual = 15;
+        assertEquals(actual, playerController.getPlayerByName("p0").b.getBalance());
+    }
+
 
     /**Test af ownedBySamePlayer*/
 

@@ -107,19 +107,19 @@ public class FieldController {
             String[] placeholder = {playerName};
             jailVisit.setPlayersInJailArray(placeholder);
         }
-
     }
 
     //TODO: IKKE FÆRDIG
-    public void putOutJail(String playerName){
+    public void putOutJail(PlayerController playerController){
             JailVisit jailVisit = (JailVisit) fields[6];
             String[] nullArray;
             nullArray=null;
-           if(jailVisit.getPlayersInJailArray().length==1)
-               jailVisit.setPlayersInJailArray(nullArray);
-           else{
+            playerController.getPlayerByName(jailVisit.getPlayersInJailArray()[jailVisit.getPlayersInJailArray().length-1]).b.subBalance(1);
 
-           }
+        String[] placeholder = new String[jailVisit.getPlayersInJailArray().length - 1];
+        if(jailVisit.getPlayersInJailArray().length==1)
+               jailVisit.setPlayersInJailArray(nullArray);
+           else jailVisit.setPlayersInJailArray(placeholder);
     }
 
     public Field[] getFields() {
