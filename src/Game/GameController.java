@@ -10,33 +10,33 @@ import java.util.Scanner;
 
 public class GameController {
 
-private int turnCount;
-//skaber nye objekter af Field, RaffleCup og PlayerCreator
-final private FieldController fieldController = new FieldController();
-final private PlayerController playerController = new PlayerController();
-final private Die die = new Die();
-Scanner scan = new Scanner(System.in);
+    private int turnCount;
+    //skaber nye objekter af Field, RaffleCup og PlayerCreator
+    final private FieldController fieldController = new FieldController();
+    final private PlayerController playerController = new PlayerController();
+    final private Die die = new Die();
+    Scanner scan = new Scanner(System.in);
 //GUIView guiView = new GUIView();
 
-/**
- * Main metode, kører spillet
- */
-public void gameController() {
+    /**
+     * Main metode, kører spillet
+     */
+    public void gameController() {
 
-    //TODO: Rigtige metode til at køre med 2-6 spillere samt tildele navne
-    playerController.playerCreator();
+        //TODO: Rigtige metode til at køre med 2-6 spillere samt tildele navne
+        playerController.playerCreator();
 
-    //TODO: test metode til 2 spillere
-    //playerController.createPlayers(2);
+        //TODO: test metode til 2 spillere
+        //playerController.createPlayers(2);
 
-    //laver spillere i GUI
+        //laver spillere i GUI
 //    guiView.createGUIPlayers(playerController.getPlayerArray());
 //    startMessage();
 
-    while (!playerController.getPlayerArray()[turnCount].b.getBankrupt()) {
-        //Fokortelse af variabler
-        Player currentPlayer = playerController.getPlayerArray()[turnCount];
-        String currentPlayerName = currentPlayer.getPlayerName();
+        while (!playerController.getPlayerArray()[turnCount].b.getBankrupt()) {
+            //Fokortelse af variabler
+            Player currentPlayer = playerController.getPlayerArray()[turnCount];
+            String currentPlayerName = currentPlayer.getPlayerName();
             //loop til afvente spillerens roll commando i consollen
             //playerRollInput();
 
@@ -46,55 +46,55 @@ public void gameController() {
 
             playerController.movePlayer(currentPlayer, die.getDiceValue());
 
-            fieldController.landOnField(currentPlayer,playerController);
+            fieldController.landOnField(currentPlayer, playerController);
 
             //Terningernes værdier sættes
-           // guiView.gui.setDice(cup.getDiceValue());
+            // guiView.gui.setDice(cup.getDiceValue());
 
             //placerer spillers bil på det rette felt
 //            GUIView.MY_GUI_FIELDS[die.getDiceValue()].setCar(guiView.getGUIPlayer(turnCount), true);
 
-        if(currentPlayer.b.getBankrupt()){
-            System.out.println( currentPlayerName + " ER GÅET FALLIT!!!");
-            findWinner(playerController.getPlayerArray());
-            break;
-        }
+            if (currentPlayer.b.getBankrupt()) {
+                System.out.println(currentPlayerName + " ER GÅET FALLIT!!!");
+                findWinner(playerController.getPlayerArray());
+                break;
+            }
 
-        System.out.println(currentPlayerName + " har nu " + currentPlayer.b.getBalance() + "M på sin bankkonto");
+            System.out.println(currentPlayerName + " har nu " + currentPlayer.b.getBalance() + "M på sin bankkonto");
 
             //I GUI sættes spillers balance
- //           guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
+            //           guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
 //
 //           guiView.getMyGUI().showMessage(currentPlayerName + field.getFieldMSG());
 
-        //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
-        turnCount = (turnCount + 1) % playerController.getPlayerArrayLength();
-        System.out.println("========================================\n");
-    }
-}
-
-private void startMessage() {
-    String start;
-    String startMSG = "Spillet er klar - \nSkriv \"Start\" og tryk enter for at starte og slå de første terninger!" +
-            "\nTryk \"OK\" på spillepladen for at lade turen gå videre!";
-
-    do {
-        System.out.println(startMSG);
-
-        start = scan.nextLine();
-    }
-    while (!start.toLowerCase().equals("start"));
-
-    //Lukker scanner hvis der er fundet en vinder
-    if (playerController.getPlayerArray()[turnCount].getPlayerWin())
-        scan.close();
+            //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
+            turnCount = (turnCount + 1) % playerController.getPlayerArrayLength();
+            System.out.println("========================================\n");
+        }
     }
 
-/*
+    private void startMessage() {
+        String start;
+        String startMSG = "Spillet er klar - \nSkriv \"Start\" og tryk enter for at starte og slå de første terninger!" +
+                "\nTryk \"OK\" på spillepladen for at lade turen gå videre!";
+
+        do {
+            System.out.println(startMSG);
+
+            start = scan.nextLine();
+        }
+        while (!start.toLowerCase().equals("start"));
+
+        //Lukker scanner hvis der er fundet en vinder
+        if (playerController.getPlayerArray()[turnCount].getPlayerWin())
+            scan.close();
+    }
+
+    /*
 
      * Loop der kører indtil spilleren har indtastet "roll"
      * hvis spilleren har vunder lukkes scanneren
-*/
+     */
     private void playerRollInput() {
         String rollInput;
 
@@ -111,42 +111,36 @@ private void startMessage() {
             scan.close();
     }
 
-    public void findWinner(Player[] playerArray){
-        Player[] bubbleArray = playerArray;
+    public void findWinner(Player[] playerArray) {
 
-        boolean sorted = false;
-        Player temp;
-        while (!sorted) {
-            sorted = true;
-            for (int i = 0; i < bubbleArray.length - 1; i++) {
-                if(!bubbleArray[i].b.getBankrupt()) {
-                    if (bubbleArray[i].b.getBalance() > bubbleArray[i + 1].b.getBalance()) {
-                        temp = bubbleArray[i];
-                        bubbleArray[i] = bubbleArray[i + 1];
-                        bubbleArray[i + 1] = temp;
-                        sorted = false;
-                    }
-                    else if (bubbleArray[i].b.getBalance() == bubbleArray[i + 1].b.getBalance()){
-                        if (bubbleArray[i].b.getPropertyValue() > bubbleArray[i + 1].b.getPropertyValue()){
-                            temp = bubbleArray[i];
-                            bubbleArray[i] = bubbleArray[i + 1];
-                            bubbleArray[i + 1] = temp;
-                            sorted = false;
-                        }
-                    }
+        boolean uafgjort = false;
+        Player leadingPlayer = playerArray[0];
+
+        for (int i = 0; i < playerArray.length-1; i++) {
+                if (playerArray[i+1].b.getBalance() > leadingPlayer.b.getBalance()) {
+                    leadingPlayer = playerArray[i+1];
+                }
+        }
+        for (int j = 0; j < playerArray.length; j++) {
+            if (leadingPlayer.getPlayerName().equals(playerArray[j].getPlayerName())==false) {
+                if (playerArray[j].b.getBalance() == leadingPlayer.b.getBalance()) {
+                    if (playerArray[j].b.getPropertyValue() > leadingPlayer.b.getPropertyValue()) {
+                        leadingPlayer = playerArray[j];
+                    } else if (playerArray[j].b.getPropertyValue() == leadingPlayer.b.getPropertyValue())
+                        uafgjort = true;
                 }
             }
         }
-        if(bubbleArray[bubbleArray.length-1].b.getBalance()==bubbleArray[bubbleArray.length-2].b.getBalance()
-        && (bubbleArray[bubbleArray.length-1].b.getPropertyValue()==bubbleArray[bubbleArray.length-2].b.getPropertyValue())){
-            System.out.println("SPILLET ER UAFGJORT!!!");
-        }
-        else{
-            bubbleArray[bubbleArray.length-1].setPlayerWin();
-            System.out.println(bubbleArray[bubbleArray.length-1].getPlayerName() + " HAR VUNDET MED " +bubbleArray[bubbleArray.length-1].b.getBalance() + "M SAMT "
-            + bubbleArray[bubbleArray.length-1].b.getPropertyValue() + "M I EJENDOMME!!");
-        }
+        printGameResult(uafgjort,leadingPlayer);
     }
 
-
+    private void printGameResult(boolean uafgjort, Player leadingPlayer){
+        if (uafgjort) {
+            System.out.println("SPILLET ER UAFGJORT!!!");
+        } else {
+            leadingPlayer.setPlayerWin();
+            System.out.println(leadingPlayer.getPlayerName() + " HAR VUNDET MED " + leadingPlayer.b.getBalance() + "M SAMT "
+                    + leadingPlayer.b.getPropertyValue() + "M I EJENDOMME!!");
+        }
+    }
 }
