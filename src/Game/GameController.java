@@ -56,6 +56,7 @@ public void gameController() {
 
         if(currentPlayer.b.getBankrupt()){
             System.out.println( currentPlayerName + " ER GÅET FALLIT!!!");
+            findWinner(playerController.getPlayerArray());
             break;
         }
 
@@ -110,47 +111,40 @@ private void startMessage() {
             scan.close();
     }
 
-    public void findWinner(){
-        Player winner;
-
-        for (int i = 1; i < playerController.getPlayerArray().length; i++) {
-            Player currentPlayer = playerController.getPlayerArray()[i-1];
-            if (!currentPlayer.b.getBankrupt())
-                if(currentPlayer.b.getBalance()>playerController.getPlayerArray()[i].b.getBalance())
-                    winner = currentPlayer;
-        }
-        for (int j = 1; j < playerController.getPlayerArray().length; j++) {
-            Player currentPlayer = playerController.getPlayerArray()[j-1];
-            if (currentPlayer.b.getBalance()==playerController.getPlayerArray()[j].b.getBalance())
-                if(currentPlayer.b.getPropertyValue()>playerController.getPlayerArray()[j].b.getPropertyValue())
-                    winner=currentPlayer;
-                else System.out.println("Spillet er uafgjort");
-
-        }
-
-    }
-
-    //TODO; findWinner testmetode
     public void findWinner(Player[] playerArray){
-        Player winner = playerArray[3];
+        Player[] bubbleArray = playerController.getPlayerArray();
 
-        for (int i = 1; i < playerArray.length; i++) {
-            Player currentPlayer = playerArray[i-1];
-            if (!currentPlayer.b.getBankrupt())
-                if(currentPlayer.b.getBalance()>playerArray[i].b.getBalance())
-                    winner = currentPlayer;
+        boolean sorted = false;
+        Player temp;
+        while (!sorted) {
+            sorted = true;
+            for (int i = 0; i < bubbleArray.length - 1; i++) {
+                if(!bubbleArray[i].b.getBankrupt()) {
+                    if (bubbleArray[i].b.getBalance() > bubbleArray[i + 1].b.getBalance()) {
+                        temp = bubbleArray[i];
+                        bubbleArray[i] = bubbleArray[i + 1];
+                        bubbleArray[i + 1] = temp;
+                        sorted = false;
+                    }
+                    else if (bubbleArray[i].b.getBalance() == bubbleArray[i + 1].b.getBalance()){
+                        if (bubbleArray[i].b.getPropertyValue() > bubbleArray[i + 1].b.getPropertyValue()){
+                            temp = bubbleArray[i];
+                            bubbleArray[i] = bubbleArray[i + 1];
+                            bubbleArray[i + 1] = temp;
+                            sorted = false;
+                        }
+                    }
+                }
+            }
         }
-        if(winner.b.getBalance()<playerArray[playerArray.length-1].b.getBalance())
-            winner=playerArray[playerArray.length-1];
-
-        for (int j = 1; j < playerArray.length; j++) {
-            Player currentPlayer = playerArray[j-1];
-            if (currentPlayer.b.getBalance()==playerArray[j].b.getBalance())
-                if(currentPlayer.b.getPropertyValue()>playerArray[j].b.getPropertyValue())
-                    winner=currentPlayer;
-                else System.out.println("Spillet er uafgjort");
+        if(bubbleArray[bubbleArray.length-1].b.getBalance()==bubbleArray[bubbleArray.length-2].b.getBalance()
+        && (bubbleArray[bubbleArray.length-1].b.getPropertyValue()==bubbleArray[bubbleArray.length-2].b.getPropertyValue())){
+            System.out.println("SPILLET ER UAFGJORT!!!");
         }
-        winner.setPlayerWin();
+        else{
+            System.out.println(bubbleArray[bubbleArray.length-1].getPlayerName() + " HAR VUNDET!!!");
+        }
     }
+
 
 }

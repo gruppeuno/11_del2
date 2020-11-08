@@ -27,8 +27,6 @@ class GameControllerTest {
         playerController.getPlayerArray()[2].b.setPropertyValue(60);
         playerController.getPlayerArray()[3].b.setPropertyValue(60);
 
-        gameControllerTest.findWinner(playerController.getPlayerArray());
-
         boolean actual = true;
 
         assertEquals(actual,playerController.getPlayerArray()[3].getPlayerWin());
