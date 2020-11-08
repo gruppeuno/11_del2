@@ -40,8 +40,10 @@ public class FieldController {
 
         if(field instanceof Property) {
             landOnProperty(player, (Property) field, playerController); }
-        else if(field instanceof Jail)
-            moveToPrison(player, playerController);
+        else if(field instanceof Jail) {
+            moveToPrison(player, playerController); }
+        else if(field instanceof Chance) {
+            takeChance(player, field,playerController); }
         }
 
 
@@ -74,7 +76,7 @@ public class FieldController {
         player.b.subBalance(1);
     }
 
-    private void takeChance(){
+    private void takeChance(Player player, Field field ,PlayerController playerController){
 
     }
 
