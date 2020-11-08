@@ -82,7 +82,7 @@ public class FieldController {
 
     }
 
-    //TODO: ikke færdigt, evt spørg hjælpelærer
+    //TODO: ikke færdigt, spørg hjælpelærer
     public boolean ownedBySamePlayer(Player player, Property property){
         String owner1 = property.getOwnerName();
         for (Field field:fields) {
