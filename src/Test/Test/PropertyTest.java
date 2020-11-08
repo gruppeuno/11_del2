@@ -23,14 +23,14 @@ class PropertyTest {
     }
 
     @Test
-    public void constructorTestFielPrice(){
+    public void constructorTestFieldPrice(){
         Property property = new Property("Horsensgade", 2,5, "test");
         int actual = 5;
         assertEquals(actual, property.getFieldPrice());
     }
 
     @Test
-    public void constructorTestFielRent(){
+    public void constructorTestFieldRent(){
         Property property = new Property("Horsensgade", 2,5, "test");
         int actual = 5;
         assertEquals(actual, property.getFieldRent());
