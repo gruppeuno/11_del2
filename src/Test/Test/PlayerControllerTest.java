@@ -43,6 +43,17 @@ class PlayerControllerTest {
         assertEquals(actual,playerController.getPlayerByName("p0").getFieldNumber());
     }
 
+    //test af move player fra sidste matadorfelt ændre balance
+    @Test
+    public void movePlayerFromLastFieldBalanceTest(){
+        PlayerController playerController = new PlayerController();
+        playerController.createPlayers(2);
+        playerController.getPlayerByName("p0").setFieldNumber(23);
+        playerController.getPlayerByName("p0").b.setBalance(0);
+        playerController.movePlayer(playerController.getPlayerByName("p0"),1);
+        int actual = 2;
+        assertEquals(actual,playerController.getPlayerByName("p0").b.getBalance());
+    }
     /**Test af startbalance bliver opdateret*/
 
     //spiller 1
