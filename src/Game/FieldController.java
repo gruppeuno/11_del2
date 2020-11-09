@@ -40,9 +40,10 @@ public class FieldController {
 
         if(field instanceof Property)
             landOnProperty(player, (Property) field, playerController);
-        else if(field instanceof Jail)
-            moveToPrison(player, playerController);
+        else if(field instanceof Jail){
         }
+    }
+
 
     private void landOnProperty(Player player, Property property, PlayerController playerController) {
         if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName()))
@@ -73,10 +74,7 @@ public class FieldController {
         }
     }
 
-    private void moveToPrison(Player player, PlayerController playerController){
-        player.setFieldNumber(6);
 
-    }
 
     //TODO: ikke færdigt, spørg hjælpelærer
     public boolean ownedBySamePlayer(Player player, Property property){
@@ -120,6 +118,5 @@ public class FieldController {
     public Field[] getFields() {
         return fields;
     }
-
 
 }
