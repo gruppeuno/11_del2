@@ -42,7 +42,6 @@ public class Property extends Field {
         if(!player.b.getBankrupt()) {
             player.b.subBalance(fieldPrice);
             setOwner(player.getPlayerName());
-            player.b.addPropertyValue(fieldPrice);
             System.out.println(player.getPlayerName() + " købte " + getName() + " for " + fieldPrice + "M");
 
         }
