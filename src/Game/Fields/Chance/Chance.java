@@ -1,14 +1,14 @@
 package Game.Fields.Chance;
 
 import Game.Fields.Field;
+import Game.Player;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Chance extends Field {
 
     private int move = 0;
-
-
 
     private final int[] chanceArray = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
 
