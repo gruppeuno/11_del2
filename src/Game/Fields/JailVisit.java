@@ -25,14 +25,13 @@ public class JailVisit extends Field {
         if (playersInJailArray != null){
             for (String playerName : playersInJailArray) {
                 if (playerName == player.getPlayerName()) {
-                    getOutOfJail(playerController.getPlayerByName(playerName), playerController);
+                    getOutOfJail(playerController);
                 }
             }
         }
+    }
 
-        }
-
-    private void getOutOfJail(Player player, PlayerController playerController){
+    private void getOutOfJail(PlayerController playerController){
         //get out of jail
         String[] nullArray;
         nullArray=null;
@@ -44,5 +43,4 @@ public class JailVisit extends Field {
         }
         else setPlayersInJailArray(placeholder);
     }
-
 }

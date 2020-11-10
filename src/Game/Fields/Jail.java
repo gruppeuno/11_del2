@@ -13,11 +13,11 @@ public class Jail extends Field {
     @Override
     public void fieldAction(Player player, PlayerController playerController) {
         player.setFieldNumber(6);
-        putInJail(player,playerController);
+        putInJail(player);
 
     }
 
-    private void putInJail(Player player, PlayerController playerController){
+    private void putInJail(Player player){
         //put in jail
         JailVisit jv = new JailVisit(name,fieldNumber,msg);
         if(jv.getPlayersInJailArray()!=null) {
@@ -33,6 +33,4 @@ public class Jail extends Field {
             jv.setPlayersInJailArray(placeholder);
         }
     }
-
-
 }

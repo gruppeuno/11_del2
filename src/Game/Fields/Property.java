@@ -22,7 +22,6 @@ public class Property extends Field {
         this.colour=colour;
     }
 
-
     public String getOwnerName() { return ownerName; }
     public void setOwner(String playerName) { this.ownerName =playerName; this.ownedByPlayer=true; }
     public boolean getOwnedByPlayer() { return ownedByPlayer; }

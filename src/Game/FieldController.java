@@ -38,10 +38,7 @@ public class FieldController {
         System.out.println(field.getMsg());
 
        field.fieldAction(player, playerController);
-
     }
-
-
 
     //TODO: ikke færdigt, spørg hjælpelærer
     public boolean ownedBySamePlayer(Player player, Property property){

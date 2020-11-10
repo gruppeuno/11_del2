@@ -17,11 +17,7 @@ abstract public class Field {
     public String getMsg(){
         return msg;
     }
-
     public String getName(){return name;}
-
     public int getFieldNumber(){return fieldNumber;}
-
-
     public void fieldAction(Player player, PlayerController playerController) {}
 }
