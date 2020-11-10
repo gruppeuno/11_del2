@@ -121,6 +121,7 @@ public class Chance extends Field {
             case 10:
                 break;
             case 11:
+                MoveSpecificField(player, 23);
                 break;
             case 12:
                 break;
@@ -162,13 +163,16 @@ public class Chance extends Field {
             this.move = scan.nextInt(); }
         while (minMove > this.move || maxMove < this.move);
 
-
         player.setFieldNumber(player.getFieldNumber()+this.move);
         scan.close();
     }
 
     public void MoveToStart(Player player) {
         player.setFieldNumber(0);
+    }
+
+    public void MoveSpecificField (Player player, int field) {
+        player.setFieldNumber(field);
     }
 
     public void AddBank(Player player, int moneyChange) {
