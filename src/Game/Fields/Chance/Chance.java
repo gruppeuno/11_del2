@@ -1,12 +1,20 @@
 package Game.Fields.Chance;
 
 import Game.Fields.Field;
+import Game.Player;
 
 import java.util.Random;
 
 public class Chance extends Field {
 
     private final int[] chanceArray = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+
+    public Chance(String name, int fieldNumber, String msg, int move) {
+        super(name, fieldNumber, msg);
+        this.move = move;
+    }
+
+    private int move = 0;
 
     /**
      * Todo list:
@@ -60,7 +68,6 @@ public class Chance extends Field {
 
         for (i = 1; i < chanceArray.length; i++) {
 
-
         switch (chanceArray[i]) {
 
             case 1:
@@ -109,6 +116,10 @@ public class Chance extends Field {
         if (i == 20 ) { i = 1; }
         }
 
+    }
+    public void MoveField(Player player, Field field) {
+
+        player.setFieldNumber(player.getFieldNumber()+this.move);
     }
 
 }

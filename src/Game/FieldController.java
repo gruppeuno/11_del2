@@ -31,7 +31,6 @@ public class FieldController {
             new Property("STRANDPROMENADEN", 23,5, "Du landede på strandpromenaden")
     };
 
-
     //Når en spiller lander på et felt
     public void landOnField(Player player, PlayerController playerController){
         Field field = fields[player.getFieldNumber()];
@@ -45,7 +44,6 @@ public class FieldController {
         else if(field instanceof Chance) {
             takeChance(player, field,playerController); }
         }
-
 
     private void landOnProperty(Player player, Property property, PlayerController playerController) {
         if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName()))
