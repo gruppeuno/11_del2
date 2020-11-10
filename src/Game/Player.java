@@ -45,6 +45,7 @@ public class Player {
 
     public void freeOfJail(){
         isInPrison = false;
+        b.subBalance(1);
     }
 
     public boolean getIsInPrison(){

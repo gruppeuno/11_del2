@@ -12,7 +12,8 @@ public class Jail extends Field {
 
     @Override
     public void fieldAction(Player player, PlayerController playerController) {
-        player.setFieldNumber(6);
         player.putInJail();
+        player.setFieldNumber(6);
+
     }
 }

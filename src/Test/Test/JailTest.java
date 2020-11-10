@@ -1,5 +1,4 @@
-/*
-package Test;
+/*package Test;
 
 import Game.FieldController;
 import Game.Fields.Jail;

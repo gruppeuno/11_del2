@@ -19,7 +19,6 @@ public class JailVisit extends Field {
     private void getOutOfJail(Player player){
         //get out of jail
         player.freeOfJail();
-        player.b.subBalance(1);
 
     }
 }
