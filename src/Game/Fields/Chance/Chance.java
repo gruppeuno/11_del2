@@ -117,7 +117,8 @@ public class Chance extends Field {
         }
 
     }
-    public void MoveField(Player player, Field field) {
+
+    public void MoveField(Player player) {
 
         player.setFieldNumber(player.getFieldNumber()+this.move);
     }
