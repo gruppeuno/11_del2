@@ -29,6 +29,7 @@ public class Player {
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
     }
+    public boolean setJailCard (boolean JailCard) {return JailCard;}
 
     public int getFieldNumber() {
         return fieldNumber;

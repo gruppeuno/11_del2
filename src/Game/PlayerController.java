@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class PlayerController {
 
-
     private int numberOfPlayers;
     private Scanner scan = new Scanner(System.in);
     private Player[] playerArray;

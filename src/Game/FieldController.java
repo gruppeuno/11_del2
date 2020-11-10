@@ -31,7 +31,6 @@ public class FieldController {
             new Property("STRANDPROMENADEN", 23,5, "Du landede på strandpromenaden","blue")
     };
 
-
     //Når en spiller lander på et felt
     public void landOnField(Player player, PlayerController playerController){
 
@@ -43,7 +42,6 @@ public class FieldController {
         else if(field instanceof Jail){
         }
     }
-
 
     private void landOnProperty(Player player, Property property, PlayerController playerController) {
         if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName()))
