@@ -13,7 +13,7 @@ public class FieldController {
             new Property("ISKIOSKEN", 5,1, "Du landede på iskiosken", "lightBlue"),
             new JailVisit("PÅ FÆNGSELSBESØG", 6, "Du landede på fængsels besøg"),
             new Property("MUSEET", 7,2, "Du landede på museet","pink"),
-            new Property("BIBLIOTEKET", 8,2, "Du landede på bibioteket","pink"),
+            new Property("BIBLIOTEKET", 8,2, "Du landede på biblioteket","pink"),
             new Parking("CHANCE", 9, "Du landede på chancen"),
             new Property("SKATERPARKEN", 10,2, "Du landede på skaterparken","gold"),
             new Property("SWIMMINGPOOLEN", 11,2, "Du landede på swimmingpoolen","gold"),
