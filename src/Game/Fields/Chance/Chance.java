@@ -9,8 +9,7 @@ import java.util.Scanner;
 public class Chance extends Field {
 
     private int move = 0;
-    private int bankValueChange = 0;
-    private String valg = "";
+
 
     private final int[] chanceArray = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
 
@@ -82,7 +81,7 @@ public class Chance extends Field {
                 break;
             case 2: //Chance Kort 2
                 MoveToStart(player);
-                ModifyBank(player, 2);
+                AddBank(player, 2);
                 break;
             case 3: //Chance Kort 3
                 MoveFieldPlayerSelect(player, 1, 5);
@@ -91,6 +90,8 @@ public class Chance extends Field {
                 break;
             case 5: //Chance Kort 5
 
+                String valg = "";
+
                 String ryk = "ryk";
                 String traek = "træk";
 
@@ -98,21 +99,22 @@ public class Chance extends Field {
 
                 Scanner scan = new Scanner(System.in);
                 do {
-                    System.out.println("Skriv \"Ryk\" for ar rykke frem eller \"Træk\" for at trække et nyt chancekort ");
+                    System.out.println("Skriv \"Ryk\" for ar rykke frem eller \"Træk\" for at trække et nyt chancekort.");
                     valg = scan.nextLine(); }
                 while (!((traek.equals(valg.toLowerCase())) || (ryk.equals(valg.toLowerCase()))));
 
                 if (valg.toLowerCase().equals(ryk)) {MoveField(player, 1);}
-                else if (valg.toLowerCase().equals(traek)) {ChanceCard(player);}
+                else {ChanceCard(player);}
 
                 scan.close();
 
                 break;
-            case 6:
+            case 6: //Chance Kort 6
                 break;
-            case 7:
+            case 7: //Chance Kort 7
+                SubBank(player, 2);
                 break;
-            case 8:
+            case 8: //Chance Kort 8
                 break;
             case 9:
                 break;
@@ -129,6 +131,7 @@ public class Chance extends Field {
             case 15:
                 break;
             case 16:
+                AddBank(player, 2);
                 break;
             case 17:
                 break;
@@ -168,19 +171,14 @@ public class Chance extends Field {
         player.setFieldNumber(0);
     }
 
-    public void ModifyBank(Player player, int moneyChange) {
+    public void AddBank(Player player, int moneyChange) {
+        player.b.addBalance(moneyChange);
+    }
 
-        bankValueChange = moneyChange;
-
-        if (bankValueChange > 0) {
-        player.b.addBalance(bankValueChange); }
-
-        //Åndet, men nu bruger vi bare sub, når den er der. high cohesion and all.
-        else if (bankValueChange < 0) {
-        player.b.subBalance(Math.abs(bankValueChange));
-        }
-
+    public void SubBank(Player player, int moneyChange) {
+        player.b.subBalance(moneyChange);
 
     }
+
 }
 
