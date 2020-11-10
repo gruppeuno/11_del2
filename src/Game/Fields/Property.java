@@ -25,7 +25,8 @@ public class Property extends Field {
     public String getOwnerName() { return ownerName; }
     public void setOwner(String playerName) { this.ownerName =playerName; this.ownedByPlayer=true; }
     public boolean getOwnedByPlayer() { return ownedByPlayer; }
-
+    public int getFieldPrice(){ return fieldPrice;} // til test
+    public int getFieldRent(){ return fieldRent;} // til test
 
     @Override
     public void fieldAction(Player player, PlayerController playerController) {
