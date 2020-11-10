@@ -15,7 +15,7 @@ public class Player {
     private String playerName;
     private boolean playerWin = false;
     private int fieldNumber = 0;
-    private ArrayList<Property> propertiesOwned;
+    private ArrayList<Property> propertiesOwned = new ArrayList<Property>();
     public BankAccount b = new BankAccount();
 
 
@@ -49,8 +49,9 @@ public class Player {
         return propertiesOwned;
     }
 
-    public void addPropertiesOwned(Property property) {
+    public void addPropertyOwned(Property property) {
         propertiesOwned.add(property);
     }
+
 
 }

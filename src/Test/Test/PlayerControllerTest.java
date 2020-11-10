@@ -1,5 +1,6 @@
 package Test;
 
+import Game.Fields.Property;
 import Game.Player;
 import Game.PlayerController;
 import org.junit.jupiter.api.Test;
@@ -85,5 +86,61 @@ class PlayerControllerTest {
         int actual = 16;
         assertEquals(actual,playerController.getPlayerArray()[3].b.getBalance());
     }
+
+    /** Test af remove property */
+
+    //test af add property
+    @Test
+    public void addPropertyTest(){
+        PlayerController playerController = new PlayerController();
+        playerController.createPlayers(4);
+        Property testProp = new Property("BURGERBAREN", 1,1, "Du landede på burgerbaren","brown");
+        playerController.getPlayerByName("p0").addPropertyOwned(testProp);
+
+        int actual = 1;
+        assertEquals(actual,playerController.getPlayerByName("p0").getPropertiesOwned().size());
+    }
+
+    //test af remove property
+    @Test
+    public void removePropertyTest(){
+        PlayerController playerController = new PlayerController();
+        playerController.createPlayers(4);
+        Property testProp = new Property("BURGERBAREN", 1,1, "Du landede på burgerbaren","brown");
+        playerController.getPlayerByName("p0").addPropertyOwned(testProp);
+        playerController.removeProperty(playerController.getPlayerArray()[0],1);
+
+        int actual = 0;
+        assertEquals(actual ,playerController.getPlayerByName("p0").getPropertiesOwned().size());
+    }
+
+    //test af remove property sætter spiller til bankrupt true hvis spiller ikke har flere ejendomme
+    @Test
+    public void removePropertyBankruptTest(){
+        PlayerController playerController = new PlayerController();
+        playerController.createPlayers(4);
+        Property testProp = new Property("BURGERBAREN", 1,1, "Du landede på burgerbaren","brown");
+        playerController.getPlayerByName("p0").addPropertyOwned(testProp);
+        playerController.getPlayerByName("p0").b.setBalance(0);
+        playerController.removeProperty(playerController.getPlayerArray()[0],1);
+
+        boolean actual = true;
+        assertEquals(actual ,playerController.getPlayerByName("p0").b.getBankrupt());
+    }
+
+    //test af bankrupt med større payment end hvad spillerens grunde kan betale
+    @Test
+    public void removePropertyBankruptBigTest(){
+        PlayerController playerController = new PlayerController();
+        playerController.createPlayers(4);
+        Property testProp = new Property("BURGERBAREN", 1,1, "Du landede på burgerbaren","brown");
+        playerController.getPlayerByName("p0").addPropertyOwned(testProp);
+        playerController.getPlayerByName("p0").b.setBalance(0);
+        playerController.removeProperty(playerController.getPlayerArray()[0],2);
+
+        boolean actual = true;
+        assertEquals(actual ,playerController.getPlayerByName("p0").b.getBankrupt());
+    }
+
 
 }

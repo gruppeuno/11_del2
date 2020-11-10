@@ -24,6 +24,7 @@ public class BankAccount {
                 balance -= value;
         }
 
+        public void setBankrupt(boolean bankrupt) { this.bankrupt = bankrupt; }
         public void setBalance(int setValue) { balance = setValue; }
         public int getBalance() { return balance; }
         public boolean getBankrupt() { return bankrupt; }
