@@ -31,7 +31,6 @@ public class FieldController {
             new Property("STRANDPROMENADEN", 23,5, "Du landede på strandpromenaden","blue")
     };
 
-
     //Når en spiller lander på et felt
     public void landOnField(Player player, PlayerController playerController){
 
@@ -54,34 +53,6 @@ public class FieldController {
         }
         return false;
         }
-
-    public void putInJail(String playerName){
-        JailVisit jailVisit = (JailVisit) fields[6];
-        if(jailVisit.getPlayersInJailArray()!=null) {
-            String[] placeholder = new String[jailVisit.getPlayersInJailArray().length + 1];
-            for (int i = 0; i < jailVisit.getPlayersInJailArray().length; i++) {
-                placeholder[i] = jailVisit.getPlayersInJailArray()[i];
-            }
-            placeholder[placeholder.length - 1] = playerName;
-            jailVisit.setPlayersInJailArray(placeholder);
-        }
-        else if(jailVisit.getPlayersInJailArray()==null) {
-            String[] placeholder = {playerName};
-            jailVisit.setPlayersInJailArray(placeholder);
-        }
-    }
-
-    public void putOutJail(PlayerController playerController){
-            JailVisit jailVisit = (JailVisit) fields[6];
-            String[] nullArray;
-            nullArray=null;
-            playerController.getPlayerByName(jailVisit.getPlayersInJailArray()[jailVisit.getPlayersInJailArray().length-1]).b.subBalance(1);
-
-        String[] placeholder = new String[jailVisit.getPlayersInJailArray().length - 1];
-        if(jailVisit.getPlayersInJailArray().length==1)
-               jailVisit.setPlayersInJailArray(nullArray);
-           else jailVisit.setPlayersInJailArray(placeholder);
-    }
 
     public Field[] getFields() {
         return fields;
