@@ -44,6 +44,7 @@ public class Property extends Field {
             setOwner(player.getPlayerName());
             player.b.addPropertyValue(fieldPrice);
             System.out.println(player.getPlayerName() + " købte " + getName() + " for " + fieldPrice + "M");
+
         }
     }
 
@@ -56,5 +57,6 @@ public class Property extends Field {
                     + "\n" + propertyOwner.getPlayerName() + " har nu " + propertyOwner.b.getBalance() + "M");
         }
     }
+
 
 }

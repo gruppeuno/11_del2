@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class JailVisitTest {
 
     //Test af putOutJail fjerner spillernavnet fra playersInJail arrayet
-
     //TODO: TEST VIRKER IKKE
     @Test
     public void putOutJailTest() {
