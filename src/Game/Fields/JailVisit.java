@@ -11,7 +11,6 @@ public class JailVisit extends Field {
         super(name, fieldNumber, msg);
     }
 
-
     public String[] getPlayersInJailArray() {
         return playersInJailArray;
     }
@@ -23,24 +22,21 @@ public class JailVisit extends Field {
     @Override
     public void fieldAction(Player player, PlayerController playerController) {
 
-        //put in jail
-        if(playersInJailArray!=null) {
-            String[] placeholder = new String[playersInJailArray.length + 1];
-            for (int i = 0; i < playersInJailArray.length; i++) {
-                placeholder[i] = playersInJailArray[i];
+        if (playersInJailArray != null){
+            for (String playerName : playersInJailArray) {
+                if (playerName == player.getPlayerName()) {
+                    getOutOfJail(playerController.getPlayerByName(playerName), playerController);
+                }
             }
-            placeholder[placeholder.length - 1] = player.getPlayerName();
-            setPlayersInJailArray(placeholder);
-        }
-        else if(playersInJailArray==null) {
-            String[] placeholder = {player.getPlayerName()};
-            setPlayersInJailArray(placeholder);
         }
 
+        }
+
+    private void getOutOfJail(Player player, PlayerController playerController){
         //get out of jail
         String[] nullArray;
         nullArray=null;
-        playerController.getPlayerByName(playersInJailArray[playersInJailArray.length-1]).b.subBalance(1);
+        playerController.getPlayerByName(playersInJailArray[0]).b.subBalance(1);
 
         String[] placeholder = new String[playersInJailArray.length - 1];
         if(playersInJailArray.length==1) {
@@ -48,4 +44,5 @@ public class JailVisit extends Field {
         }
         else setPlayersInJailArray(placeholder);
     }
+
 }
