@@ -14,10 +14,10 @@ public class Player {
 
     private String playerName;
     private boolean playerWin = false;
+    private boolean isInPrison = false;
     private int fieldNumber = 0;
     private ArrayList<Property> propertiesOwned = new ArrayList<Property>();
     public BankAccount b = new BankAccount();
-
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -43,6 +43,19 @@ public class Player {
 
     public void setFieldNumber(int fieldNumber) {
         this.fieldNumber = fieldNumber;
+    }
+
+    public void putInJail(){
+        isInPrison = true;
+    }
+
+    public void freeOfJail(){
+        isInPrison = false;
+        b.subBalance(1);
+    }
+
+    public boolean getIsInPrison(){
+        return isInPrison;
     }
 
     public ArrayList<Property> getPropertiesOwned() {

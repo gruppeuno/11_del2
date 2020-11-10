@@ -33,6 +33,7 @@ public class FieldController {
 
     //Når en spiller lander på et felt
     public void landOnField(Player player, PlayerController playerController){
+        isJustLeftJail(player);
 
         Field field = fields[player.getFieldNumber()];
         System.out.println(field.getMsg());
@@ -54,6 +55,12 @@ public class FieldController {
 
     public Field[] getFields() {
         return fields;
+    }
+
+    public void isJustLeftJail(Player player){
+        if(player.getIsInPrison() == true){
+            player.freeOfJail();
+        }
     }
 
 }
