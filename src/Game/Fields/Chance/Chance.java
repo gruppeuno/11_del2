@@ -4,17 +4,23 @@ import Game.Fields.Field;
 import Game.Player;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Chance extends Field {
+
+    private int move = 0;
+    private int bankValueChange = 0;
+    private String valg = "";
 
     private final int[] chanceArray = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
 
     public Chance(String name, int fieldNumber, String msg, int move) {
         super(name, fieldNumber, msg);
         this.move = move;
+
     }
 
-    private int move = 0;
+
 
     /**
      * Todo list:
@@ -42,8 +48,8 @@ public class Chance extends Field {
         Random rand = new Random();
 
         for (int i = 0; i < chanceArray.length; i++) {
-            int random = rand.nextInt(chanceArray.length);
-            int temp = chanceArray[random];
+            int random= rand.nextInt(chanceArray.length);
+            int temp =chanceArray[random];
             chanceArray[random] = chanceArray[i];
             chanceArray[i] = temp;
         }
@@ -62,7 +68,9 @@ public class Chance extends Field {
         return arrOut;
     }
 
-    public void ChanceCard() {
+    public void ChanceCard(Player player) {
+
+        System.out.println("Du har trukket et chancekort");
 
         int i;
 
@@ -70,15 +78,35 @@ public class Chance extends Field {
 
         switch (chanceArray[i]) {
 
-            case 1:
+            case 1: //Chance Kort 1
                 break;
-            case 2:
+            case 2: //Chance Kort 2
+                MoveToStart(player);
+                ModifyBank(player, 2);
                 break;
-            case 3:
+            case 3: //Chance Kort 3
+                MoveFieldPlayerSelect(player, 1, 5);
                 break;
-            case 4:
+            case 4: //Chance Kort 4
                 break;
-            case 5:
+            case 5: //Chance Kort 5
+
+                String ryk = "ryk";
+                String traek = "træk";
+
+                System.out.println("Vælg mellem at rykke 1 felt frem, eller trække et chance kort mere!");
+
+                Scanner scan = new Scanner(System.in);
+                do {
+                    System.out.println("Skriv \"Ryk\" for ar rykke frem eller \"Træk\" for at trække et nyt chancekort ");
+                    valg = scan.nextLine(); }
+                while (!((traek.equals(valg.toLowerCase())) || (ryk.equals(valg.toLowerCase()))));
+
+                if (valg.toLowerCase().equals(ryk)) {MoveField(player, 1);}
+                else if (valg.toLowerCase().equals(traek)) {ChanceCard(player);}
+
+                scan.close();
+
                 break;
             case 6:
                 break;
@@ -115,13 +143,44 @@ public class Chance extends Field {
 
         if (i == 20 ) { i = 1; }
         }
-
     }
 
-    public void MoveField(Player player) {
+    public void MoveField(Player player, int move) {
+
+        this.move = move;
+        player.setFieldNumber(player.getFieldNumber()+ this.move);
+    }
+
+    public void MoveFieldPlayerSelect(Player player, int minMove, int maxMove) {
+        Scanner scan = new Scanner(System.in);
+
+        do {
+            System.out.println("Skriv et tal imellem " + minMove + " og " + maxMove);
+            this.move = scan.nextInt(); }
+        while (minMove > this.move || maxMove < this.move);
+
 
         player.setFieldNumber(player.getFieldNumber()+this.move);
+        scan.close();
     }
 
+    public void MoveToStart(Player player) {
+        player.setFieldNumber(0);
+    }
+
+    public void ModifyBank(Player player, int moneyChange) {
+
+        bankValueChange = moneyChange;
+
+        if (bankValueChange > 0) {
+        player.b.addBalance(bankValueChange); }
+
+        //Åndet, men nu bruger vi bare sub, når den er der. high cohesion and all.
+        else if (bankValueChange < 0) {
+        player.b.subBalance(Math.abs(bankValueChange));
+        }
+
+
+    }
 }
 
