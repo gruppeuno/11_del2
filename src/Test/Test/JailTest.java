@@ -1,3 +1,4 @@
+/*
 package Test;
 
 import Game.FieldController;
@@ -45,4 +46,4 @@ class JailTest {
  //     JailVisit jailVisit = (JailVisit) jail.getFields()[6];
  //     assertEquals(actual, jailVisit.getPlayersInJailArray()[3]);
  // }
-}
+}*/

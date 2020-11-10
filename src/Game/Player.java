@@ -9,6 +9,7 @@ public class Player {
 
     private String playerName;
     private boolean playerWin = false;
+    private boolean isInPrison = false;
     private int fieldNumber = 0;
     public BankAccount b = new BankAccount();
 
@@ -36,6 +37,18 @@ public class Player {
 
     public void setFieldNumber(int fieldNumber) {
         this.fieldNumber = fieldNumber;
+    }
+
+    public void putInJail(){
+        isInPrison = true;
+    }
+
+    public void freeOfJail(){
+        isInPrison = false;
+    }
+
+    public boolean getIsInPrison(){
+        return isInPrison;
     }
 
 }
