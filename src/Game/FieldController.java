@@ -38,40 +38,8 @@ public class FieldController {
         Field field = fields[player.getFieldNumber()];
         System.out.println(field.getMsg());
 
-        if(field instanceof Property)
-            landOnProperty(player, (Property) field, playerController);
-        else if(field instanceof Jail){
-        }
-    }
+       field.fieldAction(player, playerController);
 
-
-    private void landOnProperty(Player player, Property property, PlayerController playerController) {
-        if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName()))
-            payRent(player,property, playerController);
-
-            //feltet er ikke ejet, køb felt
-        else if (!property.getOwnedByPlayer())
-            buyProperty(player, property);
-    }
-
-    /** mangler referrance fra playerID */
-    public void buyProperty(Player player, Property property){
-        if(!player.b.getBankrupt()) {
-            player.b.subBalance(property.getFieldPrice());
-            property.setOwner(player.getPlayerName());
-            player.b.addPropertyValue(property.getFieldPrice());
-            System.out.println(player.getPlayerName() + " købte " + property.getName() + " for " + property.getFieldPrice() + "M");
-        }
-    }
-
-    public void payRent(Player player ,Property property, PlayerController playerController) {
-        player.b.subBalance(property.getFieldRent());
-        if(!player.b.getBankrupt()) {
-            Player propertyOwner = playerController.getPlayerByName(property.getOwnerName());
-            propertyOwner.b.addBalance(property.getFieldRent());
-            System.out.println(player.getPlayerName() + " betalte " + property.getFieldRent() + "M i husleje til " + propertyOwner.getPlayerName()
-                    + "\n" + propertyOwner.getPlayerName() + " har nu " + propertyOwner.b.getBalance() + "M");
-        }
     }
 
 

@@ -1,5 +1,8 @@
 package Game.Fields;
 
+import Game.Player;
+import Game.PlayerController;
+
 /**
  * Field
  * @author Gruppe11
@@ -21,9 +24,37 @@ public class Property extends Field {
 
 
     public String getOwnerName() { return ownerName; }
-    public int getFieldPrice() { return fieldPrice; }
-    public int getFieldRent() { return fieldRent; }
     public void setOwner(String playerName) { this.ownerName =playerName; this.ownedByPlayer=true; }
     public boolean getOwnedByPlayer() { return ownedByPlayer; }
+
+
+    @Override
+    public void fieldAction(Player player, PlayerController playerController) {
+        if (getOwnedByPlayer() && !getOwnerName().equals(player.getPlayerName()))
+            payRent(player, playerController);
+
+            //feltet er ikke ejet, køb felt
+        else if (!getOwnedByPlayer())
+            buyProperty(player);
+    }
+
+    public void buyProperty(Player player){
+        if(!player.b.getBankrupt()) {
+            player.b.subBalance(fieldPrice);
+            setOwner(player.getPlayerName());
+            player.b.addPropertyValue(fieldPrice);
+            System.out.println(player.getPlayerName() + " købte " + getName() + " for " + fieldPrice + "M");
+        }
+    }
+
+    public void payRent(Player player , PlayerController playerController) {
+        player.b.subBalance(fieldRent);
+        if(!player.b.getBankrupt()) {
+            Player propertyOwner = playerController.getPlayerByName(getOwnerName());
+            propertyOwner.b.addBalance(fieldRent);
+            System.out.println(player.getPlayerName() + " betalte " + fieldRent + "M i husleje til " + propertyOwner.getPlayerName()
+                    + "\n" + propertyOwner.getPlayerName() + " har nu " + propertyOwner.b.getBalance() + "M");
+        }
+    }
 
 }

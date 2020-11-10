@@ -22,7 +22,7 @@ public class PlayerController {
         numberOfPlayers();
         createPlayers();
         setStartBalance();
-
+        System.out.println("Indtast spillernavn lad den yngste spiller starte");
         for (int i = 0; i < playerArray.length; i++){
             int nr = i+1;
             System.out.println("spiller " + nr + " Indtast et navn der er mellem 3-12 tegn, spillere må ikke have samme navn:");
