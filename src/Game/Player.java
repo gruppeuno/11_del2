@@ -49,10 +49,7 @@ public class Player {
         isInPrison = true;
     }
 
-    public void freeOfJail(){
-        isInPrison = false;
-        b.subBalance(1);
-    }
+    public void freeOfJail(){ isInPrison = false; b.subBalance(1); }
 
     public boolean getIsInPrison(){
         return isInPrison;
@@ -66,7 +63,7 @@ public class Player {
         propertiesOwned.add(property);
     }
 
-    //TODO: dårlig praktis?? think maybe not mayby is
+    //TODO: dårlig praktis?? think maybe not mayby is, ørkenrotter på grønland??
     public int getTotalPropertyValue(){
         int totalValue=0;
         if(propertiesOwned.size()>0)

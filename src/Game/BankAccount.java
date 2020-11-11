@@ -10,13 +10,9 @@ public class BankAccount {
         private boolean bankrupt = false;
         private int propertyValue;
 
-        public void addBalance(int value) {
-                balance += value;
-        }
+        public void addBalance(int value) { balance += value; }
 
-        public void subBalance(int value) {
-                balance -= value;
-        }
+        public void subBalance(int value) { balance -= value; }
 
         public void setBankrupt(boolean bankrupt) { this.bankrupt = bankrupt; }
         public void setBalance(int setValue) { balance = setValue; }

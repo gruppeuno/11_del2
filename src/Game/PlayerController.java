@@ -155,13 +155,6 @@ public class PlayerController {
             player.b.setBankrupt(true);
     }
 
-    //TODO: spørg hjælpelærer
-    public void addPropertyValue(Player player,int payment){
-        for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
-
-        }
-    }
-
     public void handlePayment(Player player, int payment){
         int balanceCheck = player.b.getBalance()-payment;
         if (balanceCheck>=payment)

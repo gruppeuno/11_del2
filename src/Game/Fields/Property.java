@@ -35,13 +35,12 @@ public class Property extends Field {
 
             //feltet er ikke ejet, køb felt
         else if (!getOwnedByPlayer())
-            buyProperty(player);
+            buyProperty(player, playerController);
     }
 
-    public void buyProperty(Player player){
+    public void buyProperty(Player player, PlayerController playerController){
+        playerController.handlePayment(player, fieldPrice);
         if(!player.b.getBankrupt()) {
-            //todo: kald check bankrupt
-            player.b.subBalance(fieldPrice);
             setOwner(player.getPlayerName());
             System.out.println(player.getPlayerName() + " købte " + getName() + " for " + fieldPrice + "M");
 
@@ -49,8 +48,8 @@ public class Property extends Field {
     }
 
     public void payRent(Player player , PlayerController playerController) {
-        //todo: kald check bankrupt
-        player.b.subBalance(fieldRent);
+
+        playerController.handlePayment(player, fieldRent);
         if(!player.b.getBankrupt()) {
             Player propertyOwner = playerController.getPlayerByName(getOwnerName());
             propertyOwner.b.addBalance(fieldRent);
