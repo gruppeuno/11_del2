@@ -21,7 +21,7 @@ public class PlayerController {
         numberOfPlayers();
         createPlayers();
         setStartBalance();
-
+        System.out.println("Indtast spillernavn lad den yngste spiller starte");
         for (int i = 0; i < playerArray.length; i++){
             int nr = i+1;
             System.out.println("spiller " + nr + " Indtast et navn der er mellem 3-12 tegn, spillere må ikke have samme navn:");
@@ -131,6 +131,34 @@ public class PlayerController {
             for (int i = 0; i < 4; i++)
                 playerArray[i].b.setBalance(16);
 
+    }
+
+    //TODO: metode til at fjerne property
+    public void removeProperty(Player player,int payment){
+        int minPayment = payment;
+        int arraylistSizeBefore = player.getPropertiesOwned().size();
+
+        if(player.getPropertiesOwned().size()>0)
+            for (int j = minPayment; j >= payment; j++) {
+                for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
+                    if(player.getPropertiesOwned().get(i).getFieldPrice()>=payment){
+                        player.getPropertiesOwned().remove(i);
+                        break;
+                    }
+                }
+            }
+
+        if(player.getPropertiesOwned().size()==0 && player.b.getBalance()==0)
+            player.b.setBankrupt(true);
+        else if (arraylistSizeBefore==player.getPropertiesOwned().size())
+            player.b.setBankrupt(true);
+    }
+
+    //TODO: spørg hjælpelærer
+    public void addPropertyValue(Player player,int payment){
+        for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
+
+        }
     }
 
 

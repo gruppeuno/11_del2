@@ -1,5 +1,10 @@
 package Game;
 
+import Game.Fields.Property;
+
+import java.util.ArrayList;
+import java.util.Properties;
+
 /**
  * Player
  * @author Gruppe11
@@ -9,7 +14,9 @@ public class Player {
 
     private String playerName;
     private boolean playerWin = false;
+    private boolean isInPrison = false;
     private int fieldNumber = 0;
+    private ArrayList<Property> propertiesOwned = new ArrayList<Property>();
     public BankAccount b = new BankAccount();
     private boolean JailCard;
 
@@ -44,5 +51,27 @@ public class Player {
     public void setFieldNumber(int fieldNumber) {
         this.fieldNumber = fieldNumber;
     }
+
+    public void putInJail(){
+        isInPrison = true;
+    }
+
+    public void freeOfJail(){
+        isInPrison = false;
+        b.subBalance(1);
+    }
+
+    public boolean getIsInPrison(){
+        return isInPrison;
+    }
+
+    public ArrayList<Property> getPropertiesOwned() {
+        return propertiesOwned;
+    }
+
+    public void addPropertyOwned(Property property) {
+        propertiesOwned.add(property);
+    }
+
 
 }

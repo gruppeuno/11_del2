@@ -13,7 +13,7 @@ public class FieldController {
             new Property("ISKIOSKEN", 5,1, "Du landede på iskiosken", "lightBlue"),
             new JailVisit("PÅ FÆNGSELSBESØG", 6, "Du landede på fængsels besøg"),
             new Property("MUSEET", 7,2, "Du landede på museet","pink"),
-            new Property("BIBLIOTEKET", 8,2, "Du landede på bibioteket","pink"),
+            new Property("BIBLIOTEKET", 8,2, "Du landede på biblioteket","pink"),
             new Parking("CHANCE", 9, "Du landede på chancen"),
             new Property("SKATERPARKEN", 10,2, "Du landede på skaterparken","gold"),
             new Property("SWIMMINGPOOLEN", 11,2, "Du landede på swimmingpoolen","gold"),
@@ -31,48 +31,16 @@ public class FieldController {
             new Property("STRANDPROMENADEN", 23,5, "Du landede på strandpromenaden","blue")
     };
 
+
     //Når en spiller lander på et felt
     public void landOnField(Player player, PlayerController playerController){
+        isJustLeftJail(player);
 
         Field field = fields[player.getFieldNumber()];
         System.out.println(field.getMsg());
 
-        if(field instanceof Property)
-            landOnProperty(player, (Property) field, playerController);
-        else if(field instanceof Jail){
-        }
+       field.fieldAction(player, playerController);
     }
-
-    private void landOnProperty(Player player, Property property, PlayerController playerController) {
-        if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName()))
-            payRent(player,property, playerController);
-
-            //feltet er ikke ejet, køb felt
-        else if (!property.getOwnedByPlayer())
-            buyProperty(player, property);
-    }
-
-    /** mangler referrance fra playerID */
-    public void buyProperty(Player player, Property property){
-        if(!player.b.getBankrupt()) {
-            player.b.subBalance(property.getFieldPrice());
-            property.setOwner(player.getPlayerName());
-            player.b.addPropertyValue(property.getFieldPrice());
-            System.out.println(player.getPlayerName() + " købte " + property.getName() + " for " + property.getFieldPrice() + "M");
-        }
-    }
-
-    public void payRent(Player player ,Property property, PlayerController playerController) {
-        player.b.subBalance(property.getFieldRent());
-        if(!player.b.getBankrupt()) {
-            Player propertyOwner = playerController.getPlayerByName(property.getOwnerName());
-            propertyOwner.b.addBalance(property.getFieldRent());
-            System.out.println(player.getPlayerName() + " betalte " + property.getFieldRent() + "M i husleje til " + propertyOwner.getPlayerName()
-                    + "\n" + propertyOwner.getPlayerName() + " har nu " + propertyOwner.b.getBalance() + "M");
-        }
-    }
-
-
 
     //TODO: ikke færdigt, spørg hjælpelærer
     public boolean ownedBySamePlayer(Player player, Property property){
@@ -85,36 +53,15 @@ public class FieldController {
         return false;
         }
 
-    public void putInJail(String playerName){
-        JailVisit jailVisit = (JailVisit) fields[6];
-        if(jailVisit.getPlayersInJailArray()!=null) {
-            String[] placeholder = new String[jailVisit.getPlayersInJailArray().length + 1];
-            for (int i = 0; i < jailVisit.getPlayersInJailArray().length; i++) {
-                placeholder[i] = jailVisit.getPlayersInJailArray()[i];
-            }
-            placeholder[placeholder.length - 1] = playerName;
-            jailVisit.setPlayersInJailArray(placeholder);
-        }
-        else if(jailVisit.getPlayersInJailArray()==null) {
-            String[] placeholder = {playerName};
-            jailVisit.setPlayersInJailArray(placeholder);
-        }
-    }
-
-    public void putOutJail(PlayerController playerController){
-            JailVisit jailVisit = (JailVisit) fields[6];
-            String[] nullArray;
-            nullArray=null;
-            playerController.getPlayerByName(jailVisit.getPlayersInJailArray()[jailVisit.getPlayersInJailArray().length-1]).b.subBalance(1);
-
-        String[] placeholder = new String[jailVisit.getPlayersInJailArray().length - 1];
-        if(jailVisit.getPlayersInJailArray().length==1)
-               jailVisit.setPlayersInJailArray(nullArray);
-           else jailVisit.setPlayersInJailArray(placeholder);
-    }
 
     public Field[] getFields() {
         return fields;
+    }
+
+    public void isJustLeftJail(Player player){
+        if(player.getIsInPrison() == true){
+            player.freeOfJail();
+        }
     }
 
 }

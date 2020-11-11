@@ -1,19 +1,12 @@
 package Game.Fields;
 
-public class JailVisit extends Field {
+import Game.Player;
+import Game.PlayerController;
 
-    private String[] playersInJailArray;
+public class JailVisit extends Field {
 
     public JailVisit(String name, int fieldNumber, String msg){
         super(name, fieldNumber, msg);
     }
 
-
-    public String[] getPlayersInJailArray() {
-        return playersInJailArray;
-    }
-
-    public void setPlayersInJailArray(String[] playersInJail) {
-        this.playersInJailArray = playersInJail;
-    }
 }
