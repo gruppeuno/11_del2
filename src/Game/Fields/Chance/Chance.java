@@ -80,13 +80,18 @@ public class Chance extends Field {
             case 1: //Chance Kort 1
                 break;
             case 2: //Chance Kort 2
+                System.out.println("Ryk frem til start og modtag 2M");
                 MoveToStart(player);
                 AddBank(player, 2);
                 break;
             case 3: //Chance Kort 3
+                System.out.println("Ryk op til 5 felter frem");
                 MoveFieldPlayerSelect(player, 1, 5);
                 break;
             case 4: //Chance Kort 4
+                System.out.println("Gratis felt.");
+                System.out.println("Ryk frem til et Orange felt.");
+                System.out.println("Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren.");
                 break;
             case 5: //Chance Kort 5
 
@@ -112,35 +117,41 @@ public class Chance extends Field {
             case 6: //Chance Kort 6
                 break;
             case 7: //Chance Kort 7
+                System.out.println("Du har spist for meget slik. Betal 2M til banken");
                 SubBank(player, 2);
                 break;
             case 8: //Chance Kort 8
                 break;
-            case 9:
+            case 9://Chance kort 9
                 break;
-            case 10:
+            case 10://Chance kort 10
+                System.out.println("Du løslades uden omkostninger");
+                System.out.println("Behold dette kort, indtil du får brug for det");
                 break;
-            case 11:
+            case 11://Chancekort 11
+                System.out.println("Ryk til Strandpromenaden");
                 MoveSpecificField(player, 23);
                 break;
-            case 12:
+            case 12://Chancekort 12
                 break;
-            case 13:
+            case 13://Chancekort 13
                 break;
-            case 14:
+            case 14://Chancekort 14
                 break;
-            case 15:
+            case 15://Chancekort 15
                 break;
-            case 16:
+            case 16://Chancekort 16
+                System.out.println("Du har lavet alle dine lektier. Modtag 2M fra Banken");
                 AddBank(player, 2);
                 break;
-            case 17:
+            case 17://Chancekort 17
                 break;
-            case 18:
+            case 18://Chancekort 18
+                MoveSpecificField(player,10);
                 break;
-            case 19:
+            case 19://Chancekort 19
                 break;
-            case 20:
+            case 20://Chancekort 20
                 break;
 
         }
