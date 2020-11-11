@@ -11,6 +11,7 @@ public class Chance extends Field {
 
     private static boolean cardUse = false;
     private int move = 0;
+    private static int i = 0;
 
     private final int[] chanceArray = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
 
@@ -68,9 +69,7 @@ public class Chance extends Field {
 
         System.out.println("Du har trukket et chancekort");
 
-        int i;
 
-        for (i = 1; i < chanceArray.length; i++) {
 
         switch (chanceArray[i]) {
 
@@ -97,11 +96,15 @@ public class Chance extends Field {
                 Scanner scan = new Scanner(System.in);
                 do {
                     System.out.println("Skriv \"Ryk\" for ar rykke frem eller \"Træk\" for at trække et nyt chancekort.");
-                    valg = scan.nextLine(); }
+                    valg = scan.nextLine();
+                }
                 while (!((traek.equals(valg.toLowerCase())) || (ryk.equals(valg.toLowerCase()))));
 
-                if (valg.toLowerCase().equals(ryk)) {MoveField(player, 1);}
-                else {ChanceCard(player, playerController);}
+                if (valg.toLowerCase().equals(ryk)) {
+                    MoveField(player, 1);
+                } else {
+                    ChanceCard(player, playerController);
+                }
 
                 scan.close();
 
@@ -117,13 +120,13 @@ public class Chance extends Field {
                 break;
             case 10: //Chance Kort 10 //TODO: Vi skal have at når kortet bliver brugt, JailCardUse så bliver false igen.
 
-                if(!getJailCardUse() == true) {
+                if (!getJailCardUse() == true) {
                     System.out.println("Du har fået ");
                     AdjustJailCard(player);
                     setJailCardUse(true);
                 }
 
-                if(getJailCardUse() == true) {
+                if (getJailCardUse() == true) {
                     i++;
                     ChanceCard(player, playerController);
                 }
@@ -151,12 +154,17 @@ public class Chance extends Field {
                 break;
             case 20:
                 break;
-
+            default:
+                System.out.println("Der skete en fejl");
         }
 
-        if (i == 20 ) { i = 1; }
+        i++;
+
+        if (i == 19) {
+            i = 0;
         }
     }
+
 
     public void MoveField(Player player, int move) {
 
@@ -196,7 +204,7 @@ public class Chance extends Field {
         player.setJailCard(true);
     }
 
-    public static void setJailCardUse(boolean cardUse) {
+    private static void setJailCardUse(boolean cardUse) {
         Chance.cardUse = cardUse;
     }
 
@@ -206,11 +214,17 @@ public class Chance extends Field {
 
     public void BankFromAll (Player player, PlayerController playerController) {
 
-        for (int i = 0; i <= playerController.getPlayerArrayLength(); i++){
-            Player tempPlayer = playerController.getPlayerArray()[i];
+        for (Player tempPlayer : playerController.getPlayerArray()) {
             tempPlayer.b.subBalance(1);
         }
+
         player.b.addBalance(playerController.getPlayerArrayLength()+1);
+    }
+    public void FreeFromJail(Player player) {
+        if (getJailCardUse() == true && player.getIsInPrison() == true) {
+            player.JailCardFree();
+            setJailCardUse(false);
+        }
     }
 }
 

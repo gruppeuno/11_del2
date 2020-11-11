@@ -56,6 +56,8 @@ public class Player {
         isInPrison = true;
     }
 
+    public void JailCardFree() { isInPrison = false;}
+
     public void freeOfJail(){
         isInPrison = false;
         b.subBalance(1);

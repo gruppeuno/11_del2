@@ -60,7 +60,6 @@ public class FieldController {
 
     public void isJustLeftJail(Player player){
         if(player.getIsInPrison() == true){
-            player.freeOfJail();
         }
     }
 
