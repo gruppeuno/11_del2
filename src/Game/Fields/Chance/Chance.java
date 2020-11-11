@@ -2,13 +2,17 @@ package Game.Fields.Chance;
 
 import Game.Fields.Field;
 import Game.Player;
+import Game.PlayerController;
 
 import java.util.Random;
 import java.util.Scanner;
 
 public class Chance extends Field {
 
+    private static boolean cardUse = false;
     private int move = 0;
+
+
 
     private final int[] chanceArray = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
 
@@ -66,7 +70,7 @@ public class Chance extends Field {
         return arrOut;
     }
 
-    public void ChanceCard(Player player) {
+    public void ChanceCard(Player player, PlayerController playerController) {
 
         System.out.println("Du har trukket et chancekort");
 
@@ -103,7 +107,7 @@ public class Chance extends Field {
                 while (!((traek.equals(valg.toLowerCase())) || (ryk.equals(valg.toLowerCase()))));
 
                 if (valg.toLowerCase().equals(ryk)) {MoveField(player, 1);}
-                else {ChanceCard(player);}
+                else {ChanceCard(player, playerController);}
 
                 scan.close();
 
@@ -115,9 +119,20 @@ public class Chance extends Field {
                 break;
             case 8: //Chance Kort 8
                 break;
-            case 9:
+            case 9: //Chance Kort 9
                 break;
-            case 10:
+            case 10: //Chance Kort 10 //TODO: Vi skal have at når kortet bliver brugt, JailCardUse så bliver false igen.
+
+                if(!getJailCardUse() == true) {
+                    System.out.println("Du har fået ");
+                    AdjustJailCard(player);
+                    setJailCardUse(true);
+                }
+
+                if(getJailCardUse() == true) {
+                    i++;
+                    ChanceCard(player, playerController);
+                }
                 break;
             case 11:
                 MoveSpecificField(player, 23);
@@ -127,6 +142,7 @@ public class Chance extends Field {
             case 13:
                 break;
             case 14:
+                BankFromAll(player, playerController);
                 break;
             case 15:
                 break;
@@ -170,7 +186,7 @@ public class Chance extends Field {
         player.setFieldNumber(0);
     }
 
-    public void MoveSpecificField (Player player, int field) {
+    public void MoveSpecificField(Player player, int field) {
         player.setFieldNumber(field);
     }
 
@@ -180,8 +196,27 @@ public class Chance extends Field {
 
     public void SubBank(Player player, int moneyChange) {
         player.b.subBalance(moneyChange);
-
     }
 
+    public void AdjustJailCard(Player player) {
+        player.setJailCard(true);
+    }
+
+    public static void setJailCardUse(boolean cardUse) {
+        Chance.cardUse = cardUse;
+    }
+
+    public boolean getJailCardUse() {
+        return cardUse;
+    }
+
+    public void BankFromAll (Player player, PlayerController playerController) {
+
+        for (int i = 0; i <= playerController.getPlayerArrayLength(); i++){
+            Player tempPlayer = playerController.getPlayerArray()[i];
+            tempPlayer.b.subBalance(1);
+        }
+        player.b.addBalance(playerController.getPlayerArrayLength()+1);
+    }
 }
 
