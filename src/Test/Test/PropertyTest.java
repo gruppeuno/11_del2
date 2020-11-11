@@ -128,6 +128,30 @@ class PropertyTest {
         assertEquals(actual,testProperty.getOwnerName());
     }
 
+    /**Sælge egendom for at payRent*/
+
+    //test af at spiller betaler ved at sælge enkelt ejendom
+    //TODO: lav færdig
+    @Test
+    public void sellPropertyToPlayerTest(){
+        PlayerController testPlayerController = new PlayerController();
+        Property testProperty = new Property("Horsensgade", 2,6,"test","test");
+        Property testProperty1 = new Property("Horsensgade", 2,6,"test","test");
+        Property testProperty2 = new Property("Horsensgade", 2,5,"test","test");
+
+        //skaber 2 nye spillere i playerarray
+        testPlayerController.createPlayers(2);
+
+        //sætter owner til p0, det samme som spilleren hedder efter kald på createPlayers ovenfor.
+        testProperty.setOwner("p0");
+        testPlayerController.getPlayerByName("p0").b.setBalance(0);
+
+        testProperty2.payRent(testPlayerController.getPlayerByName("p0"), testPlayerController);
+
+        int actual = 1;
+        assertEquals(actual, testPlayerController.getPlayerByName("p0").getPropertiesOwned().size());
+    }
+
 
     /** Test af payRent*/
 
@@ -174,7 +198,6 @@ class PropertyTest {
         int actual = 105;
         assertEquals(actual,testPlayerController.getPlayerByName("p0").b.getBalance());
     }
-
 
 
 

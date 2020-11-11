@@ -43,7 +43,6 @@ public class Property extends Field {
         if(!player.b.getBankrupt()) {
             setOwner(player.getPlayerName());
             System.out.println(player.getPlayerName() + " købte " + getName() + " for " + fieldPrice + "M");
-
         }
     }
 
