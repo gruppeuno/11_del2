@@ -162,6 +162,18 @@ public class PlayerController {
         }
     }
 
+    public void handlePayment(Player player, int payment){
+        int balanceCheck = player.b.getBalance()-payment;
+        if (balanceCheck>=payment)
+            player.b.subBalance(payment);
+
+        else if(balanceCheck<=0) {
+            if (player.getTotalPropertyValue()<payment);
+            player.b.setBankrupt(true);
+
+        }
+    }
+
 
 
 

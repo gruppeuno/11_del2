@@ -40,6 +40,7 @@ public class Property extends Field {
 
     public void buyProperty(Player player){
         if(!player.b.getBankrupt()) {
+            //todo: kald check bankrupt
             player.b.subBalance(fieldPrice);
             setOwner(player.getPlayerName());
             System.out.println(player.getPlayerName() + " købte " + getName() + " for " + fieldPrice + "M");
@@ -48,6 +49,7 @@ public class Property extends Field {
     }
 
     public void payRent(Player player , PlayerController playerController) {
+        //todo: kald check bankrupt
         player.b.subBalance(fieldRent);
         if(!player.b.getBankrupt()) {
             Player propertyOwner = playerController.getPlayerByName(getOwnerName());

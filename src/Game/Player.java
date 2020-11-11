@@ -66,5 +66,15 @@ public class Player {
         propertiesOwned.add(property);
     }
 
+    //TODO: dårlig praktis?? think maybe not mayby is
+    public int getTotalPropertyValue(){
+        int totalValue=0;
+        if(propertiesOwned.size()>0)
+            for (Property property:propertiesOwned) {
+                totalValue += property.getFieldRent();
+            }
+        return totalValue;
+    }
+
 
 }
