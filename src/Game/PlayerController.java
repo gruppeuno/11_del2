@@ -157,7 +157,7 @@ public class PlayerController {
 
     public void handlePayment(Player player, int payment){
         int balanceCheck = player.b.getBalance()-payment;
-        if (balanceCheck>=payment)
+        if (balanceCheck>=0)
             player.b.subBalance(payment);
 
         else if(balanceCheck<=0) {

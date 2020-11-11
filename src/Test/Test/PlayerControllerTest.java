@@ -142,5 +142,31 @@ class PlayerControllerTest {
         assertEquals(actual ,playerController.getPlayerByName("p0").b.getBankrupt());
     }
 
+    /** Test af handlePayment*/
+    //Tester om handlePayment gennemfører betaling
+    @Test
+    public void handlePaymentTest(){
+        PlayerController playerController = new PlayerController();
+        playerController.createPlayers(4);
+        playerController.getPlayerByName("p0").b.setBalance(5);
+        playerController.handlePayment(playerController.getPlayerByName("p0"),4);
+
+        int actual = 1;
+        assertEquals(1,playerController.getPlayerByName("p0").b.getBalance());
+    }
+
+    //Tester om handlePayment sætter Bankrupt til true hvis betalingen er større end balancen
+    @Test
+    public void handlePaymentBankruptTest(){
+        PlayerController playerController = new PlayerController();
+        playerController.createPlayers(4);
+        playerController.getPlayerByName("p0").b.setBalance(4);
+        playerController.handlePayment(playerController.getPlayerByName("p0"),5);
+
+        boolean actual = true;
+        assertEquals(true,playerController.getPlayerByName("p0").b.getBankrupt());
+    }
+
+    //TODO skal testes om spilleren kan betale med properties
 
 }
