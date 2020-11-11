@@ -12,17 +12,12 @@ public class Chance extends Field {
     private static boolean cardUse = false;
     private int move = 0;
 
-
-
     private final int[] chanceArray = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
 
     public Chance(String name, int fieldNumber, String msg, int move) {
         super(name, fieldNumber, msg);
         this.move = move;
-
     }
-
-
 
     /**
      * Todo list:
@@ -55,7 +50,6 @@ public class Chance extends Field {
             chanceArray[random] = chanceArray[i];
             chanceArray[i] = temp;
         }
-
     }
 
     public String toString() {

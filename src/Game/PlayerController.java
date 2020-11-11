@@ -90,6 +90,7 @@ public class PlayerController {
         return false;
     }
 
+    public int getPlayerArrayLength(){ return playerArray.length; }
     public Player[] getPlayerArray(){ return playerArray; }
 
     public void movePlayer(Player player, int dieValue){
