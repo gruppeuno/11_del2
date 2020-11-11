@@ -18,7 +18,7 @@ public class Player {
     private int fieldNumber = 0;
     private ArrayList<Property> propertiesOwned = new ArrayList<Property>();
     public BankAccount b = new BankAccount();
-    private boolean JailCard;
+    private boolean JailCard = false;
 
     public Player(String playerName) {
         this.playerName = playerName;

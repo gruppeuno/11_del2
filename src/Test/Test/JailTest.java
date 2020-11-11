@@ -60,6 +60,29 @@ class JailTest {
 
   }
 
+  @Test
+    public void isJailCardWorks(){
+
+      FieldController fieldController = new FieldController();
+      PlayerController playerController = new PlayerController();
+      Player testPlayer = new Player("testPerson");
+      Jail jail = new Jail("testjail", 18, "test");
+
+      testPlayer.b.setBalance(20);
+      testPlayer.setJailCard(true);
+      //testspiller lander på fængsel
+      jail.fieldAction(testPlayer,playerController);
+      //spiller lander på nyt felt
+      fieldController.landOnField(testPlayer,playerController);
+
+      int expected = 20;
+      int actual = testPlayer.b.getBalance();
+      
+      assertEquals(actual,expected);
+
+
+  }
+
 
 
 }
