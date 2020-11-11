@@ -135,7 +135,7 @@ public class PlayerController {
     }
 
     //TODO: metode til at fjerne property
-    public void removeProperty(Player player,int payment){
+    public void sellProperty(Player player, int payment){
         int minPayment = payment;
         int arraylistSizeBefore = player.getPropertiesOwned().size();
 
@@ -168,9 +168,12 @@ public class PlayerController {
             player.b.subBalance(payment);
 
         else if(balanceCheck<=0) {
-            if (player.getTotalPropertyValue()<payment);
-            player.b.setBankrupt(true);
-
+            if (player.getTotalPropertyValue()<payment){
+                player.b.setBankrupt(true);
+            }
+            else if (player.getTotalPropertyValue()>payment){
+                sellProperty(player,payment);
+            }
         }
     }
 

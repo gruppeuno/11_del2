@@ -108,7 +108,7 @@ class PlayerControllerTest {
         playerController.createPlayers(4);
         Property testProp = new Property("BURGERBAREN", 1,1, "Du landede på burgerbaren","brown");
         playerController.getPlayerByName("p0").addPropertyOwned(testProp);
-        playerController.removeProperty(playerController.getPlayerArray()[0],1);
+        playerController.sellProperty(playerController.getPlayerArray()[0],1);
 
         int actual = 0;
         assertEquals(actual ,playerController.getPlayerByName("p0").getPropertiesOwned().size());
@@ -122,7 +122,7 @@ class PlayerControllerTest {
         Property testProp = new Property("BURGERBAREN", 1,1, "Du landede på burgerbaren","brown");
         playerController.getPlayerByName("p0").addPropertyOwned(testProp);
         playerController.getPlayerByName("p0").b.setBalance(0);
-        playerController.removeProperty(playerController.getPlayerArray()[0],1);
+        playerController.sellProperty(playerController.getPlayerArray()[0],1);
 
         boolean actual = true;
         assertEquals(actual ,playerController.getPlayerByName("p0").b.getBankrupt());
@@ -136,7 +136,7 @@ class PlayerControllerTest {
         Property testProp = new Property("BURGERBAREN", 1,1, "Du landede på burgerbaren","brown");
         playerController.getPlayerByName("p0").addPropertyOwned(testProp);
         playerController.getPlayerByName("p0").b.setBalance(0);
-        playerController.removeProperty(playerController.getPlayerArray()[0],2);
+        playerController.sellProperty(playerController.getPlayerArray()[0],2);
 
         boolean actual = true;
         assertEquals(actual ,playerController.getPlayerByName("p0").b.getBankrupt());
