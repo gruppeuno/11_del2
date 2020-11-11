@@ -2,6 +2,7 @@ package Game.Fields.Chance;
 
 import Game.Fields.Field;
 import Game.Player;
+import Game.PlayerController;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -69,7 +70,7 @@ public class Chance extends Field {
         return arrOut;
     }
 
-    public void ChanceCard(Player player) {
+    public void ChanceCard(Player player, PlayerController playerController) {
 
         System.out.println("Du har trukket et chancekort");
 
@@ -106,7 +107,7 @@ public class Chance extends Field {
                 while (!((traek.equals(valg.toLowerCase())) || (ryk.equals(valg.toLowerCase()))));
 
                 if (valg.toLowerCase().equals(ryk)) {MoveField(player, 1);}
-                else {ChanceCard(player);}
+                else {ChanceCard(player, playerController);}
 
                 scan.close();
 
@@ -130,7 +131,7 @@ public class Chance extends Field {
 
                 if(getJailCardUse() == true) {
                     i++;
-                    ChanceCard(player);
+                    ChanceCard(player, playerController);
                 }
                 break;
             case 11:
@@ -141,6 +142,7 @@ public class Chance extends Field {
             case 13:
                 break;
             case 14:
+                BankFromAll(player, playerController);
                 break;
             case 15:
                 break;
@@ -203,10 +205,18 @@ public class Chance extends Field {
     public static void setJailCardUse(boolean cardUse) {
         Chance.cardUse = cardUse;
     }
+
     public boolean getJailCardUse() {
         return cardUse;
     }
 
+    public void BankFromAll (Player player, PlayerController playerController) {
 
+        for (int i = 0; i <= playerController.getPlayerArrayLength(); i++){
+            Player tempPlayer = playerController.getPlayerArray()[i];
+            tempPlayer.b.subBalance(1);
+        }
+        player.b.addBalance(playerController.getPlayerArrayLength()+1);
+    }
 }
 
