@@ -12,6 +12,7 @@ public class Player {
     private boolean rollAgain = false;
     private int fieldNumber = 0;
     public BankAccount b = new BankAccount();
+    private boolean JailCard;
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -36,7 +37,12 @@ public class Player {
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
     }
-    public boolean setJailCard (boolean JailCard) {return JailCard;}
+    public void setJailCard (boolean JailCard) {
+        this.JailCard = JailCard;
+    }
+    public boolean getJailCard () {
+        return JailCard;
+    }
 
     public int getFieldNumber() {
         return fieldNumber;
