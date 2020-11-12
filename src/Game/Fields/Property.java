@@ -16,8 +16,6 @@ public class Property extends Field {
     private int fieldRent;
     private String ownerName;
     private boolean ownedByPlayer = false;
-
-
     private String colour;
 
     public Property(String name, int fieldNumber, int fieldPrice, String msg, String colour){
@@ -65,7 +63,6 @@ public class Property extends Field {
 
     public void payRent(Player player , PlayerController playerController) {
         if(player.b.getBalance()>=fieldRent){
-            ownedBySamePlayer(playerController);
             player.b.subBalance(fieldRent);
             playerController.getPlayerByName(ownerName).b.addBalance(fieldRent);
         }
@@ -81,9 +78,9 @@ public class Property extends Field {
 
     public void ownedBySamePlayer(PlayerController playerController){
         ArrayList<Property> properties = playerController.getPlayerByName(getOwnerName()).getPropertiesOwned();
-        for (Property property1: properties) {
-            if(property1.getColour().equals(colour) && !property1.getName().equals(name)){
-                property1.setDoubleRent();
+        for (Property property: properties) {
+            if(property.getColour().equals(colour) && !property.getName().equals(name)){
+                property.setDoubleRent();
                 setDoubleRent();
             }
         }

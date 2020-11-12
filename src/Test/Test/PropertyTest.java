@@ -87,51 +87,40 @@ class PropertyTest {
     @Test
     public void buyPropertyBalanceUpdateTest(){
         PlayerController testPlayerController = new PlayerController();
-        Player testPlayer = new Player("testPerson");
         Property testProperty = new Property("Horsensgade", 2,5,"test","test");
 
         //skaber 2 nye spillere i playerarray
         testPlayerController.createPlayers(2);
 
-        //sætter owner til p0, det samme som spilleren hedder efter kald på createPlayers ovenfor.
-        testProperty.setOwner("p0");
-        //setter begge spillers balance til 100
-        testPlayer.b.setBalance(100);
         testPlayerController.getPlayerByName("p0").b.setBalance(100);
 
-        testProperty.buyProperty(testPlayer, testPlayerController);
+        testProperty.buyProperty(testPlayerController.getPlayerByName("p0"), testPlayerController);
 
         int actual = 95;
-        assertEquals(actual,testPlayer.b.getBalance());
+        assertEquals(actual,testPlayerController.getPlayerByName("p0").b.getBalance());
     }
 
     //test af om grundens ejer bliver opdateret
-//test af balance opdatering
     @Test
     public void buyPropertyOwnerUpdateTest(){
         PlayerController testPlayerController = new PlayerController();
-        Player testPlayer = new Player("testPerson");
         Property testProperty = new Property("Horsensgade", 2,5,"test","test");
 
         //skaber 2 nye spillere i playerarray
         testPlayerController.createPlayers(2);
 
-        //sætter owner til p0, det samme som spilleren hedder efter kald på createPlayers ovenfor.
-        testProperty.setOwner("p0");
-        //setter begge spillers balance til 100
-        testPlayer.b.setBalance(100);
         testPlayerController.getPlayerByName("p0").b.setBalance(100);
 
-        testProperty.buyProperty(testPlayer, testPlayerController);
+        testProperty.buyProperty(testPlayerController.getPlayerByName("p0"), testPlayerController);
 
-        String actual = testPlayer.getPlayerName();
+        String actual = "p0";
         assertEquals(actual,testProperty.getOwnerName());
     }
 
     /**Sælge egendom for at payRent*/
 
     //test af at spiller betaler ved at sælge enkelt ejendom
-    //TODO: lav færdig
+    //TODO: IKKE FÆRDIG
     @Test
     public void sellPropertyToPlayerTest(){
         PlayerController testPlayerController = new PlayerController();
@@ -149,7 +138,6 @@ class PropertyTest {
         testProperty2.payRent(testPlayerController.getPlayerByName("p0"), testPlayerController);
 
         int actual = 1;
-        assertEquals(actual, testPlayerController.getPlayerByName("p0").getPropertiesOwned().size());
     }
 
 
@@ -218,6 +206,8 @@ class PropertyTest {
     }
 
     /**Test af om setDoubleRent bliver kaldt når spiller køber 2. grund af samme farve*/
+
+    //test af om rent bliver dobbelt
     @Test
     public void buyPropertySetDoubleRentTest(){
         PlayerController testPlayerController = new PlayerController();
@@ -237,6 +227,8 @@ class PropertyTest {
         int actual = 8;
         assertEquals(actual,testProperty3.getFieldRent());
     }
+
+
 
 
 
