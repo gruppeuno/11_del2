@@ -1,7 +1,6 @@
 package Game.Fields.Chance;
 
 import Game.Fields.Field;
-import Game.Fields.Property;
 import Game.Player;
 import Game.PlayerController;
 
@@ -14,7 +13,7 @@ public class Chance extends Field {
     private int move = 0;
     private static int i = 0;
 
-    private final int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+    private static int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
 
     /**
      * Todo list:
@@ -39,7 +38,7 @@ public class Chance extends Field {
 
     //Tager vores arrays indhold, og sætter det i en tilfældig rækkefølge.
     @Override
-    public void RandomizeChance() {
+    public void randomizeChance() {
 
         Random rand = new Random();
 
@@ -64,28 +63,29 @@ public class Chance extends Field {
         return arrOut;
     }
 
-    public void ChanceCard(Player player, PlayerController playerController) {
+    public void chanceCard(Player player, PlayerController playerController) {
 
         System.out.println("Du har trukket et chancekort");
 
         switch (chanceArray[i]) {
 
             case 1: //Chance Kort 1
+
                 break;
             case 2: //Chance Kort 2
                 System.out.println("Ryk frem til start og modtag 2M");
-                MoveToStart(player);
-                AddBank(player, 2);
+                moveToStart(player);
+                addBank(player, 2);
                 break;
             case 3: //Chance Kort 3
                 System.out.println("Ryk op til 5 felter frem");
-                MoveFieldPlayerSelect(player, 1, 5);
+                moveFieldPLayerSelect(player, 1, 5);
                 break;
             case 4: //Chance Kort 4
                 System.out.println("Gratis felt.");
                 System.out.println("Ryk frem til et Orange felt.");
                 System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
-                MoveSpecificFieldRange(player, "Orange", 10, 11);
+                moveSpecificFieldRange(player, "Orange", 10, 11);
               //  FreeProperty(player, playerController);
                 break;
             case 5: //Chance Kort 5
@@ -103,8 +103,10 @@ public class Chance extends Field {
                     valg = scan.nextLine(); }
                 while (!((traek.equals(valg.toLowerCase())) || (ryk.equals(valg.toLowerCase()))));
 
-                if (valg.toLowerCase().equals(ryk)) {MoveField(player, 1);}
-                else {ChanceCard(player, playerController);}
+                if (valg.toLowerCase().equals(ryk)) {
+                    moveField(player, 1);}
+                else {
+                    chanceCard(player, playerController);}
 
                 scan.close();
 
@@ -113,7 +115,7 @@ public class Chance extends Field {
                 break;
             case 7: //Chance Kort 7
                 System.out.println("Du har spist for meget slik. Betal 2M til banken");
-                SubBank(player, 2);
+                subBank(player, 2);
                 break;
             case 8: //Chance Kort 8
                 System.out.println("Gratis felt");
@@ -130,18 +132,18 @@ public class Chance extends Field {
                 System.out.println("Behold dette kort, indtil du får brug for det");
                 if(!getJailCardUse() == true) {
                     System.out.println("Du har fået ");
-                    AdjustJailCard(player);
+                    adjustJailCard(player);
                     setJailCardUse(true);
                 }
 
                 if (getJailCardUse() == true) {
                     i++;
-                    ChanceCard(player, playerController);
+                    chanceCard(player, playerController);
                 }
                 break;
             case 11://Chancekort 11
                 System.out.println("Ryk til Strandpromenaden");
-                MoveSpecificField(player, 23);
+                moveSpecificField(player, 23);
                 break;
             case 12://Chancekort 12
 
@@ -149,7 +151,7 @@ public class Chance extends Field {
             case 13://Chancekort 13
                 break;
             case 14:
-                BankFromAll(player, playerController);
+                bankFromAll(player, playerController);
                 break;
             case 15://Chancekort 15
                 System.out.println("Gratis felt.");
@@ -158,7 +160,7 @@ public class Chance extends Field {
                 break;
             case 16://Chancekort 16
                 System.out.println("Du har lavet alle dine lektier. Modtag 2M fra Banken");
-                AddBank(player, 2);
+                addBank(player, 2);
                 break;
             case 17://Chancekort 17
                 System.out.println("Gratis felt.");
@@ -166,7 +168,7 @@ public class Chance extends Field {
                 System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
                 break;
             case 18://Chancekort 18
-                MoveSpecificField(player,10);
+                moveSpecificField(player,10);
                 break;
             case 19://Chancekort 19
                 break;
@@ -175,18 +177,19 @@ public class Chance extends Field {
             default:
                 System.out.println("Der skete en fejl");
         }
+        i++;
 
         if (i == 19) {
             i = 0;}
 }
 
-    public void MoveField(Player player, int move) {
+    public void moveField(Player player, int move) {
 
         this.move = move;
         player.setFieldNumber(player.getFieldNumber()+ this.move);
     }
 
-    public void MoveFieldPlayerSelect(Player player, int minField, int maxField) {
+    public void moveFieldPLayerSelect(Player player, int minField, int maxField) {
         Scanner scan = new Scanner(System.in);
 
         do {
@@ -198,15 +201,15 @@ public class Chance extends Field {
         scan.close();
     }
 
-    public void MoveToStart(Player player) {
+    public void moveToStart(Player player) {
         player.setFieldNumber(0);
     }
 
-    public void MoveSpecificField(Player player, int field) {
+    public void moveSpecificField(Player player, int field) {
         player.setFieldNumber(field);
     }
 
-    public void MoveSpecificFieldRange(Player player, String Color,int minMove, int maxMove) {
+    public void moveSpecificFieldRange(Player player, String Color, int minMove, int maxMove) {
         Scanner scan = new Scanner(System.in);
 
         do {
@@ -218,15 +221,15 @@ public class Chance extends Field {
         scan.close();
     }
 
-    public void AddBank(Player player, int moneyChange) {
+    public void addBank(Player player, int moneyChange) {
         player.b.addBalance(moneyChange);
     }
 
-    public void SubBank(Player player, int moneyChange) {
+    public void subBank(Player player, int moneyChange) {
         player.b.subBalance(moneyChange);
     }
 
-    public void AdjustJailCard(Player player) {
+    public void adjustJailCard(Player player) {
         player.setJailCard(true);
     }
 
@@ -238,7 +241,7 @@ public class Chance extends Field {
         return cardUse;
     }
 
-    public void BankFromAll (Player player, PlayerController playerController) {
+    public void bankFromAll(Player player, PlayerController playerController) {
 
         for (Player tempPlayer : playerController.getPlayerArray()) {
             tempPlayer.b.subBalance(1);
@@ -248,8 +251,8 @@ public class Chance extends Field {
     }
 
     @Override
-    public void fieldAction (Player player, PlayerController playerController) {
-        ChanceCard(player, playerController);
+    public void fieldAction(Player player, PlayerController playerController) {
+        chanceCard(player, playerController);
     }
 
 //    private void FreeProperty(Player player, PlayerController playerController){

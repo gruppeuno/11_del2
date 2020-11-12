@@ -3,9 +3,6 @@ package Game;
 import Game.Fields.*;
 import Game.Fields.Chance.Chance;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 public class FieldController {
 
     private Field[] fields = {
@@ -35,9 +32,9 @@ public class FieldController {
             new Property("STRANDPROMENADEN", 23,5, "Du landede på strandpromenaden","blue")
     };
 
-    public void StartSequence(Player player) {
-        Field field = fields[player.getFieldNumber()];
-        field.RandomizeChance();
+    public void StartSequence() {
+        Field field = fields[1];
+        field.randomizeChance();
     }
 
 

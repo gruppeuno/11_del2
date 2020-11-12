@@ -8,7 +8,7 @@ abstract public class Field {
     protected int fieldNumber;
     protected String msg;
 
-    public void RandomizeChance() {}
+    public void randomizeChance() {}
 
     public Field(String name, int fieldNumber, String msg){
         this.name=name;

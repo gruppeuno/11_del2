@@ -25,6 +25,7 @@ public class GameController {
 
         //TODO: Rigtige metode til at køre med 2-6 spillere samt tildele navne
         playerController.playerCreator();
+        fieldController.StartSequence();
 
         //TODO: test metode til 2 spillere
         //playerController.createPlayers(2);
@@ -47,7 +48,7 @@ public class GameController {
             playerController.movePlayer(currentPlayer, die.getDiceValue());
 
             fieldController.landOnField(currentPlayer, playerController);
-            fieldController.StartSequence(currentPlayer);
+
 
             //Terningernes værdier sættes
             // guiView.gui.setDice(cup.getDiceValue());
