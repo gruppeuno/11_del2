@@ -27,6 +27,7 @@ public class Chance extends Field {
      * så bliver det kort lagt ind i bunken igen. Nede i bunden.
      * 2. Disse kort skal så have en effekt. Der er allerede blevet lavet en metode som hedder move, men den tager udgangspunkt i terningen.
      * Vi kan bruge getFieldNumber, og tiløje eller trække nogle Fields fra, og så SetFieldNumber igen.
+     * 3. lille ting, metoder skal være camelCase
      *
      * Den første er den der kræver mest, og nummer to, hvis nummer 1 er lavet godt, så er nummer to bare insert, og se det virke.
      *
@@ -220,7 +221,7 @@ public class Chance extends Field {
 
         player.b.addBalance(playerController.getPlayerArrayLength()+1);
     }
-    public void FreeFromJail(Player player) {
+    public void freeFromJail(Player player) {
         if (getJailCardUse() == true && player.getIsInPrison() == true) {
             player.JailCardFree();
             setJailCardUse(false);
