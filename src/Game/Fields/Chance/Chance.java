@@ -168,7 +168,7 @@ public class Chance extends Field {
         }
 
         if (i == 19) {
-            i = 1;}
+            i = 0;}
 }
 
     public void MoveField(Player player, int move) {
@@ -225,7 +225,6 @@ public class Chance extends Field {
 
         player.b.addBalance(playerController.getPlayerArrayLength()+1);
     }
-
 
     private void FreeProperty(Player player, Property property){
         if (!player.b.getBankrupt()) {
