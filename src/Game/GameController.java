@@ -113,7 +113,7 @@ public class GameController {
 
     public void findWinner(Player[] playerArray) {
 
-        boolean uafgjort = false;
+        boolean itsATie = false;
         Player leadingPlayer = playerArray[0];
 
         for (int i = 0; i < playerArray.length-1; i++) {
@@ -127,11 +127,11 @@ public class GameController {
                     if (playerArray[j].b.getPropertyValue() > leadingPlayer.b.getPropertyValue()) {
                         leadingPlayer = playerArray[j];
                     } else if (playerArray[j].b.getPropertyValue() == leadingPlayer.b.getPropertyValue())
-                        uafgjort = true;
+                        itsATie = true;
                 }
             }
         }
-        printGameResult(uafgjort,leadingPlayer);
+        printGameResult(itsATie,leadingPlayer);
     }
 
     private void printGameResult(boolean uafgjort, Player leadingPlayer){
