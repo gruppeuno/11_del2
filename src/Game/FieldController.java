@@ -44,17 +44,6 @@ public class FieldController {
        field.fieldAction(player, playerController);
     }
 
-    //TODO: ikke færdigt, spørg hjælpelærer
-    public void ownedBySamePlayer(PlayerController playerController, Property property){
-        ArrayList<Property> properties = playerController.getPlayerByName(property.getOwnerName()).getPropertiesOwned();
-        for (Property property1: properties) {
-            if(property1.getColour()==property.getColour()){
-                property1.setDoubleRent();
-                property.setDoubleRent();
-            }
-        }
-
-        }
 
 
     public Field[] getFields() {

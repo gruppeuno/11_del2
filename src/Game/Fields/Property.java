@@ -3,6 +3,7 @@ package Game.Fields;
 import Game.Player;
 import Game.PlayerController;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 /**
@@ -49,6 +50,8 @@ public class Property extends Field {
         if(player.b.getBalance()>=fieldPrice){
             player.b.subBalance(fieldPrice);
             setOwner(player.getPlayerName());
+            player.addPropertyOwned(this);
+            ownedBySamePlayer(playerController);
         }
         else if(player.b.getBalance()<=fieldPrice){
             player.b.setBankrupt(true);
@@ -62,6 +65,7 @@ public class Property extends Field {
 
     public void payRent(Player player , PlayerController playerController) {
         if(player.b.getBalance()>=fieldRent){
+            ownedBySamePlayer(playerController);
             player.b.subBalance(fieldRent);
             playerController.getPlayerByName(ownerName).b.addBalance(fieldRent);
         }
@@ -75,5 +79,15 @@ public class Property extends Field {
         }
     }
 
+    public void ownedBySamePlayer(PlayerController playerController){
+        ArrayList<Property> properties = playerController.getPlayerByName(getOwnerName()).getPropertiesOwned();
+        for (Property property1: properties) {
+            if(property1.getColour().equals(colour) && !property1.getName().equals(name)){
+                property1.setDoubleRent();
+                setDoubleRent();
+            }
+        }
+
+    }
 
 }

@@ -38,10 +38,9 @@ class PlayerTest {
         playerController.getPlayerByName("p0").addPropertyOwned(testProp3);
         playerController.getPlayerByName("p0").addPropertyOwned(testProp4);
         playerController.getPlayerByName("p0").addPropertyOwned(testProp5);
-        playerController.getPlayerByName("p0").b.setBalance(0);
 
         int actual = 10;
         assertEquals(10,playerController.getPlayerByName("p0").getTotalPropertyValue());
-
     }
+
 }
