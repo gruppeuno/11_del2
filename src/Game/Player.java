@@ -1,5 +1,10 @@
 package Game;
 
+import Game.Fields.Property;
+
+import java.util.ArrayList;
+import java.util.Properties;
+
 /**
  * Player
  * @author Gruppe11
@@ -9,10 +14,11 @@ public class Player {
 
     private String playerName;
     private boolean playerWin = false;
-    private boolean rollAgain = false;
+    private boolean isInPrison = false;
     private int fieldNumber = 0;
+    private ArrayList<Property> propertiesOwned = new ArrayList<Property>();
     public BankAccount b = new BankAccount();
-    private boolean JailCard;
+    private boolean JailCard = false;
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -24,13 +30,7 @@ public class Player {
     public boolean getPlayerWin() {
         return playerWin;
     }
-    //Skal måske bruges til CDIO3
-    public void setRollAgain(boolean rollAgain) {
-        this.rollAgain = rollAgain;
-    }
-    public boolean getRollAgain() {
-        return rollAgain;
-    }
+
     public String getPlayerName() {
         return playerName;
     }
@@ -51,4 +51,38 @@ public class Player {
     public void setFieldNumber(int fieldNumber) {
         this.fieldNumber = fieldNumber;
     }
+
+    public void putInJail(){
+        isInPrison = true;
+    }
+
+    public void JailCardFree() { isInPrison = false;}
+
+    public void freeOfJail(){
+        isInPrison = false;
+        b.subBalance(1);
+    }
+
+    public boolean getIsInPrison(){
+        return isInPrison;
+    }
+
+    public ArrayList<Property> getPropertiesOwned() {
+        return propertiesOwned;
+    }
+
+    public void addPropertyOwned(Property property) {
+        propertiesOwned.add(property);
+    }
+
+    public int getTotalPropertyValue(){
+        int totalValue=0;
+        if(propertiesOwned.size()>0)
+            for (Property property:propertiesOwned) {
+                totalValue += property.getFieldRent();
+            }
+        return totalValue;
+    }
+
+
 }

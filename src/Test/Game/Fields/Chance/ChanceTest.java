@@ -54,9 +54,9 @@ class ChanceTest {
     void getJailCardUse() {
     }
 
-    @Test
+ /*   @Test
     void bankFromAll() {
         bankFromAll();
         assertTrue(3,bankFromAll());
-    }
+    }*/
 }

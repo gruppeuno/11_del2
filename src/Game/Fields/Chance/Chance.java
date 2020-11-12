@@ -1,6 +1,7 @@
 package Game.Fields.Chance;
 
 import Game.Fields.Field;
+import Game.Fields.Property;
 import Game.Player;
 import Game.PlayerController;
 
@@ -11,10 +12,9 @@ public class Chance extends Field {
 
     private static boolean cardUse = false;
     private int move = 0;
+    private static int i = 0;
 
-
-
-    private final int[] chanceArray = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+    private final int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
 
     public Chance(String name, int fieldNumber, String msg, int move) {
         super(name, fieldNumber, msg);
@@ -31,13 +31,13 @@ public class Chance extends Field {
      * så bliver det kort lagt ind i bunken igen. Nede i bunden.
      * 2. Disse kort skal så have en effekt. Der er allerede blevet lavet en metode som hedder move, men den tager udgangspunkt i terningen.
      * Vi kan bruge getFieldNumber, og tiløje eller trække nogle Fields fra, og så SetFieldNumber igen.
-     *
+     * 3. lille ting, metoder skal være camelCase
+     * <p>
      * Den første er den der kræver mest, og nummer to, hvis nummer 1 er lavet godt, så er nummer to bare insert, og se det virke.
      *
-     *
-     * @param name 1
+     * @param name        1
      * @param fieldNumber 1
-     * @param msg 1
+     * @param msg         1
      */
 
     public Chance(String name, int fieldNumber, String msg) {
@@ -45,18 +45,19 @@ public class Chance extends Field {
     }
 
     //Tager vores arrays indhold, og sætter det i en tilfældig rækkefølge.
+    @Override
     public void RandomizeChance() {
 
         Random rand = new Random();
 
         for (int i = 0; i < chanceArray.length; i++) {
-            int random= rand.nextInt(chanceArray.length);
-            int temp =chanceArray[random];
+            int random = rand.nextInt(chanceArray.length);
+            int temp = chanceArray[random];
             chanceArray[random] = chanceArray[i];
             chanceArray[i] = temp;
         }
-
     }
+
 
     public String toString() {
 
@@ -73,10 +74,6 @@ public class Chance extends Field {
     public void ChanceCard(Player player, PlayerController playerController) {
 
         System.out.println("Du har trukket et chancekort");
-
-        int i;
-
-        for (i = 1; i < chanceArray.length; i++) {
 
         switch (chanceArray[i]) {
 
@@ -135,7 +132,7 @@ public class Chance extends Field {
                     setJailCardUse(true);
                 }
 
-                if(getJailCardUse() == true) {
+                if (getJailCardUse() == true) {
                     i++;
                     ChanceCard(player, playerController);
                 }
@@ -166,12 +163,13 @@ public class Chance extends Field {
                 break;
             case 20://Chancekort 20
                 break;
-
+            default:
+                System.out.println("Der skete en fejl");
         }
 
-        if (i == 20 ) { i = 1; }
-        }
-    }
+        if (i == 19) {
+            i = 0;}
+}
 
     public void MoveField(Player player, int move) {
 
@@ -211,7 +209,7 @@ public class Chance extends Field {
         player.setJailCard(true);
     }
 
-    public static void setJailCardUse(boolean cardUse) {
+    private static void setJailCardUse(boolean cardUse) {
         Chance.cardUse = cardUse;
     }
 
@@ -221,11 +219,17 @@ public class Chance extends Field {
 
     public void BankFromAll (Player player, PlayerController playerController) {
 
-        for (int i = 0; i <= playerController.getPlayerArrayLength(); i++){
-            Player tempPlayer = playerController.getPlayerArray()[i];
+        for (Player tempPlayer : playerController.getPlayerArray()) {
             tempPlayer.b.subBalance(1);
         }
+
         player.b.addBalance(playerController.getPlayerArrayLength()+1);
+    }
+
+    private void FreeProperty(Player player, Property property){
+        if (!player.b.getBankrupt()) {
+        property.setOwner(player.getPlayerName());
+        System.out.println(player.getPlayerName() + " fik " + property.getName() + " for " + property.getFieldPrice() + "M"); }
     }
 }
 

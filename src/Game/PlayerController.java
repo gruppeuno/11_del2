@@ -1,5 +1,8 @@
 package Game;
 
+import Game.Fields.Property;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -21,7 +24,7 @@ public class PlayerController {
         numberOfPlayers();
         createPlayers();
         setStartBalance();
-
+        System.out.println("Indtast spillernavn lad den yngste spiller starte");
         for (int i = 0; i < playerArray.length; i++){
             int nr = i+1;
             System.out.println("spiller " + nr + " Indtast et navn der er mellem 3-12 tegn, spillere må ikke have samme navn:");
@@ -85,23 +88,19 @@ public class PlayerController {
             if (playerArray[i].getPlayerName().toLowerCase().equals(name.toLowerCase()))
                 return true;
         }
-        if (name.length() > 12 || name.length() < 3) {
+        if (name.length() > 12 || name.length() < 3)
             return true;
-        } else {
-            return false;
-        }
+        return false;
     }
 
     public int getPlayerArrayLength(){ return playerArray.length; }
-
-    public Player[] getPlayerArray(){
-        return playerArray;
-    }
+    public Player[] getPlayerArray(){ return playerArray; }
 
     public void movePlayer(Player player, int dieValue){
         int newSpot = player.getFieldNumber()+dieValue;
         if ( newSpot > 23 ) {
             newSpot = newSpot - 24;
+            player.b.addBalance(2);
         }
         player.setFieldNumber(newSpot);
     }
@@ -114,7 +113,7 @@ public class PlayerController {
         return null;
     }
 
-    //TODO: testmetode
+    //TODO: testmetode, må ikke slettes, ellers stopper integrationstest og unittest med at virke
     public void createPlayers(int numberOfPlayers){
         this.playerArray = new Player[numberOfPlayers];
         for (int i = 0; i < playerArray.length; i++) {
@@ -137,6 +136,32 @@ public class PlayerController {
                 playerArray[i].b.setBalance(16);
 
     }
+
+
+
+   //TODO: metode til at fjerne property, spørg hjælpelærer, IKKE FÆRDIG
+   public void sellProperty(Player player, int payment, Player receivingPlayer){
+       int minPayment = payment;
+       ArrayList<Property> properties = new ArrayList<Property>();
+
+       int arraylistSizeBefore = player.getPropertiesOwned().size();
+
+       if(player.getPropertiesOwned().size()>0)
+           for (int j = minPayment; j >= payment; j++) {
+               for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
+                   if(player.getPropertiesOwned().get(i).getFieldPrice()>=payment){
+                       player.getPropertiesOwned().remove(i);
+                       break;
+                   }
+               }
+           }
+
+       if(player.getPropertiesOwned().size()==0 && player.b.getBalance()==0)
+           player.b.setBankrupt(true);
+       else if (arraylistSizeBefore==player.getPropertiesOwned().size())
+           player.b.setBankrupt(true);
+   }
+
 
 
 
