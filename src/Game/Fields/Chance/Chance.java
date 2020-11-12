@@ -84,7 +84,7 @@ public class Chance extends Field {
             case 4: //Chance Kort 4
                 System.out.println("Gratis felt.");
                 System.out.println("Ryk frem til et Orange felt.");
-                System.out.println("Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren.");
+                System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
                 MoveSpecificFieldRange(player, "Orange", 10, 11);
               //  FreeProperty(player, playerController);
                 break;
@@ -116,11 +116,18 @@ public class Chance extends Field {
                 SubBank(player, 2);
                 break;
             case 8: //Chance Kort 8
+                System.out.println("Gratis felt");
+                System.out.println("Ryk frem til et orange eller grønt felt.");
+                System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
                 break;
             case 9: //Chance Kort 9
+                System.out.println("Gratis felt");
+                System.out.println("Ryk frem til et lyseblåt felt.");
+                System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
                 break;
             case 10: //Chance Kort 10 //TODO: Vi skal have at når kortet bliver brugt, JailCardUse så bliver false igen.
-
+                System.out.println("Du løslades uden omkostninger");
+                System.out.println("Behold dette kort, indtil du får brug for det");
                 if(!getJailCardUse() == true) {
                     System.out.println("Du har fået ");
                     AdjustJailCard(player);
@@ -137,6 +144,7 @@ public class Chance extends Field {
                 MoveSpecificField(player, 23);
                 break;
             case 12://Chancekort 12
+
                 break;
             case 13://Chancekort 13
                 break;
@@ -144,12 +152,18 @@ public class Chance extends Field {
                 BankFromAll(player, playerController);
                 break;
             case 15://Chancekort 15
+                System.out.println("Gratis felt.");
+                System.out.println("Ryk frem til et Pink eller mørkeblåt felt.");
+                System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
                 break;
             case 16://Chancekort 16
                 System.out.println("Du har lavet alle dine lektier. Modtag 2M fra Banken");
                 AddBank(player, 2);
                 break;
             case 17://Chancekort 17
+                System.out.println("Gratis felt.");
+                System.out.println("Ryk frem til et rødt felt.");
+                System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
                 break;
             case 18://Chancekort 18
                 MoveSpecificField(player,10);
