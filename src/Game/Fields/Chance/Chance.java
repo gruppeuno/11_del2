@@ -1,5 +1,6 @@
 package Game.Fields.Chance;
 
+import Game.FieldController;
 import Game.Fields.Field;
 import Game.Player;
 import Game.PlayerController;
@@ -254,13 +255,5 @@ public class Chance extends Field {
     public void fieldAction(Player player, PlayerController playerController) {
         chanceCard(player, playerController);
     }
-
-//    private void FreeProperty(Player player, PlayerController playerController){
-//        if (property.getOwnedByPlayer()) {property.payRent(player, playerController);}
-//        else {
-//            if (!player.b.getBankrupt()) {
-//                property.setOwner(player.getPlayerName());
-//                System.out.println(player.getPlayerName() + " fik " + property.getName() + " for " + property.getFieldPrice() + "M"); }}
-//    }
 }
 

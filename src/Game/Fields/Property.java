@@ -87,5 +87,13 @@ public class Property extends Field {
 
     }
 
+    private void FreeProperty(Player player, PlayerController playerController){
+        if (getOwnedByPlayer()) {payRent(player, playerController);}
+        else {
+            if (!player.b.getBankrupt()) {
+                setOwner(player.getPlayerName());
+                System.out.println(player.getPlayerName() + " fik " + getName() + " for " + getFieldPrice() + "M"); }}
+    }
+
 
 }
