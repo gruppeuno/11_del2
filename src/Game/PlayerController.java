@@ -1,5 +1,8 @@
 package Game;
 
+import Game.Fields.Property;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -134,33 +137,30 @@ public class PlayerController {
 
     }
 
-    //TODO: metode til at fjerne property
-    public void removeProperty(Player player,int payment){
-        int minPayment = payment;
-        int arraylistSizeBefore = player.getPropertiesOwned().size();
 
-        if(player.getPropertiesOwned().size()>0)
-            for (int j = minPayment; j >= payment; j++) {
-                for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
-                    if(player.getPropertiesOwned().get(i).getFieldPrice()>=payment){
-                        player.getPropertiesOwned().remove(i);
-                        break;
-                    }
-                }
-            }
 
-        if(player.getPropertiesOwned().size()==0 && player.b.getBalance()==0)
-            player.b.setBankrupt(true);
-        else if (arraylistSizeBefore==player.getPropertiesOwned().size())
-            player.b.setBankrupt(true);
-    }
+   //TODO: metode til at fjerne property, spørg hjælpelærer, IKKE FÆRDIG
+   public void sellProperty(Player player, int payment, Player receivingPlayer){
+       int minPayment = payment;
+       ArrayList<Property> properties = new ArrayList<Property>();
 
-    //TODO: spørg hjælpelærer
-    public void addPropertyValue(Player player,int payment){
-        for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
+       int arraylistSizeBefore = player.getPropertiesOwned().size();
 
-        }
-    }
+       if(player.getPropertiesOwned().size()>0)
+           for (int j = minPayment; j >= payment; j++) {
+               for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
+                   if(player.getPropertiesOwned().get(i).getFieldPrice()>=payment){
+                       player.getPropertiesOwned().remove(i);
+                       break;
+                   }
+               }
+           }
+
+       if(player.getPropertiesOwned().size()==0 && player.b.getBalance()==0)
+           player.b.setBankrupt(true);
+       else if (arraylistSizeBefore==player.getPropertiesOwned().size())
+           player.b.setBankrupt(true);
+   }
 
 
 
