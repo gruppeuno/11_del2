@@ -47,6 +47,7 @@ public class GameController {
             playerController.movePlayer(currentPlayer, die.getDiceValue());
 
             fieldController.landOnField(currentPlayer, playerController);
+            fieldController.StartSequence(currentPlayer);
 
             //Terningernes værdier sættes
             // guiView.gui.setDice(cup.getDiceValue());

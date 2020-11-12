@@ -34,6 +34,11 @@ public class FieldController {
             new Property("STRANDPROMENADEN", 23,5, "Du landede på strandpromenaden","blue")
     };
 
+    public void StartSequence(Player player) {
+        Field field = fields[player.getFieldNumber()];
+        field.RandomizeChance();
+    }
+
 
     //Når en spiller lander på et felt
     public void landOnField(Player player, PlayerController playerController){
