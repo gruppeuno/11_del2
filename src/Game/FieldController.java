@@ -2,6 +2,9 @@ package Game;
 
 import Game.Fields.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class FieldController {
 
     private Field[] fields = {
@@ -42,14 +45,13 @@ public class FieldController {
     }
 
     //TODO: ikke færdigt, spørg hjælpelærer
-    public boolean ownedBySamePlayer(Player player, Property property){
-        String owner1 = property.getOwnerName();
-        for (Field field:fields) {
-            if (fields[player.getFieldNumber()] instanceof Property)
-                if(((Property) fields[player.getFieldNumber()]).getOwnerName().equals(owner1))
-                    return true;
+    public void ownedBySamePlayer(PlayerController playerController, Property property){
+        ArrayList<Property> properties = playerController.getPlayerByName(property.getOwnerName()).getPropertiesOwned();
+        for (Property property1: properties) {
+            if(property1.getColour()==property.getColour());
+
         }
-        return false;
+
         }
 
 

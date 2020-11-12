@@ -199,7 +199,23 @@ class PropertyTest {
         assertEquals(actual,testPlayerController.getPlayerByName("p0").b.getBalance());
     }
 
+    /**Test af setDoubleRent og removeDouble rent*/
+    @Test
+    public void setDoubleRentTest(){
+        Property testProperty = new Property("Horsensgade", 2,5,"test","test");
+        testProperty.setDoubleRent();
+        int actual = 10;
+        assertEquals(actual, testProperty.getFieldRent());
+    }
 
+    @Test
+    public void removeDoubleRentTest(){
+        Property testProperty = new Property("Horsensgade", 2,5,"test","test");
+        testProperty.setDoubleRent();
+        testProperty.removeDoubleRent();
+        int actual = 5;
+        assertEquals(actual, testProperty.getFieldRent());
+    }
 
 
 

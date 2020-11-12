@@ -1,5 +1,8 @@
 package Game;
 
+import Game.Fields.Property;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -134,41 +137,46 @@ public class PlayerController {
 
     }
 
-    //TODO: metode til at fjerne property
-    public void sellProperty(Player player, int payment){
-        int minPayment = payment;
-        int arraylistSizeBefore = player.getPropertiesOwned().size();
 
-        if(player.getPropertiesOwned().size()>0)
-            for (int j = minPayment; j >= payment; j++) {
-                for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
-                    if(player.getPropertiesOwned().get(i).getFieldPrice()>=payment){
-                        player.getPropertiesOwned().remove(i);
-                        break;
-                    }
-                }
-            }
 
-        if(player.getPropertiesOwned().size()==0 && player.b.getBalance()==0)
-            player.b.setBankrupt(true);
-        else if (arraylistSizeBefore==player.getPropertiesOwned().size())
-            player.b.setBankrupt(true);
-    }
+   //TODO: metode til at fjerne property, spørg hjælpelærer
+   public void sellProperty(Player player, int payment, Player receivingPlayer){
+       int minPayment = payment;
+       ArrayList<Property> properties = new ArrayList<Property>();
 
-    public void handlePayment(Player player, int payment){
-        int balanceCheck = player.b.getBalance()-payment;
-        if (balanceCheck>=0)
-            player.b.subBalance(payment);
+       int arraylistSizeBefore = player.getPropertiesOwned().size();
 
-        else if(balanceCheck<=0) {
-            if (player.getTotalPropertyValue()<payment){
-                player.b.setBankrupt(true);
-            }
-            else if (player.getTotalPropertyValue()>payment){
-                sellProperty(player,payment);
-            }
-        }
-    }
+       if(player.getPropertiesOwned().size()>0)
+           for (int j = minPayment; j >= payment; j++) {
+               for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
+                   if(player.getPropertiesOwned().get(i).getFieldPrice()>=payment){
+                       player.getPropertiesOwned().remove(i);
+                       break;
+                   }
+               }
+           }
+
+       if(player.getPropertiesOwned().size()==0 && player.b.getBalance()==0)
+           player.b.setBankrupt(true);
+       else if (arraylistSizeBefore==player.getPropertiesOwned().size())
+           player.b.setBankrupt(true);
+   }
+
+   // public void handlePayment(Player player, int payment, String ownerName){
+   //
+   //     int balanceCheck = player.b.getBalance()-payment;
+   //     if (balanceCheck>=0)
+   //         player.b.subBalance(payment);
+//
+   //     else if(balanceCheck<=0) {
+   //         if (player.getTotalPropertyValue()<payment){
+   //             player.b.setBankrupt(true);
+   //         }
+   //         else if (player.getTotalPropertyValue()>payment){
+   //             sellProperty(player,payment);
+   //         }
+   //     }
+   // }
 
 
 
