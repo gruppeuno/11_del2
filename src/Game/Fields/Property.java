@@ -13,7 +13,7 @@ import java.util.Collections;
 public class Property extends Field {
 
     private int fieldPrice;
-    private int fieldRent;
+    private int  fieldRent;
     private String ownerName;
     private boolean ownedByPlayer = false;
     private String colour;
@@ -86,5 +86,6 @@ public class Property extends Field {
         }
 
     }
+
 
 }

@@ -16,7 +16,9 @@ abstract public class Field {
         this.msg=msg;
     }
 
+
     public void fieldAction(Player player, PlayerController playerController) {}
+
 
     public String getMsg(){
         return msg;

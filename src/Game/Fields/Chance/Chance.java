@@ -16,14 +16,6 @@ public class Chance extends Field {
 
     private final int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
 
-    public Chance(String name, int fieldNumber, String msg, int move) {
-        super(name, fieldNumber, msg);
-        this.move = move;
-
-    }
-
-
-
     /**
      * Todo list:
      * 1. Der skal laves en funktion der tage alle mulige chance kort og blander dem i en rækkefølge.
@@ -43,6 +35,7 @@ public class Chance extends Field {
     public Chance(String name, int fieldNumber, String msg) {
         super(name, fieldNumber, msg);
     }
+
 
     //Tager vores arrays indhold, og sætter det i en tilfældig rækkefølge.
     @Override
@@ -92,6 +85,8 @@ public class Chance extends Field {
                 System.out.println("Gratis felt.");
                 System.out.println("Ryk frem til et Orange felt.");
                 System.out.println("Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren.");
+                MoveSpecificFieldRange(player, "Orange", 10, 11);
+              //  FreeProperty(player, playerController);
                 break;
             case 5: //Chance Kort 5
 
@@ -177,13 +172,13 @@ public class Chance extends Field {
         player.setFieldNumber(player.getFieldNumber()+ this.move);
     }
 
-    public void MoveFieldPlayerSelect(Player player, int minMove, int maxMove) {
+    public void MoveFieldPlayerSelect(Player player, int minField, int maxField) {
         Scanner scan = new Scanner(System.in);
 
         do {
-            System.out.println("Skriv et tal imellem " + minMove + " og " + maxMove);
+            System.out.println("Skriv et tal imellem " + minField + " og " + maxField);
             this.move = scan.nextInt(); }
-        while (minMove > this.move || maxMove < this.move);
+        while (minField > this.move || maxField < this.move);
 
         player.setFieldNumber(player.getFieldNumber()+this.move);
         scan.close();
@@ -195,6 +190,18 @@ public class Chance extends Field {
 
     public void MoveSpecificField(Player player, int field) {
         player.setFieldNumber(field);
+    }
+
+    public void MoveSpecificFieldRange(Player player, String Color,int minMove, int maxMove) {
+        Scanner scan = new Scanner(System.in);
+
+        do {
+            System.out.println("Vælg mellem felt 1 eller 2 af farven " + Color);
+            this.move = scan.nextInt(); }
+        while (minMove > this.move || maxMove < this.move);
+
+        player.setFieldNumber(this.move);
+        scan.close();
     }
 
     public void AddBank(Player player, int moneyChange) {
@@ -209,7 +216,7 @@ public class Chance extends Field {
         player.setJailCard(true);
     }
 
-    private static void setJailCardUse(boolean cardUse) {
+    public static void setJailCardUse(boolean cardUse) {
         Chance.cardUse = cardUse;
     }
 
@@ -226,10 +233,17 @@ public class Chance extends Field {
         player.b.addBalance(playerController.getPlayerArrayLength()+1);
     }
 
-    private void FreeProperty(Player player, Property property){
-        if (!player.b.getBankrupt()) {
-        property.setOwner(player.getPlayerName());
-        System.out.println(player.getPlayerName() + " fik " + property.getName() + " for " + property.getFieldPrice() + "M"); }
+    @Override
+    public void fieldAction (Player player, PlayerController playerController) {
+        ChanceCard(player, playerController);
     }
+
+//    private void FreeProperty(Player player, PlayerController playerController){
+//        if (property.getOwnedByPlayer()) {property.payRent(player, playerController);}
+//        else {
+//            if (!player.b.getBankrupt()) {
+//                property.setOwner(player.getPlayerName());
+//                System.out.println(player.getPlayerName() + " fik " + property.getName() + " for " + property.getFieldPrice() + "M"); }}
+//    }
 }
 
