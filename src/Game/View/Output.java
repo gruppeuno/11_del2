@@ -1,8 +1,11 @@
 package Game.View;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class Output {
+
+    ArrayList<String> linesInFile = new ArrayList<String>();
 
     public static void main(String[] args) {
         Output o = new Output();
@@ -13,27 +16,19 @@ public class Output {
         }
     }
 
-    /*public void print(String string){
-        System.out.print(string);
-    }
-
-    public void println(String string){
-        System.out.println(string);
-    }*/
-
-
     public void readFromFile() throws IOException {
 
         BufferedReader reader = new BufferedReader(new FileReader("Textfiles/Udskrivninger.txt"));
 
         String currentLine = reader.readLine();
 
-        while (currentLine != null){
-            System.out.println(currentLine);
+        while (currentLine != null) {
+            linesInFile.add(currentLine);
             currentLine = reader.readLine();
         }
 
         reader.close();
+        System.out.println(linesInFile.toString());
 
     }
 
