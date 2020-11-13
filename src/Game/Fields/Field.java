@@ -8,7 +8,7 @@ abstract public class Field {
     protected int fieldNumber;
     protected String msg;
 
-    public void randomizeChance() {}
+
 
     public Field(String name, int fieldNumber, String msg){
         this.name=name;
@@ -16,6 +16,9 @@ abstract public class Field {
         this.msg=msg;
     }
 
+    public void randomizeChance() {}
+
+    public void DoFreeProperty(Player player, PlayerController playerController) {}
 
     public void fieldAction(Player player, PlayerController playerController) {}
 

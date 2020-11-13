@@ -255,5 +255,10 @@ public class Chance extends Field {
     public void fieldAction(Player player, PlayerController playerController) {
         chanceCard(player, playerController);
     }
+
+    public void DoFreeProperty(Player player, PlayerController playerController) {
+        Field field = null;
+        field.DoFreeProperty(player, playerController);
+    }
 }
 
