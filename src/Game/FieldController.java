@@ -6,31 +6,33 @@ import Game.View.FieldMessages;
 
 public class FieldController {
 
+    FieldMessages fm = new FieldMessages();
+
     private Field[] fields = {
-            new Start("START",0, "Du landede på Start"),
-            new Property("BURGERBAREN", 1,1, "Du landede på burgerbaren","brown"),
-            new Property("PIZZARIAET", 2,1, "Du landede på pizzariaet","brown"),
-            new Chance("CHANCE", 3, "Du landede på chancen"),
-            new Property("SLIKBUTIKKEN", 4,1, "Du landede på slikbutikken", "lightBlue"),
-            new Property("ISKIOSKEN", 5,1, "Du landede på iskiosken", "lightBlue"),
-            new JailVisit("PÅ FÆNGSELSBESØG", 6, "Du landede på fængsels besøg"),
-            new Property("MUSEET", 7,2, "Du landede på museet","pink"),
-            new Property("BIBLIOTEKET", 8,2, "Du landede på biblioteket","pink"),
-            new Chance("CHANCE", 9, "Du landede på chancen"),
-            new Property("SKATERPARKEN", 10,2, "Du landede på skaterparken","gold"),
-            new Property("SWIMMINGPOOLEN", 11,2, "Du landede på swimmingpoolen","gold"),
-            new Parking("Parkering", 12, "Du landede på parkering"),
-            new Property("SPILLEHALLEN", 13,3, "Du landede på spillehallen","red"),
-            new Property("BIOGRAFEN", 14,3, "Du landede på biografen","red"),
-            new Chance("CHANCE", 15, "Du landede på chancen"),
-            new Property("LEGETØJSBUTIKKEN", 16,3, "Du landede på legetøjsbutikken","yellow"),
-            new Property("DYREHANDLEN", 17,3, "Du landede på dyrehandlen","yellow"),
-            new Jail("GÅ I FÆNGSEL", 18, "Du landede på gå i fængsel"),
-            new Property("BOWLINGHALLEN", 19,4, "Du landede på bowlingehallen","green"),
-            new Property("ZOO", 20,4, "Du landede på zoo","green"),
-            new Chance("CHANCE", 21, "Du landede på chancen"),
-            new Property("VANDLANDET", 22,5, "Du landede på vandlandet","blue"),
-            new Property("STRANDPROMENADEN", 23,5, "Du landede på strandpromenaden","blue")
+            new Start("START",0, fm.number(1)),
+            new Property("BURGERBAREN", 1,1, fm.number(2),"brown"),
+            new Property("PIZZARIAET", 2,1, fm.number(3),"brown"),
+            new Chance("CHANCE", 3, fm.number(4)),
+            new Property("SLIKBUTIKKEN", 4,1, fm.number(5), "lightBlue"),
+            new Property("ISKIOSKEN", 5,1,fm.number(6), "lightBlue"),
+            new JailVisit("PÅ FÆNGSELSBESØG", 6, fm.number(7)),
+            new Property("MUSEET", 7,2, fm.number(8),"pink"),
+            new Property("BIBLIOTEKET", 8,2,fm.number(9),"pink"),
+            new Chance("CHANCE", 9, fm.number(10)),
+            new Property("SKATERPARKEN", 10,2,fm.number(11),"gold"),
+            new Property("SWIMMINGPOOLEN", 11,2,fm.number(12),"gold"),
+            new Parking("Parkering", 12, fm.number(13)),
+            new Property("SPILLEHALLEN", 13,3,fm.number(14),"red"),
+            new Property("BIOGRAFEN", 14,3,fm.number(15),"red"),
+            new Chance("CHANCE", 15,fm.number(16)),
+            new Property("LEGETØJSBUTIKKEN", 16,3,fm.number(17),"yellow"),
+            new Property("DYREHANDLEN", 17,3,fm.number(18),"yellow"),
+            new Jail("GÅ I FÆNGSEL", 18,fm.number(19)),
+            new Property("BOWLINGHALLEN", 19,4,fm.number(20),"green"),
+            new Property("ZOO", 20,4, fm.number(21),"green"),
+            new Chance("CHANCE", 21,fm.number(22)),
+            new Property("VANDLANDET", 22,5,fm.number(23),"blue"),
+            new Property("STRANDPROMENADEN", 23,5,fm.number(24),"blue")
     };
 
     public void StartSequence() {

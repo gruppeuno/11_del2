@@ -11,8 +11,8 @@ public class FieldMessages {
         FieldMessages o = new FieldMessages();
         try {
             o.readFromFile();
-            o.printThisLine(3);
-            o.printThisLine(5);
+            System.out.println(o.number(4));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -32,11 +32,11 @@ public class FieldMessages {
         reader.close();
     }
 
-    public void printThisLine(int n){
+    public String number(int n){
         if (totalReadLines.size() >= n){
-            println(totalReadLines.get(n - 1));
+            return totalReadLines.get(n-1);
         } else {
-            println("denne linje findes ikke");
+            return "findes ikke";
         }
 
     }
