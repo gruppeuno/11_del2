@@ -1,6 +1,7 @@
 package Test;
 
 import Game.FieldController;
+import Game.Fields.Jail;
 import Game.Fields.JailVisit;
 import Game.Fields.Property;
 import Game.Player;
@@ -21,23 +22,96 @@ class FieldControllerTest {
 
 
 
-    /**Test af ownedBySamePlayer*/
+    /**Test af landOnJail*/
 
-    //positiv test
-  // @Test
-  // public void ownedBySamePlayerTest(){
-  //     PlayerController playerController = new PlayerController();
-  //     FieldController fieldController = new FieldController();
-  //     playerController.createPlayers(2);
-  //     Property prop1 = (Property) fieldController.getFields()[1];
-  //     Property prop2 = (Property) fieldController.getFields()[2];
-  //     prop1.setOwner("p1");
-  //     prop2.setOwner("p1");
-  //     playerController.getPlayerArray()[0].setFieldNumber(1);
+    @Test
+    public void isPlayerInJail(){
+        Player testPlayer1 = new Player("testPerson1");
+        testPlayer1.putInJail();
 
-  //     boolean actual = true;
+        boolean expected = true;
+        boolean actual = testPlayer1.getIsInPrison();
 
-  //     assertEquals(actual,fieldController.ownedBySamePlayer(playerController.getPlayerByName("p0"),prop1));
-  // }
+        assertEquals(expected,actual);
+    }
+
+
+    //test af om spiller bliver rykket fra Jail til JailVisit
+ @Test
+ public void isJailedPlayerMovedToJailVisitField(){
+     Player testPlayer = new Player("testPerson");
+     PlayerController playerController = new PlayerController();
+     FieldController fieldController = new FieldController();
+
+     fieldController.landOnJail(testPlayer,playerController,(Jail) fieldController.getFields()[18]);
+     int actual = 6;
+
+     assertEquals(actual,testPlayer.getFieldNumber());
+ }
+
+ @Test
+ public void playerIsInPrison(){
+    Player testPlayer = new Player("testPerson");
+    PlayerController playerController = new PlayerController();
+    FieldController fieldController = new FieldController();
+
+    fieldController.landOnJail(testPlayer,playerController,(Jail) fieldController.getFields()[18]);
+    boolean actual = true;
+
+    assertEquals(actual,testPlayer.getIsInPrison());
+ }
+
+ @Test
+   public void isJailCardWorks(){
+
+     FieldController fieldController = new FieldController();
+     PlayerController playerController = new PlayerController();
+     playerController.createPlayers(2);
+     Player testPlayer = playerController.getPlayerByName("p0");
+
+     Jail jail = new Jail("testjail", 18, "test");
+
+     testPlayer.b.setBalance(20);
+     testPlayer.setJailCard(true);
+
+     //testspiller lander på fængsel
+     fieldController.landOnJail(testPlayer,playerController, jail);
+
+     //spiller lander på nyt felt
+     fieldController.landOnProperty(testPlayer,playerController, (Property)fieldController.getFields()[10]);
+
+     //Spiller lander på skatepark og køber for 2M
+     int expected = 18;
+     int actual = testPlayer.b.getBalance();
+     assertEquals(actual,expected);
+ }
+
+ //test af om spiller betaler for at komme ud af fængsel
+    @Test
+    public void playerPayToGetOut(){
+
+        FieldController fieldController = new FieldController();
+        PlayerController playerController = new PlayerController();
+        playerController.createPlayers(2);
+        Player testPlayer = playerController.getPlayerByName("p0");
+
+        Jail jail = new Jail("testjail", 18, "test");
+
+        testPlayer.b.setBalance(20);
+
+        //testspiller lander på fængsel
+        fieldController.landOnJail(testPlayer,playerController, jail);
+
+
+        //spiller lander på nyt felt
+        testPlayer.setFieldNumber(10);
+        fieldController.landOnField(testPlayer,playerController);
+
+        //Spiller lander på skatepark og køber for 2M
+        int expected = 17;
+        int actual = testPlayer.b.getBalance();
+        assertEquals(actual,expected);
+    }
+
 
 }
