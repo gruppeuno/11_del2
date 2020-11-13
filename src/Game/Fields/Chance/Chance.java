@@ -39,7 +39,6 @@ public class Chance extends Field {
 
 
     //Tager vores arrays indhold, og sætter det i en tilfældig rækkefølge.
-    @Override
     public void randomizeChance() {
 
         Random rand = new Random();
@@ -88,7 +87,7 @@ public class Chance extends Field {
                 System.out.println("Ryk frem til et Orange felt.");
                 System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
                 moveSpecificFieldRange(player, "Orange", 10, 11);
-                TakeFreeProperty(player, playerController);
+                //TakeFreeProperty(player, playerController);
                 break;
             case 5: //Chance Kort 5
 
@@ -124,14 +123,14 @@ public class Chance extends Field {
                 System.out.println("Ryk frem til et orange eller grønt felt.");
                 System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
                 moveSpecificFieldRange(player, "Orange", 10, 11, "Grøn", 19, 20);
-                TakeFreeProperty(player, playerController);
+                //TakeFreeProperty(player, playerController);
                 break;
             case 9: //Chance Kort 9
                 System.out.println("Gratis felt");
                 System.out.println("Ryk frem til et lyseblåt felt.");
                 System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
                 moveSpecificFieldRange(player, "Lyseblå", 4, 5);
-                TakeFreeProperty(player, playerController);
+                //TakeFreeProperty(player, playerController);
                 break;
             case 10: //Chance Kort 10 //TODO: Vi skal have at når kortet bliver brugt, JailCardUse så bliver false igen.
                 System.out.println("Du løslades uden omkostninger");
@@ -164,7 +163,7 @@ public class Chance extends Field {
                 System.out.println("Ryk frem til et Pink eller mørkeblåt felt.");
                 System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
                 moveSpecificFieldRange(player, "Pink", 7, 8, "Mørkeblå", 22, 23);
-                TakeFreeProperty(player, playerController);
+                //TakeFreeProperty(player, playerController);
                 break;
             case 16://Chancekort 16
                 System.out.println("Du har lavet alle dine lektier. Modtag 2M fra Banken");
@@ -175,18 +174,18 @@ public class Chance extends Field {
                 System.out.println("Ryk frem til et rødt felt.");
                 System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
                 moveSpecificFieldRange(player, "Rød", 13, 14);
-                TakeFreeProperty(player, playerController);
+                //TakeFreeProperty(player, playerController);
                 break;
             case 18://Chancekort 18
                 moveSpecificField(player,10);
                 break;
             case 19://Chancekort 19
                 moveSpecificFieldRange(player, "Lyseblå", 4, 5, "Rød", 13, 14);
-                TakeFreeProperty(player, playerController);
+                //TakeFreeProperty(player, playerController);
                 break;
             case 20://Chancekort 20
                 moveSpecificFieldRange(player, "Brun", 1, 2, "Gul", 16, 17);
-                TakeFreeProperty(player, playerController);
+                //TakeFreeProperty(player, playerController);
                 break;
             default:
                 System.out.println("Der skete en fejl");
@@ -277,10 +276,10 @@ public class Chance extends Field {
     }
 
 
-    //TODO: Det her skal seriøst laves om, så det er mere elegant. lort løsning.
-    public void TakeFreeProperty(Player player, PlayerController playerController) {
-        Field field = null;
-        Objects.requireNonNull(field).DoFreeProperty(player, playerController);
-    }
+   // //TODO: Det her skal seriøst laves om, så det er mere elegant. lort løsning.
+   // public void TakeFreeProperty(Player player, PlayerController playerController) {
+   //     Field field = null;
+   //     Objects.requireNonNull(field).DoFreeProperty(player, playerController);
+   // }
 }
 
