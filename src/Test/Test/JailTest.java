@@ -22,66 +22,66 @@ class JailTest {
         assertEquals(expected,actual);
     }
 
-  @Test
-  public void isJailedPlayerMovedToJailVisitField(){
-      Player testPlayer = new Player("testPerson");
-      PlayerController playerController = new PlayerController();
+// @Test
+// public void isJailedPlayerMovedToJailVisitField(){
+//     Player testPlayer = new Player("testPerson");
+//     PlayerController playerController = new PlayerController();
 
-      Jail jail = new Jail("testjail", 18, "test");
-      JailVisit jailVisit = new JailVisit("testvisit", 6, "test");
+//     Jail jail = new Jail("testjail", 18, "test");
+//     JailVisit jailVisit = new JailVisit("testvisit", 6, "test");
 
-      jail.fieldAction(testPlayer,playerController);
+//     jail.fieldAction(testPlayer,playerController);
 
-      int expected = jailVisit.getFieldNumber();
-      int actual = testPlayer.getFieldNumber();
+//     int expected = jailVisit.getFieldNumber();
+//     int actual = testPlayer.getFieldNumber();
 
-      assertEquals(expected,actual);
+//     assertEquals(expected,actual);
 
-  }
+// }
 
-  @Test
-  public void isJailCostMillion(){
+// @Test
+// public void isJailCostMillion(){
 
-      FieldController fieldController = new FieldController();
-      PlayerController playerController = new PlayerController();
-      Player testPlayer = new Player("testPerson");
-      Jail jail = new Jail("testjail", 18, "test");
+//     FieldController fieldController = new FieldController();
+//     PlayerController playerController = new PlayerController();
+//     Player testPlayer = new Player("testPerson");
+//     Jail jail = new Jail("testjail", 18, "test");
 
-      testPlayer.b.setBalance(20);
-      //testspiller lander på fængsel
-      jail.fieldAction(testPlayer,playerController);
-      //spiller lander på nyt felt
-      fieldController.landOnField(testPlayer,playerController);
+//     testPlayer.b.setBalance(20);
+//     //testspiller lander på fængsel
+//     jail.fieldAction(testPlayer,playerController);
+//     //spiller lander på nyt felt
+//     fieldController.landOnField(testPlayer,playerController);
 
-      int expected = 19;
-      int actual = testPlayer.b.getBalance();
+//     int expected = 19;
+//     int actual = testPlayer.b.getBalance();
 
-      assertEquals(expected,actual);
+//     assertEquals(expected,actual);
 
-  }
+// }
 
-  @Test
-    public void isJailCardWorks(){
+// @Test
+//   public void isJailCardWorks(){
 
-      FieldController fieldController = new FieldController();
-      PlayerController playerController = new PlayerController();
-      Player testPlayer = new Player("testPerson");
-      Jail jail = new Jail("testjail", 18, "test");
+//     FieldController fieldController = new FieldController();
+//     PlayerController playerController = new PlayerController();
+//     Player testPlayer = new Player("testPerson");
+//     Jail jail = new Jail("testjail", 18, "test");
 
-      testPlayer.b.setBalance(20);
-      testPlayer.setJailCard(true);
-      //testspiller lander på fængsel
-      jail.fieldAction(testPlayer,playerController);
-      //spiller lander på nyt felt
-      fieldController.landOnField(testPlayer,playerController);
+//     testPlayer.b.setBalance(20);
+//     testPlayer.setJailCard(true);
+//     //testspiller lander på fængsel
+//     jail.fieldAction(testPlayer,playerController);
+//     //spiller lander på nyt felt
+//     fieldController.landOnField(testPlayer,playerController);
 
-      int expected = 20;
-      int actual = testPlayer.b.getBalance();
-      
-      assertEquals(actual,expected);
+//     int expected = 20;
+//     int actual = testPlayer.b.getBalance();
+//
+//     assertEquals(actual,expected);
 
 
-  }
+// }
 
 
 
