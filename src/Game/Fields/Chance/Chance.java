@@ -73,7 +73,6 @@ public class Chance extends Field {
 
             case 1: //Chance Kort 1
 
-
                 break;
             case 2: //Chance Kort 2
                 System.out.println("Ryk frem til start og modtag 2M");
@@ -277,10 +276,6 @@ public class Chance extends Field {
         player.b.addBalance(playerController.getPlayerArrayLength()+1);
     }
 
-    @Override
-    public void fieldAction(Player player, PlayerController playerController) {
-        chanceCard(player, playerController);
-    }
 
     //TODO: Det her skal seriøst laves om, så det er mere elegant. lort løsning.
     public void TakeFreeProperty(Player player, PlayerController playerController) {
