@@ -87,5 +87,16 @@ public class Property extends Field {
 
     }
 
+    @Override
+    public void DoFreeProperty(Player player, PlayerController playerController){FreeProperty(player, playerController);}
+
+    private void FreeProperty(Player player, PlayerController playerController){
+        if (getOwnedByPlayer()) {payRent(player, playerController);}
+        else {
+            if (!player.b.getBankrupt()) {
+                setOwner(player.getPlayerName());
+                System.out.println(player.getPlayerName() + " fik " + getName() + " for free"); }}
+    }
+
 
 }

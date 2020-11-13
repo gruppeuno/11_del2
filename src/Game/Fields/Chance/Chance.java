@@ -1,9 +1,11 @@
 package Game.Fields.Chance;
 
+import Game.FieldController;
 import Game.Fields.Field;
 import Game.Player;
 import Game.PlayerController;
 
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -255,12 +257,10 @@ public class Chance extends Field {
         chanceCard(player, playerController);
     }
 
-//    private void FreeProperty(Player player, PlayerController playerController){
-//        if (property.getOwnedByPlayer()) {property.payRent(player, playerController);}
-//        else {
-//            if (!player.b.getBankrupt()) {
-//                property.setOwner(player.getPlayerName());
-//                System.out.println(player.getPlayerName() + " fik " + property.getName() + " for " + property.getFieldPrice() + "M"); }}
-//    }
+    //TODO: Det her skal seriøst laves om, så det er mere elegant. lort løsning.
+    public void DoFreeProperty(Player player, PlayerController playerController) {
+        Field field = null;
+        Objects.requireNonNull(field).DoFreeProperty(player, playerController);
+    }
 }
 
