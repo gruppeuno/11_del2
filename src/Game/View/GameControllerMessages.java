@@ -4,33 +4,33 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class FieldPropertyNames extends Messages {
+public class GameControllerMessages extends Messages {
 
-    private String[] totalReadFieldMessages = new String[24];
+    private String[] totalReadFieldMessages = new String[14];
 
-    private static FieldPropertyNames fieldPropertyNames = null;
+    private static GameControllerMessages gameControllerMessages = null;
 
-    public static FieldPropertyNames instanceOf() {
+    public static GameControllerMessages instanceOf() {
 
         try {
-            if (fieldPropertyNames == null){
-                fieldPropertyNames = new FieldPropertyNames();
+            if (gameControllerMessages == null){
+                gameControllerMessages = new GameControllerMessages();
             }
 
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return fieldPropertyNames;
+        return gameControllerMessages;
     }
 
-    private FieldPropertyNames() throws IOException {
+    private GameControllerMessages() throws IOException {
         readFromFile();
     }
 
     @Override
     public void readFromFile() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("Textfiles/FieldPropertyNames.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("Textfiles/GameControllerMessages.txt"));
 
         String currentLine = reader.readLine();
 

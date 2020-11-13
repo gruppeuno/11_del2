@@ -1,0 +1,14 @@
+ slog
+ ER GÅET FALLIT!!!
+ har nu
+M på sin bankkonto
+========================================\n
+Spillet er klar - \nSkriv \"Start\" og tryk enter for at starte og slå de første terninger!" + "\nTryk \"OK\" på spillepladen for at lade turen gå videre!
+start
+Det er din tur
+\nSkriv \"Roll\" og tryk enter for at slå med terningerne!
+roll
+SPILLET ER UAFGJORT!!!
+ HAR VUNDET MED
+M SAMT
+M I EJENDOMME!!

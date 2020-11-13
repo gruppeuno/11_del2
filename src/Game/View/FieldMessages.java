@@ -45,7 +45,7 @@ public class FieldMessages extends Messages {
 
     @Override
     public String number(int n){
-        if (n < 24 && n > 0){
+        if (n <= totalReadFieldMessages.length && n >= 1){
             return totalReadFieldMessages[n-1];
         } else {
             return "findes ikke";
