@@ -56,7 +56,7 @@ public class Player {
         isInPrison = true;
     }
 
-    public void JailCardFree() { isInPrison = false;}
+    public void jailCardFree() { isInPrison = false;}
 
     public void freeOfJail(){
         isInPrison = false;

@@ -16,7 +16,7 @@ public class Jail extends Field {
         player.putInJail();
         player.setFieldNumber(6);
         if (player.getJailCard() == true){
-            player.JailCardFree();
+            player.jailCardFree();
             player.setJailCard(false);
             Chance.setJailCardUse(false);
         }
