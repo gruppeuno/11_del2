@@ -11,6 +11,7 @@ public class Output {
         Output o = new Output();
         try {
             o.readFromFile();
+            o.printLineOne();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -30,6 +31,18 @@ public class Output {
         reader.close();
         System.out.println(linesInFile.toString());
 
+    }
+
+    public void printLineOne(){
+        print(linesInFile.get(0));
+    }
+
+    public void print(String string){
+        System.out.print(string);
+    }
+
+    public void println(String string){
+        System.out.println(string);
     }
 
     }
