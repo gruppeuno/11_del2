@@ -3,15 +3,15 @@ package Game.View;
 import java.io.*;
 import java.util.ArrayList;
 
-public class Output {
+public class OutputGameController {
 
-    ArrayList<String> linesInFile = new ArrayList<String>();
+    ArrayList<String> totalReadLines = new ArrayList<String>();
 
     public static void main(String[] args) {
-        Output o = new Output();
+        OutputGameController o = new OutputGameController();
         try {
             o.readFromFile();
-            o.printLineOne();
+            o.printLineN(3);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -19,22 +19,28 @@ public class Output {
 
     public void readFromFile() throws IOException {
 
-        BufferedReader reader = new BufferedReader(new FileReader("Textfiles/Udskrivninger.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("Textfiles/OutputGame.txt"));
 
         String currentLine = reader.readLine();
 
         while (currentLine != null) {
-            linesInFile.add(currentLine);
+            totalReadLines.add(currentLine);
             currentLine = reader.readLine();
         }
 
         reader.close();
-        System.out.println(linesInFile.toString());
+        //TODO: slettes efter
+        System.out.println(totalReadLines.toString());
 
     }
 
-    public void printLineOne(){
-        print(linesInFile.get(0));
+    public void printLineN(int n){
+        if (totalReadLines.size() >= n){
+            print(totalReadLines.get(n));
+        } else {
+            print("denne linje findes ikke");
+        }
+
     }
 
     public void print(String string){
