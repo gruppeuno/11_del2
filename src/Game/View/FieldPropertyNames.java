@@ -1,35 +1,36 @@
 package Game.View;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
-public class FieldMessages extends Messages {
+public class FieldPropertyNames extends Messages {
 
     private String[] totalReadFieldMessages = new String[24];
 
-    private static FieldMessages fieldMessages = null;
+    private static FieldPropertyNames fieldPropertyNames = null;
 
-    public static FieldMessages instanceOf() {
+    public static FieldPropertyNames instanceOf() {
 
         try {
-            if (fieldMessages == null){
-                fieldMessages = new FieldMessages();
+            if (fieldPropertyNames == null){
+                fieldPropertyNames = new FieldPropertyNames();
             }
 
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return fieldMessages;
+        return fieldPropertyNames;
     }
 
-    private FieldMessages() throws IOException {
+    private FieldPropertyNames() throws IOException {
         readFromFile();
     }
 
     @Override
     public void readFromFile() throws IOException {
-
-        BufferedReader reader = new BufferedReader(new FileReader("Textfiles/FieldMessages.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("Textfiles/FieldPropertyNames.txt"));
 
         String currentLine = reader.readLine();
 
@@ -39,18 +40,15 @@ public class FieldMessages extends Messages {
                 currentLine = reader.readLine();
             }
         }
-
         reader.close();
     }
 
     @Override
-    public String number(int n){
+    public String number(int n) {
         if (n < 24 && n > 0){
             return totalReadFieldMessages[n-1];
         } else {
             return "findes ikke";
         }
-
     }
-    }
-
+}

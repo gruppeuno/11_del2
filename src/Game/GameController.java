@@ -17,7 +17,6 @@ public class GameController {
     final private FieldController fieldController = new FieldController();
     final private PlayerController playerController = new PlayerController();
     final private Die die = new Die();
-    FieldMessages output = new FieldMessages();
     Scanner scan = new Scanner(System.in);
 //GUIView guiView = new GUIView();
 

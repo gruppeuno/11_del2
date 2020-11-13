@@ -3,37 +3,41 @@ package Game;
 import Game.Fields.*;
 import Game.Fields.Chance.Chance;
 import Game.View.FieldMessages;
+import Game.View.FieldPropertyNames;
+
+import java.io.IOException;
 
 public class FieldController {
 
-    FieldMessages fm = new FieldMessages();
-
     private Field[] fields = {
-            new Start("START",0, fm.number(1)),
-            new Property("BURGERBAREN", 1,1, fm.number(2),"brown"),
-            new Property("PIZZARIAET", 2,1, fm.number(3),"brown"),
-            new Chance("CHANCE", 3, fm.number(4)),
-            new Property("SLIKBUTIKKEN", 4,1, fm.number(5), "lightBlue"),
-            new Property("ISKIOSKEN", 5,1,fm.number(6), "lightBlue"),
-            new JailVisit("PÅ FÆNGSELSBESØG", 6, fm.number(7)),
-            new Property("MUSEET", 7,2, fm.number(8),"pink"),
-            new Property("BIBLIOTEKET", 8,2,fm.number(9),"pink"),
-            new Chance("CHANCE", 9, fm.number(10)),
-            new Property("SKATERPARKEN", 10,2,fm.number(11),"gold"),
-            new Property("SWIMMINGPOOLEN", 11,2,fm.number(12),"gold"),
-            new Parking("Parkering", 12, fm.number(13)),
-            new Property("SPILLEHALLEN", 13,3,fm.number(14),"red"),
-            new Property("BIOGRAFEN", 14,3,fm.number(15),"red"),
-            new Chance("CHANCE", 15,fm.number(16)),
-            new Property("LEGETØJSBUTIKKEN", 16,3,fm.number(17),"yellow"),
-            new Property("DYREHANDLEN", 17,3,fm.number(18),"yellow"),
-            new Jail("GÅ I FÆNGSEL", 18,fm.number(19)),
-            new Property("BOWLINGHALLEN", 19,4,fm.number(20),"green"),
-            new Property("ZOO", 20,4, fm.number(21),"green"),
-            new Chance("CHANCE", 21,fm.number(22)),
-            new Property("VANDLANDET", 22,5,fm.number(23),"blue"),
-            new Property("STRANDPROMENADEN", 23,5,fm.number(24),"blue")
+            new Start(FieldPropertyNames.instanceOf().number(1),0, FieldMessages.instanceOf().number(1)),
+            new Property(FieldPropertyNames.instanceOf().number(2), 1,1, FieldMessages.instanceOf().number(2),"brown"),
+            new Property(FieldPropertyNames.instanceOf().number(3), 2,1, FieldMessages.instanceOf().number(3),"brown"),
+            new Chance(FieldPropertyNames.instanceOf().number(4), 3, FieldMessages.instanceOf().number(4)),
+            new Property(FieldPropertyNames.instanceOf().number(5), 4,1, FieldMessages.instanceOf().number(5), "lightBlue"),
+            new Property(FieldPropertyNames.instanceOf().number(6), 5,1,FieldMessages.instanceOf().number(6), "lightBlue"),
+            new JailVisit(FieldPropertyNames.instanceOf().number(7), 6, FieldMessages.instanceOf().number(7)),
+            new Property(FieldPropertyNames.instanceOf().number(8), 7,2, FieldMessages.instanceOf().number(8),"pink"),
+            new Property(FieldPropertyNames.instanceOf().number(9), 8,2,FieldMessages.instanceOf().number(9),"pink"),
+            new Chance(FieldPropertyNames.instanceOf().number(10), 9, FieldMessages.instanceOf().number(10)),
+            new Property(FieldPropertyNames.instanceOf().number(11), 10,2,FieldMessages.instanceOf().number(11),"gold"),
+            new Property(FieldPropertyNames.instanceOf().number(12), 11,2,FieldMessages.instanceOf().number(12),"gold"),
+            new Parking(FieldPropertyNames.instanceOf().number(13), 12, FieldMessages.instanceOf().number(13)),
+            new Property(FieldPropertyNames.instanceOf().number(14), 13,3,FieldMessages.instanceOf().number(14),"red"),
+            new Property(FieldPropertyNames.instanceOf().number(15), 14,3,FieldMessages.instanceOf().number(15),"red"),
+            new Chance(FieldPropertyNames.instanceOf().number(16), 15,FieldMessages.instanceOf().number(16)),
+            new Property(FieldPropertyNames.instanceOf().number(17), 16,3,FieldMessages.instanceOf().number(17),"yellow"),
+            new Property(FieldPropertyNames.instanceOf().number(18), 17,3,FieldMessages.instanceOf().number(18),"yellow"),
+            new Jail(FieldPropertyNames.instanceOf().number(19), 18,FieldMessages.instanceOf().number(19)),
+            new Property(FieldPropertyNames.instanceOf().number(20), 19,4,FieldMessages.instanceOf().number(20),"green"),
+            new Property(FieldPropertyNames.instanceOf().number(21), 20,4, FieldMessages.instanceOf().number(21),"green"),
+            new Chance(FieldPropertyNames.instanceOf().number(22), 21,FieldMessages.instanceOf().number(22)),
+            new Property(FieldPropertyNames.instanceOf().number(23), 22,5,FieldMessages.instanceOf().number(23),"blue"),
+            new Property(FieldPropertyNames.instanceOf().number(24), 23,5,FieldMessages.instanceOf().number(24),"blue")
     };
+
+    public FieldController() {
+    }
 
     public void StartSequence() {
         Field field = fields[1];
