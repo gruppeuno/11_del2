@@ -16,11 +16,8 @@ abstract public class Field {
         this.msg=msg;
     }
 
-    public void randomizeChance() {}
-
-    public void DoFreeProperty(Player player, PlayerController playerController) {}
-
-    public void fieldAction(Player player, PlayerController playerController) {}
+    //TODO: skal ikke være her
+    //public void DoFreeProperty(Player player, PlayerController playerController) {}
 
 
     public String getMsg(){

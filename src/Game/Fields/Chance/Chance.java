@@ -39,7 +39,7 @@ public class Chance extends Field {
 
 
     //Tager vores arrays indhold, og sætter det i en tilfældig rækkefølge.
-    @Override
+
     public void randomizeChance() {
 
         Random rand = new Random();
@@ -252,15 +252,15 @@ public class Chance extends Field {
         player.b.addBalance(playerController.getPlayerArrayLength()+1);
     }
 
-    @Override
-    public void fieldAction(Player player, PlayerController playerController) {
-        chanceCard(player, playerController);
-    }
 
-    //TODO: Det her skal seriøst laves om, så det er mere elegant. lort løsning.
-    public void DoFreeProperty(Player player, PlayerController playerController) {
-        Field field = null;
-        Objects.requireNonNull(field).DoFreeProperty(player, playerController);
-    }
+  // public void fieldAction(Player player, PlayerController playerController) {
+  //     chanceCard(player, playerController);
+  // }
+
+  // //TODO: Det her skal seriøst laves om, så det er mere elegant. lort løsning.
+  // public void DoFreeProperty(Player player, PlayerController playerController) {
+  //     Field field = null;
+  //     Objects.requireNonNull(field).DoFreeProperty(player, playerController);
+  // }
 }
 
