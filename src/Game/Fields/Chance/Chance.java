@@ -287,5 +287,13 @@ public class Chance extends Field {
         Field field = null;
         Objects.requireNonNull(field).DoFreeProperty(player, playerController);
     }
+
+    //Bil = spiller nummer 1
+    //Skib = spiller nummer 2
+    //Kat = spiller nummer 3
+    //Hund = spiller nummer 4
+    public void setPlayerChanceCard(PlayerController playerController, int playerID) {
+        playerController.getPlayerArray()[playerID].setPlayerChanceCard(true);
+    }
 }
 

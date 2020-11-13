@@ -19,6 +19,7 @@ public class Player {
     private ArrayList<Property> propertiesOwned = new ArrayList<Property>();
     public BankAccount b = new BankAccount();
     private boolean JailCard = false;
+    private boolean playerChanceCard = false;
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -61,6 +62,10 @@ public class Player {
     public void freeOfJail(){
         isInPrison = false;
         b.subBalance(1);
+    }
+
+    public void setPlayerChanceCard(boolean playerChanceCard){
+        this.playerChanceCard = playerChanceCard;
     }
 
     public boolean getIsInPrison(){
