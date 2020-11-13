@@ -3,15 +3,16 @@ package Game.View;
 import java.io.*;
 import java.util.ArrayList;
 
-public class OutputGameController {
+public class FieldMessages {
 
     ArrayList<String> totalReadLines = new ArrayList<String>();
 
     public static void main(String[] args) {
-        OutputGameController o = new OutputGameController();
+        FieldMessages o = new FieldMessages();
         try {
             o.readFromFile();
-            o.printLineN(3);
+            o.printThisLine(3);
+            o.printThisLine(5);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -19,7 +20,7 @@ public class OutputGameController {
 
     public void readFromFile() throws IOException {
 
-        BufferedReader reader = new BufferedReader(new FileReader("Textfiles/OutputGame.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("Textfiles/FieldMessages.txt"));
 
         String currentLine = reader.readLine();
 
@@ -29,16 +30,13 @@ public class OutputGameController {
         }
 
         reader.close();
-        //TODO: slettes efter
-        System.out.println(totalReadLines.toString());
-
     }
 
-    public void printLineN(int n){
+    public void printThisLine(int n){
         if (totalReadLines.size() >= n){
-            print(totalReadLines.get(n));
+            println(totalReadLines.get(n - 1));
         } else {
-            print("denne linje findes ikke");
+            println("denne linje findes ikke");
         }
 
     }
@@ -50,6 +48,8 @@ public class OutputGameController {
     public void println(String string){
         System.out.println(string);
     }
+
+
 
     }
 

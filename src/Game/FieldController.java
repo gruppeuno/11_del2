@@ -2,6 +2,7 @@ package Game;
 
 import Game.Fields.*;
 import Game.Fields.Chance.Chance;
+import Game.View.FieldMessages;
 
 public class FieldController {
 
