@@ -73,6 +73,7 @@ public class Chance extends Field {
 
             case 1: //Chance Kort 1
 
+
                 break;
             case 2: //Chance Kort 2
                 System.out.println("Ryk frem til start og modtag 2M");
@@ -88,7 +89,7 @@ public class Chance extends Field {
                 System.out.println("Ryk frem til et Orange felt.");
                 System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
                 moveSpecificFieldRange(player, "Orange", 10, 11);
-              //  FreeProperty(player, playerController);
+                TakeFreeProperty(player, playerController);
                 break;
             case 5: //Chance Kort 5
 
@@ -123,11 +124,15 @@ public class Chance extends Field {
                 System.out.println("Gratis felt");
                 System.out.println("Ryk frem til et orange eller grønt felt.");
                 System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
+                moveSpecificFieldRange(player, "Orange", 10, 11, "Grøn", 19, 20);
+                TakeFreeProperty(player, playerController);
                 break;
             case 9: //Chance Kort 9
                 System.out.println("Gratis felt");
                 System.out.println("Ryk frem til et lyseblåt felt.");
                 System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
+                moveSpecificFieldRange(player, "Lyseblå", 4, 5);
+                TakeFreeProperty(player, playerController);
                 break;
             case 10: //Chance Kort 10 //TODO: Vi skal have at når kortet bliver brugt, JailCardUse så bliver false igen.
                 System.out.println("Du løslades uden omkostninger");
@@ -159,6 +164,8 @@ public class Chance extends Field {
                 System.out.println("Gratis felt.");
                 System.out.println("Ryk frem til et Pink eller mørkeblåt felt.");
                 System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
+                moveSpecificFieldRange(player, "Pink", 7, 8, "Mørkeblå", 22, 23);
+                TakeFreeProperty(player, playerController);
                 break;
             case 16://Chancekort 16
                 System.out.println("Du har lavet alle dine lektier. Modtag 2M fra Banken");
@@ -168,13 +175,19 @@ public class Chance extends Field {
                 System.out.println("Gratis felt.");
                 System.out.println("Ryk frem til et rødt felt.");
                 System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
+                moveSpecificFieldRange(player, "Rød", 13, 14);
+                TakeFreeProperty(player, playerController);
                 break;
             case 18://Chancekort 18
                 moveSpecificField(player,10);
                 break;
             case 19://Chancekort 19
+                moveSpecificFieldRange(player, "Lyseblå", 4, 5, "Rød", 13, 14);
+                TakeFreeProperty(player, playerController);
                 break;
             case 20://Chancekort 20
+                moveSpecificFieldRange(player, "Brun", 1, 2, "Gul", 16, 17);
+                TakeFreeProperty(player, playerController);
                 break;
             default:
                 System.out.println("Der skete en fejl");
@@ -215,9 +228,21 @@ public class Chance extends Field {
         Scanner scan = new Scanner(System.in);
 
         do {
-            System.out.println("Vælg mellem felt 1 eller 2 af farven " + Color);
+            System.out.println("Vælg mellem felt " + minMove + " eller " + maxMove + " af farven " + Color + "på pladen");
             this.move = scan.nextInt(); }
-        while (minMove > this.move || maxMove < this.move);
+            while (!(minMove == this.move || maxMove == this.move));
+
+            player.setFieldNumber(this.move);
+            scan.close();
+        }
+    public void moveSpecificFieldRange(Player player, String Color, int minMove, int maxMove, String Color2, int minMove2, int maxMove2) {
+        Scanner scan = new Scanner(System.in);
+
+        do {
+            System.out.println("Vælg mellem felt " + minMove + " eller " + maxMove + " af farven " + Color + ", eller felt "
+                    + minMove + " eller " + maxMove + " af farven" + Color2 + "på pladen");
+            this.move = scan.nextInt(); }
+        while (!(minMove == this.move || maxMove == this.move || minMove2 == this.move || maxMove2 == this.move));
 
         player.setFieldNumber(this.move);
         scan.close();
@@ -258,7 +283,7 @@ public class Chance extends Field {
     }
 
     //TODO: Det her skal seriøst laves om, så det er mere elegant. lort løsning.
-    public void DoFreeProperty(Player player, PlayerController playerController) {
+    public void TakeFreeProperty(Player player, PlayerController playerController) {
         Field field = null;
         Objects.requireNonNull(field).DoFreeProperty(player, playerController);
     }
