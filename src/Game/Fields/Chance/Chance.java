@@ -5,6 +5,7 @@ import Game.Fields.Field;
 import Game.Player;
 import Game.PlayerController;
 
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -256,9 +257,10 @@ public class Chance extends Field {
         chanceCard(player, playerController);
     }
 
+    //TODO: Det her skal seriøst laves om, så det er mere elegant. lort løsning.
     public void DoFreeProperty(Player player, PlayerController playerController) {
         Field field = null;
-        field.DoFreeProperty(player, playerController);
+        Objects.requireNonNull(field).DoFreeProperty(player, playerController);
     }
 }
 
