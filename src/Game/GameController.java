@@ -27,7 +27,6 @@ public class GameController {
 
         //TODO: Rigtige metode til at køre med 2-6 spillere samt tildele navne
         playerController.playerCreator();
-        fieldController.StartSequence();
 
         //TODO: test metode til 2 spillere
         //playerController.createPlayers(2);
@@ -128,9 +127,9 @@ public class GameController {
         for (int j = 0; j < playerArray.length; j++) {
             if (leadingPlayer.getPlayerName().equals(playerArray[j].getPlayerName())==false) {
                 if (playerArray[j].b.getBalance() == leadingPlayer.b.getBalance()) {
-                    if (playerArray[j].b.getPropertyValue() > leadingPlayer.b.getPropertyValue()) {
+                    if (playerArray[j].getTotalPropertyValue() > leadingPlayer.getTotalPropertyValue()) {
                         leadingPlayer = playerArray[j];
-                    } else if (playerArray[j].b.getPropertyValue() == leadingPlayer.b.getPropertyValue())
+                    } else if (playerArray[j].getTotalPropertyValue() == leadingPlayer.getTotalPropertyValue())
                         itsATie = true;
                 }
             }
@@ -144,7 +143,7 @@ public class GameController {
         } else {
             leadingPlayer.setPlayerWin();
             System.out.println(leadingPlayer.getPlayerName() + " HAR VUNDET MED " + leadingPlayer.b.getBalance() + "M SAMT "
-                    + leadingPlayer.b.getPropertyValue() + "M I EJENDOMME!!");
+                    + leadingPlayer.getTotalPropertyValue() + "M I EJENDOMME!!");
         }
     }
 }
