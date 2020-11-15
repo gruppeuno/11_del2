@@ -1,15 +1,12 @@
-package Game.Fields.Chance;
+package Game.Fields;
 
-import Game.FieldController;
-import Game.Fields.Field;
 import Game.Player;
 import Game.PlayerController;
 
-import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Chance extends Field {
+public class ChanceCardController {
 
     private static boolean cardUse = false;
     private int move = 0;
@@ -28,14 +25,7 @@ public class Chance extends Field {
      * <p>
      * Den første er den der kræver mest, og nummer to, hvis nummer 1 er lavet godt, så er nummer to bare insert, og se det virke.
      *
-     * @param name        1
-     * @param fieldNumber 1
-     * @param msg         1
      */
-
-    public Chance(String name, int fieldNumber, String msg) {
-        super(name, fieldNumber, msg);
-    }
 
 
     //Tager vores arrays indhold, og sætter det i en tilfældig rækkefølge.
@@ -259,7 +249,7 @@ public class Chance extends Field {
     }
 
     public static void setJailCardUse(boolean cardUse) {
-        Chance.cardUse = cardUse;
+        ChanceCardController.cardUse = cardUse;
     }
 
     public boolean getJailCardUse() {
