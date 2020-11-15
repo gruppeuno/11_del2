@@ -47,8 +47,13 @@ public class FieldController {
             landOnProperty(player,playerController,(Property) field);
         else if(field instanceof Jail)
             landOnJail(player,playerController,(Jail) field);
+        else if(field instanceof ChanceCard) {
+            chanceCardController.chanceCard(player, playerController);
+        }
     }
 
+    //Af low coupling grunde..
+    public void doRandomize() {chanceCardController.randomizeChance();}
 
     public void landOnProperty(Player player, PlayerController playerController, Property property) {
         if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName()))
@@ -123,15 +128,11 @@ public class FieldController {
 
     }
 
-
-
-    // public void DoFreeProperty(Player player, PlayerController playerController){FreeProperty(player, playerController, );} //Property??
-//
-    // private void FreeProperty(Player player, PlayerController playerController, Property property){
-    //     if (property.getOwnedByPlayer()) {payRent(player, playerController, property);}
-    //     else {
-    //         if (!player.b.getBankrupt()) {
-    //             property.setOwner(player.getPlayerName());
-    //             System.out.println(player.getPlayerName() + " fik " + property.getName() + " for free"); }}
-    // }
+     private void FreeProperty(Player player, PlayerController playerController, Property property){
+         if (property.getOwnedByPlayer()) {payRent(player, playerController, property);}
+         else {
+             if (!player.b.getBankrupt()) {
+                 property.setOwner(player.getPlayerName());
+                 System.out.println(player.getPlayerName() + " fik " + property.getName() + " for free"); }}
+     }
 }

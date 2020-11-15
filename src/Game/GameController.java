@@ -23,8 +23,9 @@ public class GameController {
      */
     public void gameController() {
 
-        //TODO: Rigtige metode til at køre med 2-6 spillere samt tildele navne
+        //TODO: Rigtige metode til at køre med 2-4 spillere samt tildele navne
         playerController.playerCreator();
+        fieldController.doRandomize();
 
         //TODO: test metode til 2 spillere
         //playerController.createPlayers(2);

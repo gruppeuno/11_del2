@@ -223,6 +223,7 @@ public class ChanceCardController {
             player.setFieldNumber(this.move);
             scan.close();
         }
+
     public void moveSpecificFieldRange(Player player, String Color, int minMove, int maxMove, String Color2, int minMove2, int maxMove2) {
         Scanner scan = new Scanner(System.in);
 
