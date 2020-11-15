@@ -93,7 +93,6 @@ public class GameController {
     }
 
     /*
-
      * Loop der kører indtil spilleren har indtastet "roll"
      * hvis spilleren har vunder lukkes scanneren
      */
