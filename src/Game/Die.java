@@ -24,12 +24,15 @@ public class Die {
     //TODO: test terninger
     private int diceRollCount = 0;
     public void rollPlayer0(){
-        int[] player0Roll = {6,6,4,5,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3};
-    }
-    public void rollPlayer1(){
-        int[] player0Roll = {1,1,2,1,2,
-    }
 
+        int[] player0Roll = {6,6,4,5,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3};
+        diceValue=player0Roll[diceRollCount];
+    }
+    public void rollPlayer1() {//                v kino
+        int[] player1Roll = {1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2,4,4,4,4,4,4,4};
+        diceValue=player1Roll[diceRollCount];
+        diceRollCount++;
+    }
     public int getDiceValue() { return diceValue; }
 
 
