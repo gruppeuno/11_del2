@@ -16,7 +16,7 @@ public class GameController {
     final private PlayerController playerController = new PlayerController();
     final private Die die = new Die();
     Scanner scan = new Scanner(System.in);
-//GUIView guiView = new GUIView();
+    GUIView guiView = new GUIView();
 
     /**
      * Main metode, kører spillet
@@ -30,8 +30,8 @@ public class GameController {
         //playerController.createPlayers(2);
 
         //laver spillere i GUI
-//    guiView.createGUIPlayers(playerController.getPlayerArray());
-//    startMessage();
+      guiView.createGUIPlayers(playerController.getPlayerArray());
+      //startMessage();
 
         while (!playerController.getPlayerArray()[turnCount].b.getBankrupt()) {
             //Fokortelse af variabler
@@ -50,7 +50,7 @@ public class GameController {
 
 
             //Terningernes værdier sættes
-            // guiView.gui.setDice(cup.getDiceValue());
+            guiView.gui.setDie(die.getDiceValue());
 
             //placerer spillers bil på det rette felt
 //            GUIView.MY_GUI_FIELDS[die.getDiceValue()].setCar(guiView.getGUIPlayer(turnCount), true);
