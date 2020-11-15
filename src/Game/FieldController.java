@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class FieldController {
 
-    private Field[] fields = {
+    private final Field[] fields = {
             new Start("START",0, "landede på Start"),
             new Property("BURGERBAREN", 1,1, "landede på burgerbaren","brown"),
             new Property("PIZZARIAET", 2,1, "landede på pizzariaet","brown"),
@@ -33,8 +33,7 @@ public class FieldController {
             new Property("STRANDPROMENADEN", 23,5, "landede på strandpromenaden","blue")
     };
 
-    //TODO: ChanceCardController implementeret her
-    private ChanceCardController chanceCardController = new ChanceCardController();
+    private final ChanceCardController chanceCardController = new ChanceCardController();
 
     //Når en spiller lander på et felt
     public void landOnField(Player player, PlayerController playerController){
@@ -122,17 +121,19 @@ public class FieldController {
         if (player.getJailCard() == true){
             player.JailCardFree();
             player.setJailCard(false);
-            //TODO: det her
-            //.setJailCardUse(false);
+            ChanceCardController.setJailCardUse(false);
         }
 
     }
 
-     private void FreeProperty(Player player, PlayerController playerController, Property property){
+     public void FreeProperty(Player player, PlayerController playerController){
+        //TODO SÅ den tager den property der er på vores nuværende field bilen er på.
+         Property property = new Property("something", 2 ,2, "something", "something");
          if (property.getOwnedByPlayer()) {payRent(player, playerController, property);}
          else {
              if (!player.b.getBankrupt()) {
                  property.setOwner(player.getPlayerName());
+                 player.addPropertyOwned(property);
                  System.out.println(player.getPlayerName() + " fik " + property.getName() + " for free"); }}
      }
 }
