@@ -129,7 +129,7 @@ public class ChanceCardController {
             i = 0;}
 }
     private void chancekort1() {
-
+        System.out.println(">>>Ingen indhold<<<");
     }
 
     private void chancekort2(Player player) {
@@ -167,14 +167,14 @@ public class ChanceCardController {
 
         if (valg.toLowerCase().equals(ryk)) {
             moveField(player, 1);}
-        else {
+        else if (valg.toLowerCase().equals(traek)) {
             chanceCard(player, playerController);}
 
         scan.close();
     }
 
     private void chancekort6 () {
-
+        System.out.println(">>>Ingen indhold<<<");
     }
 
     private void chancekort7 (Player player) {
@@ -219,11 +219,11 @@ public class ChanceCardController {
     }
 
     private void chancekort12 (Player player, PlayerController playerController) {
-
+        System.out.println(">>>Ingen indhold<<<");
     }
 
     private void chancekort13 (Player player, PlayerController playerController) {
-
+        System.out.println(">>>Ingen indhold<<<");
     }
 
     private void chancekort14 (Player player, PlayerController playerController) {
@@ -308,7 +308,7 @@ public class ChanceCardController {
 
         do {
             System.out.println("Vælg mellem felt " + minMove + " eller " + maxMove + " af farven " + Color + ", eller felt "
-                    + minMove2 + " eller " + maxMove2 + " af farven" + Color2 + " på pladen");
+                    + minMove2 + " eller " + maxMove2 + " af farven " + Color2 + " på pladen");
             this.move = scan.nextInt(); }
         while (!(minMove == this.move || maxMove == this.move || minMove2 == this.move || maxMove2 == this.move));
 

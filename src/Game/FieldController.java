@@ -127,8 +127,8 @@ public class FieldController {
     }
 
      public void FreeProperty(Player player, PlayerController playerController){
-        //TODO SÅ den tager den property der er på vores nuværende field bilen er på.
-         Property property = new Property("something", 2 ,2, "something", "something");
+         int i = player.getFieldNumber();
+         Property property = (Property) fields[i];
          if (property.getOwnedByPlayer()) {payRent(player, playerController, property);}
          else {
              if (!player.b.getBankrupt()) {
