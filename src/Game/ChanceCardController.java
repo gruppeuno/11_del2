@@ -1,8 +1,5 @@
 package Game;
 
-import Game.Player;
-import Game.PlayerController;
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -61,121 +58,64 @@ public class ChanceCardController {
         switch (chanceArray[i]) {
 
             case 1: //Chance Kort 1
-
+                chancekort1();
                 break;
             case 2: //Chance Kort 2
-                System.out.println("Ryk frem til start og modtag 2M");
-                moveToStart(player);
-                addBank(player, 2);
+                chancekort2(player);
                 break;
             case 3: //Chance Kort 3
-                System.out.println("Ryk op til 5 felter frem");
-                moveFieldPLayerSelect(player, 1, 5);
+                chancekort3(player);
                 break;
             case 4: //Chance Kort 4
-                System.out.println("Gratis felt.");
-                System.out.println("Ryk frem til et Orange felt.");
-                System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
-                moveSpecificFieldRange(player, "Orange", 10, 11);
-                //TakeFreeProperty(player, playerController);
+                chancekort4(player, playerController);
                 break;
             case 5: //Chance Kort 5
-
-                String valg = "";
-
-                String ryk = "ryk";
-                String traek = "træk";
-
-                System.out.println("Vælg mellem at rykke 1 felt frem, eller trække et chance kort mere!");
-
-                Scanner scan = new Scanner(System.in);
-                do {
-                    System.out.println("Skriv \"Ryk\" for ar rykke frem eller \"Træk\" for at trække et nyt chancekort.");
-                    valg = scan.nextLine(); }
-                while (!((traek.equals(valg.toLowerCase())) || (ryk.equals(valg.toLowerCase()))));
-
-                if (valg.toLowerCase().equals(ryk)) {
-                    moveField(player, 1);}
-                else {
-                    chanceCard(player, playerController);}
-
-                scan.close();
-
+                chancekort5(player, playerController);
                 break;
             case 6: //Chance Kort 6
+                chancekort6();
                 break;
             case 7: //Chance Kort 7
-                System.out.println("Du har spist for meget slik. Betal 2M til banken");
-                subBank(player, 2);
+                chancekort7(player);
                 break;
             case 8: //Chance Kort 8
-                System.out.println("Gratis felt");
-                System.out.println("Ryk frem til et orange eller grønt felt.");
-                System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
-                moveSpecificFieldRange(player, "Orange", 10, 11, "Grøn", 19, 20);
-                //TakeFreeProperty(player, playerController);
+                chancekort8(player, playerController);
                 break;
             case 9: //Chance Kort 9
-                System.out.println("Gratis felt");
-                System.out.println("Ryk frem til et lyseblåt felt.");
-                System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
-                moveSpecificFieldRange(player, "Lyseblå", 4, 5);
-                //TakeFreeProperty(player, playerController);
+                chancekort9(player, playerController);
                 break;
             case 10: //Chance Kort 10 //TODO: Vi skal have at når kortet bliver brugt, JailCardUse så bliver false igen.
-                System.out.println("Du løslades uden omkostninger");
-                System.out.println("Behold dette kort, indtil du får brug for det");
-                if(!getJailCardUse() == true) {
-                    System.out.println("Du har fået ");
-                    adjustJailCard(player);
-                    setJailCardUse(true);
-                }
-
-                if (getJailCardUse() == true) {
-                    i++;
-                    chanceCard(player, playerController);
-                }
+                chancekort10(player, playerController);
                 break;
             case 11://Chancekort 11
-                System.out.println("Ryk til Strandpromenaden");
-                moveSpecificField(player, 23);
+                chancekort11(player);
                 break;
             case 12://Chancekort 12
-
+                chancekort12(player, playerController);
                 break;
-            case 13://Chancekort 13
+            case 13://Chancekort 1
+                chancekort13(player, playerController);
                 break;
             case 14:
-                bankFromAll(player, playerController);
+                chancekort14(player, playerController);
                 break;
             case 15://Chancekort 15
-                System.out.println("Gratis felt.");
-                System.out.println("Ryk frem til et Pink eller mørkeblåt felt.");
-                System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
-                moveSpecificFieldRange(player, "Pink", 7, 8, "Mørkeblå", 22, 23);
-                //TakeFreeProperty(player, playerController);
+                chancekort15(player, playerController);
                 break;
             case 16://Chancekort 16
-                System.out.println("Du har lavet alle dine lektier. Modtag 2M fra Banken");
-                addBank(player, 2);
+                chancekort16(player);
                 break;
             case 17://Chancekort 17
-                System.out.println("Gratis felt.");
-                System.out.println("Ryk frem til et rødt felt.");
-                System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
-                moveSpecificFieldRange(player, "Rød", 13, 14);
-                //TakeFreeProperty(player, playerController);
+                chancekort17(player, playerController);
                 break;
             case 18://Chancekort 18
-                moveSpecificField(player,10);
+                chancekort18(player);
                 break;
             case 19://Chancekort 19
-                moveSpecificFieldRange(player, "Lyseblå", 4, 5, "Rød", 13, 14);
-                //TakeFreeProperty(player, playerController);
+                chancekort19(player, playerController);
                 break;
             case 20://Chancekort 20
-                moveSpecificFieldRange(player, "Brun", 1, 2, "Gul", 16, 17);
-                //TakeFreeProperty(player, playerController);
+                chancekort20(player, playerController);
                 break;
             default:
                 System.out.println("Der skete en fejl");
@@ -185,6 +125,142 @@ public class ChanceCardController {
         if (i == 19) {
             i = 0;}
 }
+    private void chancekort1() {
+
+    }
+
+    private void chancekort2(Player player) {
+        System.out.println("Ryk frem til start og modtag 2M");
+        moveToStart(player);
+        addBank(player, 2);
+    }
+
+    private void chancekort3 (Player player) {
+        System.out.println("Ryk op til 5 felter frem");
+        moveFieldPLayerSelect(player, 1, 5);
+    }
+
+    private void chancekort4 (Player player, PlayerController playerController) {
+        System.out.println("Gratis felt.");
+        System.out.println("Ryk frem til et Orange felt.");
+        System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
+        moveSpecificFieldRange(player, "Orange", 10, 11);
+        //TakeFreeProperty(player, playerController);
+    }
+
+    private void chancekort5 (Player player, PlayerController playerController) {
+        String valg;
+
+        String ryk = "ryk";
+        String traek = "træk";
+
+        System.out.println("Vælg mellem at rykke 1 felt frem, eller trække et chance kort mere!");
+
+        Scanner scan = new Scanner(System.in);
+        do {
+            System.out.println("Skriv \"Ryk\" for ar rykke frem eller \"Træk\" for at trække et nyt chancekort.");
+            valg = scan.nextLine(); }
+        while (!((traek.equals(valg.toLowerCase())) || (ryk.equals(valg.toLowerCase()))));
+
+        if (valg.toLowerCase().equals(ryk)) {
+            moveField(player, 1);}
+        else {
+            chanceCard(player, playerController);}
+
+        scan.close();
+    }
+
+    private void chancekort6 () {
+
+    }
+
+    private void chancekort7 (Player player) {
+        System.out.println("Du har spist for meget slik. Betal 2M til banken");
+        subBank(player, 2);
+    }
+
+    private void chancekort8 (Player player, PlayerController playerController) {
+        System.out.println("Gratis felt");
+        System.out.println("Ryk frem til et orange eller grønt felt.");
+        System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
+        moveSpecificFieldRange(player, "Orange", 10, 11, "Grøn", 19, 20);
+        //TakeFreeProperty(player, playerController);
+    }
+
+    private void chancekort9 (Player player, PlayerController playerController) {
+        System.out.println("Gratis felt");
+        System.out.println("Ryk frem til et lyseblåt felt.");
+        System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
+        moveSpecificFieldRange(player, "Lyseblå", 4, 5);
+        //TakeFreeProperty(player, playerController);
+    }
+
+    private void chancekort10 (Player player, PlayerController playerController) {
+        System.out.println("Du løslades uden omkostninger");
+        System.out.println("Behold dette kort, indtil du får brug for det");
+        if(!getJailCardUse() == true) {
+            System.out.println("Du har fået ");
+            adjustJailCard(player);
+            setJailCardUse(true);
+        }
+
+        if (getJailCardUse() == true) {
+            i++;
+            chanceCard(player, playerController);
+        }
+    }
+
+    private void chancekort11 (Player player) {
+        System.out.println("Ryk til Strandpromenaden");
+        moveSpecificField(player, 23);
+    }
+
+    private void chancekort12 (Player player, PlayerController playerController) {
+
+    }
+
+    private void chancekort13 (Player player, PlayerController playerController) {
+
+    }
+
+    private void chancekort14 (Player player, PlayerController playerController) {
+        bankFromAll(player, playerController);
+    }
+
+    private void chancekort15 (Player player, PlayerController playerController) {
+        System.out.println("Gratis felt.");
+        System.out.println("Ryk frem til et Pink eller mørkeblåt felt.");
+        System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
+        moveSpecificFieldRange(player, "Pink", 7, 8, "Mørkeblå", 22, 23);
+        //TakeFreeProperty(player, playerController);
+    }
+
+    private void chancekort16 (Player player) {
+        System.out.println("Du har lavet alle dine lektier. Modtag 2M fra Banken");
+        addBank(player, 2);
+    }
+
+    private void chancekort17 (Player player, PlayerController playerController) {
+        System.out.println("Gratis felt.");
+        System.out.println("Ryk frem til et rødt felt.");
+        System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
+        moveSpecificFieldRange(player, "Rød", 13, 14);
+        //TakeFreeProperty(player, playerController);
+    }
+
+    private void chancekort18 (Player player) {
+        moveSpecificField(player,10);
+    }
+
+    private void chancekort19 (Player player, PlayerController playerController) {
+        moveSpecificFieldRange(player, "Lyseblå", 4, 5, "Rød", 13, 14);
+        //TakeFreeProperty(player, playerController);
+    }
+
+    private void chancekort20 (Player player, PlayerController playerController) {
+        moveSpecificFieldRange(player, "Brun", 1, 2, "Gul", 16, 17);
+        //TakeFreeProperty(player, playerController);
+    }
 
     public void moveField(Player player, int move) {
 
