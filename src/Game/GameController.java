@@ -15,8 +15,8 @@ public class GameController {
     final private FieldController fieldController = new FieldController();
     final private PlayerController playerController = new PlayerController();
     final private Die die = new Die();
-    Scanner scan = new Scanner(System.in);
-    GUIView guiView = new GUIView();
+    final private Scanner scan = new Scanner(System.in);
+    final private GUIView guiView = new GUIView();
 
     /**
      * Main metode, kører spillet
@@ -30,8 +30,8 @@ public class GameController {
         //playerController.createPlayers(2);
 
         //laver spillere i GUI
-      guiView.createGUIPlayers(playerController.getPlayerArray());
-      //startMessage();
+      guiView.createGUIPlayers(playerController.getPlayerArray(), playerController.getPlayerArray()[0].b.getBalance());
+      startMessage();
 
         while (!playerController.getPlayerArray()[turnCount].b.getBankrupt()) {
             //Fokortelse af variabler
@@ -39,23 +39,24 @@ public class GameController {
             String currentPlayerName = currentPlayer.getPlayerName();
             //loop til afvente spillerens roll commando i consollen
             //playerRollInput();
-
             //ruller terninger med RaffleCup samt opdaterer spillerens position
             die.roll();
             System.out.println(currentPlayerName + " slog " + die.getDiceValue());
+            guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),false);
 
             playerController.movePlayer(currentPlayer, die.getDiceValue());
 
             fieldController.landOnField(currentPlayer, playerController);
+            guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),true);
 
 
             //Terningernes værdier sættes
-            guiView.gui.setDie(die.getDiceValue());
+            guiView.getMyGUI().setDie(die.getDiceValue());
 
             //placerer spillers bil på det rette felt
-//            GUIView.MY_GUI_FIELDS[die.getDiceValue()].setCar(guiView.getGUIPlayer(turnCount), true);
 
             if (currentPlayer.b.getBankrupt()) {
+                guiView.getMyGUI().showMessage(currentPlayerName + " ER GÅET FALLIT!!!");
                 System.out.println(currentPlayerName + " ER GÅET FALLIT!!!");
                 findWinner(playerController.getPlayerArray());
                 break;
@@ -64,9 +65,9 @@ public class GameController {
             System.out.println(currentPlayerName + " har nu " + currentPlayer.b.getBalance() + "M på sin bankkonto");
 
             //I GUI sættes spillers balance
-            //           guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
-//
-//           guiView.getMyGUI().showMessage(currentPlayerName + field.getFieldMSG());
+            guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
+
+            guiView.getMyGUI().showMessage(currentPlayerName +" "+ fieldController.getFields()[currentPlayer.getFieldNumber()].getMsg());
 
             //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
             turnCount = (turnCount + 1) % playerController.getPlayerArray().length;
@@ -137,9 +138,12 @@ public class GameController {
 
     private void printGameResult(boolean uafgjort, Player leadingPlayer){
         if (uafgjort) {
+            guiView.getMyGUI().showMessage("SPILLET ER UAFGJORT!!!");
             System.out.println("SPILLET ER UAFGJORT!!!");
         } else {
             leadingPlayer.setPlayerWin();
+            guiView.getMyGUI().showMessage(leadingPlayer.getPlayerName() + " HAR VUNDET MED " + leadingPlayer.b.getBalance() + "M SAMT "
+                    + leadingPlayer.getTotalPropertyValue() + "M I EJENDOMME!!");
             System.out.println(leadingPlayer.getPlayerName() + " HAR VUNDET MED " + leadingPlayer.b.getBalance() + "M SAMT "
                     + leadingPlayer.getTotalPropertyValue() + "M I EJENDOMME!!");
         }

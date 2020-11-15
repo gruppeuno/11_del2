@@ -7,15 +7,15 @@ import java.awt.*;
 
 public class GUIView {
 
-    GUI_Player[] myPlayers;
-    GUI gui = new GUI(MY_GUI_FIELDS);
+    private GUI_Player[] myPlayers;
+    private GUI gui = new GUI(MY_GUI_FIELDS);
 
     public GUI getMyGUI() {
         return gui;
     }
 
     //TODO: kun brug playerarray som parameter
-    public void createGUIPlayers(Player[] players) {
+    public void createGUIPlayers(Player[] players, int startBalance) {
 
         Color[] myColors = {Color.RED, Color.BLUE, Color.YELLOW, Color.PINK, Color.GREEN, Color.BLACK, Color.WHITE, Color.CYAN};
 
@@ -26,7 +26,7 @@ public class GUIView {
         for (int i = 0; i < players.length; i++) {
             myCars[i] = new GUI_Car();
             myCars[i].setPrimaryColor(myColors[i]);
-            myPlayers[i] = new GUI_Player(players[i].getPlayerName(), 1000, myCars[i]);
+            myPlayers[i] = new GUI_Player(players[i].getPlayerName(), startBalance, myCars[i]);
             gui.addPlayer(myPlayers[i]);
 
         }
@@ -38,15 +38,15 @@ public class GUIView {
 
     public static final GUI_Field[] MY_GUI_FIELDS = {
             new GUI_Start("START", " ", " ", Color.white, Color.BLACK),
-            new GUI_Street("1", "BURGERBAREN", "Du landede på burgerbaren", "1M", Color.yellow, Color.BLACK),
-            new GUI_Street("2", "PIZZARIAET", "Du landede på pizzariaet", "1M", Color.yellow, Color.BLACK),
+            new GUI_Street("1", "BURGERBAREN", "", "1M", Color.yellow, Color.BLACK),
+            new GUI_Street("2", "PIZZARIAET", "", "1M", Color.yellow, Color.BLACK),
             new GUI_Chance(),
-            new GUI_Street("4", "SLIKBUTIKKEN", "Du landede på slikbutikken", "1M", Color.blue, Color.black),
-            new GUI_Street("5", "ISKIOSKEN", "Du landede på iskiosken", "1M", Color.blue, Color.black),
+            new GUI_Street("4", "SLIKBUTIKKEN", "", "1M", Color.blue, Color.black),
+            new GUI_Street("5", "ISKIOSKEN", "", "1M", Color.blue, Color.black),
             //TODO; indsæt billede
-            new GUI_Jail("","6","PÅ FÆNGSELSBESØG","Du landede på fængsels besøg", Color.gray,Color.black),
-            new GUI_Street("7", "MUSEET", "Du landede på museet", "2M", Color.MAGENTA, Color.black),
-            new GUI_Street("8", "BIBLIOTEKET", "Du landede på biblioteket", "2M", Color.MAGENTA, Color.black),
+            new GUI_Jail("","6","PÅ FÆNGSELSBESØG","", Color.gray,Color.black),
+            new GUI_Street("7", "MUSEET", "", "2M", Color.MAGENTA, Color.black),
+            new GUI_Street("8", "BIBLIOTEKET", "", "2M", Color.MAGENTA, Color.black),
             new GUI_Chance(),
             new GUI_Street("10", "SKATERPARKEN", "", "2M", Color.ORANGE, Color.black),
             new GUI_Street("11", "SWIMMINGPOOLEN", "", "2M", Color.ORANGE, Color.black),
