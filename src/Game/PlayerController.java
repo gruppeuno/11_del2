@@ -137,28 +137,7 @@ public class PlayerController {
 
     }
 
-
-
-   //TODO: metode til at fjerne property, spørg hjælpelærer, IKKE FÆRDIG
-   public void sellProperty(Player player, int payment, Player receivingPlayer, GUIView guiView){
-       int minPayment = payment;
-       ArrayList<Property> properties = new ArrayList<Property>();
-
-       int arraylistSizeBefore = player.getPropertiesOwned().size();
-
-
-       if(player.getTotalPropertyValue()>payment){
-           for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
-               properties.add(player.getPropertiesOwned().get(i));
-           }
-           guiView.getMyGUI().getUserSelection("Vælg grund du vil sælge", properties.toString());
-       }
-
-       if(player.getPropertiesOwned().size()==0 && player.b.getBalance()==0)
-           player.b.setBankrupt(true);
-       else if (arraylistSizeBefore==player.getPropertiesOwned().size())
-           player.b.setBankrupt(true);
-   }}
+}
 
 
 

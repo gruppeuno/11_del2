@@ -128,6 +128,7 @@ public class FieldController {
 
     }
 
+    //TODO: er det her testet? ligner ikke at det ville virke
      public void FreeProperty(Player player, PlayerController playerController){
          int i = player.getFieldNumber();
          Property property = (Property) fields[i];
@@ -138,4 +139,25 @@ public class FieldController {
                  player.addPropertyOwned(property);
                  System.out.println(player.getPlayerName() + " fik " + property.getName() + " for free"); }}
      }
+
+    //TODO: metode til at fjerne property, spørg hjælpelærer, IKKE FÆRDIG
+    public void sellProperty(Player player, int payment, Player receivingPlayer, GUIView guiView){
+        Property[] propertiesAsArray = new Property[player.getPropertiesOwned().size()];
+        int sizeBeforeSell=propertiesAsArray.length;
+
+        if(player.getTotalPropertyValue()>payment){
+            for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
+                 propertiesAsArray[i]=(Property) player.getPropertiesOwned().toArray()[i];
+            }
+            guiView.getMyGUI().getUserSelection("Vælg grund du vil sælge",
+                    propertiesAsArray[0].toString(),
+                    propertiesAsArray[1].toString(),
+                    propertiesAsArray[2].toString());
+        }
+
+        if(player.getPropertiesOwned().size()==0 && player.b.getBalance()==0)
+            player.b.setBankrupt(true);
+        else if (sizeBeforeSell==player.getPropertiesOwned().size())
+            player.b.setBankrupt(true);
+    }
 }

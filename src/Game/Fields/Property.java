@@ -34,4 +34,8 @@ public class Property extends Field {
     public void setDoubleRent(){ fieldRent = fieldRent*2;}
     public void removeDoubleRent(){ fieldRent = fieldRent/2;}
 
+    @Override
+    public String toString() {
+        return "Ejendom:" + super.name + " Pris: " + fieldPrice + " Felt nummer: " + super.fieldNumber;
+    }
 }

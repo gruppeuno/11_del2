@@ -21,7 +21,7 @@ public class Die {
 
     }
 
-    //TODO: test terninger
+    //TODO: test terninger, til test af sellProperty
     private int diceRollCount = 0;
     public void rollPlayer0(){
 

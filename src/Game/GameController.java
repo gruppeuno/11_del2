@@ -44,7 +44,15 @@ public class GameController {
             //loop til afvente spillerens roll commando i consollen
             //playerRollInput();
             //ruller terninger med RaffleCup samt opdaterer spillerens position
-            die.roll();
+            //TODO: rigtig terning
+            //die.roll();
+            //TODO: testterninger, SKAL KALDE SPILLERE GAB OG SEB FOR AT DET VIRKER
+            if(currentPlayerName.equals("gab"))
+            die.rollPlayer0();
+            else if(currentPlayerName.equals("seb"))
+            die.rollPlayer1();
+
+
             o.print(o.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),false);
 
@@ -60,7 +68,7 @@ public class GameController {
             //TODO: test af sellProperty
             Property testProperty = (Property) fieldController.getFields()[16];
             if (currentPlayer.getFieldNumber()==16 && testProperty.getOwnerName()!=currentPlayerName)
-                playerController.sellProperty(currentPlayer, 5, playerController.getPlayerByName(testProperty.getOwnerName()),guiView);
+                fieldController.sellProperty(currentPlayer, 5, playerController.getPlayerByName(testProperty.getOwnerName()),guiView);
 
             //placerer spillers bil på det rette felt
 
