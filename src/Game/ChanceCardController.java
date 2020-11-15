@@ -1,4 +1,4 @@
-package Game.Fields;
+package Game;
 
 import Game.Player;
 import Game.PlayerController;
