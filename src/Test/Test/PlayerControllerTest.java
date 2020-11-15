@@ -1,6 +1,7 @@
 package Test;
 
 import Game.Fields.Property;
+import Game.GameController;
 import Game.Player;
 import Game.PlayerController;
 import org.junit.jupiter.api.Test;
@@ -104,5 +105,9 @@ class PlayerControllerTest {
 
         int actual = 1;
         assertEquals(actual, playerController.getPlayerByName("p0").getPropertiesOwned().size());
+    }
+
+    @Test
+    public void sellPropertyTest(){
     }
 }

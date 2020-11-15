@@ -1,6 +1,8 @@
 package Game;
 
 
+import Game.Fields.Property;
+
 import java.util.Scanner;
 
 /**
@@ -54,6 +56,11 @@ public class GameController {
 
             //Terningernes værdier sættes
             guiView.getMyGUI().setDie(die.getDiceValue());
+
+            //TODO: test af sellProperty
+            Property testProperty = (Property) fieldController.getFields()[16];
+            if (currentPlayer.getFieldNumber()==16 && testProperty.getOwnerName()!=currentPlayerName)
+                playerController.sellProperty(currentPlayer, 5, playerController.getPlayerByName(testProperty.getOwnerName()),guiView);
 
             //placerer spillers bil på det rette felt
 

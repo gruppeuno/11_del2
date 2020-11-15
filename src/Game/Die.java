@@ -21,6 +21,15 @@ public class Die {
 
     }
 
+    //TODO: test terninger
+    private int diceRollCount = 0;
+    public void rollPlayer0(){
+        int[] player0Roll = {6,6,4,5,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3};
+    }
+    public void rollPlayer1(){
+        int[] player0Roll = {1,1,2,1,2,
+    }
+
     public int getDiceValue() { return diceValue; }
 
 
