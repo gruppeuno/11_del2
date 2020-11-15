@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class ChanceCardController {
 
     private static boolean cardUse = false;
-    private int move = 0;
     private static int i = 0;
 
     private static int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
@@ -168,9 +167,8 @@ public class ChanceCardController {
         if (valg.toLowerCase().equals(ryk)) {
             moveField(player, 1);}
         else if (valg.toLowerCase().equals(traek)) {
+            i++;
             chanceCard(player, playerController);}
-
-        scan.close();
     }
 
     private void chancekort6 () {
@@ -265,22 +263,21 @@ public class ChanceCardController {
         TakeFreeProperty(player, playerController);
     }
 
-    public void moveField(Player player, int move) {
-
-        this.move = move;
-        player.setFieldNumber(player.getFieldNumber()+ this.move);
+    public void moveField(Player player, int move) { ;
+        player.setFieldNumber(player.getFieldNumber()+ move);
     }
 
     public void moveFieldPLayerSelect(Player player, int minField, int maxField) {
+        int move;
+
         Scanner scan = new Scanner(System.in);
 
         do {
             System.out.println("Skriv et tal imellem " + minField + " og " + maxField);
-            this.move = scan.nextInt(); }
-        while (minField > this.move || maxField < this.move);
+            move = scan.nextInt(); }
+        while (minField > move || maxField < move);
 
-        player.setFieldNumber(player.getFieldNumber()+this.move);
-        scan.close();
+        player.setFieldNumber(player.getFieldNumber()+move);
     }
 
     public void moveToStart(Player player) {
@@ -292,28 +289,29 @@ public class ChanceCardController {
     }
 
     public void moveSpecificFieldRange(Player player, String Color, int minMove, int maxMove) {
+        int move;
+
         Scanner scan = new Scanner(System.in);
 
         do {
             System.out.println("Vælg mellem felt " + minMove + " eller " + maxMove + " af farven " + Color + " på pladen");
-            this.move = scan.nextInt(); }
-            while (!(minMove == this.move || maxMove == this.move));
+            move = scan.nextInt(); }
+            while (!(minMove == move || maxMove == move));
 
-            player.setFieldNumber(this.move);
-            scan.close();
+            player.setFieldNumber(move);
         }
 
     public void moveSpecificFieldRange(Player player, String Color, int minMove, int maxMove, String Color2, int minMove2, int maxMove2) {
+        int move;
         Scanner scan = new Scanner(System.in);
 
         do {
             System.out.println("Vælg mellem felt " + minMove + " eller " + maxMove + " af farven " + Color + ", eller felt "
                     + minMove2 + " eller " + maxMove2 + " af farven " + Color2 + " på pladen");
-            this.move = scan.nextInt(); }
-        while (!(minMove == this.move || maxMove == this.move || minMove2 == this.move || maxMove2 == this.move));
+            move = scan.nextInt(); }
+        while (!(minMove == move|| maxMove == move || minMove2 == move || maxMove2 == move));
 
-        player.setFieldNumber(this.move);
-        scan.close();
+        player.setFieldNumber(move);
     }
 
     public void addBank(Player player, int moneyChange) {

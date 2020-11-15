@@ -57,9 +57,9 @@ public class GUIView {
             new GUI_Street("16", "LEGETØJSBUTIKKEN", "", "3M", Color.gray, Color.black),
             new GUI_Street("17", "DYREHANDLEN", "", "3M", Color.gray, Color.black),
             new GUI_Jail(),
-            new GUI_Street("18", "BOWLINGHALLEN", "", "4M", Color.green, Color.black),
-            new GUI_Street("19", "ZOO", "", "4M", Color.green, Color.black),
+            new GUI_Street("19", "BOWLINGHALLEN", "", "4M", Color.green, Color.black),
+            new GUI_Street("20", "ZOO", "", "4M", Color.green, Color.black),
             new GUI_Chance(),
-            new GUI_Street("21", "VANDLANDET", "", "5M", Color.blue, Color.black),
-            new GUI_Street("22", "STRANDPROMENADEN", "", "5M", Color.blue, Color.black),
+            new GUI_Street("22", "VANDLANDET", "", "5M", Color.blue, Color.black),
+            new GUI_Street("23", "STRANDPROMENADEN", "", "5M", Color.blue, Color.black),
     };}
