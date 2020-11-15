@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class FieldController {
 
-    private Field[] fields = {
+    final Field[] fields = {
             new Start(FieldPropertyNames.instanceOf().number(1),0, FieldMessages.instanceOf().number(1)),
             new Property(FieldPropertyNames.instanceOf().number(2), 1,1, FieldMessages.instanceOf().number(2),"brown"),
             new Property(FieldPropertyNames.instanceOf().number(3), 2,1, FieldMessages.instanceOf().number(3),"brown"),
@@ -38,6 +38,8 @@ public class FieldController {
             new Property(FieldPropertyNames.instanceOf().number(24), 23,5,FieldMessages.instanceOf().number(24),"blue")
     };
 
+    private final ChanceCardController chanceCardController = new ChanceCardController();
+
     //Når en spiller lander på et felt
     public void landOnField(Player player, PlayerController playerController){
         isJustLeftJail(player);
@@ -49,8 +51,13 @@ public class FieldController {
             landOnProperty(player,playerController,(Property) field);
         else if(field instanceof Jail)
             landOnJail(player,playerController,(Jail) field);
+        else if(field instanceof ChanceCard) {
+            chanceCardController.chanceCard(player, playerController);
+        }
     }
 
+    //Af low coupling grunde..
+    public void doRandomize() {chanceCardController.randomizeChance();}
 
     public void landOnProperty(Player player, PlayerController playerController, Property property) {
         if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName()))
@@ -119,18 +126,19 @@ public class FieldController {
         if (player.getJailCard() == true){
             player.jailCardFree();
             player.setJailCard(false);
-            Chance.setJailCardUse(false);
+            ChanceCardController.setJailCardUse(false);
         }
 
     }
 
-    // public void DoFreeProperty(Player player, PlayerController playerController){FreeProperty(player, playerController, );} //Property??
-//
-    // private void FreeProperty(Player player, PlayerController playerController, Property property){
-    //     if (property.getOwnedByPlayer()) {payRent(player, playerController, property);}
-    //     else {
-    //         if (!player.b.getBankrupt()) {
-    //             property.setOwner(player.getPlayerName());
-    //             System.out.println(player.getPlayerName() + " fik " + property.getName() + " for free"); }}
-    // }
+     public void FreeProperty(Player player, PlayerController playerController){
+         int i = player.getFieldNumber();
+         Property property = (Property) fields[i];
+         if (property.getOwnedByPlayer()) {payRent(player, playerController, property);}
+         else {
+             if (!player.b.getBankrupt()) {
+                 property.setOwner(player.getPlayerName());
+                 player.addPropertyOwned(property);
+                 System.out.println(player.getPlayerName() + " fik " + property.getName() + " for free"); }}
+     }
 }

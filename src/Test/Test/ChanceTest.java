@@ -1,8 +1,5 @@
 package Test;
 
-import Game.Fields.Chance.Chance;
-import Game.Fields.Field;
-
 public class ChanceTest {
 
     public static void main(String[] args) {
