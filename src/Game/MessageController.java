@@ -2,8 +2,9 @@ package Game;
 
 import Game.View.GameControllerMessages;
 
-public class Outputs {
+public class MessageController {
 
+    //GameController Messages
     public void print(String string){
         System.out.println(string);
     }

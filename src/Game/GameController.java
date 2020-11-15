@@ -17,7 +17,7 @@ public class GameController {
     final private Die die = new Die();
     final private Scanner scan = new Scanner(System.in);
     final private GUIView guiView = new GUIView();
-    Outputs o = new Outputs();
+    MessageController m = new MessageController();
 
     /**
      * Main metode, kører spillet
@@ -43,7 +43,7 @@ public class GameController {
             //playerRollInput();
             //ruller terninger med RaffleCup samt opdaterer spillerens position
             die.roll();
-            o.print(o.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
+            m.print(m.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),false);
 
             playerController.movePlayer(currentPlayer, die.getDiceValue());
@@ -58,13 +58,13 @@ public class GameController {
             //placerer spillers bil på det rette felt
 
             if (currentPlayer.b.getBankrupt()) {
-                guiView.getMyGUI().showMessage(currentPlayerName + o.bankruptMsg(currentPlayerName));
-                o.print(o.bankruptMsg(currentPlayerName));
+                guiView.getMyGUI().showMessage(currentPlayerName + m.bankruptMsg(currentPlayerName));
+                m.print(m.bankruptMsg(currentPlayerName));
                 findWinner(playerController.getPlayerArray());
                 break;
             }
 
-            o.print(o.currentBalanceMsg(currentPlayerName,currentPlayer.b.getBalance()));
+            m.print(m.currentBalanceMsg(currentPlayerName,currentPlayer.b.getBalance()));
 
             //I GUI sættes spillers balance
             guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
@@ -73,7 +73,7 @@ public class GameController {
 
             //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
             turnCount = (turnCount + 1) % playerController.getPlayerArray().length;
-            o.print(o.lineMsg());
+            m.print(m.lineMsg());
         }
     }
 
@@ -81,11 +81,11 @@ public class GameController {
         String start;
 
         do {
-            o.print(o.startMsg());
+            m.print(m.startMsg());
 
             start = scan.nextLine();
         }
-        while (!start.toLowerCase().equals(o.startInputMsg()));
+        while (!start.toLowerCase().equals(m.startInputMsg()));
 
         //Lukker scanner hvis der er fundet en vinder
         if (playerController.getPlayerArray()[turnCount].getPlayerWin())
@@ -101,11 +101,11 @@ public class GameController {
         String rollInput;
 
         do {
-            o.print(o.myTurnMsg(playerController.getPlayerArray()[turnCount].getPlayerName()));
+            m.print(m.myTurnMsg(playerController.getPlayerArray()[turnCount].getPlayerName()));
 
             rollInput = scan.nextLine();
         }
-        while (!rollInput.toLowerCase().equals(o.rollInputMsg()));
+        while (!rollInput.toLowerCase().equals(m.rollInputMsg()));
 
         //Lukker scanner hvis der er fundet en vinder
         if (playerController.getPlayerArray()[turnCount].getPlayerWin())
@@ -137,12 +137,12 @@ public class GameController {
 
     private void printGameResult(boolean uafgjort, Player leadingPlayer){
         if (uafgjort) {
-            o.print(o.tieMsg());
-            guiView.getMyGUI().showMessage(o.tieMsg());
+            m.print(m.tieMsg());
+            guiView.getMyGUI().showMessage(m.tieMsg());
         } else {
             leadingPlayer.setPlayerWin();
-            o.print(o.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.b.getBalance(), leadingPlayer.getTotalPropertyValue()));
-            guiView.getMyGUI().showMessage(o.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.b.getBalance(), leadingPlayer.getTotalPropertyValue()));
+            m.print(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.b.getBalance(), leadingPlayer.getTotalPropertyValue()));
+            guiView.getMyGUI().showMessage(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.b.getBalance(), leadingPlayer.getTotalPropertyValue()));
 
         }
     }
