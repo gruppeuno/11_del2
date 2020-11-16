@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class GameController {
 
     private int turnCount;
+    private int nextPlayerTurnCount;
     //skaber nye objekter af Field, RaffleCup og PlayerCreator
     final private FieldController fieldController = new FieldController();
     final private PlayerController playerController = new PlayerController();
@@ -36,9 +37,11 @@ public class GameController {
       startMessage();
 
         while (!playerController.getPlayerArray()[turnCount].b.getBankrupt()) {
+
             //Fokortelse af variabler
             Player currentPlayer = playerController.getPlayerArray()[turnCount];
             String currentPlayerName = currentPlayer.getPlayerName();
+            nextPlayerTurnCount = (turnCount + 1) % playerController.getPlayerArray().length;
             //loop til afvente spillerens roll commando i consollen
             //playerRollInput();
             //ruller terninger med RaffleCup samt opdaterer spillerens position
@@ -65,6 +68,7 @@ public class GameController {
             }
 
             m.print(m.currentBalanceMsg(currentPlayerName,currentPlayer.b.getBalance()));
+            m.print(m.myTurnMsg(playerController.getPlayerArray()[nextPlayerTurnCount].getPlayerName()));
 
             //I GUI sættes spillers balance
             guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
@@ -79,33 +83,14 @@ public class GameController {
 
     private void startMessage() {
         String start;
+        String playerOne = playerController.getPlayerArray()[0].getPlayerName();
 
         do {
-            m.print(m.startMsg());
+            m.print(m.startMsg(playerOne));
 
             start = scan.nextLine();
         }
-        while (!start.toLowerCase().equals(m.startInputMsg()));
-
-        //Lukker scanner hvis der er fundet en vinder
-        if (playerController.getPlayerArray()[turnCount].getPlayerWin())
-            scan.close();
-    }
-
-    /*
-
-     * Loop der kører indtil spilleren har indtastet "roll"
-     * hvis spilleren har vunder lukkes scanneren
-     */
-    private void playerRollInput() {
-        String rollInput;
-
-        do {
-            m.print(m.myTurnMsg(playerController.getPlayerArray()[turnCount].getPlayerName()));
-
-            rollInput = scan.nextLine();
-        }
-        while (!rollInput.toLowerCase().equals(m.rollInputMsg()));
+        while (!start.isEmpty());
 
         //Lukker scanner hvis der er fundet en vinder
         if (playerController.getPlayerArray()[turnCount].getPlayerWin())

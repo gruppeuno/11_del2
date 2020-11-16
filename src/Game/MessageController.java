@@ -18,27 +18,19 @@ public class MessageController {
     }
 
     public String currentBalanceMsg(String currentPlayerName, int balance){
-        return currentPlayerName + " " + GameControllerMessages.instanceOf().number(3) + " " + balance + GameControllerMessages.instanceOf().number(4);
+        return GameControllerMessages.instanceOf().number(3) + " " + balance + GameControllerMessages.instanceOf().number(4);
     }
 
     public String lineMsg(){
-        return GameControllerMessages.instanceOf().number(5);
+        return GameControllerMessages.instanceOf().number(5) + "\n";
     }
 
-    public String startMsg(){
-        return GameControllerMessages.instanceOf().number(6);
-    }
-
-    public String startInputMsg(){
-        return GameControllerMessages.instanceOf().number(7);
-    }
-
-    public String rollInputMsg(){
-        return GameControllerMessages.instanceOf().number(10);
+    public String startMsg(String playerOne){
+        return GameControllerMessages.instanceOf().number(6) + "\n" + playerOne + "\n" + GameControllerMessages.instanceOf().number(7);
     }
 
     public String myTurnMsg(String playerName){
-        return GameControllerMessages.instanceOf().number(8) + playerName + GameControllerMessages.instanceOf().number(9);
+        return GameControllerMessages.instanceOf().number(5) + "\n\n" + playerName + " " + GameControllerMessages.instanceOf().number(8);
     }
 
     public String tieMsg(){
