@@ -58,7 +58,7 @@ public class PlayerController {
             if (numberOfPlayers< MIN || numberOfPlayers> MAX)
                 System.out.println("Ugyldigt antal spillere. Indtast et antal spillere mellem 2-4");
         }while (numberOfPlayers< MIN || numberOfPlayers> MAX);
-        System.out.println("numberOfPlayers " + numberOfPlayers + "\n");
+        System.out.println("antal spillere: " + numberOfPlayers + "\n");
     }
 
     /**

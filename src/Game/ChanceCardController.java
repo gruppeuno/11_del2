@@ -10,6 +10,8 @@ public class ChanceCardController {
 
     private static boolean cardUse = false;
     private static int i = 0;
+    //TODO: hvad gør den her variabel
+    private int rrr = 0;
 
     private static int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
 
@@ -66,7 +68,7 @@ public class ChanceCardController {
                 chancekort2(player);
                 break;
             case 3: //Chance Kort 3
-                chancekort3(player);
+                chancekort3(player, playerController);
                 break;
             case 4: //Chance Kort 4
                 chancekort4(player, playerController);
@@ -122,9 +124,9 @@ public class ChanceCardController {
             default:
                 System.out.println("Der skete en fejl");
         }
-        i++;
+        rrr++;
 
-        if (i == 19) {
+        if (rrr == 19) {
             i = 0;}
 }
     private void chancekort1() {
@@ -137,9 +139,9 @@ public class ChanceCardController {
         addBank(player, 2);
     }
 
-    private void chancekort3 (Player player) {
+    private void chancekort3 (Player player, PlayerController playerController) {
         System.out.println("Ryk op til 5 felter frem");
-        moveFieldPLayerSelect(player, 1, 5);
+        moveFieldPLayerSelect(player, 1, 5,playerController);
     }
 
     private void chancekort4 (Player player, PlayerController playerController) {
@@ -267,7 +269,7 @@ public class ChanceCardController {
         player.setFieldNumber(player.getFieldNumber()+ move);
     }
 
-    public void moveFieldPLayerSelect(Player player, int minField, int maxField) {
+    public void moveFieldPLayerSelect(Player player, int minField, int maxField, PlayerController playerController) {
         int move;
 
         Scanner scan = new Scanner(System.in);
@@ -277,7 +279,7 @@ public class ChanceCardController {
             move = scan.nextInt(); }
         while (minField > move || maxField < move);
 
-        player.setFieldNumber(player.getFieldNumber()+move);
+        playerController.movePlayer(player,move);
     }
 
     public void moveToStart(Player player) {
