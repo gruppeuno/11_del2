@@ -1,12 +1,14 @@
 package Game;
 
+import Game.Fields.Property;
+
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
 public class ChanceCardController {
 
     private static boolean cardUse = false;
-    private int move = 0;
     private static int i = 0;
 
     private static int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
@@ -126,7 +128,7 @@ public class ChanceCardController {
             i = 0;}
 }
     private void chancekort1() {
-
+        System.out.println(">>>Ingen indhold<<<");
     }
 
     private void chancekort2(Player player) {
@@ -145,7 +147,7 @@ public class ChanceCardController {
         System.out.println("Ryk frem til et Orange felt.");
         System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
         moveSpecificFieldRange(player, "Orange", 10, 11);
-        //TakeFreeProperty(player, playerController);
+        TakeFreeProperty(player, playerController);
     }
 
     private void chancekort5 (Player player, PlayerController playerController) {
@@ -164,14 +166,13 @@ public class ChanceCardController {
 
         if (valg.toLowerCase().equals(ryk)) {
             moveField(player, 1);}
-        else {
+        else if (valg.toLowerCase().equals(traek)) {
+            i++;
             chanceCard(player, playerController);}
-
-        scan.close();
     }
 
     private void chancekort6 () {
-
+        System.out.println(">>>Ingen indhold<<<");
     }
 
     private void chancekort7 (Player player) {
@@ -184,7 +185,7 @@ public class ChanceCardController {
         System.out.println("Ryk frem til et orange eller grønt felt.");
         System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
         moveSpecificFieldRange(player, "Orange", 10, 11, "Grøn", 19, 20);
-        //TakeFreeProperty(player, playerController);
+        TakeFreeProperty(player, playerController);
     }
 
     private void chancekort9 (Player player, PlayerController playerController) {
@@ -192,7 +193,7 @@ public class ChanceCardController {
         System.out.println("Ryk frem til et lyseblåt felt.");
         System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
         moveSpecificFieldRange(player, "Lyseblå", 4, 5);
-        //TakeFreeProperty(player, playerController);
+        TakeFreeProperty(player, playerController);
     }
 
     private void chancekort10 (Player player, PlayerController playerController) {
@@ -216,11 +217,11 @@ public class ChanceCardController {
     }
 
     private void chancekort12 (Player player, PlayerController playerController) {
-
+        System.out.println(">>>Ingen indhold<<<");
     }
 
     private void chancekort13 (Player player, PlayerController playerController) {
-
+        System.out.println(">>>Ingen indhold<<<");
     }
 
     private void chancekort14 (Player player, PlayerController playerController) {
@@ -232,7 +233,7 @@ public class ChanceCardController {
         System.out.println("Ryk frem til et Pink eller mørkeblåt felt.");
         System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
         moveSpecificFieldRange(player, "Pink", 7, 8, "Mørkeblå", 22, 23);
-        //TakeFreeProperty(player, playerController);
+        TakeFreeProperty(player, playerController);
     }
 
     private void chancekort16 (Player player) {
@@ -245,7 +246,7 @@ public class ChanceCardController {
         System.out.println("Ryk frem til et rødt felt.");
         System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
         moveSpecificFieldRange(player, "Rød", 13, 14);
-        //TakeFreeProperty(player, playerController);
+        TakeFreeProperty(player, playerController);
     }
 
     private void chancekort18 (Player player) {
@@ -254,30 +255,29 @@ public class ChanceCardController {
 
     private void chancekort19 (Player player, PlayerController playerController) {
         moveSpecificFieldRange(player, "Lyseblå", 4, 5, "Rød", 13, 14);
-        //TakeFreeProperty(player, playerController);
+        TakeFreeProperty(player, playerController);
     }
 
     private void chancekort20 (Player player, PlayerController playerController) {
         moveSpecificFieldRange(player, "Brun", 1, 2, "Gul", 16, 17);
-        //TakeFreeProperty(player, playerController);
+        TakeFreeProperty(player, playerController);
     }
 
-    public void moveField(Player player, int move) {
-
-        this.move = move;
-        player.setFieldNumber(player.getFieldNumber()+ this.move);
+    public void moveField(Player player, int move) { ;
+        player.setFieldNumber(player.getFieldNumber()+ move);
     }
 
     public void moveFieldPLayerSelect(Player player, int minField, int maxField) {
+        int move;
+
         Scanner scan = new Scanner(System.in);
 
         do {
             System.out.println("Skriv et tal imellem " + minField + " og " + maxField);
-            this.move = scan.nextInt(); }
-        while (minField > this.move || maxField < this.move);
+            move = scan.nextInt(); }
+        while (minField > move || maxField < move);
 
-        player.setFieldNumber(player.getFieldNumber()+this.move);
-        scan.close();
+        player.setFieldNumber(player.getFieldNumber()+move);
     }
 
     public void moveToStart(Player player) {
@@ -289,28 +289,29 @@ public class ChanceCardController {
     }
 
     public void moveSpecificFieldRange(Player player, String Color, int minMove, int maxMove) {
+        int move;
+
         Scanner scan = new Scanner(System.in);
 
         do {
-            System.out.println("Vælg mellem felt " + minMove + " eller " + maxMove + " af farven " + Color + "på pladen");
-            this.move = scan.nextInt(); }
-            while (!(minMove == this.move || maxMove == this.move));
+            System.out.println("Vælg mellem felt " + minMove + " eller " + maxMove + " af farven " + Color + " på pladen");
+            move = scan.nextInt(); }
+            while (!(minMove == move || maxMove == move));
 
-            player.setFieldNumber(this.move);
-            scan.close();
+            player.setFieldNumber(move);
         }
 
     public void moveSpecificFieldRange(Player player, String Color, int minMove, int maxMove, String Color2, int minMove2, int maxMove2) {
+        int move;
         Scanner scan = new Scanner(System.in);
 
         do {
             System.out.println("Vælg mellem felt " + minMove + " eller " + maxMove + " af farven " + Color + ", eller felt "
-                    + minMove + " eller " + maxMove + " af farven" + Color2 + "på pladen");
-            this.move = scan.nextInt(); }
-        while (!(minMove == this.move || maxMove == this.move || minMove2 == this.move || maxMove2 == this.move));
+                    + minMove2 + " eller " + maxMove2 + " af farven " + Color2 + " på pladen");
+            move = scan.nextInt(); }
+        while (!(minMove == move|| maxMove == move || minMove2 == move || maxMove2 == move));
 
-        player.setFieldNumber(this.move);
-        scan.close();
+        player.setFieldNumber(move);
     }
 
     public void addBank(Player player, int moneyChange) {
@@ -342,11 +343,10 @@ public class ChanceCardController {
         player.b.addBalance(playerController.getPlayerArrayLength()+1);
     }
 
-
-   // //TODO: Det her skal seriøst laves om, så det er mere elegant. lort løsning.
-   // public void TakeFreeProperty(Player player, PlayerController playerController) {
-   //     Field field = null;
-   //     Objects.requireNonNull(field).DoFreeProperty(player, playerController);
-   // }
+    //Total skrald løsning, men kan ikke lige komme på andet. Virker garanteret ikke..
+    public void TakeFreeProperty(Player player, PlayerController playerController) {
+         FieldController fieldController = new FieldController();
+         fieldController.FreeProperty(player, playerController);
+   }
 }
 

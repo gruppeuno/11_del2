@@ -1,40 +1,41 @@
 package Game;
 
 import Game.Fields.*;
-
+import Game.Fields.ChanceCard;
+import Game.View.FieldMessages;
+import Game.View.FieldPropertyNames;
 import java.util.ArrayList;
 
 public class FieldController {
 
-    private Field[] fields = {
-            new Start("START",0, "landede på Start"),
-            new Property("BURGERBAREN", 1,1, "landede på burgerbaren","brown"),
-            new Property("PIZZARIAET", 2,1, "landede på pizzariaet","brown"),
-            new ChanceCard("CHANCE", 3, "landede på chancen"),
-            new Property("SLIKBUTIKKEN", 4,1, "landede på slikbutikken", "lightBlue"),
-            new Property("ISKIOSKEN", 5,1, "landede på iskiosken", "lightBlue"),
-            new JailVisit("PÅ FÆNGSELSBESØG", 6, "landede på fængsels besøg"),
-            new Property("MUSEET", 7,2, "landede på museet","pink"),
-            new Property("BIBLIOTEKET", 8,2, "landede på biblioteket","pink"),
-            new ChanceCard("CHANCE", 9, "landede på chancen"),
-            new Property("SKATERPARKEN", 10,2, "landede på skaterparken","gold"),
-            new Property("SWIMMINGPOOLEN", 11,2, "landede på swimmingpoolen","gold"),
-            new Parking("Parkering", 12, "landede på parkering"),
-            new Property("SPILLEHALLEN", 13,3, "landede på spillehallen","red"),
-            new Property("BIOGRAFEN", 14,3, "landede på biografen","red"),
-            new ChanceCard("CHANCE", 15, "landede på chancen"),
-            new Property("LEGETØJSBUTIKKEN", 16,3, "landede på legetøjsbutikken","yellow"),
-            new Property("DYREHANDLEN", 17,3, "landede på dyrehandlen","yellow"),
-            new Jail("GÅ I FÆNGSEL", 18, "landede på gå i fængsel"),
-            new Property("BOWLINGHALLEN", 19,4, "landede på bowlingehallen","green"),
-            new Property("ZOO", 20,4, "landede på zoo","green"),
-            new ChanceCard("CHANCE", 21, "landede på chancen"),
-            new Property("VANDLANDET", 22,5, "landede på vandlandet","blue"),
-            new Property("STRANDPROMENADEN", 23,5, "landede på strandpromenaden","blue")
+    final Field[] fields = {
+            new Start(FieldPropertyNames.instanceOf().number(1),0, FieldMessages.instanceOf().number(1)),
+            new Property(FieldPropertyNames.instanceOf().number(2), 1,1, FieldMessages.instanceOf().number(2),"brown"),
+            new Property(FieldPropertyNames.instanceOf().number(3), 2,1, FieldMessages.instanceOf().number(3),"brown"),
+            new ChanceCard(FieldPropertyNames.instanceOf().number(4), 3, FieldMessages.instanceOf().number(4)),
+            new Property(FieldPropertyNames.instanceOf().number(5), 4,1, FieldMessages.instanceOf().number(5), "lightBlue"),
+            new Property(FieldPropertyNames.instanceOf().number(6), 5,1,FieldMessages.instanceOf().number(6), "lightBlue"),
+            new JailVisit(FieldPropertyNames.instanceOf().number(7), 6, FieldMessages.instanceOf().number(7)),
+            new Property(FieldPropertyNames.instanceOf().number(8), 7,2, FieldMessages.instanceOf().number(8),"pink"),
+            new Property(FieldPropertyNames.instanceOf().number(9), 8,2,FieldMessages.instanceOf().number(9),"pink"),
+            new ChanceCard(FieldPropertyNames.instanceOf().number(10), 9, FieldMessages.instanceOf().number(10)),
+            new Property(FieldPropertyNames.instanceOf().number(11), 10,2,FieldMessages.instanceOf().number(11),"gold"),
+            new Property(FieldPropertyNames.instanceOf().number(12), 11,2,FieldMessages.instanceOf().number(12),"gold"),
+            new Parking(FieldPropertyNames.instanceOf().number(13), 12, FieldMessages.instanceOf().number(13)),
+            new Property(FieldPropertyNames.instanceOf().number(14), 13,3,FieldMessages.instanceOf().number(14),"red"),
+            new Property(FieldPropertyNames.instanceOf().number(15), 14,3,FieldMessages.instanceOf().number(15),"red"),
+            new ChanceCard(FieldPropertyNames.instanceOf().number(16), 15,FieldMessages.instanceOf().number(16)),
+            new Property(FieldPropertyNames.instanceOf().number(17), 16,3,FieldMessages.instanceOf().number(17),"yellow"),
+            new Property(FieldPropertyNames.instanceOf().number(18), 17,3,FieldMessages.instanceOf().number(18),"yellow"),
+            new Jail(FieldPropertyNames.instanceOf().number(19), 18,FieldMessages.instanceOf().number(19)),
+            new Property(FieldPropertyNames.instanceOf().number(20), 19,4,FieldMessages.instanceOf().number(20),"green"),
+            new Property(FieldPropertyNames.instanceOf().number(21), 20,4, FieldMessages.instanceOf().number(21),"green"),
+            new ChanceCard(FieldPropertyNames.instanceOf().number(22), 21,FieldMessages.instanceOf().number(22)),
+            new Property(FieldPropertyNames.instanceOf().number(23), 22,5,FieldMessages.instanceOf().number(23),"blue"),
+            new Property(FieldPropertyNames.instanceOf().number(24), 23,5,FieldMessages.instanceOf().number(24),"blue")
     };
 
-    //TODO: ChanceCardController implementeret her
-    private ChanceCardController chanceCardController = new ChanceCardController();
+    private final ChanceCardController chanceCardController = new ChanceCardController();
 
     //Når en spiller lander på et felt
     public void landOnField(Player player, PlayerController playerController){
@@ -120,19 +121,22 @@ public class FieldController {
         player.putInJail();
         player.setFieldNumber(6);
         if (player.getJailCard() == true){
-            player.JailCardFree();
+            player.jailCardFree();
             player.setJailCard(false);
-            //TODO: det her
-            //.setJailCardUse(false);
+            ChanceCardController.setJailCardUse(false);
         }
 
     }
 
-     private void FreeProperty(Player player, PlayerController playerController, Property property){
+     public void FreeProperty(Player player, PlayerController playerController){
+        //TODO: Det her skal laves om, så den tager den rigtige instans af property.
+         int i = player.getFieldNumber();
+         Property property = (Property) fields[i];
          if (property.getOwnedByPlayer()) {payRent(player, playerController, property);}
          else {
              if (!player.b.getBankrupt()) {
                  property.setOwner(player.getPlayerName());
+                 player.addPropertyOwned(property);
                  System.out.println(player.getPlayerName() + " fik " + property.getName() + " for free"); }}
      }
 }

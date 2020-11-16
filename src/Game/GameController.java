@@ -17,6 +17,7 @@ public class GameController {
     final private Die die = new Die();
     final private Scanner scan = new Scanner(System.in);
     final private GUIView guiView = new GUIView();
+    MessageController m = new MessageController();
 
     /**
      * Main metode, kører spillet
@@ -42,7 +43,7 @@ public class GameController {
             //playerRollInput();
             //ruller terninger med RaffleCup samt opdaterer spillerens position
             die.roll();
-            System.out.println(currentPlayerName + " slog " + die.getDiceValue());
+            m.print(m.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),false);
 
             playerController.movePlayer(currentPlayer, die.getDiceValue());
@@ -57,13 +58,13 @@ public class GameController {
             //placerer spillers bil på det rette felt
 
             if (currentPlayer.b.getBankrupt()) {
-                guiView.getMyGUI().showMessage(currentPlayerName + " ER GÅET FALLIT!!!");
-                System.out.println(currentPlayerName + " ER GÅET FALLIT!!!");
+                guiView.getMyGUI().showMessage(currentPlayerName + m.bankruptMsg(currentPlayerName));
+                m.print(m.bankruptMsg(currentPlayerName));
                 findWinner(playerController.getPlayerArray());
                 break;
             }
 
-            System.out.println(currentPlayerName + " har nu " + currentPlayer.b.getBalance() + "M på sin bankkonto");
+            m.print(m.currentBalanceMsg(currentPlayerName,currentPlayer.b.getBalance()));
 
             //I GUI sættes spillers balance
             guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
@@ -72,21 +73,19 @@ public class GameController {
 
             //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
             turnCount = (turnCount + 1) % playerController.getPlayerArray().length;
-            System.out.println("========================================\n");
+            m.print(m.lineMsg());
         }
     }
 
     private void startMessage() {
         String start;
-        String startMSG = "Spillet er klar - \nSkriv \"Start\" og tryk enter for at starte og slå de første terninger!" +
-                "\nTryk \"OK\" på spillepladen for at lade turen gå videre!";
 
         do {
-            System.out.println(startMSG);
+            m.print(m.startMsg());
 
             start = scan.nextLine();
         }
-        while (!start.toLowerCase().equals("start"));
+        while (!start.toLowerCase().equals(m.startInputMsg()));
 
         //Lukker scanner hvis der er fundet en vinder
         if (playerController.getPlayerArray()[turnCount].getPlayerWin())
@@ -102,12 +101,11 @@ public class GameController {
         String rollInput;
 
         do {
-            System.out.println("Det er din tur " + playerController.getPlayerArray()[turnCount].getPlayerName()
-                    + "\nSkriv \"Roll\" og tryk enter for at slå med terningerne!");
+            m.print(m.myTurnMsg(playerController.getPlayerArray()[turnCount].getPlayerName()));
 
             rollInput = scan.nextLine();
         }
-        while (!rollInput.toLowerCase().equals("roll"));
+        while (!rollInput.toLowerCase().equals(m.rollInputMsg()));
 
         //Lukker scanner hvis der er fundet en vinder
         if (playerController.getPlayerArray()[turnCount].getPlayerWin())
@@ -139,14 +137,13 @@ public class GameController {
 
     private void printGameResult(boolean uafgjort, Player leadingPlayer){
         if (uafgjort) {
-            guiView.getMyGUI().showMessage("SPILLET ER UAFGJORT!!!");
-            System.out.println("SPILLET ER UAFGJORT!!!");
+            m.print(m.tieMsg());
+            guiView.getMyGUI().showMessage(m.tieMsg());
         } else {
             leadingPlayer.setPlayerWin();
-            guiView.getMyGUI().showMessage(leadingPlayer.getPlayerName() + " HAR VUNDET MED " + leadingPlayer.b.getBalance() + "M SAMT "
-                    + leadingPlayer.getTotalPropertyValue() + "M I EJENDOMME!!");
-            System.out.println(leadingPlayer.getPlayerName() + " HAR VUNDET MED " + leadingPlayer.b.getBalance() + "M SAMT "
-                    + leadingPlayer.getTotalPropertyValue() + "M I EJENDOMME!!");
+            m.print(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.b.getBalance(), leadingPlayer.getTotalPropertyValue()));
+            guiView.getMyGUI().showMessage(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.b.getBalance(), leadingPlayer.getTotalPropertyValue()));
+
         }
     }
 }

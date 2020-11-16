@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4b29b98b-3b3a-43b4-85c2-028459063c08" name="Default Changelist" comment="KLartgjort kode til spørgsmål">
+      <change beforePath="$PROJECT_DIR$/src/Game/Fields/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Fields/Property.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="development" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.1\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1iSSNntTe8MoYePmkdAQkfxyoNf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="14" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/Test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Review" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Game.Fields.Chance" />
+      <recent name="Game" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ChanceTest">
+    <configuration name="ChanceTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test.ChanceTest" />
+      <module name="11_del2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in 11_del2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="11_del2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DiceTest [1000]" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true" repeat_count="1000" repeat_mode="N Times">
+      <module name="11_del2" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.DiceTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerControllerTest [1000]" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true" repeat_count="1000" repeat_mode="N Times">
+      <module name="11_del2" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.PlayerControllerTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RaffleCupTest [10000]" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true" repeat_count="10000" repeat_mode="N Times">
+      <module name="11_del2" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.RaffleCupTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.ChanceTest" />
+      <item itemvalue="JUnit.PlayerControllerTest [1000]" />
+      <item itemvalue="JUnit.RaffleCupTest [10000]" />
+      <item itemvalue="JUnit.DiceTest [1000]" />
+      <item itemvalue="JUnit.All in 11_del2" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in 11_del2" />
+        <item itemvalue="JUnit.DiceTest [1000]" />
+        <item itemvalue="JUnit.RaffleCupTest [10000]" />
+        <item itemvalue="JUnit.PlayerControllerTest [1000]" />
+        <item itemvalue="Application.ChanceTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4b29b98b-3b3a-43b4-85c2-028459063c08" name="Default Changelist" comment="" />
+      <created>1601899464792</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601899464792</updated>
+      <workItem from="1601899466471" duration="1477000" />
+      <workItem from="1601902144979" duration="713000" />
+      <workItem from="1603272685689" duration="52000" />
+      <workItem from="1603272749519" duration="15000" />
+      <workItem from="1603272775192" duration="10000" />
+      <workItem from="1603272796610" duration="37000" />
+      <workItem from="1603272844118" duration="3420000" />
+      <workItem from="1603279599002" duration="3310000" />
+      <workItem from="1603352837549" duration="109000" />
+      <workItem from="1603363488051" duration="1489000" />
+      <workItem from="1603485862461" duration="1215000" />
+      <workItem from="1603660128501" duration="864000" />
+      <workItem from="1603723692389" duration="2183000" />
+      <workItem from="1603743571150" duration="7168000" />
+      <workItem from="1603752157376" duration="1435000" />
+      <workItem from="1603813060099" duration="5583000" />
+      <workItem from="1603881287161" duration="2750000" />
+      <workItem from="1603892376687" duration="7872000" />
+      <workItem from="1603907182580" duration="4319000" />
+      <workItem from="1603914331195" duration="2336000" />
+      <workItem from="1603961313304" duration="820000" />
+      <workItem from="1603972590598" duration="11374000" />
+      <workItem from="1603993360673" duration="2476000" />
+      <workItem from="1604048317294" duration="2335000" />
+      <workItem from="1604319142394" duration="4000" />
+      <workItem from="1604414525779" duration="1194000" />
+      <workItem from="1604415794079" duration="14000" />
+      <workItem from="1604424431828" duration="689000" />
+      <workItem from="1604572712188" duration="1563000" />
+      <workItem from="1604580460224" duration="5638000" />
+      <workItem from="1604654190931" duration="106000" />
+      <workItem from="1604747528829" duration="5249000" />
+      <workItem from="1604753049379" duration="666000" />
+      <workItem from="1604836841511" duration="2491000" />
+      <workItem from="1604840239894" duration="2247000" />
+      <workItem from="1604843534789" duration="1283000" />
+      <workItem from="1604851577687" duration="3828000" />
+      <workItem from="1604856938079" duration="8000" />
+      <workItem from="1604856958070" duration="2259000" />
+      <workItem from="1604860780342" duration="3235000" />
+      <workItem from="1604922207761" duration="3604000" />
+      <workItem from="1604932978478" duration="4822000" />
+      <workItem from="1605002355852" duration="12902000" />
+      <workItem from="1605100657241" duration="12125000" />
+      <workItem from="1605122569806" duration="4939000" />
+      <workItem from="1605133577693" duration="873000" />
+      <workItem from="1605172809510" duration="2468000" />
+      <workItem from="1605175332424" duration="10521000" />
+      <workItem from="1605211747396" duration="1533000" />
+      <workItem from="1605213904030" duration="1861000" />
+      <workItem from="1605527138263" duration="34000" />
+      <workItem from="1605527188664" duration="111000" />
+    </task>
+    <task id="LOCAL-00007" summary="Ændrede array stilen fra C til Java, så det stemmer overens med det vi har lært :))">
+      <created>1603660386995</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1603660386995</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fjernet mange globale variabler og sat dem til lokale. Giver intet godt at have dem globale, når de kun bliver brugt lokalt.">
+      <created>1603743753535</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1603743753535</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Tilføjet jUnit test for RaffleCup">
+      <created>1603744243426</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1603744243426</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Ændrede numberOfPlayers til at returnere en int, så det er nemmere at teste :))">
+      <created>1603750096624</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1603750096624</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Ændrede numberOfPlayers til at returnere en int, så det er nemmere at teste :))">
+      <created>1603753099647</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1603753099647</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Fikset NumberOfPLayers">
+      <created>1603803522628</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1603803522628</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Ændrede getNumberOfPlayers">
+      <created>1603803901104</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1603803901104</updated>
+    </task>
+    <task id="LOCAL-00014" summary="PlayerController">
+      <created>1603814591426</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1603814591426</updated>
+    </task>
+    <task id="LOCAL-00015" summary="EKstra tur kommentar tilføjet">
+      <created>1603816509076</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1603816509076</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Fjernet return fra updateBalance, og sat til void.">
+      <created>1603881510901</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1603881510901</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Tilføjet test af balance">
+      <created>1603898286629</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1603898286629</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Opdaterede test">
+      <created>1603912387193</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1603912387193</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Ændret test for Numberofplayers">
+      <created>1603916111405</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1603916111405</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Ændret tilat man skal trykke OK For at spille">
+      <created>1603983808787</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1603983808787</updated>
+    </task>
+    <task id="LOCAL-00021" summary="text fix">
+      <created>1603983922555</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1603983922555</updated>
+    </task>
+    <task id="LOCAL-00022" summary="sat ned til 6 spillere">
+      <created>1603984913266</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1603984913266</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Fjernede ting som ikke blev brugt 5head">
+      <created>1603989436270</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1603989436270</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Fjernede ting som ikke blev brugt 5head">
+      <created>1603993423461</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1603993423461</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Ændret gitignore">
+      <created>1603993471155</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1603993471155</updated>
+    </task>
+    <task id="LOCAL-00026" summary="updated Dice.java">
+      <created>1604414783052</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1604414783052</updated>
+    </task>
+    <task id="LOCAL-00027" summary="updated Dice.java">
+      <created>1604424502018</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1604424502018</updated>
+    </task>
+    <task id="LOCAL-00028" summary="BankAccount added add and subtract + a set balance.">
+      <created>1604581045491</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1604581045491</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Updated setBalance code to comply with required method action.">
+      <created>1604581081418</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1604581081418</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Tilføjet chance controller">
+      <created>1604748978855</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1604748978855</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Tilføjet ChanceCreator">
+      <created>1604751280385</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1604751280385</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Lavet om i CHance">
+      <created>1604844034977</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1604844034977</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Mergede det var har i Chance ind i Dev. Bare lad det ligge indtil videre. Det er stadig WIP">
+      <created>1604853487676</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1604853487676</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Tilføjet kommentar.">
+      <created>1604854279753</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1604854279753</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Lavet en randomize class">
+      <created>1604856212934</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1604856212934</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Lavet skelettet til Chance">
+      <created>1604858545413</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1604858545413</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Lavet skelettet til Chance">
+      <created>1604858785188</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1604858785188</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Lavet skelettet til Chance">
+      <created>1604858850800</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1604858850800</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Lavet skelettet til Chance">
+      <created>1605005252959</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1605005252959</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Lavet skelettet til Chance">
+      <created>1605014371896</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1605014371896</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Lavet skelettet til Chance">
+      <created>1605016795181</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1605016795181</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Startet på at lave nogle chancekort">
+      <created>1605021827911</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1605021827911</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Startet på at lave nogle chancekort">
+      <created>1605022443375</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1605022443375</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Startet på at lave nogle chancekort">
+      <created>1605022826514</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1605022826514</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Merged det vi har fra chance ind i Dev.">
+      <created>1605026987453</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1605026987453</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Lavet chance delen af Jail Card">
+      <created>1605110757878</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1605110757879</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Lavet den der hvor alle skal betale 1 til den som trækker kortet.">
+      <created>1605121474111</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1605121474111</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Lavet den der hvor alle skal betale 1 til den som trækker kortet.">
+      <created>1605124050404</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1605124050404</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Oprettet FreeOfJail i Chance med Mia yus">
+      <created>1605125859398</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1605125859398</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Forøg på at fikse det hele.">
+      <created>1605175822255</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1605175822255</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Forsøg på at fikse det hele part 2">
+      <created>1605175932657</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1605175932657</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Fiksede små ting chance">
+      <created>1605175974292</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1605175974292</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Gjort klar til test">
+      <created>1605179116144</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1605179116144</updated>
+    </task>
+    <task id="LOCAL-00054" summary="fikset camelCase">
+      <created>1605181447471</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1605181447471</updated>
+    </task>
+    <task id="LOCAL-00055" summary="KLartgjort kode til spørgsmål">
+      <created>1605214567054</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1605214567055</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="development" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="text fix" />
+    <MESSAGE value="sat ned til 6 spillere" />
+    <MESSAGE value="Fjernede ting som ikke blev brugt 5head" />
+    <MESSAGE value="Ændret gitignore" />
+    <MESSAGE value="updated Dice.java" />
+    <MESSAGE value="BankAccount added add and subtract + a set balance." />
+    <MESSAGE value="Updated setBalance code to comply with required method action." />
+    <MESSAGE value="Tilføjet chance controller" />
+    <MESSAGE value="Tilføjet ChanceCreator" />
+    <MESSAGE value="Lavet om i CHance" />
+    <MESSAGE value="Mergede det var har i Chance ind i Dev. Bare lad det ligge indtil videre. Det er stadig WIP" />
+    <MESSAGE value="Tilføjet kommentar." />
+    <MESSAGE value="Lavet en randomize class" />
+    <MESSAGE value="Lavet skelettet til Chance" />
+    <MESSAGE value="Startet på at lave nogle chancekort" />
+    <MESSAGE value="Merged det vi har fra chance ind i Dev." />
+    <MESSAGE value="Lavet chance delen af Jail Card" />
+    <MESSAGE value="Lavet den der hvor alle skal betale 1 til den som trækker kortet." />
+    <MESSAGE value="Oprettet FreeOfJail i Chance med Mia yus" />
+    <MESSAGE value="Forøg på at fikse det hele." />
+    <MESSAGE value="Forsøg på at fikse det hele part 2" />
+    <MESSAGE value="Fiksede små ting chance" />
+    <MESSAGE value="Gjort klar til test" />
+    <MESSAGE value="fikset camelCase" />
+    <MESSAGE value="KLartgjort kode til spørgsmål" />
+    <option name="LAST_COMMIT_MESSAGE" value="KLartgjort kode til spørgsmål" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="776" y="380" key="#Notifications" timestamp="1603992197979">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="776" y="380" key="#Notifications/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1603992197979" />
+    <state x="563" y="399" width="1089" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605016025908">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="563" y="399" width="1089" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605016025908" />
+    <state x="93" y="93" width="1862" height="926" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1603910678916">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="93" y="93" width="1862" height="926" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1603910678916" />
+    <state x="830" y="263" key="#com.intellij.ide.util.MemberChooser" timestamp="1605002794928">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="830" y="263" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605002794928" />
+    <state x="807" y="451" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1605178484042">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="807" y="451" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605178484042" />
+    <state x="405" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604424468427">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="405" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1604424468427" />
+    <state x="755" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604838964638">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="755" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1604838964638" />
+    <state x="93" y="93" width="1862" height="926" key="DiffContextDialog" timestamp="1603897271552">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="93" y="93" width="1862" height="926" key="DiffContextDialog/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1603897271552" />
+    <state x="732" y="175" key="FileChooserDialogImpl" timestamp="1605123318898">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603714489005" />
+    <state x="732" y="175" key="FileChooserDialogImpl/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605123318898" />
+    <state width="1002" height="307" key="GridCell.Tab.0.bottom" timestamp="1605187698326">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605094609459" />
+    <state width="1002" height="307" key="GridCell.Tab.0.bottom/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605187698326" />
+    <state width="1002" height="307" key="GridCell.Tab.0.center" timestamp="1605187698326">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605094609459" />
+    <state width="1002" height="307" key="GridCell.Tab.0.center/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605187698326" />
+    <state width="1002" height="307" key="GridCell.Tab.0.left" timestamp="1605187698326">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605094609458" />
+    <state width="1002" height="307" key="GridCell.Tab.0.left/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605187698326" />
+    <state width="1002" height="307" key="GridCell.Tab.0.right" timestamp="1605187698326">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605094609459" />
+    <state width="1002" height="307" key="GridCell.Tab.0.right/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605187698326" />
+    <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1605134463439">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="376" key="GridCell.Tab.1.bottom/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605134463439" />
+    <state width="2005" height="376" key="GridCell.Tab.1.center" timestamp="1605134463439">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="376" key="GridCell.Tab.1.center/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605134463439" />
+    <state width="2005" height="376" key="GridCell.Tab.1.left" timestamp="1605134463439">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="376" key="GridCell.Tab.1.left/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605134463439" />
+    <state width="2005" height="376" key="GridCell.Tab.1.right" timestamp="1605134463439">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="376" key="GridCell.Tab.1.right/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605134463439" />
+    <state x="198" y="94" key="MergeDialog" timestamp="1605175804310">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="198" y="94" key="MergeDialog/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605175804310" />
+    <state x="663" y="318" key="MultipleFileMergeDialog" timestamp="1605122286594">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="663" y="318" key="MultipleFileMergeDialog/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605122286594" />
+    <state x="522" y="130" key="NewModule_or_Project.wizard" timestamp="1603992168650">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="522" y="130" key="NewModule_or_Project.wizard/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1603992168650" />
+    <state x="734" y="259" key="RollbackChangesDialog" timestamp="1605175624692">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="734" y="259" key="RollbackChangesDialog/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605175624692" />
+    <state x="403" y="95" key="SettingsEditor" timestamp="1605182096047">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1604577904999" />
+    <state x="403" y="95" key="SettingsEditor/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605182096047" />
+    <state x="762" y="272" key="VCS.ChangeListViewerDialog" timestamp="1603993379541">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="762" y="272" key="VCS.ChangeListViewerDialog/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1603993379541" />
+    <state x="481" y="196" key="Vcs.Push.Dialog.v2" timestamp="1605187344688">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604582176353" />
+    <state x="481" y="196" key="Vcs.Push.Dialog.v2/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605187344688" />
+    <state x="343" y="160" key="caller.chooser.dialog" timestamp="1603363966964">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="343" y="160" key="caller.chooser.dialog/0.0.1536.824@0.0.1536.824" timestamp="1603363966964" />
+    <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1604580739886">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="584" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1604580739886" />
+    <state x="781" y="440" width="363" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605127542360">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1605094419202" />
+    <state x="781" y="440" width="363" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605127542360" />
+    <state x="796" y="327" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1605115564780">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="796" y="327" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605115564780" />
+    <state x="520" y="111" width="1114" height="810" key="dock-window-1" timestamp="1603272737220">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="520" y="111" width="1114" height="810" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1603272737220" />
+    <state x="850" y="381" key="export.test.results" timestamp="1603911904588">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="850" y="381" key="export.test.results/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1603911904588" />
+    <state x="675" y="169" key="git4idea.branch.GitSmartOperationDialog" timestamp="1605175738538">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="506" y="125" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.824@0.0.1536.824" timestamp="1604582052728" />
+    <state x="675" y="169" key="git4idea.branch.GitSmartOperationDialog/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605175738538" />
+    <state width="600" height="428" key="javadoc.popup" timestamp="1605211789685">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="600" height="428" key="javadoc.popup/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605211789685" />
+    <state x="279" y="45" key="new project wizard" timestamp="1603992149387">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="209" y="33" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1603287105574" />
+    <state x="279" y="45" key="new project wizard/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1603992149387" />
+    <state x="725" y="304" key="refactoring.ChangeSignatureDialog" timestamp="1605178738814">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="725" y="304" key="refactoring.ChangeSignatureDialog/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605178738814" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1604572813880">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1604572813880" />
+    <state x="575" y="196" width="896" height="915" key="search.everywhere.popup" timestamp="1605178097531">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603797913943" />
+    <state x="575" y="196" width="896" height="915" key="search.everywhere.popup/0.0.2048.1112/2560.0.2048.1112@0.0.2048.1112" timestamp="1605178097531" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/11_del2$RaffleCupTest_RaffleCupTest1.ic" NAME="RaffleCupTest.RaffleCupTest1 Coverage Results" MODIFIED="1603911948524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Test.*</FILTER>
+    </SUITE>
+  </component>
+</project>
