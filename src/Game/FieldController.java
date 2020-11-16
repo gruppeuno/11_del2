@@ -129,6 +129,7 @@ public class FieldController {
     }
 
      public void FreeProperty(Player player, PlayerController playerController){
+        //TODO: Det her skal laves om, så den tager den rigtige instans af property.
          int i = player.getFieldNumber();
          Property property = (Property) fields[i];
          if (property.getOwnedByPlayer()) {payRent(player, playerController, property);}
