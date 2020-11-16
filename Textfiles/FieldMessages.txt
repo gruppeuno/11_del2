@@ -1,24 +1,24 @@
-Du landede på START
-Du landede på BURGERBAREN
-Du landede på PIZZARIAET
-Du landede på CHANCEN
-Du landede på SLIKBUTIKKEN
-Du landede på ISKIOSKEN
-Du landede på FÆNGSELSBESØG
-Du landede på MUSEET
-Du landede på BIBLIOTEKET
-Du landede på CHANCEN
-Du landede på SKATERPARKEN
-Du landede på SWIMMINGPOOLEN
-Du landede på PARKERING
-Du landede på SPILLEHALLEN
-Du landede på BIOGRAFEN
-Du landede på CHANCEN
-Du landede på LEGETØJSBUTIKKEN
-Du landede på DYREHANDLEN
-Du landede på FÆNGSEL - Gå i fængsel ..
-Du landede på BOWLINGHALLEN
-Du landede på ZOO
-Du landede på CHANCEN
-Du landede på VANDLANDET
-Du landede på STRANDPROMENADEN
+landede på START
+landede på BURGERBAREN
+landede på PIZZARIAET
+landede på CHANCEN
+landede på SLIKBUTIKKEN
+landede på ISKIOSKEN
+landede på FÆNGSELSBESØG
+landede på MUSEET
+landede på BIBLIOTEKET
+landede på CHANCEN
+landede på SKATERPARKEN
+landede på SWIMMINGPOOLEN
+landede på PARKERING
+landede på SPILLEHALLEN
+landede på BIOGRAFEN
+landede på CHANCEN
+landede på LEGETØJSBUTIKKEN
+landede på DYREHANDLEN
+landede på FÆNGSEL - Gå i fængsel ..
+landede på BOWLINGHALLEN
+landede på ZOO
+landede på CHANCEN
+landede på VANDLANDET
+landede på STRANDPROMENADEN
