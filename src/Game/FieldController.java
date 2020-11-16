@@ -142,17 +142,16 @@ public class FieldController {
 
     //TODO: metode til at fjerne property, spørg hjælpelærer, IKKE FÆRDIG
     public void sellProperty(Player player, int payment, Player receivingPlayer, GUIView guiView){
-        Property[] propertiesAsArray = new Property[player.getPropertiesOwned().size()];
+        String[] propertiesAsArray = new String[player.getPropertiesOwned().size()];
+
         int sizeBeforeSell=propertiesAsArray.length;
 
         if(player.getTotalPropertyValue()>payment){
             for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
-                 propertiesAsArray[i]=(Property) player.getPropertiesOwned().toArray()[i];
+                 propertiesAsArray[i]=((Property) player.getPropertiesOwned().toArray()[i]).toString();
             }
-            guiView.getMyGUI().getUserSelection("Vælg grund du vil sælge",
-                    propertiesAsArray[0].toString(),
-                    propertiesAsArray[1].toString(),
-                    propertiesAsArray[2].toString());
+
+            guiView.getMyGUI().getUserSelection("Vælg grund du vil sælge", propertiesAsArray);
         }
 
         if(player.getPropertiesOwned().size()==0 && player.b.getBalance()==0)
