@@ -24,17 +24,17 @@ public class PlayerController {
         numberOfPlayers();
         createPlayers();
         setStartBalance();
-        System.out.println("Indtast spillernavn lad den yngste spiller starte");
+        System.out.println("YNGSTE SPILLER! du er spiller 1");
         for (int i = 0; i < playerArray.length; i++){
             int nr = i+1;
-            System.out.println("spiller " + nr + " Indtast et navn der er mellem 3-12 tegn, spillere må ikke have samme navn:");
+            System.out.println("spiller " + nr + " indtast dit navn \n(spillere må ikke have samme navn)");
             String currentName = scan.next();
 
            while (checkPlayerName(currentName,playerArray)) {
-               System.out.print("Navnet du ønsker er ugyldigt. Vælg nyt navn: ");
+               System.out.print("Ugyldigt navn! prøv igen! (3-12 bogstaver)");
                currentName = scan.next();
            }
-            playerArray[i].setPlayerName(currentName);
+            playerArray[i].setPlayerName(currentName.toUpperCase());
         }
         System.out.println("========================================\n");
     }
@@ -47,7 +47,7 @@ public class PlayerController {
         final int MAX = 4;
         final int MIN = 2;
         //While loop til at sikre at der er indtastet mellem 2-4 spillere
-        System.out.println("Indtast et antal spillere mellem 2-4");
+        System.out.println("Indtast antal spillere (2-4) :");
         do{
             while (!scan.hasNextInt()) {
                 System.out.println("Ugyldigt input. Indtast et antal spillere mellem 2-4");
