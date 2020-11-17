@@ -164,7 +164,9 @@ public class FieldController {
                     if (propertyToSell.equals(propertiesAsStringArray[i])){
 
                         player.b.addBalance(player.getPropertiesOwned().get(i).getFieldPrice());
+                        player.getPropertiesOwned().get(i).removeOwner();
                         player.getPropertiesOwned().remove(i);
+
 
                         missingPayment=missingPayment-player.getPropertiesOwned().get(i).getFieldPrice();
 
@@ -180,7 +182,7 @@ public class FieldController {
                     }
                 }
             } while (player.b.getBalance()<payment);
-
+//TODO: owned by both players
         }
 
 
