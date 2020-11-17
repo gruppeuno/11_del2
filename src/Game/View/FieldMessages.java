@@ -23,24 +23,7 @@ public class FieldMessages extends Messages {
     }
 
     private FieldMessages() throws IOException {
-        readFromFile();
-    }
-
-    @Override
-    public void readFromFile() throws IOException {
-
-        BufferedReader reader = new BufferedReader(new FileReader("Textfiles/FieldMessages.txt"));
-
-        String currentLine = reader.readLine();
-
-        while (currentLine != null) {
-            for (int line = 0; line < totalReadFieldMessages.length; line++){
-                totalReadFieldMessages[line] = currentLine;
-                currentLine = reader.readLine();
-            }
-        }
-
-        reader.close();
+        readFromFile(totalReadFieldMessages,"Textfiles/FieldMessages.txt");
     }
 
     @Override
