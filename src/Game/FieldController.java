@@ -66,34 +66,34 @@ public class FieldController {
     }
 
     public void buyProperty(Player player, PlayerController playerController, Property property){
-        if(player.b.getBalance()>=property.getFieldPrice()){
-            player.b.subBalance(property.getFieldPrice());
+        if(player.bankAccount.getBalance()>=property.getFieldPrice()){
+            player.bankAccount.subBalance(property.getFieldPrice());
             property.setOwner(player.getPlayerName());
             player.addPropertyOwned(property);
             ownedBySamePlayer(playerController, property);
         }
-        else if(player.b.getBalance()<=property.getFieldPrice()){
-            player.b.setBankrupt(true);
+        else if(player.bankAccount.getBalance()<=property.getFieldPrice()){
+            player.bankAccount.setBankrupt(true);
         }
 
-        if(!player.b.getBankrupt()) {
+        if(!player.bankAccount.getBankrupt()) {
             property.setOwner(player.getPlayerName());
             System.out.println(player.getPlayerName() + " købte " + property.getName() + " for " + property.getFieldPrice() + "M");
         }
     }
 
     public void payRent(Player player , PlayerController playerController, Property property) {
-        if(player.b.getBalance()>=property.getFieldRent()){
-            player.b.subBalance(property.getFieldRent());
-            playerController.getPlayerByName(property.getOwnerName()).b.addBalance(property.getFieldRent());
+        if(player.bankAccount.getBalance()>=property.getFieldRent()){
+            player.bankAccount.subBalance(property.getFieldRent());
+            playerController.getPlayerByName(property.getOwnerName()).bankAccount.addBalance(property.getFieldRent());
         }
-        else if(player.b.getBalance()<=property.getFieldRent()){
-            player.b.setBankrupt(true);
+        else if(player.bankAccount.getBalance()<=property.getFieldRent()){
+            player.bankAccount.setBankrupt(true);
         }
-        if(!player.b.getBankrupt()) {
+        if(!player.bankAccount.getBankrupt()) {
             Player propertyOwner = playerController.getPlayerByName(property.getOwnerName());
             System.out.println(player.getPlayerName() + " betalte " + property.getFieldRent() + "M i husleje til " + propertyOwner.getPlayerName()
-                    + "\n" + propertyOwner.getPlayerName() + " har nu " + propertyOwner.b.getBalance() + "M");
+                    + "\n" + propertyOwner.getPlayerName() + " har nu " + propertyOwner.bankAccount.getBalance() + "M");
         }
     }
 
@@ -135,9 +135,9 @@ public class FieldController {
          if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName())) {
              payRent(player, playerController, property);}
          else {
-             if (!player.b.getBankrupt()) {
+             if (!player.bankAccount.getBankrupt()) {
                  property.setOwner(player.getPlayerName());
                  player.addPropertyOwned(property);
-                 System.out.println(player.getPlayerName() + " fik " + property.getName() + " for free"); }}
+                 System.out.println(player.getPlayerName() + " fik " + property.getName() + " helt gratis"); }}
      }
 }

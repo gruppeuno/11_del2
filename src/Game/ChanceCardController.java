@@ -295,6 +295,7 @@ public class ChanceCardController {
 
         do {
             System.out.println("Vælg mellem felt " + minMove + " eller " + maxMove + " af farven " + Color + " på pladen");
+            System.out.print("\nSkriv hvilket felt du ønsker her: ");
             move = scan.nextInt(); }
             while (!(minMove == move || maxMove == move));
 
@@ -308,6 +309,7 @@ public class ChanceCardController {
         do {
             System.out.println("Vælg mellem felt " + minMove + " eller " + maxMove + " af farven " + Color + ", eller felt "
                     + minMove2 + " eller " + maxMove2 + " af farven " + Color2 + " på pladen");
+            System.out.print("\nSkriv hvilket felt du ønsker her: ");
             move = scan.nextInt(); }
         while (!(minMove == move|| maxMove == move || minMove2 == move || maxMove2 == move));
 
@@ -315,11 +317,11 @@ public class ChanceCardController {
     }
 
     public void addBank(Player player, int moneyChange) {
-        player.b.addBalance(moneyChange);
+        player.bankAccount.addBalance(moneyChange);
     }
 
     public void subBank(Player player, int moneyChange) {
-        player.b.subBalance(moneyChange);
+        player.bankAccount.subBalance(moneyChange);
     }
 
     public void adjustJailCard(Player player) {
@@ -337,10 +339,10 @@ public class ChanceCardController {
     public void bankFromAll(Player player, PlayerController playerController) {
 
         for (Player tempPlayer : playerController.getPlayerArray()) {
-            tempPlayer.b.subBalance(1);
+            tempPlayer.bankAccount.subBalance(1);
         }
 
-        player.b.addBalance(playerController.getPlayerArrayLength()+1);
+        player.bankAccount.addBalance(playerController.getPlayerArrayLength()+1);
     }
 
     //Total skrald løsning, men kan ikke lige komme på andet. Virker garanteret ikke..

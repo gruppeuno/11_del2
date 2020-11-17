@@ -2,7 +2,6 @@ package Test;
 
 import Game.Fields.Property;
 import Game.GameController;
-import Game.Player;
 import Game.PlayerController;
 import org.junit.jupiter.api.Test;
 
@@ -20,10 +19,10 @@ class GameControllerTest {
       playerController.createPlayers(4);
       GameController gameControllerTest = new GameController();
 
-      playerController.getPlayerArray()[0].b.setBalance(2);
-      playerController.getPlayerArray()[1].b.setBalance(3);
-      playerController.getPlayerArray()[2].b.setBalance(4);
-      playerController.getPlayerArray()[3].b.setBalance(5);
+      playerController.getPlayerArray()[0].bankAccount.setBalance(2);
+      playerController.getPlayerArray()[1].bankAccount.setBalance(3);
+      playerController.getPlayerArray()[2].bankAccount.setBalance(4);
+      playerController.getPlayerArray()[3].bankAccount.setBalance(5);
 
       Property p1 = new Property("Test", 1,2,"test","test");
       Property p2 = new Property("Test", 1,5,"test","test");
@@ -51,10 +50,10 @@ class GameControllerTest {
           playerController.createPlayers(4);
           GameController gameControllerTest = new GameController();
 
-          playerController.getPlayerArray()[0].b.setBalance(5);
-          playerController.getPlayerArray()[1].b.setBalance(5);
-          playerController.getPlayerArray()[2].b.setBalance(4);
-          playerController.getPlayerArray()[3].b.setBalance(5);
+          playerController.getPlayerArray()[0].bankAccount.setBalance(5);
+          playerController.getPlayerArray()[1].bankAccount.setBalance(5);
+          playerController.getPlayerArray()[2].bankAccount.setBalance(4);
+          playerController.getPlayerArray()[3].bankAccount.setBalance(5);
 
           Property p1 = new Property("Test", 1,2,"test","test");
           Property p2 = new Property("Test", 1,5,"test","test");
@@ -78,10 +77,10 @@ class GameControllerTest {
       playerController.createPlayers(4);
       GameController gameControllerTest = new GameController();
 
-      playerController.getPlayerArray()[0].b.setBalance(5);
-      playerController.getPlayerArray()[1].b.setBalance(5);
-      playerController.getPlayerArray()[2].b.setBalance(4);
-      playerController.getPlayerArray()[3].b.setBalance(5);
+      playerController.getPlayerArray()[0].bankAccount.setBalance(5);
+      playerController.getPlayerArray()[1].bankAccount.setBalance(5);
+      playerController.getPlayerArray()[2].bankAccount.setBalance(4);
+      playerController.getPlayerArray()[3].bankAccount.setBalance(5);
 
       Property p1 = new Property("Test", 1,2,"test","test");
       Property p2 = new Property("Test", 1,5,"test","test");

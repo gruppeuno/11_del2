@@ -2,7 +2,6 @@ package Test;
 
 import Game.FieldController;
 import Game.Fields.Jail;
-import Game.Fields.JailVisit;
 import Game.Fields.Property;
 import Game.Player;
 import Game.PlayerController;
@@ -78,7 +77,7 @@ class FieldControllerTest {
 
         Jail jail = new Jail("testjail", 18, "test");
 
-        testPlayer.b.setBalance(20);
+        testPlayer.bankAccount.setBalance(20);
         testPlayer.setJailCard(true);
 
         //testspiller lander på fængsel
@@ -89,7 +88,7 @@ class FieldControllerTest {
 
         //Spiller lander på skatepark og køber for 2M
         int expected = 18;
-        int actual = testPlayer.b.getBalance();
+        int actual = testPlayer.bankAccount.getBalance();
         assertEquals(actual,expected);
     }
 
@@ -104,7 +103,7 @@ class FieldControllerTest {
 
         Jail jail = new Jail("testjail", 18, "test");
 
-        testPlayer.b.setBalance(20);
+        testPlayer.bankAccount.setBalance(20);
 
         //testspiller lander på fængsel
         fieldController.landOnJail(testPlayer,playerController, jail);
@@ -116,7 +115,7 @@ class FieldControllerTest {
 
         //Spiller lander på skatepark og køber for 2M
         int expected = 17;
-        int actual = testPlayer.b.getBalance();
+        int actual = testPlayer.bankAccount.getBalance();
         assertEquals(actual,expected);
     }
 
@@ -130,7 +129,7 @@ class FieldControllerTest {
         PlayerController playerController = new PlayerController();
         playerController.createPlayers(3);
         Player testPlayer = playerController.getPlayerByName("p0");
-        testPlayer.b.setBalance(100);
+        testPlayer.bankAccount.setBalance(100);
 
         FieldController.buyProperty(testPlayer, playerController, testProperty);
         boolean actual = true;
@@ -143,7 +142,7 @@ class FieldControllerTest {
         Player testPlayer = new Player("testPerson");
         Property testProperty = new Property("Horsensgade", 2, 5, "test", "test");
         testProperty.setOwner(testPlayer.getPlayerName());
-        testPlayer.b.subBalance(testProperty.getFieldPrice());
+        testPlayer.bankAccount.subBalance(testProperty.getFieldPrice());
 
         boolean actual = true;
         assertEquals(actual, testProperty.getOwnedByPlayer());
@@ -156,7 +155,7 @@ class FieldControllerTest {
         Player testPlayer = new Player("testPerson");
         Property testProperty = new Property("Horsensgade", 2, 5, "test", "test");
         testProperty.setOwner(testPlayer.getPlayerName());
-        testPlayer.b.subBalance(testProperty.getFieldPrice());
+        testPlayer.bankAccount.subBalance(testProperty.getFieldPrice());
 
         String actual = "testPerson";
         assertEquals(actual, testProperty.getOwnerName());
@@ -171,10 +170,10 @@ class FieldControllerTest {
         Property testProperty = new Property("Horsensgade", 2, 5, "test", "test");
         //skaber 2 nye spillere i playerarray
         testPlayerController.createPlayers(2);
-        testPlayerController.getPlayerByName("p0").b.setBalance(100);
+        testPlayerController.getPlayerByName("p0").bankAccount.setBalance(100);
         FieldController.buyProperty(testPlayerController.getPlayerByName("p0"), testPlayerController, testProperty);
         int actual = 95;
-        assertEquals(actual, testPlayerController.getPlayerByName("p0").b.getBalance());
+        assertEquals(actual, testPlayerController.getPlayerByName("p0").bankAccount.getBalance());
     }
 
     //test af om grundens ejer bliver opdateret
@@ -187,7 +186,7 @@ class FieldControllerTest {
         //skaber 2 nye spillere i playerarray
         testPlayerController.createPlayers(2);
 
-        testPlayerController.getPlayerByName("p0").b.setBalance(100);
+        testPlayerController.getPlayerByName("p0").bankAccount.setBalance(100);
 
         FieldController.buyProperty(testPlayerController.getPlayerByName("p0"), testPlayerController, testProperty);
 
@@ -209,13 +208,13 @@ class FieldControllerTest {
         //sætter owner til p0, det samme som spilleren hedder efter kald på createPlayers ovenfor.
         testProperty.setOwner("p0");
         //setter begge spillers balance til 100
-        testPlayer.b.setBalance(100);
-        testPlayerController.getPlayerByName("p0").b.setBalance(100);
+        testPlayer.bankAccount.setBalance(100);
+        testPlayerController.getPlayerByName("p0").bankAccount.setBalance(100);
 
         FieldController.payRent(testPlayer, testPlayerController, testProperty);
 
         int actual = 95;
-        assertEquals(actual, testPlayer.b.getBalance());
+        assertEquals(actual, testPlayer.bankAccount.getBalance());
     }
 
     //Test af om payRent betaling går igennem til den modtagende spiller
@@ -232,13 +231,13 @@ class FieldControllerTest {
         //sætter owner til p0, det samme som spilleren hedder efter kald på createPlayers ovenfor.
         testProperty.setOwner("p0");
         //setter begge spillers balance til 100
-        testPlayer.b.setBalance(100);
-        testPlayerController.getPlayerByName("p0").b.setBalance(100);
+        testPlayer.bankAccount.setBalance(100);
+        testPlayerController.getPlayerByName("p0").bankAccount.setBalance(100);
 
         FieldController.payRent(testPlayer, testPlayerController, testProperty);
 
         int actual = 105;
-        assertEquals(actual,testPlayerController.getPlayerByName("p0").b.getBalance());
+        assertEquals(actual,testPlayerController.getPlayerByName("p0").bankAccount.getBalance());
     }
 
     //TODO metoden mangler at laves og testes
