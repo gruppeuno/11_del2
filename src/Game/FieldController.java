@@ -82,7 +82,7 @@ public class FieldController {
 
         if(!player.bankAccount.getBankrupt()) {
             property.setOwner(player.getPlayerName());
-            System.out.println(player.getPlayerName() + " købte " + property.getName() + " for " + property.getFieldPrice() + "M");
+            System.out.println("Du køber den for " + property.getFieldPrice() + "M");
         }
     }
 
