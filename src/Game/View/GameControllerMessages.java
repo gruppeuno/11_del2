@@ -8,22 +8,7 @@ public class GameControllerMessages extends Messages {
 
     private String[] totalGameMessages = new String[14];
 
-    private static GameControllerMessages gameControllerMessages = null;
-
-    public static GameControllerMessages instanceOf() {
-
-        try {
-            if (gameControllerMessages == null){
-                gameControllerMessages = new GameControllerMessages();
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return gameControllerMessages;
-    }
-
-    private GameControllerMessages() throws IOException {
+    public GameControllerMessages() {
         readFromFile(totalGameMessages,"Textfiles/GameControllerMessages.txt");
     }
 

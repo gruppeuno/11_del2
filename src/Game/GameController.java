@@ -42,18 +42,21 @@ public class GameController {
             Player currentPlayer = playerController.getPlayerArray()[turnCount];
             String currentPlayerName = currentPlayer.getPlayerName();
             nextPlayerTurnCount = (turnCount + 1) % playerController.getPlayerArray().length;
+            int previousField = currentPlayer.getFieldNumber();
+
             //loop til afvente spillerens roll commando i consollen
             //playerRollInput();
             //ruller terninger med RaffleCup samt opdaterer spillerens position
             die.roll();
             m.print(m.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),false);
+            guiView.getMyGUI().getFields()[previousField].setCar(guiView.getGUIPlayer(turnCount),false);
 
             playerController.movePlayer(currentPlayer, die.getDiceValue());
-
+            guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),true);
             fieldController.landOnField(currentPlayer, playerController);
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),true);
-
+            guiView.removeAllCarsFromChanceFields(turnCount);
 
             //Terningernes værdier sættes
             guiView.getMyGUI().setDie(die.getDiceValue());

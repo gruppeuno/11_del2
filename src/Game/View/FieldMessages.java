@@ -1,28 +1,11 @@
 package Game.View;
 
-import java.io.*;
-
 public class FieldMessages extends Messages {
 
     private String[] totalReadFieldMessages = new String[24];
 
-    private static FieldMessages fieldMessages = null;
 
-    public static FieldMessages instanceOf() {
-
-        try {
-            if (fieldMessages == null){
-                fieldMessages = new FieldMessages();
-            }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return fieldMessages;
-    }
-
-    private FieldMessages() throws IOException {
+    public FieldMessages() {
         readFromFile(totalReadFieldMessages,"Textfiles/FieldMessages.txt");
     }
 
