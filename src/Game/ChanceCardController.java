@@ -11,8 +11,7 @@ public class ChanceCardController {
     private static boolean cardUse = false;
     private static int i = 0;
 
-    private static int[] chanceArray = {3};
-    //private static int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+    private static int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
 
     /**
      * Todo list:
