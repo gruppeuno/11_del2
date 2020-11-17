@@ -10,10 +10,9 @@ public class ChanceCardController {
 
     private static boolean cardUse = false;
     private static int i = 0;
-    //TODO: hvad gør den her variabel
-    private int rrr = 0;
 
-    private static int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+    private static int[] chanceArray = {3};
+    //private static int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
 
     /**
      * Todo list:
@@ -124,10 +123,13 @@ public class ChanceCardController {
             default:
                 System.out.println("Der skete en fejl");
         }
-        rrr++;
+        if (i >= (chanceArray.length - 1)) {
+            i = 0;} else {
+            i++;
+        }
 
-        if (rrr == 19) {
-            i = 0;}
+
+
 }
     private void chancekort1() {
         System.out.println(">>>Ingen indhold<<<");
