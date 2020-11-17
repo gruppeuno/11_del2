@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class GameControllerMessages extends Messages {
 
-    private String[] totalReadFieldMessages = new String[14];
+    private String[] totalGameMessages = new String[14];
 
     private static GameControllerMessages gameControllerMessages = null;
 
@@ -17,7 +17,6 @@ public class GameControllerMessages extends Messages {
                 gameControllerMessages = new GameControllerMessages();
             }
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -25,28 +24,13 @@ public class GameControllerMessages extends Messages {
     }
 
     private GameControllerMessages() throws IOException {
-        readFromFile();
-    }
-
-    @Override
-    public void readFromFile() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("Textfiles/GameControllerMessages.txt"));
-
-        String currentLine = reader.readLine();
-
-        while (currentLine != null) {
-            for (int line = 0; line < totalReadFieldMessages.length; line++){
-                totalReadFieldMessages[line] = currentLine;
-                currentLine = reader.readLine();
-            }
-        }
-        reader.close();
+        readFromFile(totalGameMessages,"Textfiles/GameControllerMessages.txt");
     }
 
     @Override
     public String number(int n) {
-        if (n <= totalReadFieldMessages.length && n >= 1){
-            return totalReadFieldMessages[n-1];
+        if (n <= totalGameMessages.length && n >= 1){
+            return totalGameMessages[n-1];
         } else {
             return "findes ikke";
         }
