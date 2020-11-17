@@ -69,7 +69,6 @@ class GameControllerTest {
           playerController.getPlayerArray()[3].addPropertyOwned(p5);
 
           gameControllerTest.findWinner(playerController.getPlayerArray());
-
   }
 
   //tester om spillere med samme balance bliver afgjort efter propertyValue
@@ -101,5 +100,4 @@ class GameControllerTest {
 
       assertEquals(actual,playerController.getPlayerByName("p0").getPlayerWin());
   }
-
 }

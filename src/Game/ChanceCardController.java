@@ -34,6 +34,7 @@ public class ChanceCardController {
 
         Random rand = new Random();
 
+        //TODO: skal testes
         for (int i = 0; i < chanceArray.length; i++) {
             int random = rand.nextInt(chanceArray.length);
             int temp = chanceArray[random];
