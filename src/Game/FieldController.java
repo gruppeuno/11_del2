@@ -149,26 +149,26 @@ public class FieldController {
         String[] propertiesAsStringArray = new String[player.getPropertiesOwned().size()];
 
         int sizeBeforeSell=propertiesAsStringArray.length;
+        int missingPayment=payment-player.b.getBalance();
 
-        //udvid?
-        if(player.getTotalPropertyValue()>payment){
+        if(player.getTotalPropertyValue()>missingPayment){
 
-            int playerPropertyTotalValueAfterPayment = player.getTotalPropertyValue()-payment;
-
-            while (playerPropertyTotalValueAfterPayment<=player.getTotalPropertyValue()){
-
+            do {
                 for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
                     propertiesAsStringArray[i]=((Property) player.getPropertiesOwned().toArray()[i]).toString();
                 }
 
-                String propertyToSell;
-                propertyToSell=guiView.getMyGUI().getUserSelection("Vælg grund du vil sælge, du skal sælge grunde for " + payment + "M for at betale din afgift" , propertiesAsStringArray);
+
+                String propertyToSell=guiView.getMyGUI().getUserSelection("Vælg grund du vil sælge, du skal sælge grunde for " + missingPayment + "M for at betale din afgift" , propertiesAsStringArray);
                 for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
                     if (propertyToSell.equals(propertiesAsStringArray[i])){
 
-                        String[] placeholder = new String[propertiesAsStringArray.length-1];
                         player.b.addBalance(player.getPropertiesOwned().get(i).getFieldPrice());
                         player.getPropertiesOwned().remove(i);
+
+                        missingPayment=missingPayment-player.getPropertiesOwned().get(i).getFieldPrice();
+
+                        String[] placeholder = new String[propertiesAsStringArray.length-1];
 
                         for (int j = 0; j < placeholder.length; j++) {
                             if(!propertyToSell.equals(player.getPropertiesOwned().get(j).toString())){
@@ -179,7 +179,7 @@ public class FieldController {
                         }
                     }
                 }
-            }
+            } while (player.b.getBalance()<payment);
 
         }
 

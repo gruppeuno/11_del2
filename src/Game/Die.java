@@ -25,7 +25,7 @@ public class Die {
     private int diceRollCount = 0;
     public void rollPlayer0(){
 
-        int[] player0Roll = {6,6,6,4,8,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24};
+        int[] player0Roll = {6,6,4,1,1,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24};
         diceValue=player0Roll[diceRollCount];
     }
     public void rollPlayer1() {//                v kino

@@ -64,10 +64,10 @@ public class GameController {
             //Terningernes værdier sættes
             guiView.getMyGUI().setDie(die.getDiceValue());
 
-            //TODO: test af sellProperty
+            /*//TODO: test af sellProperty
             Property testProperty = (Property) fieldController.getFields()[16];
             if (currentPlayer.getFieldNumber()==16 && testProperty.getOwnerName()!=currentPlayerName)
-                fieldController.sellProperty(currentPlayer, 3,guiView);
+                fieldController.sellProperty(currentPlayer, 3,guiView);*/
 
             //placerer spillers bil på det rette felt
 
