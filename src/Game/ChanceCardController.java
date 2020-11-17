@@ -6,9 +6,8 @@ import java.util.Scanner;
 public class ChanceCardController {
 
     private static boolean cardUse = false;
-    private static int i = 0;
+    private int i = 0;
     //TODO: hvad gør den her variabel
-    private int rrr = 0;
 
     private static int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
 
@@ -86,7 +85,7 @@ public class ChanceCardController {
             case 9: //Chance Kort 9
                 chancekort9(player, playerController);
                 break;
-            case 10: //Chance Kort 10 //TODO: Vi skal have at når kortet bliver brugt, JailCardUse så bliver false igen.
+            case 10: //Chance Kort 10
                 chancekort10(player, playerController);
                 break;
             case 11://Chancekort 11
@@ -122,9 +121,9 @@ public class ChanceCardController {
             default:
                 System.out.println("Der skete en fejl");
         }
-        rrr++;
+        i++;
 
-        if (rrr == 19) {
+        if (i == 19) {
             i = 0;}
 }
     private void chancekort1() {
