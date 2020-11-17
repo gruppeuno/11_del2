@@ -49,7 +49,7 @@ public class ChanceCardController {
             arrOut += chArr + " ";
         }
 
-        return arrOut;
+        return arrOut + "";
     }
 
     public void chanceCard(Player player, PlayerController playerController) {

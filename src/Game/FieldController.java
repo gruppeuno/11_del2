@@ -54,7 +54,11 @@ public class FieldController {
     }
 //Todo: lav om så der ikke laves 2 metoder til at randomize chancekort. evt. bland kortene i chancecomtroller constructor
     //Af low coupling grunde..
-    public void doRandomize() {chanceCardController.randomizeChance();}
+    public void doRandomize() {
+        System.out.println("Kortenes rækkefølge var: " + chanceCardController);
+        chanceCardController.randomizeChance();
+        System.out.println("Kortenes rækkefølge er nu: " + chanceCardController);
+    }
 
     public void landOnProperty(Player player, PlayerController playerController, Property property) {
         if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName()))
