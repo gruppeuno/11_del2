@@ -4,6 +4,7 @@ import Game.FieldController;
 import Game.Fields.Jail;
 import Game.Fields.JailVisit;
 import Game.Fields.Property;
+import Game.GUIView;
 import Game.Player;
 import Game.PlayerController;
 import org.junit.jupiter.api.Test;
@@ -287,4 +288,20 @@ class FieldControllerTest {
     }
 */
 
+    @Test
+    public void removePropertyOwnerTest(){
+        FieldController fieldController = new FieldController();
+        PlayerController playerController = new PlayerController();
+        GUIView guiView = new GUIView();
+        playerController.createPlayers(2);
+        Player p0 = playerController.getPlayerByName("p0");
+        Player p1 = playerController.getPlayerByName("p1");
+
+        fieldController.buyProperty(p0,playerController,((Property) fieldController.getFields()[1]),guiView);
+        fieldController.buyProperty(p0,playerController,((Property) fieldController.getFields()[2]),guiView);
+        System.out.println(((Property) fieldController.getFields()[2]).getFieldRent());
+        fieldController.removePropertyOwner(((Property) fieldController.getFields()[2]),p0);
+        int actual = 1;
+        assertEquals(actual,((Property) fieldController.getFields()[2]).getFieldRent());
+    }
 }
