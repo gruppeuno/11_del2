@@ -50,13 +50,13 @@ public class GameController {
             die.roll();
             messageController.print(messageController.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),false);
-            guiView.getMyGUI().getFields()[previousField].setCar(guiView.getGUIPlayer(turnCount),false);
 
             playerController.movePlayer(currentPlayer, die.getDiceValue());
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),true);
 
-
             fieldController.landOnField(currentPlayer, playerController, fieldController);
+            guiView.getMyGUI().getFields()[previousField].setCar(guiView.getGUIPlayer(turnCount),false);
+
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),true);
             guiView.removeAllCarsFromChanceFields(turnCount);
 
