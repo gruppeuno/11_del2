@@ -346,7 +346,8 @@ public class ChanceCardController {
     //Total skrald løsning, men kan ikke lige komme på andet. Virker garanteret ikke..
     public void TakeFreeProperty(Player player, PlayerController playerController) {
          FieldController fieldController = new FieldController();
-         fieldController.FreeProperty(player, playerController);
+         //TODO: check om virker
+         //fieldController.FreeProperty(player, playerController);
    }
 }
 

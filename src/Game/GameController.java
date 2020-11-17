@@ -58,9 +58,8 @@ public class GameController {
 
             playerController.movePlayer(currentPlayer, die.getDiceValue());
 
-            fieldController.landOnField(currentPlayer, playerController);
+            fieldController.landOnField(currentPlayer, playerController, guiView);
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),true);
-
 
             //Terningernes værdier sættes
             guiView.getMyGUI().setDie(die.getDiceValue());
@@ -68,7 +67,7 @@ public class GameController {
             //TODO: test af sellProperty
             Property testProperty = (Property) fieldController.getFields()[16];
             if (currentPlayer.getFieldNumber()==16 && testProperty.getOwnerName()!=currentPlayerName)
-                fieldController.sellProperty(currentPlayer, 5, playerController.getPlayerByName(testProperty.getOwnerName()),guiView);
+                fieldController.sellProperty(currentPlayer, 3,guiView);
 
             //placerer spillers bil på det rette felt
 
