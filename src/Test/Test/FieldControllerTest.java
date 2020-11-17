@@ -111,7 +111,7 @@ class FieldControllerTest {
 
         //spiller lander på nyt felt
         testPlayer.setFieldNumber(10);
-        fieldController.landOnField(testPlayer,playerController);
+        fieldController.landOnField(testPlayer,playerController, fieldController);
 
         //Spiller lander på skatepark og køber for 2M
         int expected = 17;

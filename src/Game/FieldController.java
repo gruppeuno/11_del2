@@ -38,7 +38,7 @@ public class FieldController {
     private final ChanceCardController chanceCardController = new ChanceCardController();
 
     //Når en spiller lander på et felt
-    public void landOnField(Player player, PlayerController playerController){
+    public void landOnField(Player player, PlayerController playerController, FieldController fieldController){
         isJustLeftJail(player);
 
         Field field = fields[player.getFieldNumber()];
@@ -49,7 +49,7 @@ public class FieldController {
         else if(field instanceof Jail)
             landOnJail(player,playerController,(Jail) field);
         else if(field instanceof ChanceCard) {
-            chanceCardController.chanceCard(player, playerController);
+            chanceCardController.chanceCard(player, playerController, fieldController);
         }
     }
 //Todo: lav om så der ikke laves 2 metoder til at randomize chancekort. evt. bland kortene i chancecomtroller constructor
