@@ -1,8 +1,5 @@
 package Game;
 
-import Game.Fields.Property;
-
-import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -34,7 +31,7 @@ public class ChanceCardController {
 
         Random rand = new Random();
 
-        //TODO: skal testes
+        //TODO: skal testes - Den er blevet testet, bare ikke skrevet ind som en jUnit endnu..
         for (int i = 0; i < chanceArray.length; i++) {
             int random = rand.nextInt(chanceArray.length);
             int temp = chanceArray[random];
@@ -349,7 +346,7 @@ public class ChanceCardController {
     //Total skrald løsning, men kan ikke lige komme på andet. Virker garanteret ikke..
     public void TakeFreeProperty(Player player, PlayerController playerController) {
          FieldController fieldController = new FieldController();
-         fieldController.FreeProperty(player, playerController);
+         fieldController.freeProperty(player, playerController);
    }
 }
 

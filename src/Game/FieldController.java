@@ -128,11 +128,12 @@ public class FieldController {
 
     }
 
-     public void FreeProperty(Player player, PlayerController playerController){
-        //TODO: Det her skal laves om, så den tager den rigtige instans af property.
+     public void freeProperty(Player player, PlayerController playerController){
+        //TODO: Det her skal laves om, så den faktisk forstår at den skal payrent..
          int i = player.getFieldNumber();
          Property property = (Property) fields[i];
-         if (property.getOwnedByPlayer()) {payRent(player, playerController, property);}
+         if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName())) {
+             payRent(player, playerController, property);}
          else {
              if (!player.b.getBankrupt()) {
                  property.setOwner(player.getPlayerName());
