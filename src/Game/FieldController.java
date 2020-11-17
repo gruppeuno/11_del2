@@ -120,7 +120,7 @@ public class FieldController {
             player.freeOfJail();
         }
     }
-
+    //TODO: PlayerController og Jail bliver ikke brugt her
     public void landOnJail(Player player, PlayerController playerController, Jail jail) {
         player.putInJail();
         player.setFieldNumber(6);
@@ -129,19 +129,19 @@ public class FieldController {
             player.setJailCard(false);
             ChanceCardController.setJailCardUse(false);
         }
-
     }
 
      public void freeProperty(Player player, PlayerController playerController){
-        //TODO: Det her skal laves om, så den faktisk forstår at den skal payrent..
          int i = player.getFieldNumber();
          Property property = (Property) fields[i];
          if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName())) {
              payRent(player, playerController, property);}
-         else {
+         else if (!property.getOwnedByPlayer()) {
              if (!player.bankAccount.getBankrupt()) {
                  property.setOwner(player.getPlayerName());
                  player.addPropertyOwned(property);
-                 System.out.println(player.getPlayerName() + " fik " + property.getName() + " helt gratis"); }}
+                 System.out.println(player.getPlayerName() + " fik " + property.getName() + " helt gratis");
+             }
+         }
      }
 }

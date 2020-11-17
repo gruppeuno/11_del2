@@ -343,7 +343,6 @@ public class ChanceCardController {
         player.bankAccount.addBalance(playerController.getPlayerArrayLength()+1);
     }
 
-    //Total skrald løsning, men kan ikke lige komme på andet. Virker garanteret ikke..
     public void takeFreeProperty(Player player, PlayerController playerController, FieldController fieldController) {
          fieldController.freeProperty(player, playerController);
    }
