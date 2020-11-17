@@ -1,8 +1,5 @@
 package Game;
 
-import Game.Fields.Property;
-
-import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -32,6 +29,7 @@ public class ChanceCardController {
 
         Random rand = new Random();
 
+        //TODO: skal testes - Den er blevet testet, bare ikke skrevet ind som en jUnit endnu..
         for (int i = 0; i < chanceArray.length; i++) {
             int random = rand.nextInt(chanceArray.length);
             int temp = chanceArray[random];
@@ -53,9 +51,9 @@ public class ChanceCardController {
         return arrOut;
     }
 
-    public void chanceCard(Player player, PlayerController playerController) {
+    public void chanceCard(Player player, PlayerController playerController, FieldController fieldController) {
 
-        System.out.println("Du har trukket et chancekort");
+        System.out.println(player.getPlayerName() + " har trukket et chancekort");
 
         switch (chanceArray[i]) {
 
@@ -69,10 +67,10 @@ public class ChanceCardController {
                 chancekort3(player, playerController);
                 break;
             case 4: //Chance Kort 4
-                chancekort4(player, playerController);
+                chancekort4(player, playerController, fieldController);
                 break;
             case 5: //Chance Kort 5
-                chancekort5(player, playerController);
+                chancekort5(player, playerController, fieldController);
                 break;
             case 6: //Chance Kort 6
                 chancekort6();
@@ -81,13 +79,13 @@ public class ChanceCardController {
                 chancekort7(player);
                 break;
             case 8: //Chance Kort 8
-                chancekort8(player, playerController);
+                chancekort8(player, playerController, fieldController);
                 break;
             case 9: //Chance Kort 9
-                chancekort9(player, playerController);
+                chancekort9(player, playerController, fieldController);
                 break;
-            case 10: //Chance Kort 10 //TODO: Vi skal have at når kortet bliver brugt, JailCardUse så bliver false igen.
-                chancekort10(player, playerController);
+            case 10: //Chance Kort 10
+                chancekort10(player, playerController, fieldController);
                 break;
             case 11://Chancekort 11
                 chancekort11(player);
@@ -102,22 +100,22 @@ public class ChanceCardController {
                 chancekort14(player, playerController);
                 break;
             case 15://Chancekort 15
-                chancekort15(player, playerController);
+                chancekort15(player, playerController, fieldController);
                 break;
             case 16://Chancekort 16
                 chancekort16(player);
                 break;
             case 17://Chancekort 17
-                chancekort17(player, playerController);
+                chancekort17(player, playerController, fieldController);
                 break;
             case 18://Chancekort 18
                 chancekort18(player);
                 break;
             case 19://Chancekort 19
-                chancekort19(player, playerController);
+                chancekort19(player, playerController, fieldController);
                 break;
             case 20://Chancekort 20
-                chancekort20(player, playerController);
+                chancekort20(player, playerController, fieldController);
                 break;
             default:
                 System.out.println("Der skete en fejl");
@@ -126,9 +124,6 @@ public class ChanceCardController {
             i = 0;} else {
             i++;
         }
-
-
-
 }
     private void chancekort1() {
         System.out.println(">>>Ingen indhold<<<");
@@ -145,15 +140,15 @@ public class ChanceCardController {
         moveFieldPLayerSelect(player, 1, 5,playerController);
     }
 
-    private void chancekort4 (Player player, PlayerController playerController) {
+    private void chancekort4 (Player player, PlayerController playerController, FieldController fieldController) {
         System.out.println("Gratis felt.");
         System.out.println("Ryk frem til et Orange felt.");
         System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
         moveSpecificFieldRange(player, "Orange", 10, 11);
-        TakeFreeProperty(player, playerController);
+        takeFreeProperty(player, playerController, fieldController);
     }
 
-    private void chancekort5 (Player player, PlayerController playerController) {
+    private void chancekort5 (Player player, PlayerController playerController, FieldController fieldController) {
         String valg;
 
         String ryk = "ryk";
@@ -171,7 +166,7 @@ public class ChanceCardController {
             moveField(player, 1);}
         else if (valg.toLowerCase().equals(traek)) {
             i++;
-            chanceCard(player, playerController);}
+            chanceCard(player, playerController, fieldController);}
     }
 
     private void chancekort6 () {
@@ -183,23 +178,23 @@ public class ChanceCardController {
         subBank(player, 2);
     }
 
-    private void chancekort8 (Player player, PlayerController playerController) {
+    private void chancekort8 (Player player, PlayerController playerController, FieldController fieldController) {
         System.out.println("Gratis felt");
         System.out.println("Ryk frem til et orange eller grønt felt.");
         System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
         moveSpecificFieldRange(player, "Orange", 10, 11, "Grøn", 19, 20);
-        TakeFreeProperty(player, playerController);
+        takeFreeProperty(player, playerController, fieldController);
     }
 
-    private void chancekort9 (Player player, PlayerController playerController) {
+    private void chancekort9 (Player player, PlayerController playerController, FieldController fieldController) {
         System.out.println("Gratis felt");
         System.out.println("Ryk frem til et lyseblåt felt.");
         System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
         moveSpecificFieldRange(player, "Lyseblå", 4, 5);
-        TakeFreeProperty(player, playerController);
+        takeFreeProperty(player, playerController, fieldController);
     }
 
-    private void chancekort10 (Player player, PlayerController playerController) {
+    private void chancekort10 (Player player, PlayerController playerController, FieldController fieldController) {
         System.out.println("Du løslades uden omkostninger");
         System.out.println("Behold dette kort, indtil du får brug for det");
         if(!getJailCardUse() == true) {
@@ -210,7 +205,7 @@ public class ChanceCardController {
 
         if (getJailCardUse() == true) {
             i++;
-            chanceCard(player, playerController);
+            chanceCard(player, playerController, fieldController);
         }
     }
 
@@ -231,12 +226,12 @@ public class ChanceCardController {
         bankFromAll(player, playerController);
     }
 
-    private void chancekort15 (Player player, PlayerController playerController) {
+    private void chancekort15 (Player player, PlayerController playerController, FieldController fieldController) {
         System.out.println("Gratis felt.");
         System.out.println("Ryk frem til et Pink eller mørkeblåt felt.");
         System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
         moveSpecificFieldRange(player, "Pink", 7, 8, "Mørkeblå", 22, 23);
-        TakeFreeProperty(player, playerController);
+        takeFreeProperty(player, playerController, fieldController);
     }
 
     private void chancekort16 (Player player) {
@@ -244,26 +239,26 @@ public class ChanceCardController {
         addBank(player, 2);
     }
 
-    private void chancekort17 (Player player, PlayerController playerController) {
+    private void chancekort17 (Player player, PlayerController playerController, FieldController fieldController) {
         System.out.println("Gratis felt.");
         System.out.println("Ryk frem til et rødt felt.");
         System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
         moveSpecificFieldRange(player, "Rød", 13, 14);
-        TakeFreeProperty(player, playerController);
+        takeFreeProperty(player, playerController, fieldController);
     }
 
     private void chancekort18 (Player player) {
         moveSpecificField(player,10);
     }
 
-    private void chancekort19 (Player player, PlayerController playerController) {
+    private void chancekort19 (Player player, PlayerController playerController, FieldController fieldController) {
         moveSpecificFieldRange(player, "Lyseblå", 4, 5, "Rød", 13, 14);
-        TakeFreeProperty(player, playerController);
+        takeFreeProperty(player, playerController, fieldController);
     }
 
-    private void chancekort20 (Player player, PlayerController playerController) {
+    private void chancekort20 (Player player, PlayerController playerController, FieldController fieldController) {
         moveSpecificFieldRange(player, "Brun", 1, 2, "Gul", 16, 17);
-        TakeFreeProperty(player, playerController);
+        takeFreeProperty(player, playerController, fieldController);
     }
 
     public void moveField(Player player, int move) { ;
@@ -298,6 +293,7 @@ public class ChanceCardController {
 
         do {
             System.out.println("Vælg mellem felt " + minMove + " eller " + maxMove + " af farven " + Color + " på pladen");
+            System.out.print("\nSkriv hvilket felt du ønsker her: ");
             move = scan.nextInt(); }
             while (!(minMove == move || maxMove == move));
 
@@ -311,6 +307,7 @@ public class ChanceCardController {
         do {
             System.out.println("Vælg mellem felt " + minMove + " eller " + maxMove + " af farven " + Color + ", eller felt "
                     + minMove2 + " eller " + maxMove2 + " af farven " + Color2 + " på pladen");
+            System.out.print("\nSkriv hvilket felt du ønsker her: ");
             move = scan.nextInt(); }
         while (!(minMove == move|| maxMove == move || minMove2 == move || maxMove2 == move));
 
@@ -318,11 +315,11 @@ public class ChanceCardController {
     }
 
     public void addBank(Player player, int moneyChange) {
-        player.b.addBalance(moneyChange);
+        player.bankAccount.addBalance(moneyChange);
     }
 
     public void subBank(Player player, int moneyChange) {
-        player.b.subBalance(moneyChange);
+        player.bankAccount.subBalance(moneyChange);
     }
 
     public void adjustJailCard(Player player) {
@@ -340,16 +337,14 @@ public class ChanceCardController {
     public void bankFromAll(Player player, PlayerController playerController) {
 
         for (Player tempPlayer : playerController.getPlayerArray()) {
-            tempPlayer.b.subBalance(1);
+            tempPlayer.bankAccount.subBalance(1);
         }
 
-        player.b.addBalance(playerController.getPlayerArrayLength()+1);
+        player.bankAccount.addBalance(playerController.getPlayerArrayLength()+1);
     }
 
-    //Total skrald løsning, men kan ikke lige komme på andet. Virker garanteret ikke..
-    public void TakeFreeProperty(Player player, PlayerController playerController) {
-         FieldController fieldController = new FieldController();
-         fieldController.FreeProperty(player, playerController);
+    public void takeFreeProperty(Player player, PlayerController playerController, FieldController fieldController) {
+         fieldController.freeProperty(player, playerController);
    }
 }
 
