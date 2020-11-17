@@ -124,10 +124,6 @@ public class ChanceCardController {
             i = 0;} else {
             i++;
         }
-
-
-        if (rrr == 19) {
-            i = 0;}
 }
     private void chancekort1() {
         System.out.println(">>>Ingen indhold<<<");
