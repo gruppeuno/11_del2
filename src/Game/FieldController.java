@@ -52,7 +52,7 @@ public class FieldController {
             chanceCardController.chanceCard(player, playerController);
         }
     }
-
+//Todo: lav om så der ikke laves 2 metoder til at randomize chancekort. evt. bland kortene i chancecomtroller constructor
     //Af low coupling grunde..
     public void doRandomize() {chanceCardController.randomizeChance();}
 
