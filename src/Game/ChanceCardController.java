@@ -6,23 +6,9 @@ import java.util.Scanner;
 public class ChanceCardController {
 
     private static boolean cardUse = false;
-    private static int i = 0;
+    private int i = 0;
 
-    private static int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
-
-    /**
-     * Todo list:
-     * 1. Der skal laves en funktion der tage alle mulige chance kort og blander dem i en rækkefølge.
-     * Denne rækkefølge er den rækkefølge den skal bruge i spillet. Når 1 kort bliver taget fra toppen af bunken,
-     * så bliver det kort lagt ind i bunken igen. Nede i bunden.
-     * 2. Disse kort skal så have en effekt. Der er allerede blevet lavet en metode som hedder move, men den tager udgangspunkt i terningen.
-     * Vi kan bruge getFieldNumber, og tiløje eller trække nogle Fields fra, og så SetFieldNumber igen.
-     * 3. lille ting, metoder skal være camelCase
-     * <p>
-     * Den første er den der kræver mest, og nummer to, hvis nummer 1 er lavet godt, så er nummer to bare insert, og se det virke.
-     *
-     */
-
+    private int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
 
     //Tager vores arrays indhold, og sætter det i en tilfældig rækkefølge.
     public void randomizeChance() {
