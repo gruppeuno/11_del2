@@ -79,7 +79,7 @@ public class Player {
         int totalValue=0;
         if(propertiesOwned.size()>0)
             for (Property property:propertiesOwned) {
-                totalValue += property.getFieldRent();
+                totalValue += property.getFieldPrice();
             }
         return totalValue;
     }
