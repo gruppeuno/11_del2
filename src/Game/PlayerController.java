@@ -27,7 +27,7 @@ public class PlayerController {
         System.out.println("YNGSTE SPILLER! du er spiller 1");
         for (int i = 0; i < playerArray.length; i++){
             int nr = i+1;
-            System.out.println("spiller " + nr + " indtast dit navn \n(spillere må ikke have samme navn)");
+            System.out.println("spiller " + nr + " indtast dit navn:");
             String currentName = scan.next();
 
            while (checkPlayerName(currentName,playerArray)) {
