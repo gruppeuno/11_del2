@@ -47,14 +47,14 @@ public class GameController {
             //playerRollInput();
             //ruller terninger med RaffleCup samt opdaterer spillerens position
             //TODO: rigtig terning
-            die.roll();
+            //die.roll();
             m.print(m.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
 
             //TODO: testterninger, SKAL KALDE SPILLERE "GAB" OG "SEB" FOR AT DET VIRKER (til test af sellProperty)
-            //if(currentPlayerName.equals("gab"))
-            //die.rollPlayer0();
-            //else if(currentPlayerName.equals("seb"))
-            //die.rollPlayer1();
+            if(currentPlayerName.equals("GAB"))
+            die.rollPlayer0();
+            else if(currentPlayerName.equals("SEB"))
+            die.rollPlayer1();
 
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),false);
 
