@@ -24,17 +24,17 @@ public class PlayerController {
         numberOfPlayers();
         createPlayers();
         setStartBalance();
-        System.out.println("Indtast spillernavn lad den yngste spiller starte");
+        System.out.println("YNGSTE SPILLER! du er spiller 1");
         for (int i = 0; i < playerArray.length; i++){
             int nr = i+1;
-            System.out.println("spiller " + nr + " Indtast et navn der er mellem 3-12 tegn, spillere må ikke have samme navn:");
+            System.out.println("spiller " + nr + " indtast dit navn \n(spillere må ikke have samme navn)");
             String currentName = scan.next();
 
            while (checkPlayerName(currentName,playerArray)) {
-               System.out.print("Navnet du ønsker er ugyldigt. Vælg nyt navn: ");
+               System.out.print("Ugyldigt navn! prøv igen! (3-12 bogstaver)");
                currentName = scan.next();
            }
-            playerArray[i].setPlayerName(currentName);
+            playerArray[i].setPlayerName(currentName.toUpperCase());
         }
         System.out.println("========================================\n");
     }
@@ -47,7 +47,7 @@ public class PlayerController {
         final int MAX = 4;
         final int MIN = 2;
         //While loop til at sikre at der er indtastet mellem 2-4 spillere
-        System.out.println("Indtast et antal spillere mellem 2-4");
+        System.out.println("Indtast antal spillere (2-4) :");
         do{
             while (!scan.hasNextInt()) {
                 System.out.println("Ugyldigt input. Indtast et antal spillere mellem 2-4");
@@ -58,7 +58,7 @@ public class PlayerController {
             if (numberOfPlayers< MIN || numberOfPlayers> MAX)
                 System.out.println("Ugyldigt antal spillere. Indtast et antal spillere mellem 2-4");
         }while (numberOfPlayers< MIN || numberOfPlayers> MAX);
-        System.out.println("numberOfPlayers " + numberOfPlayers + "\n");
+        System.out.println("antal spillere: " + numberOfPlayers + "\n");
     }
 
     /**
@@ -100,7 +100,7 @@ public class PlayerController {
         int newSpot = player.getFieldNumber()+dieValue;
         if ( newSpot > 23 ) {
             newSpot = newSpot - 24;
-            player.b.addBalance(2);
+            player.bankAccount.addBalance(2);
         }
         player.setFieldNumber(newSpot);
     }
@@ -125,15 +125,15 @@ public class PlayerController {
     public void setStartBalance(){
         if(playerArray.length==2)
             for (int i = 0; i < 2; i++)
-                playerArray[i].b.setBalance(20);
+                playerArray[i].bankAccount.setBalance(20);
 
         else if(playerArray.length==3)
             for (int i = 0; i < 3; i++)
-                playerArray[i].b.setBalance(18);
+                playerArray[i].bankAccount.setBalance(18);
 
         else if(playerArray.length==4)
             for (int i = 0; i < 4; i++)
-                playerArray[i].b.setBalance(16);
+                playerArray[i].bankAccount.setBalance(16);
 
     }
 
@@ -156,10 +156,10 @@ public class PlayerController {
                }
            }
 
-       if(player.getPropertiesOwned().size()==0 && player.b.getBalance()==0)
-           player.b.setBankrupt(true);
+       if(player.getPropertiesOwned().size()==0 && player.bankAccount.getBalance()==0)
+           player.bankAccount.setBankrupt(true);
        else if (arraylistSizeBefore==player.getPropertiesOwned().size())
-           player.b.setBankrupt(true);
+           player.bankAccount.setBankrupt(true);
    }
 
 

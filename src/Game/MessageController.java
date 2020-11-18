@@ -3,6 +3,7 @@ package Game;
 import Game.View.GameControllerMessages;
 
 public class MessageController {
+    GameControllerMessages gm = new GameControllerMessages();
 
     //GameController Messages
     public void print(String string){
@@ -10,44 +11,36 @@ public class MessageController {
     }
 
     public String playerDieRollMsg(String currentPlayerName, int dieValue){
-        return (currentPlayerName + " " + GameControllerMessages.instanceOf().number(1) + " " + dieValue);
+        return (currentPlayerName + " " + gm.number(1) + " " + dieValue);
     }
 
     public String bankruptMsg(String currentPlayerName){
-        return (currentPlayerName + " " + GameControllerMessages.instanceOf().number(2));
+        return (currentPlayerName + " " + gm.number(2));
     }
 
     public String currentBalanceMsg(String currentPlayerName, int balance){
-        return currentPlayerName + " " + GameControllerMessages.instanceOf().number(3) + " " + balance + GameControllerMessages.instanceOf().number(4);
+        return gm.number(3) + " " + balance + gm.number(4);
     }
 
     public String lineMsg(){
-        return GameControllerMessages.instanceOf().number(5);
+        return gm.number(5) + "\n";
     }
 
-    public String startMsg(){
-        return GameControllerMessages.instanceOf().number(6);
-    }
-
-    public String startInputMsg(){
-        return GameControllerMessages.instanceOf().number(7);
-    }
-
-    public String rollInputMsg(){
-        return GameControllerMessages.instanceOf().number(10);
+    public String startMsg(String playerOne){
+        return gm.number(6) + "\n" + playerOne + "\n" + gm.number(7);
     }
 
     public String myTurnMsg(String playerName){
-        return GameControllerMessages.instanceOf().number(8) + playerName + GameControllerMessages.instanceOf().number(9);
+        return gm.number(5) + "\n\n" + playerName + " " + gm.number(8);
     }
 
     public String tieMsg(){
-        return GameControllerMessages.instanceOf().number(11);
+        return gm.number(11);
     }
 
     public String winMsg(String leadingPlayerName, int balance, int propertyValue){
-        return leadingPlayerName + GameControllerMessages.instanceOf().number(12) + " " + balance + GameControllerMessages.instanceOf().number(13) + " "
-                + propertyValue + GameControllerMessages.instanceOf().number(14);
+        return leadingPlayerName + gm.number(12) + " " + balance + gm.number(13) + " "
+                + propertyValue + gm.number(14);
     }
 
 }
