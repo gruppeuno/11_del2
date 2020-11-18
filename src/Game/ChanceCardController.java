@@ -12,6 +12,7 @@ public class ChanceCardController {
     private static boolean cardUse;
     private int i;
     private int tempMove;
+    private int cardID;
 
     private int[] chanceArray;
 
@@ -124,6 +125,7 @@ public class ChanceCardController {
 }
     private void chancekort1() {
         System.out.println("\n>>BILEN<<\n NÆSTE TUR skal du drøne frem og KØBE det første ledie felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller! \nDu får et chancekort mere\n");
+
     }
 
     private void chancekort2(Player player) {
@@ -216,7 +218,9 @@ public class ChanceCardController {
     }
 
     private void chancekort14 (Player player, PlayerController playerController) {
+
         bankFromAll(player, playerController);
+        System.out.println("Du modtager 1m fra alle andre spillere. \n Du har nu" + player.bankAccount.getBalance());
     }
 
     private void chancekort15 (Player player, PlayerController playerController, FieldController fieldController) {
@@ -338,7 +342,23 @@ public class ChanceCardController {
          fieldController.freeProperty(player, playerController);
    }
 
+   //Spiller 1 er bil
+    // Spiller 2 er skib
+    // spiller 3 hund
+    // spiller 4 kat
+
+   public void setSelectFieldCardPlayer (PlayerController playerController) {
+        Player players[] = playerController.getPlayerArray();
+
+       if (cardID == 1) {players[0].setSelectFieldCard(true);}
+       if (cardID == 2) {players[1].setSelectFieldCard(true);}
+       if (cardID == 3) {players[2].setSelectFieldCard(true);}
+       if (cardID == 4) {players[3].setSelectFieldCard(true);}
+   }
+
    public void selectMoveProperty (Player player, PlayerController playerController, FieldController fieldController) {
+
+        if (player.getSelectFieldCard()) {
 
         tempMove = player.getFieldNumber();
 
@@ -357,7 +377,7 @@ public class ChanceCardController {
        System.out.print("Skriv her hvilket felt du vil lande på: ");
        player.setFieldNumber(scan.nextInt());
 
-       checkOwnership(player, playerController, fieldController);
+       checkOwnership(player, playerController, fieldController);}
    }
 
    public void checkOwnership (Player player, PlayerController playerController, FieldController fieldController) {
@@ -375,6 +395,7 @@ public class ChanceCardController {
    public void chooseProperty (Player player, PlayerController playerController, FieldController fieldController) {
 
         fieldController.chanceCardBuyProperty(player, playerController);
+        player.setSelectFieldCard(false);
 
    }
 }

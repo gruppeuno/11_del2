@@ -46,6 +46,8 @@ public class FieldController {
     public void landOnField(Player player, PlayerController playerController, FieldController fieldController){
         isJustLeftJail(player);
 
+        chanceCardController.selectMoveProperty(player, playerController, fieldController);
+
         Field field = fields[player.getFieldNumber()];
         System.out.println(field.getMsg());
 
@@ -137,8 +139,7 @@ public class FieldController {
     }
 
      public void freeProperty(Player player, PlayerController playerController){
-         int i = player.getFieldNumber();
-         Property property = (Property) fields[i];
+         Property property = getProperty(player);
          if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName())) {
              payRent(player, playerController, property);}
          else if (!property.getOwnedByPlayer()) {

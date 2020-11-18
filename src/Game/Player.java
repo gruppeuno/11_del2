@@ -18,6 +18,7 @@ public class Player {
     private ArrayList<Property> propertiesOwned = new ArrayList<Property>();
     public BankAccount bankAccount = new BankAccount();
     private boolean jailCard = false;
+    private boolean selectFieldCard = false;
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -49,6 +50,12 @@ public class Player {
 
     public void setFieldNumber(int fieldNumber) {
         this.fieldNumber = fieldNumber;
+    }
+    public void setSelectFieldCard (boolean selectFieldCard)  {
+        this.selectFieldCard = selectFieldCard;
+    }
+    public boolean getSelectFieldCard() {
+        return selectFieldCard;
     }
 
     public void putInJail(){
