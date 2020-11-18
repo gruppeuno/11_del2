@@ -69,8 +69,10 @@ public class GUIView {
         MY_GUI_FIELDS[9].setCar(myPlayers[currentPlayer],false);
         MY_GUI_FIELDS[15].setCar(myPlayers[currentPlayer],false);
         MY_GUI_FIELDS[21].setCar(myPlayers[currentPlayer],false);
+    }
 
-
+    public void removeCarFromJailField(int currentPlayer){
+        MY_GUI_FIELDS[18].setCar(myPlayers[currentPlayer],false);
     }
 
 }

@@ -18,7 +18,7 @@ public class GameController {
     final private Die die = new Die();
     final private Scanner scan = new Scanner(System.in);
     final private GUIView guiView = new GUIView();
-    MessageController messageController = new MessageController();
+    MessageController m = new MessageController();
 
     /**
      * Main metode, kører spillet
@@ -48,7 +48,7 @@ public class GameController {
             //playerRollInput();
             //ruller terninger med RaffleCup samt opdaterer spillerens position
             die.roll();
-            messageController.print(messageController.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
+            m.print(m.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),false);
 
             playerController.movePlayer(currentPlayer, die.getDiceValue());
@@ -59,6 +59,7 @@ public class GameController {
 
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),true);
             guiView.removeAllCarsFromChanceFields(turnCount);
+            guiView.removeCarFromJailField(turnCount);
 
             //Terningernes værdier sættes
             guiView.getMyGUI().setDie(die.getDiceValue());
@@ -66,14 +67,14 @@ public class GameController {
             //placerer spillers bil på det rette felt
 
             if (currentPlayer.bankAccount.getBankrupt()) {
-                guiView.getMyGUI().showMessage(currentPlayerName + messageController.bankruptMsg(currentPlayerName));
-                messageController.print(messageController.bankruptMsg(currentPlayerName));
+                guiView.getMyGUI().showMessage(currentPlayerName + m.bankruptMsg(currentPlayerName));
+                m.print(m.bankruptMsg(currentPlayerName));
                 findWinner(playerController.getPlayerArray());
                 break;
             }
 
-            messageController.print(messageController.currentBalanceMsg(currentPlayerName,currentPlayer.bankAccount.getBalance()));
-            messageController.print(messageController.myTurnMsg(playerController.getPlayerArray()[nextPlayerTurnCount].getPlayerName()));
+            m.print(m.currentBalanceMsg(currentPlayerName,currentPlayer.bankAccount.getBalance()));
+            m.print(m.myTurnMsg(playerController.getPlayerArray()[nextPlayerTurnCount].getPlayerName()));
 
             //I GUI sættes spillers balance
             guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.bankAccount.getBalance());
@@ -82,7 +83,7 @@ public class GameController {
 
             //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
             turnCount = (turnCount + 1) % playerController.getPlayerArray().length;
-            messageController.print(messageController.lineMsg());
+            m.print(m.lineMsg());
         }
     }
 
@@ -91,7 +92,7 @@ public class GameController {
         String playerOne = playerController.getPlayerArray()[0].getPlayerName();
 
         do {
-            messageController.print(messageController.startMsg(playerOne));
+            m.print(m.startMsg(playerOne));
 
             start = scan.nextLine();
         }
@@ -127,12 +128,12 @@ public class GameController {
 
     private void printGameResult(boolean uafgjort, Player leadingPlayer){
         if (uafgjort) {
-            messageController.print(messageController.tieMsg());
-            guiView.getMyGUI().showMessage(messageController.tieMsg());
+            m.print(m.tieMsg());
+            guiView.getMyGUI().showMessage(m.tieMsg());
         } else {
             leadingPlayer.setPlayerWin();
-            messageController.print(messageController.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.bankAccount.getBalance(), leadingPlayer.getTotalPropertyValue()));
-            guiView.getMyGUI().showMessage(messageController.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.bankAccount.getBalance(), leadingPlayer.getTotalPropertyValue()));
+            m.print(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.bankAccount.getBalance(), leadingPlayer.getTotalPropertyValue()));
+            guiView.getMyGUI().showMessage(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.bankAccount.getBalance(), leadingPlayer.getTotalPropertyValue()));
 
         }
     }
