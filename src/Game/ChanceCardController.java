@@ -9,6 +9,7 @@ public class ChanceCardController {
     private int i = 0;
 
     private int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+    //private int[] chanceArray = {1};
 
     //Tager vores arrays indhold, og sætter det i en tilfældig rækkefølge.
     public void randomizeChance() {
@@ -164,7 +165,9 @@ public class ChanceCardController {
     }
 
     private void chancekort8 (Player player, PlayerController playerController, FieldController fieldController) {
-        System.out.println(">>SKIBET<<\nNÆSTE TUR skal du sejle frem og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!");
+        System.out.println(">>SKIBET<<\nNÆSTE TUR skal du sejle frem og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!"+
+                "\nE K S T R A   C H A N C E K O R T"
+        );
         moveSpecificFieldRange(player, "Orange", 10, 11, "Grøn", 19, 20);
         takeFreeProperty(player, playerController, fieldController);
     }
@@ -195,11 +198,11 @@ public class ChanceCardController {
     }
 
     private void chancekort12 (Player player, PlayerController playerController) {
-        System.out.println(">>KATTEN<<\nNÆSTE TUR skal du liste hen og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n");
+        System.out.println(">>KATTEN<<\nNÆSTE TUR skal du liste hen og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n" +"\nE K S T R A   C H A N C E K O R T");
     }
 
     private void chancekort13 (Player player, PlayerController playerController) {
-        System.out.println(">>HUNDEN<<\nNÆSTE TUR skal du hoppe hen og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n");
+        System.out.println(">>HUNDEN<<\nNÆSTE TUR skal du hoppe hen og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n" + "\nE K S T R A   C H A N C E K O R T");
     }
 
     private void chancekort14 (Player player, PlayerController playerController) {
@@ -234,7 +237,7 @@ public class ChanceCardController {
     }
 
     private void chancekort20 (Player player, PlayerController playerController, FieldController fieldController) {
-        System.out.println(">>GRATIS FELT<<\nRyk frem til BRUNT eller gult felt\nHvis det er ledigt får du det GRAITS. \nEllers BETAL leje til ejeren");
+        System.out.println(">>GRATIS FELT<<\nRyk frem til BRUNT eller GULT felt\nHvis det er ledigt får du det GRAITS. \nEllers BETAL leje til ejeren");
         moveSpecificFieldRange(player, "Brun", 1, 2, "Gul", 16, 17);
         takeFreeProperty(player, playerController, fieldController);
     }
@@ -270,7 +273,7 @@ public class ChanceCardController {
         Scanner scan = new Scanner(System.in);
 
         do {
-            System.out.println("VÆLG " + Color +  "felt:" + minMove + " eller " + maxMove);
+            System.out.println("VÆLG " + Color +  " felt: " + minMove + " eller " + maxMove);
             System.out.print("\nSkriv hvilket felt du ønsker her: ");
             move = scan.nextInt(); }
             while (!(minMove == move || maxMove == move));
@@ -283,8 +286,8 @@ public class ChanceCardController {
         Scanner scan = new Scanner(System.in);
 
         do {
-            System.out.println("VÆLG " + Color + "eller " + Color2 + " felt: " + minMove + "," + maxMove +  ","
-                    + minMove2 + "," + maxMove2);
+            System.out.println("VÆLG " + Color + " eller " + Color2 + " felt: " + minMove + ", " + maxMove +  ", "
+                    + minMove2 + " eller " + maxMove2);
             System.out.print("\nSkriv hvilket felt du ønsker her: ");
             move = scan.nextInt(); }
         while (!(minMove == move|| maxMove == move || minMove2 == move || maxMove2 == move));
