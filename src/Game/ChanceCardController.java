@@ -5,10 +5,18 @@ import java.util.Scanner;
 
 public class ChanceCardController {
 
-    private static boolean cardUse = false;
-    private int i = 0;
 
-    private int[] chanceArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+
+    private static boolean cardUse;
+    private int i;
+
+    private int[] chanceArray;
+
+    public ChanceCardController() {
+        cardUse = false;
+        i = 0;
+        chanceArray = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+    }
 
     //Tager vores arrays indhold, og sætter det i en tilfældig rækkefølge.
     public void randomizeChance() {
@@ -199,7 +207,7 @@ public class ChanceCardController {
     }
 
     private void chancekort13 (Player player, PlayerController playerController) {
-        System.out.println("Giv dette kort til Hunden, og tag et chancekort mere\nSKib på din næste tur skal du drøne frem til Hvilket som helst ledige felt og købe det\nHvis der ikke er nogen ledige felter, skal du købe et fra en anden spiller");
+        System.out.println("Giv dette kort til Hunden, og tag et chancekort mere\nSkib på din næste tur skal du drøne frem til Hvilket som helst ledige felt og købe det\nHvis der ikke er nogen ledige felter, skal du købe et fra en anden spiller");
     }
 
     private void chancekort14 (Player player, PlayerController playerController) {
