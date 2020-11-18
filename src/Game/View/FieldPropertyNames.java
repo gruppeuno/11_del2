@@ -4,7 +4,17 @@ public class FieldPropertyNames extends Messages {
 
     private String[] totalReadFieldNameMessages = new String[24];
 
-    public FieldPropertyNames() {
+    private static FieldPropertyNames fieldPropertyNames;
+
+    public static FieldPropertyNames instanceOf(){
+
+        if (fieldPropertyNames == null){
+            fieldPropertyNames = new FieldPropertyNames();
+        }
+        return fieldPropertyNames;
+    }
+
+    private FieldPropertyNames() {
         readFromFile(totalReadFieldNameMessages,"Textfiles/FieldPropertyNames.txt");
     }
 

@@ -11,33 +11,32 @@ import java.util.ArrayList;
 public class FieldController {
 
     FieldMessages fm = new FieldMessages();
-    FieldPropertyNames fp = new FieldPropertyNames();
 
     final Field[] fields = {
-            new Start(fp.number(1),0, fm.number(1)),
-            new Property(fp.number(2), 1,1, fm.number(2),"brown"),
-            new Property(fp.number(3), 2,1, fm.number(3),"brown"),
-            new ChanceCard(fp.number(4), 3, fm.number(4)),
-            new Property(fp.number(5), 4,1, fm.number(5), "lightBlue"),
-            new Property(fp.number(6), 5,1,fm.number(6), "lightBlue"),
-            new JailVisit(fp.number(7), 6, fm.number(7)),
-            new Property(fp.number(8), 7,2, fm.number(8),"pink"),
-            new Property(fp.number(9), 8,2,fm.number(9),"pink"),
-            new ChanceCard(fp.number(10), 9, fm.number(10)),
-            new Property(fp.number(11), 10,2, fm.number(11),"gold"),
-            new Property(fp.number(12), 11,2,fm.number(12),"gold"),
-            new Parking(fp.number(13), 12, fm.number(13)),
-            new Property(fp.number(14), 13,3,fm.number(14),"red"),
-            new Property(fp.number(15), 14,3,fm.number(15),"red"),
-            new ChanceCard(fp.number(16), 15,fm.number(16)),
-            new Property(fp.number(17), 16,3,fm.number(17),"yellow"),
-            new Property(fp.number(18), 17,3,fm.number(18),"yellow"),
-            new Jail(fp.number(19), 18,fm.number(19)),
-            new Property(fp.number(20), 19,4,fm.number(20),"green"),
-            new Property(fp.number(21), 20,4, fm.number(21),"green"),
-            new ChanceCard(fp.number(22), 21,fm.number(22)),
-            new Property(fp.number(23), 22,5,fm.number(23),"blue"),
-            new Property(fp.number(24), 23,5,fm.number(24),"blue")
+            new Start(FieldPropertyNames.instanceOf().number(1),0, fm.number(1)),
+            new Property(FieldPropertyNames.instanceOf().number(2), 1,1, fm.number(2),"brown"),
+            new Property(FieldPropertyNames.instanceOf().number(3), 2,1, fm.number(3),"brown"),
+            new ChanceCard(FieldPropertyNames.instanceOf().number(4), 3, fm.number(4)),
+            new Property(FieldPropertyNames.instanceOf().number(5), 4,1, fm.number(5), "lightBlue"),
+            new Property(FieldPropertyNames.instanceOf().number(6), 5,1,fm.number(6), "lightBlue"),
+            new JailVisit(FieldPropertyNames.instanceOf().number(7), 6, fm.number(7)),
+            new Property(FieldPropertyNames.instanceOf().number(8), 7,2, fm.number(8),"pink"),
+            new Property(FieldPropertyNames.instanceOf().number(9), 8,2,fm.number(9),"pink"),
+            new ChanceCard(FieldPropertyNames.instanceOf().number(10), 9, fm.number(10)),
+            new Property(FieldPropertyNames.instanceOf().number(11), 10,2, fm.number(11),"gold"),
+            new Property(FieldPropertyNames.instanceOf().number(12), 11,2,fm.number(12),"gold"),
+            new Parking(FieldPropertyNames.instanceOf().number(13), 12, fm.number(13)),
+            new Property(FieldPropertyNames.instanceOf().number(14), 13,3,fm.number(14),"red"),
+            new Property(FieldPropertyNames.instanceOf().number(15), 14,3,fm.number(15),"red"),
+            new ChanceCard(FieldPropertyNames.instanceOf().number(16), 15,fm.number(16)),
+            new Property(FieldPropertyNames.instanceOf().number(17), 16,3,fm.number(17),"yellow"),
+            new Property(FieldPropertyNames.instanceOf().number(18), 17,3,fm.number(18),"yellow"),
+            new Jail(FieldPropertyNames.instanceOf().number(19), 18,fm.number(19)),
+            new Property(FieldPropertyNames.instanceOf().number(20), 19,4,fm.number(20),"green"),
+            new Property(FieldPropertyNames.instanceOf().number(21), 20,4, fm.number(21),"green"),
+            new ChanceCard(FieldPropertyNames.instanceOf().number(22), 21,fm.number(22)),
+            new Property(FieldPropertyNames.instanceOf().number(23), 22,5,fm.number(23),"blue"),
+            new Property(FieldPropertyNames.instanceOf().number(24), 23,5,fm.number(24),"blue")
     };
 
     private final ChanceCardController chanceCardController = new ChanceCardController();
