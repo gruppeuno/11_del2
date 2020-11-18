@@ -40,7 +40,7 @@ public class GameController {
             //Fokortelse af variabler
             Player currentPlayer = playerController.getPlayerArray()[turnCount];
             String currentPlayerName = currentPlayer.getPlayerName();
-            nextPlayerTurnCount = (turnCount + 1) % playerController.getPlayerArray().length;
+            int nextPlayerTurnCount = (turnCount + 1) % playerController.getPlayerArray().length;
             int previousField = currentPlayer.getFieldNumber();
 
             //loop til afvente spillerens roll commando i consollen
@@ -64,7 +64,7 @@ public class GameController {
 
             fieldController.landOnField(currentPlayer, playerController, guiView);
 
-            fieldController.landOnField(currentPlayer, playerController, fieldController);
+            fieldController.landOnField(currentPlayer, playerController);
             guiView.getMyGUI().getFields()[previousField].setCar(guiView.getGUIPlayer(turnCount),false);
 
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),true);
