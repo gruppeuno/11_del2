@@ -133,37 +133,20 @@ public class PlayerController {
 
         else if(playerArray.length==4)
             for (int i = 0; i < 4; i++)
+                playerArray[i].b.setBalance(16);
                 playerArray[i].bankAccount.setBalance(16);
 
     }
 
-
-
-   //TODO: metode til at fjerne property, spørg hjælpelærer, IKKE FÆRDIG
-   public void sellProperty(Player player, int payment, Player receivingPlayer){
-       int minPayment = payment;
-       ArrayList<Property> properties = new ArrayList<Property>();
-
-       int arraylistSizeBefore = player.getPropertiesOwned().size();
-
-       if(player.getPropertiesOwned().size()>0)
-           for (int j = minPayment; j >= payment; j++) {
-               for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
-                   if(player.getPropertiesOwned().get(i).getFieldPrice()>=payment){
-                       player.getPropertiesOwned().remove(i);
-                       break;
-                   }
-               }
-           }
-
-       if(player.getPropertiesOwned().size()==0 && player.bankAccount.getBalance()==0)
-           player.bankAccount.setBankrupt(true);
-       else if (arraylistSizeBefore==player.getPropertiesOwned().size())
-           player.bankAccount.setBankrupt(true);
-   }
-
-
-
+    //TODO kan nok slettes senere hvis vi ikke skal bruge
+    public int getPlayerArrayNumber(String playerName){
+        for (int i = 0; i < playerArray.length; i++) {
+            if(playerName.equals(playerArray[i].getPlayerName()))
+                return i;
+        }
+        //TODO: det her?
+        return 0;
+    }
 
 }
 

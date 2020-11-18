@@ -3,6 +3,7 @@ package Test;
 import Game.FieldController;
 import Game.Fields.Jail;
 import Game.Fields.Property;
+import Game.GUIView;
 import Game.Player;
 import Game.PlayerController;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,7 @@ class FieldControllerTest {
 
 
 
-    /**Test af landOnJail*/
+    /**Test af landOnJail*//*
     @Test
     public void isPlayerInJail(){
         Player testPlayer1 = new Player("testPerson1");
@@ -50,7 +51,7 @@ class FieldControllerTest {
 
     assertEquals(actual,testPlayer.getIsInPrison());
  }
-    /**Test af ownedBySamePlayer*/
+    *//**Test af ownedBySamePlayer*//*
     //positiv test
     // @Test
     // public void ownedBySamePlayerTest(){
@@ -161,7 +162,7 @@ class FieldControllerTest {
         assertEquals(actual, testProperty.getOwnerName());
     }
 
-    /**Test af buyProperty*/
+    *//**Test af buyProperty*//*
     //test af balance opdatering
     @Test
     public void buyPropertyBalanceUpdateTest() {
@@ -194,7 +195,7 @@ class FieldControllerTest {
         assertEquals(actual, testProperty.getOwnerName());
     }
 
-    /*** Test af payRent*/
+    *//*** Test af payRent*//*
     //Test af om payrent betaling bliver trukket fra spilleren der lander på et ejet felt
     @Test
     public void payRentTest(){
@@ -241,10 +242,10 @@ class FieldControllerTest {
     }
 
     //TODO metoden mangler at laves og testes
-    /**Sælge egendom for at payRent*/
+    *//**Sælge egendom for at payRent*//*
 
 
-    /**Test af setDoubleRent og removeDouble rent*/
+    *//**Test af setDoubleRent og removeDouble rent*//*
     @Test
     public void setDoubleRentTest(){
         Property testProperty = new Property("Horsensgade", 2,5,"test","test");
@@ -262,7 +263,7 @@ class FieldControllerTest {
         assertEquals(actual, testProperty.getFieldRent());
     }
 
-    /**Test af om setDoubleRent bliver kaldt når spiller køber 2. grund af samme farve*/
+    *//**Test af om setDoubleRent bliver kaldt når spiller køber 2. grund af samme farve*//*
     //test af om rent bliver dobbelt
     @Test
     public void buyPropertySetDoubleRentTest(){
@@ -284,6 +285,22 @@ class FieldControllerTest {
         int actual = 8;
         assertEquals(actual,testProperty3.getFieldRent());
     }
+*/
 
+    @Test
+    public void removePropertyOwnerTest(){
+        FieldController fieldController = new FieldController();
+        PlayerController playerController = new PlayerController();
+        GUIView guiView = new GUIView();
+        playerController.createPlayers(2);
+        Player p0 = playerController.getPlayerByName("p0");
+        Player p1 = playerController.getPlayerByName("p1");
 
+        fieldController.buyProperty(p0,playerController,((Property) fieldController.getFields()[1]),guiView);
+        fieldController.buyProperty(p0,playerController,((Property) fieldController.getFields()[2]),guiView);
+        System.out.println(((Property) fieldController.getFields()[2]).getFieldRent());
+        fieldController.removePropertyOwner(((Property) fieldController.getFields()[2]),p0);
+        int actual = 1;
+        assertEquals(actual,((Property) fieldController.getFields()[2]).getFieldRent());
+    }
 }

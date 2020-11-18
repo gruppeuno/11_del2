@@ -11,7 +11,6 @@ import java.util.Scanner;
 public class GameController {
 
     private int turnCount;
-    private int nextPlayerTurnCount;
     //skaber nye objekter af Field, RaffleCup og PlayerCreator
     final private FieldController fieldController = new FieldController();
     final private PlayerController playerController = new PlayerController();
@@ -41,23 +40,33 @@ public class GameController {
             //Fokortelse af variabler
             Player currentPlayer = playerController.getPlayerArray()[turnCount];
             String currentPlayerName = currentPlayer.getPlayerName();
-            nextPlayerTurnCount = (turnCount + 1) % playerController.getPlayerArray().length;
+            int nextPlayerTurnCount = (turnCount + 1) % playerController.getPlayerArray().length;
             int previousField = currentPlayer.getFieldNumber();
 
             //loop til afvente spillerens roll commando i consollen
             //playerRollInput();
             //ruller terninger med RaffleCup samt opdaterer spillerens position
+            //TODO: rigtig terning
             die.roll();
             m.print(m.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
+
+            //TODO: testterninger, SKAL KALDE SPILLERE "GAB" OG "SEB" FOR AT DET VIRKER (til test af sellProperty)
+            //if(currentPlayerName.equals("gab"))
+            //die.rollPlayer0();
+            //else if(currentPlayerName.equals("seb"))
+            //die.rollPlayer1();
+
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),false);
 
             playerController.movePlayer(currentPlayer, die.getDiceValue());
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),true);
 
-            fieldController.landOnField(currentPlayer, playerController, fieldController);
+            fieldController.landOnField(currentPlayer, playerController, guiView);
+
             guiView.getMyGUI().getFields()[previousField].setCar(guiView.getGUIPlayer(turnCount),false);
 
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),true);
+
             guiView.removeAllCarsFromChanceFields(turnCount);
             guiView.removeCarFromJailField(turnCount);
 
@@ -78,6 +87,7 @@ public class GameController {
 
             //I GUI sættes spillers balance
             guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.bankAccount.getBalance());
+
 
             guiView.getMyGUI().showMessage(currentPlayerName +" "+ fieldController.getFields()[currentPlayer.getFieldNumber()].getMsg());
 

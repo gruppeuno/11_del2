@@ -6,7 +6,6 @@ import Game.View.FieldMessages;
 import Game.View.FieldPropertyNames;
 import gui_main.GUI;
 
-import java.security.Guard;
 import java.text.FieldPosition;
 import java.util.ArrayList;
 

@@ -1,6 +1,7 @@
 package Test;
 
 import Game.Fields.Property;
+import Game.GameController;
 import Game.Player;
 import Game.PlayerController;
 import org.junit.jupiter.api.Test;
