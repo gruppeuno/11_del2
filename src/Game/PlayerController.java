@@ -133,9 +133,7 @@ public class PlayerController {
 
         else if(playerArray.length==4)
             for (int i = 0; i < 4; i++)
-                playerArray[i].b.setBalance(16);
                 playerArray[i].bankAccount.setBalance(16);
-
     }
 
     //TODO kan nok slettes senere hvis vi ikke skal bruge
