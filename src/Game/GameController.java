@@ -45,12 +45,13 @@ public class GameController {
             //playerRollInput();
             //ruller terninger med RaffleCup samt opdaterer spillerens position
             //TODO: rigtig terning
-            //die.roll();
-            //TODO: testterninger, SKAL KALDE SPILLERE GAB OG SEB FOR AT DET VIRKER
-            if(currentPlayerName.equals("gab"))
-            die.rollPlayer0();
-            else if(currentPlayerName.equals("seb"))
-            die.rollPlayer1();
+            die.roll();
+
+            //TODO: testterninger, SKAL KALDE SPILLERE "GAB" OG "SEB" FOR AT DET VIRKER (til test af sellProperty)
+            //if(currentPlayerName.equals("gab"))
+            //die.rollPlayer0();
+            //else if(currentPlayerName.equals("seb"))
+            //die.rollPlayer1();
 
 
             o.print(o.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
@@ -59,17 +60,12 @@ public class GameController {
             playerController.movePlayer(currentPlayer, die.getDiceValue());
 
             fieldController.landOnField(currentPlayer, playerController, guiView);
+
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),true);
 
             //Terningernes værdier sættes
             guiView.getMyGUI().setDie(die.getDiceValue());
 
-            /*//TODO: test af sellProperty
-            Property testProperty = (Property) fieldController.getFields()[16];
-            if (currentPlayer.getFieldNumber()==16 && testProperty.getOwnerName()!=currentPlayerName)
-                fieldController.sellProperty(currentPlayer, 3,guiView);*/
-
-            //placerer spillers bil på det rette felt
 
             if (currentPlayer.b.getBankrupt()) {
                 guiView.getMyGUI().showMessage(currentPlayerName + o.bankruptMsg(currentPlayerName));
@@ -83,7 +79,8 @@ public class GameController {
             //I GUI sættes spillers balance
             guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
 
-            guiView.getMyGUI().showMessage(currentPlayerName +" "+ fieldController.getFields()[currentPlayer.getFieldNumber()].getMsg());
+            //TODO
+            //guiView.getMyGUI().showMessage(currentPlayerName +" "+ fieldController.getFields()[currentPlayer.getFieldNumber()].getMsg());
 
             //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
             turnCount = (turnCount + 1) % playerController.getPlayerArray().length;

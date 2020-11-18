@@ -68,14 +68,16 @@ public class FieldController {
     }
 
     public void buyProperty(Player player, PlayerController playerController, Property property, GUIView guiView){
+        if(player.b.getBalance()<property.getFieldPrice()){
+            sellProperty(player,property.getFieldRent(),guiView, playerController, property);
+        }
+
+        //TODO slet if
         if(player.b.getBalance()>=property.getFieldPrice()){
             player.b.subBalance(property.getFieldPrice());
             property.setOwner(player.getPlayerName());
             player.addPropertyOwned(property);
             ownedBySamePlayer(playerController, property);
-        }
-        else if(player.b.getBalance()<property.getFieldPrice()){
-            sellProperty(player,property.getFieldRent(),guiView, playerController, property);
         }
 
         if(!player.b.getBankrupt()) {
@@ -85,13 +87,16 @@ public class FieldController {
     }
 
     public void payRent(Player player , PlayerController playerController, Property property, GUIView guiView) {
+
+        if(player.b.getBalance()<property.getFieldRent()){
+            sellProperty(player,property.getFieldRent(),guiView, playerController, property);
+        }
+        //TODO slet if
         if(player.b.getBalance()>=property.getFieldRent()){
             player.b.subBalance(property.getFieldRent());
             playerController.getPlayerByName(property.getOwnerName()).b.addBalance(property.getFieldRent());
         }
-        else if(player.b.getBalance()<property.getFieldRent()){
-            sellProperty(player,property.getFieldRent(),guiView, playerController, property);
-        }
+
         if(!player.b.getBankrupt()) {
             Player propertyOwner = playerController.getPlayerByName(property.getOwnerName());
             System.out.println(player.getPlayerName() + " betalte " + property.getFieldRent() + "M i husleje til " + propertyOwner.getPlayerName()
@@ -148,7 +153,6 @@ public class FieldController {
     public void sellProperty(Player player, int payment, GUIView guiView, PlayerController playerController, Property property){
         String[] propertiesAsStringArray = new String[player.getPropertiesOwned().size()];
 
-        int sizeBeforeSell=propertiesAsStringArray.length;
         int missingPayment=payment-player.b.getBalance();
 
         if(player.getTotalPropertyValue()>missingPayment){
@@ -164,10 +168,11 @@ public class FieldController {
 
                         player.b.addBalance(player.getPropertiesOwned().get(i).getFieldPrice());
                         removePropertyOwner(player.getPropertiesOwned().get(i),player);
-                        player.getPropertiesOwned().remove(i);
-
 
                         missingPayment=missingPayment-player.getPropertiesOwned().get(i).getFieldPrice();
+
+                        player.getPropertiesOwned().remove(i);
+
 
                         String[] placeholder = new String[propertiesAsStringArray.length-1];
 
@@ -181,13 +186,10 @@ public class FieldController {
                 }
             } while (player.b.getBalance()<payment);
             //TODO: opdaterer ikke nr. 2 spillers balance
-            landOnProperty(player,playerController, property, guiView);
         }
 
 
         if(player.getPropertiesOwned().size()==0 && player.b.getBalance()==0)
-            player.b.setBankrupt(true);
-        else if (sizeBeforeSell==player.getPropertiesOwned().size())
             player.b.setBankrupt(true);
     }
 

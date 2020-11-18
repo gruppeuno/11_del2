@@ -134,7 +134,15 @@ public class PlayerController {
         else if(playerArray.length==4)
             for (int i = 0; i < 4; i++)
                 playerArray[i].b.setBalance(16);
+    }
 
+    public int getPlayerArrayNumber(String playerName){
+        for (int i = 0; i < playerArray.length; i++) {
+            if(playerName.equals(playerArray[i].getPlayerName()))
+                return i;
+        }
+        //TODO: det her?
+        return 0;
     }
 
 }
