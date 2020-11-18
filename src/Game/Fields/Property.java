@@ -33,5 +33,4 @@ public class Property extends Field {
     public String getColour() { return colour; }
     public void setDoubleRent(){ fieldRent = fieldRent*2;}
     public void removeDoubleRent(){ fieldRent = fieldRent/2;}
-
 }

@@ -43,7 +43,6 @@ public class GUIView {
             new GUI_Chance(),
             new GUI_Street("4", "SLIKBUTIKKEN", "", "1M", new Color(35, 184, 208), Color.BLACK),
             new GUI_Street("5", "ISKIOSKEN", "", "1M", new Color(35, 184, 208), Color.BLACK),
-            //TODO; indsæt billede
             new GUI_Jail("","6","PÅ FÆNGSELSBESØG","", Color.gray,Color.black),
             new GUI_Street("7", "MUSEET", "", "2M", new Color(232, 12, 228, 255), Color.black),
             new GUI_Street("8", "BIBLIOTEKET", "", "2M", new Color(232, 12, 228), Color.black),
