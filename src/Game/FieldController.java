@@ -173,7 +173,6 @@ public class FieldController {
 
                         player.getPropertiesOwned().remove(i);
 
-
                         String[] placeholder = new String[propertiesAsStringArray.length-1];
 
                         for (int j = 0; j < placeholder.length; j++) {
@@ -185,9 +184,7 @@ public class FieldController {
                     }
                 }
             } while (player.b.getBalance()<payment);
-            //TODO: opdaterer ikke nr. 2 spillers balance
         }
-
 
         if(player.getPropertiesOwned().size()==0 && player.b.getBalance()==0)
             player.b.setBankrupt(true);

@@ -136,6 +136,7 @@ public class PlayerController {
                 playerArray[i].b.setBalance(16);
     }
 
+    //TODO kan nok slettes senere hvis vi ikke skal bruge
     public int getPlayerArrayNumber(String playerName){
         for (int i = 0; i < playerArray.length; i++) {
             if(playerName.equals(playerArray[i].getPlayerName()))
