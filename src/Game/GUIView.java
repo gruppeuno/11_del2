@@ -63,6 +63,7 @@ public class GUIView {
             new GUI_Street("23", "STRANDPROMENADEN", "", "5M", Color.blue, Color.black),
     };
 
+
     public void removeAllCarsFromChanceFields(int currentPlayer){
         MY_GUI_FIELDS[3].setCar(myPlayers[currentPlayer],false);
         MY_GUI_FIELDS[9].setCar(myPlayers[currentPlayer],false);

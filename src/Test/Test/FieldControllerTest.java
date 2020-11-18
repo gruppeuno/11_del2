@@ -33,7 +33,7 @@ class FieldControllerTest {
      PlayerController playerController = new PlayerController();
      FieldController fieldController = new FieldController();
 
-     fieldController.landOnJail(testPlayer,playerController,(Jail) fieldController.getFields()[18]);
+     fieldController.landOnJail(testPlayer);
      int actual = 6;
 
      assertEquals(actual,testPlayer.getFieldNumber());
@@ -45,7 +45,7 @@ class FieldControllerTest {
     PlayerController playerController = new PlayerController();
     FieldController fieldController = new FieldController();
 
-    fieldController.landOnJail(testPlayer,playerController,(Jail) fieldController.getFields()[18]);
+    fieldController.landOnJail(testPlayer);
     boolean actual = true;
 
     assertEquals(actual,testPlayer.getIsInPrison());
@@ -81,7 +81,7 @@ class FieldControllerTest {
         testPlayer.setJailCard(true);
 
         //testspiller lander på fængsel
-        fieldController.landOnJail(testPlayer,playerController, jail);
+        fieldController.landOnJail(testPlayer);
 
         //spiller lander på nyt felt
         fieldController.landOnProperty(testPlayer,playerController, (Property)fieldController.getFields()[10]);
@@ -106,7 +106,7 @@ class FieldControllerTest {
         testPlayer.bankAccount.setBalance(20);
 
         //testspiller lander på fængsel
-        fieldController.landOnJail(testPlayer,playerController, jail);
+        fieldController.landOnJail(testPlayer);
 
 
         //spiller lander på nyt felt
