@@ -150,8 +150,7 @@ public class FieldController {
          }
      }
      public void chanceCardBuyProperty(Player player, PlayerController playerController) {
-         int i = player.getFieldNumber();
-         Property property = (Property) fields[i];
+         Property property = getProperty(player);
 
          ArrayList<Property> properties = playerController.getPlayerByName(property.getOwnerName()).getPropertiesOwned();
          int propertyOccupation = 0;
@@ -174,21 +173,14 @@ public class FieldController {
              }
          }
          else {
-             if(player.bankAccount.getBalance() >= property.getFieldPrice()){
-                 player.bankAccount.subBalance(property.getFieldPrice());
-                 property.setOwner(player.getPlayerName());
-                 player.addPropertyOwned(property);
-                 ownedBySamePlayer(playerController, property);
-             }
-             else if(player.bankAccount.getBalance()<=property.getFieldPrice()){
-                 player.bankAccount.setBankrupt(true);
-             }
-
-             if(!player.bankAccount.getBankrupt()) {
-                 property.setOwner(player.getPlayerName());
-                 System.out.println("Du køber den for " + property.getFieldPrice() + "M");
-             }
+             buyProperty(player, playerController, property);
          }
+     }
 
+     public Property getProperty(Player player) {
+         int i = player.getFieldNumber();
+         Property property = (Property) fields[i];
+
+         return property;
      }
 }

@@ -1,5 +1,7 @@
 package Game;
 
+import Game.Fields.Property;
+
 import java.util.Random;
 import java.util.Scanner;
 //TODO: der bliver ikke købt en grund når man lander 5 felter fremmme
@@ -9,6 +11,7 @@ public class ChanceCardController {
 
     private static boolean cardUse;
     private int i;
+    private int tempMove;
 
     private int[] chanceArray;
 
@@ -335,10 +338,44 @@ public class ChanceCardController {
          fieldController.freeProperty(player, playerController);
    }
 
+   public void selectMoveProperty (Player player, PlayerController playerController, FieldController fieldController) {
+
+        tempMove = player.getFieldNumber();
+
+       System.out.println("Vælg hvilken som helst grund, og køb den (Ikke en du selv ejer). Hvis der ikke er flere grunde, så køb fra en anden spiller");
+
+       int propertyAvailArr[] = {1,2,4,5,7,8,10,11,13,14,16,17,19,20,22,23};
+       String arrOut = "";
+
+       for (int availProp : propertyAvailArr) {
+
+           arrOut += availProp + " ";
+       }
+       System.out.println("Mulige felter du kan vælge i mellem: " + arrOut);
+
+       Scanner scan = new Scanner(System.in);
+       System.out.print("Skriv her hvilket felt du vil lande på: ");
+       player.setFieldNumber(scan.nextInt());
+
+       checkOwnership(player, playerController, fieldController);
+   }
+
+   public void checkOwnership (Player player, PlayerController playerController, FieldController fieldController) {
+
+        Property property = fieldController.getProperty(player);
+
+        if (property.getOwnerName().equals(player.getPlayerName())) {
+            System.out.println("Du skal vælge en grund du ikke selv ejer");
+            player.setFieldNumber(tempMove);
+            selectMoveProperty(player, playerController, fieldController);
+        }
+        else {chooseProperty(player, playerController, fieldController);}
+   }
+
    public void chooseProperty (Player player, PlayerController playerController, FieldController fieldController) {
 
-
         fieldController.chanceCardBuyProperty(player, playerController);
+
    }
 }
 
