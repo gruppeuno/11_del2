@@ -4,7 +4,9 @@ import Game.Fields.*;
 import Game.Fields.ChanceCard;
 import Game.View.FieldMessages;
 import Game.View.FieldPropertyNames;
+import gui_main.GUI;
 
+import java.security.Guard;
 import java.text.FieldPosition;
 import java.util.ArrayList;
 
@@ -43,18 +45,19 @@ public class FieldController {
     private final ChanceCardController chanceCardController = new ChanceCardController();
 
     //Når en spiller lander på et felt
-    public void landOnField(Player player, PlayerController playerController, FieldController fieldController){
+
+    public void landOnField(Player player, PlayerController playerController, GUIView guiView){
         isJustLeftJail(player);
 
         Field field = fields[player.getFieldNumber()];
         System.out.println(field.getMsg());
 
         if (field instanceof Property)
-            landOnProperty(player,playerController,(Property) field);
+            landOnProperty(player,playerController,(Property) field, guiView);
         else if(field instanceof Jail)
             landOnJail(player);
         else if(field instanceof ChanceCard) {
-            chanceCardController.chanceCard(player, playerController, fieldController);
+            chanceCardController.chanceCard(player, playerController, this, guiView);
         }
     }
 //Todo: lav om så der ikke laves 2 metoder til at randomize chancekort. evt. bland kortene i chancecomtroller constructor
@@ -65,24 +68,26 @@ public class FieldController {
         System.out.println("Kortenes rækkefølge er nu: " + chanceCardController);
     }
 
-    public void landOnProperty(Player player, PlayerController playerController, Property property) {
+    public void landOnProperty(Player player, PlayerController playerController, Property property, GUIView guiView) {
         if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName()))
-            payRent(player, playerController, property);
+            payRent(player, playerController, property, guiView);
 
             //feltet er ikke ejet, køb felt
         else if (!property.getOwnedByPlayer())
-            buyProperty(player, playerController, property);
+            buyProperty(player, playerController, property, guiView);
     }
 
-    public void buyProperty(Player player, PlayerController playerController, Property property){
+    public void buyProperty(Player player, PlayerController playerController, Property property, GUIView guiView){
+        if(player.bankAccount.getBalance()<property.getFieldPrice()){
+            sellProperty(player,property.getFieldRent(),guiView, playerController, property);
+        }
+
+        //TODO slet if
         if(player.bankAccount.getBalance()>=property.getFieldPrice()){
             player.bankAccount.subBalance(property.getFieldPrice());
             property.setOwner(player.getPlayerName());
             player.addPropertyOwned(property);
             ownedBySamePlayer(playerController, property);
-        }
-        else if(player.bankAccount.getBalance()<=property.getFieldPrice()){
-            player.bankAccount.setBankrupt(true);
         }
 
         if(!player.bankAccount.getBankrupt()) {
@@ -91,14 +96,17 @@ public class FieldController {
         }
     }
 
-    public void payRent(Player player , PlayerController playerController, Property property) {
+    public void payRent(Player player , PlayerController playerController, Property property, GUIView guiView) {
+
+        if(player.bankAccount.getBalance()<property.getFieldRent()){
+            sellProperty(player,property.getFieldRent(), guiView, playerController, property);
+        }
+        //TODO slet if
         if(player.bankAccount.getBalance()>=property.getFieldRent()){
             player.bankAccount.subBalance(property.getFieldRent());
             playerController.getPlayerByName(property.getOwnerName()).bankAccount.addBalance(property.getFieldRent());
         }
-        else if(player.bankAccount.getBalance()<=property.getFieldRent()){
-            player.bankAccount.setBankrupt(true);
-        }
+
         if(!player.bankAccount.getBankrupt()) {
             Player propertyOwner = playerController.getPlayerByName(property.getOwnerName());
             System.out.println(player.getPlayerName() + " betalte " + property.getFieldRent() + "M i husleje til " + propertyOwner.getPlayerName()
@@ -136,11 +144,11 @@ public class FieldController {
         }
     }
 
-     public void freeProperty(Player player, PlayerController playerController){
+     public void freeProperty(Player player, PlayerController playerController, GUIView guiView){
          int i = player.getFieldNumber();
          Property property = (Property) fields[i];
          if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName())) {
-             payRent(player, playerController, property);}
+             payRent(player, playerController, property, guiView);}
          else if (!property.getOwnedByPlayer()) {
              if (!player.bankAccount.getBankrupt()) {
                  property.setOwner(player.getPlayerName());
@@ -149,4 +157,58 @@ public class FieldController {
              }
          }
      }
+
+    //TODO: metode til at fjerne property, spørg hjælpelærer, IKKE FÆRDIG
+    public void sellProperty(Player player, int payment, GUIView guiView, PlayerController playerController, Property property){
+        String[] propertiesAsStringArray = new String[player.getPropertiesOwned().size()];
+
+        int missingPayment=payment-player.bankAccount.getBalance();
+
+        if(player.getTotalPropertyValue()>missingPayment){
+
+            do {
+                for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
+                    propertiesAsStringArray[i]=((Property) player.getPropertiesOwned().toArray()[i]).toString();
+                }
+
+                String propertyToSell=guiView.getMyGUI().getUserSelection("Vælg grund du vil sælge, du skal sælge grunde for " + missingPayment + "M for at betale din afgift" , propertiesAsStringArray);
+                for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
+                    if (propertyToSell.equals(propertiesAsStringArray[i])){
+
+                        player.bankAccount.addBalance(player.getPropertiesOwned().get(i).getFieldPrice());
+                        removePropertyOwner(player.getPropertiesOwned().get(i),player);
+
+                        missingPayment=missingPayment-player.getPropertiesOwned().get(i).getFieldPrice();
+
+                        player.getPropertiesOwned().remove(i);
+
+                        String[] placeholder = new String[propertiesAsStringArray.length-1];
+
+                        for (int j = 0; j < placeholder.length; j++) {
+                            if(!propertyToSell.equals(player.getPropertiesOwned().get(j).toString())){
+                                placeholder[j]=propertiesAsStringArray[j];
+                            }
+                            propertiesAsStringArray=placeholder;
+                        }
+                    }
+                }
+            } while (player.bankAccount.getBalance()<payment);
+        }
+
+        if(player.getPropertiesOwned().size()==0 && player.bankAccount.getBalance()==0)
+            player.bankAccount.setBankrupt(true);
+    }
+
+    public void removePropertyOwner(Property property, Player player){
+        ArrayList<Property> properties = player.getPropertiesOwned();
+
+        for (Property tempProperty: properties) {
+            if(tempProperty.getColour().equals(property.getColour()) && !tempProperty.getName().equals(property.getName())){
+                tempProperty.removeDoubleRent();
+                property.removeDoubleRent();
+            }
+        }
+        property.removeOwner();
+
+    }
 }
