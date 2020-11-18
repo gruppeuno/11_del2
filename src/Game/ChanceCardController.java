@@ -1,6 +1,5 @@
 package Game;
 
-import Game.Fields.ChanceCard;
 import Game.Fields.Property;
 
 import java.util.Random;
@@ -13,7 +12,6 @@ public class ChanceCardController {
     private static boolean cardUse;
     private int i;
     private int tempMove;
-    private int cardID;
 
     private int[] chanceArray;
 
@@ -393,7 +391,8 @@ public class ChanceCardController {
 
         Property property = fieldController.getProperty(player);
 
-        if (property.getOwnerName().equals(player.getPlayerName())) {
+        if (property.getOwnerName() == null) {chooseProperty(player, playerController, fieldController);}
+        else if (property.getOwnerName().equals(player.getPlayerName())) {
             System.out.println("Du skal vælge en grund du ikke selv ejer");
             player.setFieldNumber(tempMove);
             selectMoveProperty(player, playerController, fieldController);
