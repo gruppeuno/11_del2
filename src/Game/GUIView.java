@@ -57,7 +57,7 @@ public class GUIView {
             new GUI_Chance(),
             new GUI_Street("16", "3M", FieldPropertyNames.instanceOf().number(17), "3M", Color.yellow, Color.black),
             new GUI_Street("17", "3M", FieldPropertyNames.instanceOf().number(18), "3M", Color.yellow, Color.black),
-            new GUI_Jail("","18","GÅ I FÆNGSEL",FieldPropertyNames.instanceOf().number(19), Color.gray,Color.black),
+            new GUI_Jail("","18",FieldPropertyNames.instanceOf().number(19),FieldPropertyNames.instanceOf().number(19), Color.gray,Color.black),
             new GUI_Street("19", "4M", FieldPropertyNames.instanceOf().number(20), "4M", new Color(11, 132, 55), Color.black),
             new GUI_Street("20", "4M", FieldPropertyNames.instanceOf().number(21), "4M", new Color(11, 132, 55), Color.black),
             new GUI_Chance(),
