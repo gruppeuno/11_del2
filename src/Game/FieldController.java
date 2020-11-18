@@ -149,4 +149,46 @@ public class FieldController {
              }
          }
      }
+     public void chanceCardBuyProperty(Player player, PlayerController playerController) {
+         int i = player.getFieldNumber();
+         Property property = (Property) fields[i];
+
+         ArrayList<Property> properties = playerController.getPlayerByName(property.getOwnerName()).getPropertiesOwned();
+         int propertyOccupation = 0;
+         for (Property tempProperty: properties) {
+             if (tempProperty.getOwnedByPlayer()) {
+                 propertyOccupation++;
+             }
+         }
+         if (propertyOccupation == 16) {
+             if (!property.getOwnerName().equals(player.getPlayerName())) {
+
+                 for (Player tempPlayer : playerController.getPlayerArray()) {
+
+                     if (tempPlayer.equals(property.getOwnerName())) {
+                         tempPlayer.bankAccount.addBalance(property.getFieldPrice());
+                     }
+                 }
+                 property.setOwner(player.getPlayerName());
+                 player.bankAccount.subBalance(property.getFieldPrice());
+             }
+         }
+         else {
+             if(player.bankAccount.getBalance() >= property.getFieldPrice()){
+                 player.bankAccount.subBalance(property.getFieldPrice());
+                 property.setOwner(player.getPlayerName());
+                 player.addPropertyOwned(property);
+                 ownedBySamePlayer(playerController, property);
+             }
+             else if(player.bankAccount.getBalance()<=property.getFieldPrice()){
+                 player.bankAccount.setBankrupt(true);
+             }
+
+             if(!player.bankAccount.getBankrupt()) {
+                 property.setOwner(player.getPlayerName());
+                 System.out.println("Du køber den for " + property.getFieldPrice() + "M");
+             }
+         }
+
+     }
 }

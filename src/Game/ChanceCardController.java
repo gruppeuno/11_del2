@@ -334,5 +334,11 @@ public class ChanceCardController {
     public void takeFreeProperty(Player player, PlayerController playerController, FieldController fieldController) {
          fieldController.freeProperty(player, playerController);
    }
+
+   public void chooseProperty (Player player, PlayerController playerController, FieldController fieldController) {
+
+
+        fieldController.chanceCardBuyProperty(player, playerController);
+   }
 }
 
