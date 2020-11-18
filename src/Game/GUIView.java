@@ -38,7 +38,7 @@ public class GUIView {
     }
 
     public static final GUI_Field[] MY_GUI_FIELDS = {
-            //TODO: startfeltet bør vel være felt 1, eftersom vi har 24 felter?
+
             new GUI_Start(FieldPropertyNames.instanceOf().number(1), "KLIK HER", "Tryk på felterne for at se deres navne \n\n KØB pris og LEJE er den samme \n\nDu får 1M for at passere start\n\nGOD FORNØJELSE", Color.white, Color.BLACK),
             new GUI_Street("1", "1M", FieldPropertyNames.instanceOf().number(2), "1M", new Color(156, 73, 18), Color.BLACK),
             new GUI_Street("2", "1M",FieldPropertyNames.instanceOf().number(3), "1M", new Color(156, 73, 18), Color.BLACK),
