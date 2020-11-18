@@ -154,6 +154,7 @@ public class FieldController {
          Property property = getProperty(player);
 
          ArrayList<Property> properties = playerController.getPlayerByName(property.getOwnerName()).getPropertiesOwned();
+
          int propertyOccupation = 0;
          for (Property tempProperty: properties) {
              if (tempProperty.getOwnedByPlayer()) {
