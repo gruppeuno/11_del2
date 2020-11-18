@@ -126,7 +126,7 @@ public class ChanceCardController {
         }
 }
     private void chancekort1() {
-        System.out.println(">>>Ingen indhold<<<");
+        System.out.println("System.out.println\nGiv dette kort til bilen, og tag et chancekort mere\n Bil på din næste tur skal du drøne frem til Hvilket som helst ledige felt og købe det\nHvis der ikke er nogen ledige felter, skal du købe et fra en anden spiller");
     }
 
     private void chancekort2(Player player) {
@@ -141,9 +141,8 @@ public class ChanceCardController {
     }
 
     private void chancekort4 (Player player, PlayerController playerController, FieldController fieldController) {
-        System.out.println("Gratis felt.");
-        System.out.println("Ryk frem til et Orange felt.");
-        System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
+        System.out.println("Gratis felt\nRyk frem til et Orange felt\nHvis det er ledigt, får du det Gratis!\nEllers skal du Betale leje til ejeren.");
+
         moveSpecificFieldRange(player, "Orange", 10, 11);
         takeFreeProperty(player, playerController, fieldController);
     }
@@ -179,24 +178,19 @@ public class ChanceCardController {
     }
 
     private void chancekort8 (Player player, PlayerController playerController, FieldController fieldController) {
-        System.out.println("Gratis felt");
-        System.out.println("Ryk frem til et orange eller grønt felt.");
-        System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
+        System.out.println("Giv dette kort til Skibet, og tag et chancekort mere\n SKib på din næste tur skal du drøne frem til Hvilket som helst ledige felt og købe det\nHvis der ikke er nogen ledige felter, skal du købe et fra en anden spiller");
         moveSpecificFieldRange(player, "Orange", 10, 11, "Grøn", 19, 20);
         takeFreeProperty(player, playerController, fieldController);
     }
 
     private void chancekort9 (Player player, PlayerController playerController, FieldController fieldController) {
-        System.out.println("Gratis felt");
-        System.out.println("Ryk frem til et lyseblåt felt.");
-        System.out.println("Hvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
+        System.out.println("Gratis felt\nRyk frem til et orange eller grønt felt\nHvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
         moveSpecificFieldRange(player, "Lyseblå", 4, 5);
         takeFreeProperty(player, playerController, fieldController);
     }
 
     private void chancekort10 (Player player, PlayerController playerController, FieldController fieldController) {
-        System.out.println("Du løslades uden omkostninger");
-        System.out.println("Behold dette kort, indtil du får brug for det");
+        System.out.println("Gratis felt\nRyk frem til et lyseblåt felt\nHvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
         if(!getJailCardUse() == true) {
             System.out.println("Du har fået ");
             adjustJailCard(player);
@@ -215,11 +209,11 @@ public class ChanceCardController {
     }
 
     private void chancekort12 (Player player, PlayerController playerController) {
-        System.out.println(">>>Ingen indhold<<<");
+        System.out.println("Giv dette kort til katten, og tag et chancekort mere\n Kat på din næste tur skal du drøne frem til Hvilket som helst ledige felt og købe det\nHvis der ikke er nogen ledige felter, skal du købe et fra en anden spiller");
     }
 
     private void chancekort13 (Player player, PlayerController playerController) {
-        System.out.println(">>>Ingen indhold<<<");
+        System.out.println("Giv dette kort til Hunden, og tag et chancekort mere\nSKib på din næste tur skal du drøne frem til Hvilket som helst ledige felt og købe det\nHvis der ikke er nogen ledige felter, skal du købe et fra en anden spiller");
     }
 
     private void chancekort14 (Player player, PlayerController playerController) {
@@ -227,9 +221,7 @@ public class ChanceCardController {
     }
 
     private void chancekort15 (Player player, PlayerController playerController, FieldController fieldController) {
-        System.out.println("Gratis felt.");
-        System.out.println("Ryk frem til et Pink eller mørkeblåt felt.");
-        System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
+        System.out.println("Gratis felt.\nRyk frem til et Pink eller mørkeblåt felt\nHvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
         moveSpecificFieldRange(player, "Pink", 7, 8, "Mørkeblå", 22, 23);
         takeFreeProperty(player, playerController, fieldController);
     }
@@ -240,9 +232,7 @@ public class ChanceCardController {
     }
 
     private void chancekort17 (Player player, PlayerController playerController, FieldController fieldController) {
-        System.out.println("Gratis felt.");
-        System.out.println("Ryk frem til et rødt felt.");
-        System.out.println("Hvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren.");
+        System.out.println("Gratis felt.\nRyk frem til et rødt felt.\nHvis det er ledigt, får du det Gratis! Ellers skal du Betale leje til ejeren");
         moveSpecificFieldRange(player, "Rød", 13, 14);
         takeFreeProperty(player, playerController, fieldController);
     }
@@ -252,11 +242,13 @@ public class ChanceCardController {
     }
 
     private void chancekort19 (Player player, PlayerController playerController, FieldController fieldController) {
+        System.out.println("Gratis felt\nRyk frem til et lyseblå eller grønt felt\nHvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
         moveSpecificFieldRange(player, "Lyseblå", 4, 5, "Rød", 13, 14);
         takeFreeProperty(player, playerController, fieldController);
     }
 
     private void chancekort20 (Player player, PlayerController playerController, FieldController fieldController) {
+        System.out.println("Gratis felt\nRyk frem til et brunt eller gult felt\nHvis det er ledigt får du det Gratis. Ellers skal du betale leje til ejeren");
         moveSpecificFieldRange(player, "Brun", 1, 2, "Gul", 16, 17);
         takeFreeProperty(player, playerController, fieldController);
     }
