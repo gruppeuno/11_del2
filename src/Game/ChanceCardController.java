@@ -1,5 +1,6 @@
 package Game;
 
+import Game.Fields.ChanceCard;
 import Game.Fields.Property;
 
 import java.util.Random;
@@ -56,7 +57,7 @@ public class ChanceCardController {
         switch (chanceArray[i]) {
 
             case 1: //Chance Kort 1
-                chancekort1();
+                chancekort1(player, playerController, fieldController);
                 break;
             case 2: //Chance Kort 2
                 chancekort2(player);
@@ -71,7 +72,7 @@ public class ChanceCardController {
                 chancekort5(player, playerController, fieldController);
                 break;
             case 6: //Chance Kort 6
-                chancekort6();
+                chancekort6(player, playerController, fieldController);
                 break;
             case 7: //Chance Kort 7
                 chancekort7(player);
@@ -89,10 +90,10 @@ public class ChanceCardController {
                 chancekort11(player);
                 break;
             case 12://Chancekort 12
-                chancekort12(player, playerController);
+                chancekort12(player, playerController, fieldController);
                 break;
             case 13://Chancekort 1
-                chancekort13(player, playerController);
+                chancekort13(player, playerController, fieldController);
                 break;
             case 14:
                 chancekort14(player, playerController);
@@ -123,9 +124,12 @@ public class ChanceCardController {
             i++;
         }
 }
-    private void chancekort1() {
-        System.out.println("\n>>BILEN<<\n NÆSTE TUR skal du drøne frem og KØBE det første ledie felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller! \nDu får et chancekort mere\n");
-
+    private void chancekort1 (Player player, PlayerController playerController, FieldController fieldController) {
+        Player players [] = playerController.getPlayerArray();
+        System.out.println( players[0] + "NÆSTE TUR skal du drøne frem og KØBE det første ledie felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller! \nDu får et chancekort mere\n");
+        players[0].setSelectFieldCard(true);
+        i++;
+        chanceCard(player, playerController, fieldController);
     }
 
     private void chancekort2(Player player) {
@@ -167,8 +171,13 @@ public class ChanceCardController {
             chanceCard(player, playerController, fieldController);}
     }
 
-    private void chancekort6 () {
-        System.out.println(">>>Ingen indhold<<<");
+    private void chancekort6 (Player player, PlayerController playerController, FieldController fieldController) {
+        Player players [] = playerController.getPlayerArray();
+        System.out.println(players[1] + "\nNÆSTE TUR skal du sejle frem og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!"+
+                "\nE K S T R A   C H A N C E K O R T");
+        players[1].setSelectFieldCard(true);
+        i++;
+        chanceCard(player, playerController, fieldController);
     }
 
     private void chancekort7 (Player player) {
@@ -177,21 +186,19 @@ public class ChanceCardController {
     }
 
     private void chancekort8 (Player player, PlayerController playerController, FieldController fieldController) {
-        System.out.println(">>SKIBET<<\nNÆSTE TUR skal du sejle frem og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!"+
-                "\nE K S T R A   C H A N C E K O R T"
-        );
+        System.out.println(">>GRATIS FELT<<\nRyk frem til ORANGE eller GRØNT felt\nHvis det er ledigt får du det GRATIS!\nEllers BETAL til ejeren :(");
         moveSpecificFieldRange(player, "Orange", 10, 11, "Grøn", 19, 20);
         takeFreeProperty(player, playerController, fieldController);
     }
 
     private void chancekort9 (Player player, PlayerController playerController, FieldController fieldController) {
-        System.out.println(">>GRATIS FELT<<\nRyk frem til ORANGE eller GRØNT felt\nHvis det er ledigt får du det GRATIS!\nEllers BETAL til ejeren :(");
+        System.out.println(">>GRATIS FELT<<\nRyk frem til LYSEBLÅT felt\nHvis det er ledigt får du det GRATIS\nEllers BETAL til ejeren:(");
         moveSpecificFieldRange(player, "Lyseblå", 4, 5);
         takeFreeProperty(player, playerController, fieldController);
     }
 
     private void chancekort10 (Player player, PlayerController playerController, FieldController fieldController) {
-        System.out.println(">>GRATIS FELT<<\nRyk frem til LYSEBLÅT felt\nHvis det er ledigt får du det GRATIS\nEllers BETAL til ejeren:(");
+        System.out.println("Du har fået et 'Gratis ud af fængsel kort'. Du bruger det automatisk næste gang du ryger i fængsel! ");
         if(!getJailCardUse() == true) {
             System.out.println("Du har fået ");
             adjustJailCard(player);
@@ -209,12 +216,24 @@ public class ChanceCardController {
         moveSpecificField(player, 23);
     }
 
-    private void chancekort12 (Player player, PlayerController playerController) {
-        System.out.println(">>KATTEN<<\nNÆSTE TUR skal du liste hen og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n" +"\nE K S T R A   C H A N C E K O R T");
+    private void chancekort12 (Player player, PlayerController playerController, FieldController fieldController) {
+        if (playerController.getPlayerArrayLength() >= 3) {
+        Player players [] = playerController.getPlayerArray();
+        System.out.println(">>KATTEN<<\nNÆSTE TUR skal du liste hen og KØBE det første ledige felt du lander på!\nHvis der ikke er " +
+                "nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n" +"\nE K S T R A   C H A N C E K O R T");
+        players[2].setSelectFieldCard(true); }
+        i++;
+        chanceCard(player, playerController, fieldController);
     }
 
-    private void chancekort13 (Player player, PlayerController playerController) {
-        System.out.println(">>HUNDEN<<\nNÆSTE TUR skal du hoppe hen og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n" + "\nE K S T R A   C H A N C E K O R T");
+    private void chancekort13 (Player player, PlayerController playerController, FieldController fieldController) {
+        if (playerController.getPlayerArrayLength() >= 4) {
+        Player players [] = playerController.getPlayerArray();
+        System.out.println(">>HUNDEN<<\nNÆSTE TUR skal du hoppe hen og KØBE det første ledige felt du lander på!\nHvis der ikke er " +
+                "nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n" + "\nE K S T R A   C H A N C E K O R T");
+        players[3].setSelectFieldCard(true); }
+        i++;
+        chanceCard(player, playerController, fieldController);
     }
 
     private void chancekort14 (Player player, PlayerController playerController) {
@@ -347,22 +366,12 @@ public class ChanceCardController {
     // spiller 3 hund
     // spiller 4 kat
 
-   public void setSelectFieldCardPlayer (PlayerController playerController) {
-        Player players[] = playerController.getPlayerArray();
-
-       if (cardID == 1) {players[0].setSelectFieldCard(true);}
-       if (cardID == 2) {players[1].setSelectFieldCard(true);}
-       if (cardID == 3) {players[2].setSelectFieldCard(true);}
-       if (cardID == 4) {players[3].setSelectFieldCard(true);}
-   }
 
    public void selectMoveProperty (Player player, PlayerController playerController, FieldController fieldController) {
 
         if (player.getSelectFieldCard()) {
 
         tempMove = player.getFieldNumber();
-
-       System.out.println("Vælg hvilken som helst grund, og køb den (Ikke en du selv ejer). Hvis der ikke er flere grunde, så køb fra en anden spiller");
 
        int propertyAvailArr[] = {1,2,4,5,7,8,10,11,13,14,16,17,19,20,22,23};
        String arrOut = "";
