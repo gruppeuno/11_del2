@@ -56,7 +56,6 @@ public class GameController {
             //else if(currentPlayerName.equals("seb"))
             //die.rollPlayer1();
 
-            o.print(o.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),false);
 
             playerController.movePlayer(currentPlayer, die.getDiceValue());
@@ -64,7 +63,6 @@ public class GameController {
 
             fieldController.landOnField(currentPlayer, playerController, guiView);
 
-            fieldController.landOnField(currentPlayer, playerController);
             guiView.getMyGUI().getFields()[previousField].setCar(guiView.getGUIPlayer(turnCount),false);
 
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),true);
