@@ -16,7 +16,7 @@ class PlayerTest {
         playerController.createPlayers(2);
         Property testProp = new Property("BURGERBAREN", 1,1, "Du landede på burgerbaren","brown");
         playerController.getPlayerByName("p0").addPropertyOwned(testProp);
-        playerController.getPlayerByName("p0").b.setBalance(0);
+        playerController.getPlayerByName("p0").bankAccount.setBalance(0);
 
         int actual = 1;
         assertEquals(1,playerController.getPlayerByName("p0").getTotalPropertyValue());

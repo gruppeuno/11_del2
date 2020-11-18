@@ -43,13 +43,12 @@ public class GUIView {
             new GUI_Chance(),
             new GUI_Street("4", "SLIKBUTIKKEN", "", "1M", new Color(35, 184, 208), Color.BLACK),
             new GUI_Street("5", "ISKIOSKEN", "", "1M", new Color(35, 184, 208), Color.BLACK),
-            //TODO; indsæt billede
             new GUI_Jail("","6","PÅ FÆNGSELSBESØG","", Color.gray,Color.black),
-            new GUI_Street("7", "MUSEET", "", "2M", new Color(232, 12, 228), Color.black),
+            new GUI_Street("7", "MUSEET", "", "2M", new Color(232, 12, 228, 255), Color.black),
             new GUI_Street("8", "BIBLIOTEKET", "", "2M", new Color(232, 12, 228), Color.black),
             new GUI_Chance(),
-            new GUI_Street("10", "SKATERPARKEN", "", "2M", new Color(232, 107, 12), Color.black),
-            new GUI_Street("11", "SWIMMINGPOOLEN", "", "2M", new Color(232, 107, 12), Color.black),
+            new GUI_Street("10", "SKATERPARKEN", "", "2M", new Color(255, 162, 0), Color.black),
+            new GUI_Street("11", "SWIMMINGPOOLEN", "", "2M", new Color(255, 162, 0), Color.black),
             new GUI_Refuge(),
             new GUI_Street("13", "SPILLEHALLEN", "", "3M", Color.red, Color.black),
             new GUI_Street("14", "BIOGRAFEN", "", "3M", Color.red, Color.black),
@@ -62,4 +61,19 @@ public class GUIView {
             new GUI_Chance(),
             new GUI_Street("22", "VANDLANDET", "", "5M", Color.blue, Color.black),
             new GUI_Street("23", "STRANDPROMENADEN", "", "5M", Color.blue, Color.black),
-    };}
+    };
+
+
+    public void removeAllCarsFromChanceFields(int currentPlayer){
+        MY_GUI_FIELDS[3].setCar(myPlayers[currentPlayer],false);
+        MY_GUI_FIELDS[9].setCar(myPlayers[currentPlayer],false);
+        MY_GUI_FIELDS[15].setCar(myPlayers[currentPlayer],false);
+        MY_GUI_FIELDS[21].setCar(myPlayers[currentPlayer],false);
+    }
+
+    public void removeCarFromJailField(int currentPlayer){
+        MY_GUI_FIELDS[18].setCar(myPlayers[currentPlayer],false);
+    }
+
+}
+

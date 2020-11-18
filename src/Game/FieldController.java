@@ -5,7 +5,7 @@ import Game.Fields.ChanceCard;
 import Game.View.FieldMessages;
 import Game.View.FieldPropertyNames;
 
-import java.security.Guard;
+import java.text.FieldPosition;
 import java.util.ArrayList;
 
 public class FieldController {
@@ -41,6 +41,7 @@ public class FieldController {
 
     //Når en spiller lander på et felt
     public void landOnField(Player player, PlayerController playerController, GUIView guiView){
+    public void landOnField(Player player, PlayerController playerController, FieldController fieldController){
         isJustLeftJail(player);
 
         Field field = fields[player.getFieldNumber()];
@@ -49,14 +50,18 @@ public class FieldController {
         if (field instanceof Property)
             landOnProperty(player,playerController,(Property) field, guiView);
         else if(field instanceof Jail)
-            landOnJail(player,playerController,(Jail) field);
+            landOnJail(player);
         else if(field instanceof ChanceCard) {
-            chanceCardController.chanceCard(player, playerController);
+            chanceCardController.chanceCard(player, playerController, fieldController);
         }
     }
-
+//Todo: lav om så der ikke laves 2 metoder til at randomize chancekort. evt. bland kortene i chancecomtroller constructor
     //Af low coupling grunde..
-    public void doRandomize() {chanceCardController.randomizeChance();}
+    public void doRandomize() {
+        System.out.println("Kortenes rækkefølge var: " + chanceCardController);
+        chanceCardController.randomizeChance();
+        System.out.println("Kortenes rækkefølge er nu: " + chanceCardController);
+    }
 
     public void landOnProperty(Player player, PlayerController playerController, Property property, GUIView guiView) {
         if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName()))
@@ -80,9 +85,9 @@ public class FieldController {
             ownedBySamePlayer(playerController, property);
         }
 
-        if(!player.b.getBankrupt()) {
+        if(!player.bankAccount.getBankrupt()) {
             property.setOwner(player.getPlayerName());
-            System.out.println(player.getPlayerName() + " købte " + property.getName() + " for " + property.getFieldPrice() + "M");
+            System.out.println("Du køber den for " + property.getFieldPrice() + "M");
         }
     }
 
@@ -100,7 +105,7 @@ public class FieldController {
         if(!player.b.getBankrupt()) {
             Player propertyOwner = playerController.getPlayerByName(property.getOwnerName());
             System.out.println(player.getPlayerName() + " betalte " + property.getFieldRent() + "M i husleje til " + propertyOwner.getPlayerName()
-                    + "\n" + propertyOwner.getPlayerName() + " har nu " + propertyOwner.b.getBalance() + "M");
+                    + "\n" + propertyOwner.getPlayerName() + " har nu " + propertyOwner.bankAccount.getBalance() + "M");
         }
     }
 
@@ -123,8 +128,8 @@ public class FieldController {
             player.freeOfJail();
         }
     }
-
-    public void landOnJail(Player player, PlayerController playerController, Jail jail) {
+    //TODO: PlayerController og Jail bliver ikke brugt her
+    public void landOnJail(Player player) {
         player.putInJail();
         player.setFieldNumber(6);
         if (player.getJailCard() == true){
@@ -132,21 +137,20 @@ public class FieldController {
             player.setJailCard(false);
             ChanceCardController.setJailCardUse(false);
         }
-
     }
 
-    //TODO: er det her testet? ligner ikke at det ville virke
-
-    //TODO: TEST OM VIRKER GUIVIEW
-     public void FreeProperty(Player player, PlayerController playerController, GUIView guiView){
+     public void freeProperty(Player player, PlayerController playerController){
          int i = player.getFieldNumber();
          Property property = (Property) fields[i];
-         if (property.getOwnedByPlayer()) {payRent(player, playerController, property, guiView);}
-         else {
-             if (!player.b.getBankrupt()) {
+         if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName())) {
+             payRent(player, playerController, property);}
+         else if (!property.getOwnedByPlayer()) {
+             if (!player.bankAccount.getBankrupt()) {
                  property.setOwner(player.getPlayerName());
                  player.addPropertyOwned(property);
-                 System.out.println(player.getPlayerName() + " fik " + property.getName() + " for free"); }}
+                 System.out.println(player.getPlayerName() + " fik " + property.getName() + " helt gratis");
+             }
+         }
      }
 
     //TODO: metode til at fjerne property, spørg hjælpelærer, IKKE FÆRDIG

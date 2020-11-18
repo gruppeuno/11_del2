@@ -51,10 +51,10 @@ class PlayerControllerTest {
         PlayerController playerController = new PlayerController();
         playerController.createPlayers(2);
         playerController.getPlayerByName("p0").setFieldNumber(23);
-        playerController.getPlayerByName("p0").b.setBalance(0);
+        playerController.getPlayerByName("p0").bankAccount.setBalance(0);
         playerController.movePlayer(playerController.getPlayerByName("p0"), 1);
         int actual = 2;
-        assertEquals(actual, playerController.getPlayerByName("p0").b.getBalance());
+        assertEquals(actual, playerController.getPlayerByName("p0").bankAccount.getBalance());
     }
 
     /**
@@ -68,7 +68,7 @@ class PlayerControllerTest {
         playerController.createPlayers(2);
 
         int actual = 20;
-        assertEquals(actual, playerController.getPlayerArray()[0].b.getBalance());
+        assertEquals(actual, playerController.getPlayerArray()[0].bankAccount.getBalance());
     }
 
     //spiller 2
@@ -78,7 +78,7 @@ class PlayerControllerTest {
         playerController.createPlayers(2);
 
         int actual = 20;
-        assertEquals(actual, playerController.getPlayerArray()[1].b.getBalance());
+        assertEquals(actual, playerController.getPlayerArray()[1].bankAccount.getBalance());
     }
 
     //Med 4 spillere
@@ -88,7 +88,7 @@ class PlayerControllerTest {
         playerController.createPlayers(4);
 
         int actual = 16;
-        assertEquals(actual, playerController.getPlayerArray()[3].b.getBalance());
+        assertEquals(actual, playerController.getPlayerArray()[3].bankAccount.getBalance());
     }
 
     /**
@@ -108,6 +108,15 @@ class PlayerControllerTest {
     }
 
     @Test
-    public void sellPropertyTest(){
+    public void playerCreateTimeTest(){
+        long startTime = System.currentTimeMillis();
+        PlayerController playerController = new PlayerController();
+        playerController.createPlayers(2);
+        long endTime = System.currentTimeMillis();
+        boolean timeUnder10 = false;
+        if (endTime - startTime < 10000)
+            timeUnder10 = true;
+
+        assertEquals(true,timeUnder10);
     }
 }

@@ -7,6 +7,4 @@ public class ChanceCard extends Field{
         super(name, fieldNumber, msg);
     }
 
-    ChanceCardController chanceCardController = new ChanceCardController();
-
 }
