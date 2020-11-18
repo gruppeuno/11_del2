@@ -105,4 +105,17 @@ class PlayerControllerTest {
         int actual = 1;
         assertEquals(actual, playerController.getPlayerByName("p0").getPropertiesOwned().size());
     }
+
+    @Test
+    public void playerCreateTimeTest(){
+        long startTime = System.currentTimeMillis();
+        PlayerController playerController = new PlayerController();
+        playerController.createPlayers(2);
+        long endTime = System.currentTimeMillis();
+        boolean timeUnder10 = false;
+        if (endTime - startTime < 10000)
+            timeUnder10 = true;
+
+        assertEquals(true,timeUnder10);
+    }
 }
