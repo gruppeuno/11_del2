@@ -52,7 +52,7 @@ public class FieldController {
         if (field instanceof Property)
             landOnProperty(player,playerController,(Property) field);
         else if(field instanceof Jail)
-            landOnJail(player,playerController,(Jail) field);
+            landOnJail(player);
         else if(field instanceof ChanceCard) {
             chanceCardController.chanceCard(player, playerController, fieldController);
         }
@@ -126,7 +126,7 @@ public class FieldController {
         }
     }
     //TODO: PlayerController og Jail bliver ikke brugt her
-    public void landOnJail(Player player, PlayerController playerController, Jail jail) {
+    public void landOnJail(Player player) {
         player.putInJail();
         player.setFieldNumber(6);
         if (player.getJailCard() == true){
