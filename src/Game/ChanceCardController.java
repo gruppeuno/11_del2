@@ -120,7 +120,7 @@ public class ChanceCardController {
         }
 }
     private void chancekort1() {
-        System.out.println("\n>>BILEN<<\n NÆSTE TUR skal du drøne frem og KØBE det første ledie felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller! \nDu får et chancekort mere\n");
+        System.out.println("\n>>BILEN<<\nNÆSTE TUR skal du drøne frem og KØBE det første ledie felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller! \nDu får et chancekort mere\n");
     }
 
     private void chancekort2(Player player) {

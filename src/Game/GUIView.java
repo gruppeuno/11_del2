@@ -1,5 +1,6 @@
 package Game;
 
+import Game.View.FieldPropertyNames;
 import gui_fields.*;
 import gui_main.GUI;
 
@@ -37,30 +38,31 @@ public class GUIView {
     }
 
     public static final GUI_Field[] MY_GUI_FIELDS = {
-            new GUI_Start("START", " ", " ", Color.white, Color.BLACK),
-            new GUI_Street("1", "BURGERBAREN", "", "1M", new Color(156, 73, 18), Color.BLACK),
-            new GUI_Street("2", "PIZZARIAET", "", "1M", new Color(156, 73, 18), Color.BLACK),
+
+            new GUI_Start(FieldPropertyNames.instanceOf().number(1), "KLIK HER", "Tryk på felterne for at se deres navne \n\n KØB pris og LEJE er den samme \n\nDu får 1M for at passere start\n\nGOD FORNØJELSE", Color.white, Color.BLACK),
+            new GUI_Street("1", "1M", FieldPropertyNames.instanceOf().number(2), "1M", new Color(156, 73, 18), Color.BLACK),
+            new GUI_Street("2", "1M",FieldPropertyNames.instanceOf().number(3), "1M", new Color(156, 73, 18), Color.BLACK),
             new GUI_Chance(),
-            new GUI_Street("4", "SLIKBUTIKKEN", "", "1M", new Color(35, 184, 208), Color.BLACK),
-            new GUI_Street("5", "ISKIOSKEN", "", "1M", new Color(35, 184, 208), Color.BLACK),
-            new GUI_Jail("","6","PÅ FÆNGSELSBESØG","", Color.gray,Color.black),
-            new GUI_Street("7", "MUSEET", "", "2M", new Color(232, 12, 228, 255), Color.black),
-            new GUI_Street("8", "BIBLIOTEKET", "", "2M", new Color(232, 12, 228), Color.black),
+            new GUI_Street("4", "1M", FieldPropertyNames.instanceOf().number(5), "1M", new Color(35, 184, 208), Color.BLACK),
+            new GUI_Street("5", "1M", FieldPropertyNames.instanceOf().number(6), "1M", new Color(35, 184, 208), Color.BLACK),
+            new GUI_Jail("","6",FieldPropertyNames.instanceOf().number(7),FieldPropertyNames.instanceOf().number(7), Color.gray,Color.black),
+            new GUI_Street("7", "2M", FieldPropertyNames.instanceOf().number(8), "2M", new Color(232, 12, 228, 255), Color.black),
+            new GUI_Street("8", "2M", FieldPropertyNames.instanceOf().number(9), "2M", new Color(232, 12, 228), Color.black),
             new GUI_Chance(),
-            new GUI_Street("10", "SKATERPARKEN", "", "2M", new Color(255, 162, 0), Color.black),
-            new GUI_Street("11", "SWIMMINGPOOLEN", "", "2M", new Color(255, 162, 0), Color.black),
+            new GUI_Street("10", "2M", FieldPropertyNames.instanceOf().number(11), "2M", new Color(255, 162, 0), Color.black),
+            new GUI_Street("11", "2M", FieldPropertyNames.instanceOf().number(12), "2M", new Color(255, 162, 0), Color.black),
             new GUI_Refuge(),
-            new GUI_Street("13", "SPILLEHALLEN", "", "3M", Color.red, Color.black),
-            new GUI_Street("14", "BIOGRAFEN", "", "3M", Color.red, Color.black),
+            new GUI_Street("13", "3M",FieldPropertyNames.instanceOf().number(14), "3M", Color.red, Color.black),
+            new GUI_Street("14", "3M", FieldPropertyNames.instanceOf().number(15), "3M", Color.red, Color.black),
             new GUI_Chance(),
-            new GUI_Street("16", "LEGETØJSBUTIKKEN", "", "3M", Color.yellow, Color.black),
-            new GUI_Street("17", "DYREHANDLEN", "", "3M", Color.yellow, Color.black),
-            new GUI_Jail(),
-            new GUI_Street("19", "BOWLINGHALLEN", "", "4M", new Color(11, 132, 55), Color.black),
-            new GUI_Street("20", "ZOO", "", "4M", new Color(11, 132, 55), Color.black),
+            new GUI_Street("16", "3M", FieldPropertyNames.instanceOf().number(17), "3M", Color.yellow, Color.black),
+            new GUI_Street("17", "3M", FieldPropertyNames.instanceOf().number(18), "3M", Color.yellow, Color.black),
+            new GUI_Jail("","18",FieldPropertyNames.instanceOf().number(19),FieldPropertyNames.instanceOf().number(19), Color.gray,Color.black),
+            new GUI_Street("19", "4M", FieldPropertyNames.instanceOf().number(20), "4M", new Color(11, 132, 55), Color.black),
+            new GUI_Street("20", "4M", FieldPropertyNames.instanceOf().number(21), "4M", new Color(11, 132, 55), Color.black),
             new GUI_Chance(),
-            new GUI_Street("22", "VANDLANDET", "", "5M", Color.blue, Color.black),
-            new GUI_Street("23", "STRANDPROMENADEN", "", "5M", Color.blue, Color.black),
+            new GUI_Street("22", "5M", FieldPropertyNames.instanceOf().number(23), "5M", Color.blue, Color.black),
+            new GUI_Street("23", "5M", FieldPropertyNames.instanceOf().number(24), "5M", Color.blue, Color.black),
     };
 
 
