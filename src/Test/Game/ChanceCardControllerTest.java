@@ -77,5 +77,6 @@ class ChanceCardControllerTest {
 
     @Test
     void takeFreeProperty() {
+        // p
     }
 }

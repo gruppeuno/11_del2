@@ -4,6 +4,7 @@ import Game.*;
 import Game.Fields.ChanceCard;
 import Game.Fields.Field;
 import Game.Fields.Jail;
+import Game.Fields.Property;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -95,6 +96,20 @@ class ChanceCardControllerTest {
 
     @Test
     void getJailCardUse() {
+    }
+
+    @Test
+    void takeFreeProperty() {
+        Player testplayer = new Player("Testperson");
+        ChanceCardController chanceCardController = new ChanceCardController();
+        FieldController fieldController = new FieldController();
+        PlayerController playerController = new PlayerController();
+
+        testplayer.setFieldNumber(4);
+        chanceCardController.takeFreeProperty(testplayer, playerController, fieldController);
+        int actual = testplayer.getTotalPropertyValue();
+        int expected = 1;
+        assertEquals(actual, expected);
     }
 
 
