@@ -20,8 +20,8 @@ public class FieldPropertyNames extends Messages {
 
     @Override
     public String number(int n) {
-        if (n <= totalReadFieldNameMessages.length && n >= 1) {
-            return totalReadFieldNameMessages[n - 1];
+        if (n <= totalReadFieldNameMessages.length && n >= 0){
+            return totalReadFieldNameMessages[n];
         } else {
             return "findes ikke";
         }

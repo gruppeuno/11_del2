@@ -10,9 +10,9 @@ public class FieldMessages extends Messages {
     }
 
     @Override
-    public String number(int n) {
-        if (n <= totalReadFieldMessages.length && n >= 1) {
-            return totalReadFieldMessages[n - 1];
+    public String number(int n){
+        if (n <= totalReadFieldMessages.length && n >= 0){
+            return totalReadFieldMessages[n];
         } else {
             return "findes ikke";
         }
