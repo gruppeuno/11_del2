@@ -3,7 +3,7 @@ package Game.View;
 public class FieldMessages extends Messages {
 
     private String[] totalReadFieldMessages = new String[24];
-    private boolean english = true;
+    private boolean english = false;
 
     public FieldMessages() {
 
@@ -21,7 +21,10 @@ public class FieldMessages extends Messages {
         } else {
             return "findes ikke";
         }
-
     }
+
+    public void setEnglish(){
+    }
+
     }
 

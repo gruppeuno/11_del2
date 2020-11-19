@@ -1,6 +1,8 @@
 package Game;
 
 
+import Game.View.LanguageController;
+
 import java.util.Scanner;
 
 /**
@@ -19,6 +21,7 @@ public class GameController {
     final private Scanner scan = new Scanner(System.in);
     final private GUIView guiView = new GUIView();
     MessageController m = new MessageController();
+    LanguageController lc = new LanguageController();
 
     /**
      * Main metode, kører spillet

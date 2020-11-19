@@ -1,9 +1,9 @@
 package Game.View;
 
 public class FieldPropertyNames extends Messages {
+    private boolean english = false;
 
     private String[] totalReadFieldNameMessages = new String[24];
-    private boolean english = true;
 
     private static FieldPropertyNames fieldPropertyNames;
 
@@ -31,5 +31,9 @@ public class FieldPropertyNames extends Messages {
         } else {
             return "findes ikke";
         }
+    }
+
+    public void setEnglish(){
+        english = true;
     }
 }
