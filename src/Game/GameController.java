@@ -62,7 +62,7 @@ public class GameController {
             playerController.movePlayer(currentPlayer, die.getDiceValue());
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), true);
 
-            fieldController.landOnField(currentPlayer, playerController, guiView);
+            fieldController.landOnField(currentPlayer, playerController, fieldController, guiView);
 
             guiView.getMyGUI().getFields()[previousField].setCar(guiView.getGUIPlayer(turnCount), false);
 

@@ -14,7 +14,7 @@ public class FieldPropertyNames extends Messages {
         return fieldPropertyNames;
     }
 
-    private FieldPropertyNames() {
+    public FieldPropertyNames() {
         readFromFile(totalReadFieldNameMessages, "Textfiles/FieldPropertyNames.txt");
     }
 

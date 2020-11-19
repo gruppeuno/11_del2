@@ -46,10 +46,10 @@ public class FieldController {
 
     //Når en spiller lander på et felt
 
-    public void landOnField(Player player, PlayerController playerController, GUIView guiView) {
+    public void landOnField(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         isJustLeftJail(player);
 
-        chanceCardController.selectMoveProperty(player, playerController, fieldController);
+        chanceCardController.selectMoveProperty(player, playerController, fieldController, guiView);
 
         Field field = fields[player.getFieldNumber()];
         System.out.println(field.getMsg());
@@ -148,7 +148,7 @@ public class FieldController {
         }
     }
 
-     public void freeProperty(Player player, PlayerController playerController){
+     public void freeProperty(Player player, PlayerController playerController, GUIView guiView){
          Property property = getProperty(player);
          if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName())) {
              payRent(player, playerController, property, guiView);}
@@ -169,7 +169,7 @@ public class FieldController {
         return propertyTakenCounter;
      }
 
-     public void chanceCardBuyProperty(Player player, PlayerController playerController) {
+     public void chanceCardBuyProperty(Player player, PlayerController playerController, GUIView guiView) {
          Property property = getProperty(player);
 
          if (getPropertyTaken() >= 4) {

@@ -56,7 +56,7 @@ public class ChanceCardController {
         switch (chanceArray[i]) {
 
             case 1: //Chance Kort 1
-                chancekort1(player, playerController, fieldController);
+                chancekort1(player, playerController, fieldController, guiView);
                 break;
             case 2: //Chance Kort 2
                 chancekort2(player);
@@ -71,7 +71,7 @@ public class ChanceCardController {
                 chancekort5(player, playerController, fieldController, guiView);
                 break;
             case 6: //Chance Kort 6
-                chancekort6(player, playerController, fieldController);
+                chancekort6(player, playerController, fieldController, guiView);
                 break;
             case 7: //Chance Kort 7
                 chancekort7(player);
@@ -89,10 +89,10 @@ public class ChanceCardController {
                 chancekort11(player);
                 break;
             case 12://Chancekort 12
-                chancekort12(player, playerController, fieldController);
+                chancekort12(player, playerController, fieldController, guiView);
                 break;
             case 13://Chancekort 1
-                chancekort13(player, playerController, fieldController);
+                chancekort13(player, playerController, fieldController, guiView);
                 break;
             case 14:
                 chancekort14(player, playerController);
@@ -124,12 +124,12 @@ public class ChanceCardController {
             i++;
         }
 }
-    private void chancekort1 (Player player, PlayerController playerController, FieldController fieldController) {
+    private void chancekort1 (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         Player players [] = playerController.getPlayerArray();
         System.out.println( players[0] + "NÆSTE TUR skal du drøne frem og KØBE det første ledie felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller! \nDu får et chancekort mere\n");
         players[0].setSelectFieldCard(true);
         i++;
-        chanceCard(player, playerController, fieldController);
+        chanceCard(player, playerController, fieldController, guiView);
     }
 
     private void chancekort2(Player player) {
@@ -173,13 +173,13 @@ public class ChanceCardController {
         }
     }
 
-    private void chancekort6 (Player player, PlayerController playerController, FieldController fieldController) {
+    private void chancekort6 (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         Player players [] = playerController.getPlayerArray();
         System.out.println(players[1] + "\nNÆSTE TUR skal du sejle frem og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!"+
                 "\nE K S T R A   C H A N C E K O R T");
         players[1].setSelectFieldCard(true);
         i++;
-        chanceCard(player, playerController, fieldController);
+        chanceCard(player, playerController, fieldController, guiView);
     }
 
     private void chancekort7(Player player) {
@@ -187,19 +187,19 @@ public class ChanceCardController {
         subBank(player, 2);
     }
 
-    private void chancekort8 (Player player, PlayerController playerController, FieldController fieldController) {
+    private void chancekort8 (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         System.out.println(">>GRATIS FELT<<\nRyk frem til ORANGE eller GRØNT felt\nHvis det er ledigt får du det GRATIS!\nEllers BETAL til ejeren :(");
         moveSpecificFieldRange(player, "Orange", 10, 11, "Grøn", 19, 20);
         takeFreeProperty(player, playerController, fieldController, guiView);
     }
 
-    private void chancekort9 (Player player, PlayerController playerController, FieldController fieldController) {
+    private void chancekort9 (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         System.out.println(">>GRATIS FELT<<\nRyk frem til LYSEBLÅT felt\nHvis det er ledigt får du det GRATIS\nEllers BETAL til ejeren:(");
         moveSpecificFieldRange(player, "Lyseblå", 4, 5);
         takeFreeProperty(player, playerController, fieldController, guiView);
     }
 
-    private void chancekort10 (Player player, PlayerController playerController, FieldController fieldController) {
+    private void chancekort10 (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         System.out.println("Du har fået et 'Gratis ud af fængsel kort'. Du bruger det automatisk næste gang du ryger i fængsel! ");
         if(!getJailCardUse() == true) {
             System.out.println("Du har fået ");
@@ -218,30 +218,30 @@ public class ChanceCardController {
         moveSpecificField(player, 23);
     }
 
-    private void chancekort12 (Player player, PlayerController playerController, FieldController fieldController) {
+    private void chancekort12 (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         if (playerController.getPlayerArrayLength() >= 3) {
         Player players [] = playerController.getPlayerArray();
         System.out.println(">>KATTEN<<\nNÆSTE TUR skal du liste hen og KØBE det første ledige felt du lander på!\nHvis der ikke er " +
                 "nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n" +"\nE K S T R A   C H A N C E K O R T");
         players[2].setSelectFieldCard(true); }
         i++;
-        chanceCard(player, playerController, fieldController);
+        chanceCard(player, playerController, fieldController, guiView);
     }
 
-    private void chancekort13 (Player player, PlayerController playerController, FieldController fieldController) {
+    private void chancekort13 (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         if (playerController.getPlayerArrayLength() >= 4) {
         Player players [] = playerController.getPlayerArray();
         System.out.println(">>HUNDEN<<\nNÆSTE TUR skal du hoppe hen og KØBE det første ledige felt du lander på!\nHvis der ikke er " +
                 "nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n" + "\nE K S T R A   C H A N C E K O R T");
         players[3].setSelectFieldCard(true); }
         i++;
-        chanceCard(player, playerController, fieldController);
+        chanceCard(player, playerController, fieldController, guiView);
     }
 
     private void chancekort14 (Player player, PlayerController playerController) {
 
         bankFromAll(player, playerController);
-        System.out.println("Du modtager 1m fra alle andre spillere. \n Du har nu" + player.bankAccount.getBalance());
+        System.out.println("Du modtager 1m fra alle andre spillere. \n Du har nu" + player.getBankAccount().getBalance());
     }
 
     private void chancekort15(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
@@ -362,7 +362,7 @@ public class ChanceCardController {
         player.getBankAccount().addBalance(playerController.getPlayerArrayLength() + 1);
     }
 
-    public void takeFreeProperty(Player player, PlayerController playerController, FieldController fieldController) {
+    public void takeFreeProperty(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
          fieldController.freeProperty(player, playerController, guiView);
    }
 
@@ -372,7 +372,7 @@ public class ChanceCardController {
     // spiller 4 kat
 
 
-   public void selectMoveProperty (Player player, PlayerController playerController, FieldController fieldController) {
+   public void selectMoveProperty (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
 
         if (player.getSelectFieldCard()) {
 
@@ -391,25 +391,25 @@ public class ChanceCardController {
        System.out.print("Skriv her hvilket felt du vil lande på: ");
        player.setFieldNumber(scan.nextInt());
 
-       checkOwnership(player, playerController, fieldController);}
+       checkOwnership(player, playerController, fieldController, guiView);}
    }
 
-   public void checkOwnership (Player player, PlayerController playerController, FieldController fieldController) {
+   public void checkOwnership (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
 
         Property property = fieldController.getProperty(player);
 
-        if (property.getOwnerName() == null) {chooseProperty(player, playerController, fieldController);}
+        if (property.getOwnerName() == null) {chooseProperty(player, playerController, fieldController, guiView);}
         else if (property.getOwnerName().equals(player.getPlayerName())) {
             System.out.println("Du skal vælge en grund du ikke selv ejer");
             player.setFieldNumber(tempMove);
-            selectMoveProperty(player, playerController, fieldController);
+            selectMoveProperty(player, playerController, fieldController, guiView);
         }
-        else {chooseProperty(player, playerController, fieldController);}
+        else {chooseProperty(player, playerController, fieldController, guiView);}
    }
 
-   public void chooseProperty (Player player, PlayerController playerController, FieldController fieldController) {
+   public void chooseProperty (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
 
-        fieldController.chanceCardBuyProperty(player, playerController);
+        fieldController.chanceCardBuyProperty(player, playerController, guiView);
         player.setSelectFieldCard(false);
 
    }
