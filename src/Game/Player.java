@@ -92,7 +92,9 @@ public class Player {
         return totalValue;
     }
 
-    public BankAccount getBankAccount() { return bankAccount; }
+    public BankAccount getBankAccount() {
+        return bankAccount;
+    }
 
 
 }

@@ -4,6 +4,7 @@ import gui_fields.GUI_Street;
 
 /**
  * RaffleCup
+ *
  * @author Gruppe11
  */
 public class Die {
@@ -16,24 +17,29 @@ public class Die {
     public void roll() {
         //Max til at bruge math.random senere
         final int MAX = 6;
-        diceValue =(int)(Math.random() * MAX) + 1;
+        diceValue = (int) (Math.random() * MAX) + 1;
 
 
     }
 
     //TODO: test terninger, til test af sellProperty
     private int diceRollCount = 0;
-    public void rollPlayer0(){
 
-        int[] player0Roll = {6,6,4,1,1,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24};
-        diceValue=player0Roll[diceRollCount];
+    public void rollPlayer0() {
+
+        int[] player0Roll = {6, 6, 4, 1, 1, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24};
+        diceValue = player0Roll[diceRollCount];
     }
+
     public void rollPlayer1() {//                v kino
-        int[] player1Roll = {1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2,4,4,4,4,4,4,4};
-        diceValue=player1Roll[diceRollCount];
+        int[] player1Roll = {1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 4, 4, 4, 4, 4, 4, 4};
+        diceValue = player1Roll[diceRollCount];
         diceRollCount++;
     }
-    public int getDiceValue() { return diceValue; }
+
+    public int getDiceValue() {
+        return diceValue;
+    }
 
 
 }

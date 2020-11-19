@@ -6,22 +6,22 @@ public class FieldPropertyNames extends Messages {
 
     private static FieldPropertyNames fieldPropertyNames;
 
-    public static FieldPropertyNames instanceOf(){
+    public static FieldPropertyNames instanceOf() {
 
-        if (fieldPropertyNames == null){
+        if (fieldPropertyNames == null) {
             fieldPropertyNames = new FieldPropertyNames();
         }
         return fieldPropertyNames;
     }
 
     private FieldPropertyNames() {
-        readFromFile(totalReadFieldNameMessages,"Textfiles/FieldPropertyNames.txt");
+        readFromFile(totalReadFieldNameMessages, "Textfiles/FieldPropertyNames.txt");
     }
 
     @Override
     public String number(int n) {
-        if (n <= totalReadFieldNameMessages.length && n >= 1){
-            return totalReadFieldNameMessages[n-1];
+        if (n <= totalReadFieldNameMessages.length && n >= 1) {
+            return totalReadFieldNameMessages[n - 1];
         } else {
             return "findes ikke";
         }
