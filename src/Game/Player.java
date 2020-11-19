@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 /**
  * Player
+ *
  * @author Gruppe11
  */
 
@@ -16,7 +17,9 @@ public class Player {
     private boolean isInPrison = false;
     private int fieldNumber = 0;
     private ArrayList<Property> propertiesOwned = new ArrayList<Property>();
-    public BankAccount bankAccount = new BankAccount();
+
+
+    private BankAccount bankAccount = new BankAccount();
     private boolean jailCard = false;
 
     public Player(String playerName) {
@@ -26,6 +29,7 @@ public class Player {
     public void setPlayerWin() {
         this.playerWin = true;
     }
+
     public boolean getPlayerWin() {
         return playerWin;
     }
@@ -33,13 +37,16 @@ public class Player {
     public String getPlayerName() {
         return playerName;
     }
+
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
     }
-    public void setJailCard (boolean JailCard) {
+
+    public void setJailCard(boolean JailCard) {
         this.jailCard = JailCard;
     }
-    public boolean getJailCard () {
+
+    public boolean getJailCard() {
         return jailCard;
     }
 
@@ -51,18 +58,15 @@ public class Player {
         this.fieldNumber = fieldNumber;
     }
 
-    public void putInJail(){
+    public void putInJail() {
         isInPrison = true;
     }
 
-    public void jailCardFree() { isInPrison = false;}
-
-    public void freeOfJail(){
+    public void jailCardFree() {
         isInPrison = false;
-        bankAccount.subBalance(1);
     }
 
-    public boolean getIsInPrison(){
+    public boolean getIsInPrison() {
         return isInPrison;
     }
 
@@ -74,14 +78,21 @@ public class Player {
         propertiesOwned.add(property);
     }
 
-    public int getTotalPropertyValue(){
-        int totalValue=0;
-        if(propertiesOwned.size()>0)
-            for (Property property:propertiesOwned) {
+    public void freeOfJail() {
+        isInPrison = false;
+        bankAccount.subBalance(1);
+    }
+
+    public int getTotalPropertyValue() {
+        int totalValue = 0;
+        if (propertiesOwned.size() > 0)
+            for (Property property : propertiesOwned) {
                 totalValue += property.getFieldPrice();
             }
         return totalValue;
     }
+
+    public BankAccount getBankAccount() { return bankAccount; }
 
 
 }

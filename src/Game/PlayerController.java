@@ -100,7 +100,7 @@ public class PlayerController {
         int newSpot = player.getFieldNumber()+dieValue;
         if ( newSpot > 23 ) {
             newSpot = newSpot - 24;
-            player.bankAccount.addBalance(2);
+            player.getBankAccount().addBalance(2);
         }
         player.setFieldNumber(newSpot);
     }
@@ -125,15 +125,15 @@ public class PlayerController {
     public void setStartBalance(){
         if(playerArray.length==2)
             for (int i = 0; i < 2; i++)
-                playerArray[i].bankAccount.setBalance(20);
+                playerArray[i].getBankAccount().setBalance(20);
 
         else if(playerArray.length==3)
             for (int i = 0; i < 3; i++)
-                playerArray[i].bankAccount.setBalance(18);
+                playerArray[i].getBankAccount().setBalance(18);
 
         else if(playerArray.length==4)
             for (int i = 0; i < 4; i++)
-                playerArray[i].bankAccount.setBalance(16);
+                playerArray[i].getBankAccount().setBalance(16);
     }
 
     //TODO kan nok slettes senere hvis vi ikke skal bruge

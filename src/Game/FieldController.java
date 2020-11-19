@@ -76,7 +76,7 @@ public class FieldController {
     }
 
     public void buyProperty(Player player, PlayerController playerController, Property property, GUIView guiView){
-        int playerBalance = player.bankAccount.getBalance();
+        int playerBalance = player.getBankAccount().getBalance();
         int fieldPrice = property.getFieldPrice();
 
         if(playerBalance<fieldPrice){
@@ -84,20 +84,20 @@ public class FieldController {
         }
 
         if(playerBalance>=fieldPrice){
-            player.bankAccount.subBalance(fieldPrice);
+            player.getBankAccount().subBalance(fieldPrice);
             property.setOwner(player.getPlayerName());
             player.addPropertyOwned(property);
             ownedBySamePlayer(playerController, property);
         }
 
-        if(!player.bankAccount.getBankrupt()) {
+        if(!player.getBankAccount().getBankrupt()) {
             property.setOwner(player.getPlayerName());
             System.out.println("Du køber den for " + fieldPrice + "M");
         }
     }
 
     public void payRent(Player player , PlayerController playerController, Property property, GUIView guiView) {
-        int playerBalance = player.bankAccount.getBalance();
+        int playerBalance = player.getBankAccount().getBalance();
         int fieldRent = property.getFieldRent();
         Player propertyOwner = playerController.getPlayerByName(property.getOwnerName());
 
@@ -106,13 +106,13 @@ public class FieldController {
         }
         //TODO slet if
         if(playerBalance>=fieldRent){
-            player.bankAccount.subBalance(fieldRent);
-            propertyOwner.bankAccount.addBalance(fieldRent);
+            player.getBankAccount().subBalance(fieldRent);
+            propertyOwner.getBankAccount().addBalance(fieldRent);
         }
 
-        if(!player.bankAccount.getBankrupt()) {
+        if(!player.getBankAccount().getBankrupt()) {
             System.out.println(player.getPlayerName() + " betalte " + fieldRent + "M i husleje til " + propertyOwner.getPlayerName()
-                    + "\n" + propertyOwner.getPlayerName() + " har nu " + propertyOwner.bankAccount.getBalance() + "M");
+                    + "\n" + propertyOwner.getPlayerName() + " har nu " + propertyOwner.getBankAccount().getBalance() + "M");
         }
     }
 
@@ -152,7 +152,7 @@ public class FieldController {
          if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName())) {
              payRent(player, playerController, property, guiView);}
          else if (!property.getOwnedByPlayer()) {
-             if (!player.bankAccount.getBankrupt()) {
+             if (!player.getBankAccount().getBankrupt()) {
                  property.setOwner(player.getPlayerName());
                  player.addPropertyOwned(property);
                  System.out.println(player.getPlayerName() + " fik " + property.getName() + " helt gratis");
@@ -164,7 +164,7 @@ public class FieldController {
     public void sellProperty(Player player, int payment, GUIView guiView, PlayerController playerController, Property property){
         String[] propertiesAsStringArray = new String[player.getPropertiesOwned().size()];
 
-        int missingPayment=payment-player.bankAccount.getBalance();
+        int missingPayment=payment-player.getBankAccount().getBalance();
 
         if(player.getTotalPropertyValue()>missingPayment){
             do {
@@ -176,7 +176,7 @@ public class FieldController {
                 for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
 
                     if (propertyToSell.equals(propertiesAsStringArray[i])){
-                        player.bankAccount.addBalance(player.getPropertiesOwned().get(i).getFieldPrice());
+                        player.getBankAccount().addBalance(player.getPropertiesOwned().get(i).getFieldPrice());
                         removePropertyOwner(player.getPropertiesOwned().get(i),player);
                         missingPayment=missingPayment-player.getPropertiesOwned().get(i).getFieldPrice();
                         player.getPropertiesOwned().remove(i);
@@ -190,10 +190,10 @@ public class FieldController {
                         }
                     }
                 }
-            } while (player.bankAccount.getBalance()<payment);
+            } while (player.getBankAccount().getBalance()<payment);
         }
-        if(player.getPropertiesOwned().size()==0 && player.bankAccount.getBalance()==0)
-            player.bankAccount.setBankrupt(true);
+        if(player.getPropertiesOwned().size()==0 && player.getBankAccount().getBalance()==0)
+            player.getBankAccount().setBankrupt(true);
     }
 
     public void removePropertyOwner(Property property, Player player){

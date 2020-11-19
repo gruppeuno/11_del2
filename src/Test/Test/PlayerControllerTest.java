@@ -51,10 +51,10 @@ class PlayerControllerTest {
         PlayerController playerController = new PlayerController();
         playerController.createPlayers(2);
         playerController.getPlayerByName("p0").setFieldNumber(23);
-        playerController.getPlayerByName("p0").bankAccount.setBalance(0);
+        playerController.getPlayerByName("p0").getBankAccount().setBalance(0);
         playerController.movePlayer(playerController.getPlayerByName("p0"), 1);
         int actual = 2;
-        assertEquals(actual, playerController.getPlayerByName("p0").bankAccount.getBalance());
+        assertEquals(actual, playerController.getPlayerByName("p0").getBankAccount().getBalance());
     }
 
     /**
@@ -68,7 +68,7 @@ class PlayerControllerTest {
         playerController.createPlayers(2);
 
         int actual = 20;
-        assertEquals(actual, playerController.getPlayerArray()[0].bankAccount.getBalance());
+        assertEquals(actual, playerController.getPlayerArray()[0].getBankAccount().getBalance());
     }
 
     //spiller 2
@@ -78,7 +78,7 @@ class PlayerControllerTest {
         playerController.createPlayers(2);
 
         int actual = 20;
-        assertEquals(actual, playerController.getPlayerArray()[1].bankAccount.getBalance());
+        assertEquals(actual, playerController.getPlayerArray()[1].getBankAccount().getBalance());
     }
 
     //Med 4 spillere
@@ -88,7 +88,7 @@ class PlayerControllerTest {
         playerController.createPlayers(4);
 
         int actual = 16;
-        assertEquals(actual, playerController.getPlayerArray()[3].bankAccount.getBalance());
+        assertEquals(actual, playerController.getPlayerArray()[3].getBankAccount().getBalance());
     }
 
     /**

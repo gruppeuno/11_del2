@@ -32,10 +32,10 @@ public class GameController {
         //playerController.createPlayers(2);
 
         //laver spillere i GUI
-      guiView.createGUIPlayers(playerController.getPlayerArray(), playerController.getPlayerArray()[0].bankAccount.getBalance());
+      guiView.createGUIPlayers(playerController.getPlayerArray(), playerController.getPlayerArray()[0].getBankAccount().getBalance());
       startMessage();
 
-        while (!playerController.getPlayerArray()[turnCount].bankAccount.getBankrupt()) {
+        while (!playerController.getPlayerArray()[turnCount].getBankAccount().getBankrupt()) {
 
             //Fokortelse af variabler
             Player currentPlayer = playerController.getPlayerArray()[turnCount];
@@ -75,18 +75,18 @@ public class GameController {
 
             //placerer spillers bil på det rette felt
 
-            if (currentPlayer.bankAccount.getBankrupt()) {
+            if (currentPlayer.getBankAccount().getBankrupt()) {
                 guiView.getMyGUI().showMessage(currentPlayerName + m.bankruptMsg(currentPlayerName));
                 m.print(m.bankruptMsg(currentPlayerName));
                 findWinner(playerController.getPlayerArray());
                 break;
             }
 
-            m.print(m.currentBalanceMsg(currentPlayerName,currentPlayer.bankAccount.getBalance()));
+            m.print(m.currentBalanceMsg(currentPlayerName,currentPlayer.getBankAccount().getBalance()));
             m.print(m.myTurnMsg(playerController.getPlayerArray()[nextPlayerTurnCount].getPlayerName()));
 
             //I GUI sættes spillers balance
-            guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.bankAccount.getBalance());
+            guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.getBankAccount().getBalance());
 
 
             //guiView.getMyGUI().showMessage(currentPlayerName +" "+ fieldController.getFields()[currentPlayer.getFieldNumber()].getMsg());
@@ -119,13 +119,13 @@ public class GameController {
         Player leadingPlayer = playerArray[0];
 
         for (int i = 0; i < playerArray.length-1; i++) {
-                if (playerArray[i+1].bankAccount.getBalance() > leadingPlayer.bankAccount.getBalance()) {
+                if (playerArray[i+1].getBankAccount().getBalance() > leadingPlayer.getBankAccount().getBalance()) {
                     leadingPlayer = playerArray[i+1];
                 }
         }
         for (int j = 0; j < playerArray.length; j++) {
             if (leadingPlayer.getPlayerName().equals(playerArray[j].getPlayerName())==false) {
-                if (playerArray[j].bankAccount.getBalance() == leadingPlayer.bankAccount.getBalance()) {
+                if (playerArray[j].getBankAccount().getBalance() == leadingPlayer.getBankAccount().getBalance()) {
                     if (playerArray[j].getTotalPropertyValue() > leadingPlayer.getTotalPropertyValue()) {
                         leadingPlayer = playerArray[j];
                     } else if (playerArray[j].getTotalPropertyValue() == leadingPlayer.getTotalPropertyValue())
@@ -142,8 +142,8 @@ public class GameController {
             guiView.getMyGUI().showMessage(m.tieMsg());
         } else {
             leadingPlayer.setPlayerWin();
-            m.print(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.bankAccount.getBalance(), leadingPlayer.getTotalPropertyValue()));
-            guiView.getMyGUI().showMessage(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.bankAccount.getBalance(), leadingPlayer.getTotalPropertyValue()));
+            m.print(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.getBankAccount().getBalance(), leadingPlayer.getTotalPropertyValue()));
+            guiView.getMyGUI().showMessage(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.getBankAccount().getBalance(), leadingPlayer.getTotalPropertyValue()));
 
         }
     }

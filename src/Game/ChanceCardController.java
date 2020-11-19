@@ -303,11 +303,11 @@ public class ChanceCardController {
     }
 
     public void addBank(Player player, int moneyChange) {
-        player.bankAccount.addBalance(moneyChange);
+        player.getBankAccount().addBalance(moneyChange);
     }
 
     public void subBank(Player player, int moneyChange) {
-        player.bankAccount.subBalance(moneyChange);
+        player.getBankAccount().subBalance(moneyChange);
     }
 
     public void adjustJailCard(Player player) {
@@ -325,10 +325,10 @@ public class ChanceCardController {
     public void bankFromAll(Player player, PlayerController playerController) {
 
         for (Player tempPlayer : playerController.getPlayerArray()) {
-            tempPlayer.bankAccount.subBalance(1);
+            tempPlayer.getBankAccount().subBalance(1);
         }
 
-        player.bankAccount.addBalance(playerController.getPlayerArrayLength()+1);
+        player.getBankAccount().addBalance(playerController.getPlayerArrayLength()+1);
     }
 
     public void takeFreeProperty(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
