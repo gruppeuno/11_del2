@@ -5,7 +5,6 @@ import Game.Fields.ChanceCard;
 import Game.View.FieldMessages;
 import Game.View.FieldPropertyNames;
 
-import java.text.FieldPosition;
 import java.util.ArrayList;
 
 public class FieldController {
@@ -13,31 +12,33 @@ public class FieldController {
     FieldMessages fm = new FieldMessages();
     FieldPropertyNames fp = new FieldPropertyNames();
 
+    private int propertyTakenCounter = 0;
+
     final Field[] fields = {
-            new Start(fp.number(1),0, fm.number(1)),
-            new Property(fp.number(2), 1,1, fm.number(2),"brown"),
-            new Property(fp.number(3), 2,1, fm.number(3),"brown"),
-            new ChanceCard(fp.number(4), 3, fm.number(4)),
-            new Property(fp.number(5), 4,1, fm.number(5), "lightBlue"),
-            new Property(fp.number(6), 5,1,fm.number(6), "lightBlue"),
-            new JailVisit(fp.number(7), 6, fm.number(7)),
-            new Property(fp.number(8), 7,2, fm.number(8),"pink"),
-            new Property(fp.number(9), 8,2,fm.number(9),"pink"),
-            new ChanceCard(fp.number(10), 9, fm.number(10)),
-            new Property(fp.number(11), 10,2, fm.number(11),"gold"),
-            new Property(fp.number(12), 11,2,fm.number(12),"gold"),
-            new Parking(fp.number(13), 12, fm.number(13)),
-            new Property(fp.number(14), 13,3,fm.number(14),"red"),
-            new Property(fp.number(15), 14,3,fm.number(15),"red"),
-            new ChanceCard(fp.number(16), 15,fm.number(16)),
-            new Property(fp.number(17), 16,3,fm.number(17),"yellow"),
-            new Property(fp.number(18), 17,3,fm.number(18),"yellow"),
-            new Jail(fp.number(19), 18,fm.number(19)),
-            new Property(fp.number(20), 19,4,fm.number(20),"green"),
-            new Property(fp.number(21), 20,4, fm.number(21),"green"),
-            new ChanceCard(fp.number(22), 21,fm.number(22)),
-            new Property(fp.number(23), 22,5,fm.number(23),"blue"),
-            new Property(fp.number(24), 23,5,fm.number(24),"blue")
+            new Start(fp.number(0),0, fm.number(0)),
+            new Property(fp.number(1), 1,1, fm.number(1),"brown"),
+            new Property(fp.number(2), 2,1, fm.number(2),"brown"),
+            new ChanceCard(fp.number(3), 3, fm.number(3)),
+            new Property(fp.number(4), 4,1, fm.number(4), "lightBlue"),
+            new Property(fp.number(5), 5,1,fm.number(5), "lightBlue"),
+            new JailVisit(fp.number(6), 6, fm.number(6)),
+            new Property(fp.number(7), 7,2, fm.number(7),"pink"),
+            new Property(fp.number(8), 8,2,fm.number(8),"pink"),
+            new ChanceCard(fp.number(9), 9, fm.number(9)),
+            new Property(fp.number(10), 10,2, fm.number(10),"gold"),
+            new Property(fp.number(11), 11,2,fm.number(11),"gold"),
+            new Parking(fp.number(12), 12, fm.number(12)),
+            new Property(fp.number(13), 13,3,fm.number(13),"red"),
+            new Property(fp.number(14), 14,3,fm.number(14),"red"),
+            new ChanceCard(fp.number(15), 15,fm.number(15)),
+            new Property(fp.number(16), 16,3,fm.number(16),"yellow"),
+            new Property(fp.number(17), 17,3,fm.number(17),"yellow"),
+            new Jail(fp.number(18), 18,fm.number(18)),
+            new Property(fp.number(19), 19,4,fm.number(19),"green"),
+            new Property(fp.number(20), 20,4, fm.number(20),"green"),
+            new ChanceCard(fp.number(21), 21,fm.number(21)),
+            new Property(fp.number(22), 22,5,fm.number(22),"blue"),
+            new Property(fp.number(23), 23,5,fm.number(23),"blue")
     };
 
     private final ChanceCardController chanceCardController = new ChanceCardController();
@@ -81,6 +82,7 @@ public class FieldController {
             player.bankAccount.subBalance(property.getFieldPrice());
             property.setOwner(player.getPlayerName());
             player.addPropertyOwned(property);
+            propertyTakenCounter++;
             ownedBySamePlayer(playerController, property);
         }
         else if(player.bankAccount.getBalance()<=property.getFieldPrice()){
@@ -146,23 +148,20 @@ public class FieldController {
              if (!player.bankAccount.getBankrupt()) {
                  property.setOwner(player.getPlayerName());
                  player.addPropertyOwned(property);
+                 propertyTakenCounter++;
                  System.out.println(player.getPlayerName() + " fik " + property.getName() + " helt gratis");
              }
          }
      }
+
+     public int getPropertyTaken() {
+        return propertyTakenCounter;
+     }
+
      public void chanceCardBuyProperty(Player player, PlayerController playerController) {
          Property property = getProperty(player);
 
-         ArrayList<Property> properties = playerController.getPlayerByName(property.getOwnerName()).getPropertiesOwned();
-
-         int propertyOccupation = 0;
-         for (Property tempProperty: properties) {
-             if (tempProperty.getOwnedByPlayer()) {
-                 propertyOccupation++;
-             }
-         }
-         if (propertyOccupation == 16) {
-             if (!property.getOwnerName().equals(player.getPlayerName())) {
+         if (getPropertyTaken() == 4) {
 
                  for (Player tempPlayer : playerController.getPlayerArray()) {
 
@@ -172,12 +171,13 @@ public class FieldController {
                  }
                  property.setOwner(player.getPlayerName());
                  player.bankAccount.subBalance(property.getFieldPrice());
-             }
+
          }
-         else {
+         else if (!property.getOwnedByPlayer()) {
              buyProperty(player, playerController, property);
          }
      }
+
 
      public Property getProperty(Player player) {
          int i = player.getFieldNumber();
