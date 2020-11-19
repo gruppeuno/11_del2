@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 /**
  * GameController
+ *
  * @author Gruppe11
  */
 
@@ -32,8 +33,8 @@ public class GameController {
         //playerController.createPlayers(2);
 
         //laver spillere i GUI
-      guiView.createGUIPlayers(playerController.getPlayerArray(), playerController.getPlayerArray()[0].getBankAccount().getBalance());
-      startMessage();
+        guiView.createGUIPlayers(playerController.getPlayerArray(), playerController.getPlayerArray()[0].getBankAccount().getBalance());
+        startMessage();
 
         while (!playerController.getPlayerArray()[turnCount].getBankAccount().getBankrupt()) {
 
@@ -56,16 +57,16 @@ public class GameController {
             //else if(currentPlayerName.equals("SEB"))
             //die.rollPlayer1();
 
-            guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),false);
+            guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), false);
 
             playerController.movePlayer(currentPlayer, die.getDiceValue());
-            guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),true);
+            guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), true);
 
             fieldController.landOnField(currentPlayer, playerController, guiView);
 
-            guiView.getMyGUI().getFields()[previousField].setCar(guiView.getGUIPlayer(turnCount),false);
+            guiView.getMyGUI().getFields()[previousField].setCar(guiView.getGUIPlayer(turnCount), false);
 
-            guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount),true);
+            guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), true);
 
             guiView.removeAllCarsFromChanceFields(turnCount);
             guiView.removeCarFromJailField(turnCount);
@@ -82,7 +83,7 @@ public class GameController {
                 break;
             }
 
-            m.print(m.currentBalanceMsg(currentPlayerName,currentPlayer.getBankAccount().getBalance()));
+            m.print(m.currentBalanceMsg(currentPlayerName, currentPlayer.getBankAccount().getBalance()));
             m.print(m.myTurnMsg(playerController.getPlayerArray()[nextPlayerTurnCount].getPlayerName()));
 
             //I GUI sættes spillers balance
@@ -118,13 +119,13 @@ public class GameController {
         boolean itsATie = false;
         Player leadingPlayer = playerArray[0];
 
-        for (int i = 0; i < playerArray.length-1; i++) {
-                if (playerArray[i+1].getBankAccount().getBalance() > leadingPlayer.getBankAccount().getBalance()) {
-                    leadingPlayer = playerArray[i+1];
-                }
+        for (int i = 0; i < playerArray.length - 1; i++) {
+            if (playerArray[i + 1].getBankAccount().getBalance() > leadingPlayer.getBankAccount().getBalance()) {
+                leadingPlayer = playerArray[i + 1];
+            }
         }
         for (int j = 0; j < playerArray.length; j++) {
-            if (leadingPlayer.getPlayerName().equals(playerArray[j].getPlayerName())==false) {
+            if (leadingPlayer.getPlayerName().equals(playerArray[j].getPlayerName()) == false) {
                 if (playerArray[j].getBankAccount().getBalance() == leadingPlayer.getBankAccount().getBalance()) {
                     if (playerArray[j].getTotalPropertyValue() > leadingPlayer.getTotalPropertyValue()) {
                         leadingPlayer = playerArray[j];
@@ -133,10 +134,10 @@ public class GameController {
                 }
             }
         }
-        printGameResult(itsATie,leadingPlayer);
+        printGameResult(itsATie, leadingPlayer);
     }
 
-    private void printGameResult(boolean uafgjort, Player leadingPlayer){
+    private void printGameResult(boolean uafgjort, Player leadingPlayer) {
         if (uafgjort) {
             m.print(m.tieMsg());
             guiView.getMyGUI().showMessage(m.tieMsg());

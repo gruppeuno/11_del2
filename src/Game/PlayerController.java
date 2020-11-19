@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 /**
  * PlayerController
+ *
  * @author Gruppe11
  */
 
@@ -20,20 +21,20 @@ public class PlayerController {
      * kører for-loop og scanner hver spillers
      * spørger nyt navn hvis checkPlayerNam() er true
      */
-    public void playerCreator(){
+    public void playerCreator() {
         numberOfPlayers();
         createPlayers();
         setStartBalance();
         System.out.println("YNGSTE SPILLER! du er spiller 1");
-        for (int i = 0; i < playerArray.length; i++){
-            int nr = i+1;
+        for (int i = 0; i < playerArray.length; i++) {
+            int nr = i + 1;
             System.out.println("spiller " + nr + " indtast dit navn:");
             String currentName = scan.next();
 
-           while (checkPlayerName(currentName,playerArray)) {
-               System.out.print("Ugyldigt navn! prøv igen! (3-12 bogstaver)");
-               currentName = scan.next();
-           }
+            while (checkPlayerName(currentName, playerArray)) {
+                System.out.print("Ugyldigt navn! prøv igen! (3-12 bogstaver)");
+                currentName = scan.next();
+            }
             playerArray[i].setPlayerName(currentName.toUpperCase());
         }
         System.out.println("========================================\n");
@@ -43,21 +44,21 @@ public class PlayerController {
      * Loop der indlæser antal spillere melle 2-6 og sørger for indtastningen er gyldig
      */
 
-    public void numberOfPlayers(){
+    public void numberOfPlayers() {
         final int MAX = 4;
         final int MIN = 2;
         //While loop til at sikre at der er indtastet mellem 2-4 spillere
         System.out.println("Indtast antal spillere (2-4) :");
-        do{
+        do {
             while (!scan.hasNextInt()) {
                 System.out.println("Ugyldigt input. Indtast et antal spillere mellem 2-4");
                 scan.next();
             }
             numberOfPlayers = scan.nextInt();
 
-            if (numberOfPlayers< MIN || numberOfPlayers> MAX)
+            if (numberOfPlayers < MIN || numberOfPlayers > MAX)
                 System.out.println("Ugyldigt antal spillere. Indtast et antal spillere mellem 2-4");
-        }while (numberOfPlayers< MIN || numberOfPlayers> MAX);
+        } while (numberOfPlayers < MIN || numberOfPlayers > MAX);
         System.out.println("antal spillere: " + numberOfPlayers + "\n");
     }
 
@@ -65,7 +66,7 @@ public class PlayerController {
      * opretter spillere i playerArray
      */
 
-    public void createPlayers(){
+    public void createPlayers() {
         this.playerArray = new Player[numberOfPlayers];
         for (int i = 0; i < playerArray.length; i++) {
             playerArray[i] = new Player("p" + i);
@@ -76,13 +77,13 @@ public class PlayerController {
      * Tjekker i for loop om spillerene har samme navn. Hvis de har samme navn returneres true
      * if-statement benyttes til at tjekke om det indtastede navn er mellem 3-12 bogstaver
      * returnerer true hvis navnet er over 12 bogstaver eller udner 3 bogstaver
+     *
      * @param name
      * @param array
      * @return
      */
 
-    public boolean checkPlayerName(String name, Player[] array)
-    {
+    public boolean checkPlayerName(String name, Player[] array) {
         //Kontrollerer om navnet allerede er brugt
         for (int i = 0; i < playerArray.length; i++) {
             if (playerArray[i].getPlayerName().toLowerCase().equals(name.toLowerCase()))
@@ -93,20 +94,25 @@ public class PlayerController {
         return false;
     }
 
-    public int getPlayerArrayLength(){ return playerArray.length; }
-    public Player[] getPlayerArray(){ return playerArray; }
+    public int getPlayerArrayLength() {
+        return playerArray.length;
+    }
 
-    public void movePlayer(Player player, int dieValue){
-        int newSpot = player.getFieldNumber()+dieValue;
-        if ( newSpot > 23 ) {
+    public Player[] getPlayerArray() {
+        return playerArray;
+    }
+
+    public void movePlayer(Player player, int dieValue) {
+        int newSpot = player.getFieldNumber() + dieValue;
+        if (newSpot > 23) {
             newSpot = newSpot - 24;
             player.getBankAccount().addBalance(2);
         }
         player.setFieldNumber(newSpot);
     }
 
-    public Player getPlayerByName(String name){
-        for (Player player: playerArray) {
+    public Player getPlayerByName(String name) {
+        for (Player player : playerArray) {
             if (player.getPlayerName().equals(name))
                 return player;
         }
@@ -114,7 +120,7 @@ public class PlayerController {
     }
 
     //TODO: testmetode, må ikke slettes, ellers stopper integrationstest og unittest med at virke
-    public void createPlayers(int numberOfPlayers){
+    public void createPlayers(int numberOfPlayers) {
         this.playerArray = new Player[numberOfPlayers];
         for (int i = 0; i < playerArray.length; i++) {
             playerArray[i] = new Player("p" + i);
@@ -122,24 +128,24 @@ public class PlayerController {
         setStartBalance();
     }
 
-    public void setStartBalance(){
-        if(playerArray.length==2)
+    public void setStartBalance() {
+        if (playerArray.length == 2)
             for (int i = 0; i < 2; i++)
                 playerArray[i].getBankAccount().setBalance(20);
 
-        else if(playerArray.length==3)
+        else if (playerArray.length == 3)
             for (int i = 0; i < 3; i++)
                 playerArray[i].getBankAccount().setBalance(18);
 
-        else if(playerArray.length==4)
+        else if (playerArray.length == 4)
             for (int i = 0; i < 4; i++)
                 playerArray[i].getBankAccount().setBalance(16);
     }
 
     //TODO kan nok slettes senere hvis vi ikke skal bruge
-    public int getPlayerArrayNumber(String playerName){
+    public int getPlayerArrayNumber(String playerName) {
         for (int i = 0; i < playerArray.length; i++) {
-            if(playerName.equals(playerArray[i].getPlayerName()))
+            if (playerName.equals(playerArray[i].getPlayerName()))
                 return i;
         }
         //TODO: det her?

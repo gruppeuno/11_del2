@@ -1,9 +1,10 @@
 package Game.View;
+
 import java.io.*;
 
 public abstract class Messages {
 
-    public void readFromFile(String[] array,String filepath) {
+    public void readFromFile(String[] array, String filepath) {
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filepath));
@@ -11,7 +12,7 @@ public abstract class Messages {
             String currentLine = reader.readLine();
 
             while (currentLine != null) {
-                for (int line = 0; line < array.length; line++){
+                for (int line = 0; line < array.length; line++) {
                     array[line] = currentLine;
                     currentLine = reader.readLine();
                 }

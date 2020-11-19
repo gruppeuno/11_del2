@@ -6,17 +6,17 @@ public class FieldMessages extends Messages {
 
 
     public FieldMessages() {
-        readFromFile(totalReadFieldMessages,"Textfiles/FieldMessages.txt");
+        readFromFile(totalReadFieldMessages, "Textfiles/FieldMessages.txt");
     }
 
     @Override
-    public String number(int n){
-        if (n <= totalReadFieldMessages.length && n >= 1){
-            return totalReadFieldMessages[n-1];
+    public String number(int n) {
+        if (n <= totalReadFieldMessages.length && n >= 1) {
+            return totalReadFieldMessages[n - 1];
         } else {
             return "findes ikke";
         }
 
     }
-    }
+}
 
