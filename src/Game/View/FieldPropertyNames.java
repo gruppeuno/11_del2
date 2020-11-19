@@ -3,6 +3,7 @@ package Game.View;
 public class FieldPropertyNames extends Messages {
 
     private String[] totalReadFieldNameMessages = new String[24];
+    private boolean english = false;
 
     private static FieldPropertyNames fieldPropertyNames;
 
@@ -15,7 +16,12 @@ public class FieldPropertyNames extends Messages {
     }
 
     private FieldPropertyNames() {
-        readFromFile(totalReadFieldNameMessages,"Textfiles/FieldPropertyNames.txt");
+
+        if (english = true){
+            readFromFile(totalReadFieldNameMessages,"Textfiles/FieldPropertyNamesENG.txt");
+        } else {
+            readFromFile(totalReadFieldNameMessages,"Textfiles/FieldPropertyNames.txt");
+        }
     }
 
     @Override
