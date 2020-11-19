@@ -90,7 +90,8 @@ public class GameController {
             guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.getBankAccount().getBalance());
 
 
-            //guiView.getMyGUI().showMessage(currentPlayerName +" "+ fieldController.getFields()[currentPlayer.getFieldNumber()].getMsg());
+            //TODO commenter ud for autoroll
+            guiView.getMyGUI().showMessage(currentPlayerName +" "+ fieldController.getFields()[currentPlayer.getFieldNumber()].getMsg());
 
             //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
             turnCount = (turnCount + 1) % playerController.getPlayerArray().length;

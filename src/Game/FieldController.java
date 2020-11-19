@@ -84,12 +84,10 @@ public class FieldController {
             sellProperty(player, fieldPrice, guiView, playerController, property);
         }
 
-        if (playerBalance >= fieldPrice) {
             player.getBankAccount().subBalance(fieldPrice);
             property.setOwner(player.getPlayerName());
             player.addPropertyOwned(property);
             ownedBySamePlayer(playerController, property);
-        }
 
         if (!player.getBankAccount().getBankrupt()) {
             property.setOwner(player.getPlayerName());
@@ -105,11 +103,9 @@ public class FieldController {
         if (playerBalance < fieldRent) {
             sellProperty(player, fieldRent, guiView, playerController, property);
         }
-        //TODO slet if
-        if (playerBalance >= fieldRent) {
+
             player.getBankAccount().subBalance(fieldRent);
             propertyOwner.getBankAccount().addBalance(fieldRent);
-        }
 
         if (!player.getBankAccount().getBankrupt()) {
             System.out.println(player.getPlayerName() + " betalte " + fieldRent + "M i husleje til " + propertyOwner.getPlayerName()
