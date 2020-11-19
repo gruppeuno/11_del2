@@ -3,10 +3,15 @@ package Game.View;
 public class FieldMessages extends Messages {
 
     private String[] totalReadFieldMessages = new String[24];
-
+    private boolean english = true;
 
     public FieldMessages() {
-        readFromFile(totalReadFieldMessages,"Textfiles/FieldMessages.txt");
+
+        if (english == true){
+            readFromFile(totalReadFieldMessages,"Textfiles/FieldMessagesENG.txt");
+        } else {
+            readFromFile(totalReadFieldMessages,"Textfiles/FieldMessages.txt");
+        }
     }
 
     @Override

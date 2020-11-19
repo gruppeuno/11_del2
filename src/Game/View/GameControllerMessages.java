@@ -1,16 +1,18 @@
 package Game.View;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
 public class GameControllerMessages extends Messages {
 
     private String[] totalGameMessages = new String[14];
+    private boolean english = true;
 
     public GameControllerMessages() {
-        readFromFile(totalGameMessages,"Textfiles/GameControllerMessages.txt");
-    }
+
+        if (english == true){
+            readFromFile(totalGameMessages,"Textfiles/GameControllerMessagesENG.txt");
+        } else {
+            readFromFile(totalGameMessages,"Textfiles/GameControllerMessages.txt");
+        }
+        }
 
     @Override
     public String number(int n) {
