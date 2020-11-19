@@ -14,8 +14,8 @@ public class GameControllerMessages extends Messages {
 
     @Override
     public String number(int n) {
-        if (n <= totalGameMessages.length && n >= 1) {
-            return totalGameMessages[n - 1];
+        if (n <= totalGameMessages.length && n >= 0) {
+            return totalGameMessages[n];
         } else {
             return "findes ikke";
         }
