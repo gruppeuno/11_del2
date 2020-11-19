@@ -32,8 +32,8 @@ public class GameController {
         //playerController.createPlayers(2);
 
         //laver spillere i GUI
-      guiView.createGUIPlayers(playerController.getPlayerArray(), playerController.getPlayerArray()[0].getBankAccount().getBalance());
-      startMessage();
+        guiView.createGUIPlayers(playerController.getPlayerArray(), playerController.getPlayerArray()[0].getBankAccount().getBalance());
+        startMessage();
 
         while (!playerController.getPlayerArray()[turnCount].getBankAccount().getBankrupt()) {
 
