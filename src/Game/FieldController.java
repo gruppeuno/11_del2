@@ -144,6 +144,9 @@ public class FieldController {
          Property property = getProperty(player);
          if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName())) {
              payRent(player, playerController, property);}
+         else if (!(property.getOwnerName() == null) && property.getOwnerName().equals(player.getPlayerName())) {
+             System.out.println("Du ejer allerede denne grund. Turen går videre");
+         }
          else if (!property.getOwnedByPlayer()) {
              if (!player.bankAccount.getBankrupt()) {
                  property.setOwner(player.getPlayerName());
@@ -161,14 +164,15 @@ public class FieldController {
      public void chanceCardBuyProperty(Player player, PlayerController playerController) {
          Property property = getProperty(player);
 
-         if (getPropertyTaken() == 4) {
+         if (getPropertyTaken() >= 4) {
 
                  for (Player tempPlayer : playerController.getPlayerArray()) {
 
-                     if (tempPlayer.equals(property.getOwnerName())) {
+                     if (tempPlayer.getPlayerName().equals(property.getOwnerName())) {
                          tempPlayer.bankAccount.addBalance(property.getFieldPrice());
                      }
                  }
+                 System.out.println("Du køber " + property.getName() + " af " + property.getOwnerName() + " og sælger modtager " + property.getFieldPrice() + "M");
                  property.setOwner(player.getPlayerName());
                  player.bankAccount.subBalance(property.getFieldPrice());
 
@@ -181,8 +185,7 @@ public class FieldController {
 
      public Property getProperty(Player player) {
          int i = player.getFieldNumber();
-         Property property = (Property) fields[i];
 
-         return property;
+         return (Property) fields[i];
      }
 }
