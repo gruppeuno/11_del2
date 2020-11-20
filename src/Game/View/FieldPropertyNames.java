@@ -4,8 +4,6 @@ import Game.Fields.Field;
 
 public class FieldPropertyNames extends Messages {
 
-    private boolean english = false;
-
     private String[] totalReadFieldNameMessages = new String[25];
 
     private static FieldPropertyNames fieldPropertyNames;

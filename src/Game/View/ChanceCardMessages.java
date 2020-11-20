@@ -22,9 +22,4 @@ public class ChanceCardMessages extends Messages{
             return "findes ikke";
         }
     }
-
-    public void setEnglish(){
-        english = true;
-    }
-
 }

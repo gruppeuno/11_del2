@@ -20,22 +20,18 @@ public class LanguageController {
 
     private LanguageController(){
 
+        System.out.println("Type EN for english" );
+
         Scanner lc = new Scanner(System.in);
         input = lc.nextLine();
 
-        System.out.println("Type EN for english" );
-
         if (input.toLowerCase().equals("EN")){
-            setEnglish();
+            loadLanguageChoice();
         }
     }
 
-    public void setEnglish(){
-        english = true;
-    }
-
     public boolean loadLanguageChoice(){
-        return english;
+        return english = true;
     }
 
 }
