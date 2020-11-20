@@ -20,23 +20,22 @@ class ChanceCardControllerTest {
    // void testToString() {
    // }
 
-    @Test
-    void chanceCard() {
-        String[] chanceArray;
-        Player testplayer = new Player("Testperson");
-        PlayerController playerController = new PlayerController();
-        FieldController fieldController = new FieldController();
-        ChanceCardController chanceCardController = new ChanceCardController();
-        ChanceCard chanceCard = new ChanceCard("A",15, "B");
-        testplayer.setFieldNumber(15);
-
-        fieldController.landOnField(testplayer,playerController,fieldController);
-
-
-
-
-
-    }
+//    @Test
+//    void chanceCard() { // et specifikt chancekort (ck 7)
+//        Player testplayer = new Player("Testperson");
+//        PlayerController playerController = new PlayerController();
+//        FieldController fieldController = new FieldController();
+//        ChanceCardController chanceCardController = new ChanceCardController();
+//
+//
+//        playerController.setStartBalance();
+//        chanceCardController.chanceCard(testplayer, playerController, fieldController);
+//        chanceCard.();
+//        int actual = testplayer.bankAccount.getBalance();
+//        int expected = 1;
+//
+//        assertEquals(actual, expected);
+//    }
 
     @Test
     void moveField() {
