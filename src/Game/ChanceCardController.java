@@ -127,7 +127,7 @@ public class ChanceCardController {
 }
     private void chancekort1 (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         Player players [] = playerController.getPlayerArray();
-        System.out.println( players[0].getPlayerName() + "NÆSTE TUR skal du drøne frem og KØBE det første ledie felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n");
+        System.out.println( players[0].getPlayerName() + " " + "NÆSTE TUR skal du drøne frem og KØBE det første ledie felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n");
         players[0].setSelectFieldCard(true);
         i++;
         chanceCard(player, playerController, fieldController, guiView);
@@ -176,7 +176,7 @@ public class ChanceCardController {
 
     private void chancekort6 (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         Player players [] = playerController.getPlayerArray();
-        System.out.println(players[1].getPlayerName() + "\nNÆSTE TUR skal du sejle frem og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!"+
+        System.out.println(players[1].getPlayerName() + " " + "\nNÆSTE TUR skal du sejle frem og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!"+
                 "\nE K S T R A   C H A N C E K O R T");
         players[1].setSelectFieldCard(true);
         i++;
