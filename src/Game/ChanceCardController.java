@@ -118,7 +118,7 @@ public class ChanceCardController {
             default:
                 System.out.println("Der skete en fejl");
         }
-        if (i >= (chanceArray.length - 1)) {
+        if (i > (chanceArray.length - 1)) {
             i = 0;
         } else {
             i++;
@@ -126,7 +126,7 @@ public class ChanceCardController {
 }
     private void chancekort1 (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         Player players [] = playerController.getPlayerArray();
-        System.out.println(players[0].getPlayerName() + " NÆSTE TUR skal du drøne frem og KØBE det første ledie felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller! \nDu får et chancekort mere\n");
+        System.out.println( players[0].getPlayerName() + " " + "NÆSTE TUR skal du drøne frem og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n");
         players[0].setSelectFieldCard(true);
         i++;
         chanceCard(player, playerController, fieldController, guiView);
