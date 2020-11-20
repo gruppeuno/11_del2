@@ -1,0 +1,24 @@
+and move to START
+and move to BURGER HOUSE
+and move to THE PIZZARIA
+and move to CHANCECARD
+and move to CANDY SHOP
+and move to ICECREAM SHOP
+and move to VISIT JAIL
+and move to MUSEUM
+and move to LIBRARY
+and move to CHANCECARD
+and move to SKATE PARK
+and move to SWIMMINGPOOL
+and move to PARKING
+and move to GAME HALL
+and move to CINEMA
+and move to CHANCECARD
+and move to TOY STORE
+and move to PETSHOP
+and move to GO TO JAIL
+and move to BOWLINGHALL
+and move to ZOO
+and move to CHANCECARD
+and move to WATERPARK
+and move to BEACH
