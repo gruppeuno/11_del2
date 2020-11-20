@@ -1,10 +1,10 @@
 package Game;
 
-
 import java.util.Scanner;
 
 /**
  * GameController
+ *
  * @author Gruppe11
  */
 
@@ -12,125 +12,140 @@ public class GameController {
 
     private int turnCount;
     //skaber nye objekter af Field, RaffleCup og PlayerCreator
-    final private Field field = new Field();
+    final private FieldController fieldController = new FieldController();
     final private PlayerController playerController = new PlayerController();
-    final private Dice cup = new Dice();
-    Scanner scan = new Scanner(System.in);
-    GUIView guiView = new GUIView();
-
+    final private Die die = new Die();
+    final private Scanner scan = new Scanner(System.in);
+    final private GUIView guiView = new GUIView();
+    MessageController m = new MessageController();
 
     /**
      * Main metode, kører spillet
      */
     public void gameController() {
 
-
-
-        guiView.getMyGUI();
-
-        //TODO: Rigtige metode til at køre med 2-6 spillere samt tildele navne
+        //TODO: Rigtige metode til at køre med 2-4 spillere samt tildele navne
         playerController.playerCreator();
-
+        fieldController.doRandomize();
 
         //TODO: test metode til 2 spillere
-        //playerCreator.testPlayerCreator();
-        int numberOfPlayers = playerController.getPlayerArrayLength();
+        //playerController.createPlayers(2);
 
         //laver spillere i GUI
-        guiView.createGUIPlayers(playerController.playerArray);
-
+        guiView.createGUIPlayers(playerController.getPlayerArray(), playerController.getPlayerArray()[0].getBankAccount().getBalance());
         startMessage();
 
-        while (!playerController.playerArray[turnCount].getPlayerWin()) {
+        while (!playerController.getPlayerArray()[turnCount].getBankAccount().getBankrupt()) {
+
             //Fokortelse af variabler
-            Player currentPlayer = playerController.playerArray[turnCount];
+            Player currentPlayer = playerController.getPlayerArray()[turnCount];
             String currentPlayerName = currentPlayer.getPlayerName();
-            do {
-                //loop til afvente spillerens roll commando i consollen
-                //TODO: edit ind når spillet skal køre med input fra consol
+            int nextPlayerTurnCount = (turnCount + 1) % playerController.getPlayerArray().length;
+            int previousField = currentPlayer.getFieldNumber();
 
-                //fjerner alle biler fra brættet (GUI)
-                GUIView.MY_GUI_FIELDS[cup.getDiceValue()].removeAllCars();
+            //loop til afvente spillerens roll commando i consollen
+            //playerRollInput();
+            //ruller terninger med RaffleCup samt opdaterer spillerens position
+            //TODO: rigtig terning
+            die.roll();
+            m.print(m.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
 
-                //ruller terninger med RaffleCup samt sætter fieldNumber = terningeværdien
-                //og kalder på setField
-                cup.roll();
-                field.setFieldNumber(cup.getDiceValue());
-                currentPlayer.setRollAgain(field.getRollAgain());
+            //TODO: testterninger, SKAL KALDE SPILLERE "GAB" OG "SEB" FOR AT DET VIRKER (til test af sellProperty)
+            //if(currentPlayerName.equals("GAB"))
+            //die.rollPlayer0();
+            //else if(currentPlayerName.equals("SEB"))
+            //die.rollPlayer1();
 
-                //Terningernes værdier sættes
-                guiView.gui.setDice(cup.getDie1Value(),cup.getDie2Value());
+            guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), false);
 
-                System.out.println(currentPlayerName + " landede på felt " + field.getFieldNumber() + "\n" + currentPlayerName + field.getFieldMSG());
+            playerController.movePlayer(currentPlayer, die.getDiceValue());
+            guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), true);
 
-                //placerer spillers bil på det rette felt
-                GUIView.MY_GUI_FIELDS[cup.getDiceValue()].setCar(guiView.getGUIPlayer(turnCount), true);
+            fieldController.landOnField(currentPlayer, playerController, fieldController, guiView);
 
-                //ingsætter terningernes værdi og spilleren hvis tur det er, i gameturn
-                //som sørger for at der sker det rigtige ud fra hvad terningerne viser
+            guiView.getMyGUI().getFields()[previousField].setCar(guiView.getGUIPlayer(turnCount), false);
 
-                currentPlayer.b.updateBalance(field.getFieldValue());
-                System.out.println(currentPlayerName + " har nu " + currentPlayer.b.getBalance() + "kr på sin bankkonto");
+            guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), true);
 
-                //I GUI sættes spillers balance
-                guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.b.getBalance());
+            guiView.removeAllCarsFromChanceFields(turnCount);
+            guiView.removeCarFromJailField(turnCount);
 
-                guiView.getMyGUI().showMessage(currentPlayerName + field.getFieldMSG());
+            //Terningernes værdier sættes
+            guiView.getMyGUI().setDie(die.getDiceValue());
 
-                //giver mulighed for køre igennem flere gange hvis man slår dobbelt
-                //fra CDIO, Vi beholder da vi muligvis skal bruge i CDIO3
-            } while (currentPlayer.getRollAgain());
+            //placerer spillers bil på det rette felt
 
-            //checker om der er fundet en vinder efter turen
-            if (currentPlayer.getPlayerWin()) {
-                System.out.println("WINNER!!!!! =  " + currentPlayerName);
+            if (currentPlayer.getBankAccount().getBankrupt()) {
+                guiView.getMyGUI().showMessage(currentPlayerName + m.bankruptMsg(currentPlayerName));
+                m.print(m.bankruptMsg(currentPlayerName));
+                findWinner(playerController.getPlayerArray());
                 break;
             }
 
-            //giver mulighed for at tilføje flere spillere, turn turnCount+1%playerArray.length
-            //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2
-            turnCount = (turnCount + 1) % numberOfPlayers;
-            System.out.println("========================================");
-            System.out.println();
+            m.print(m.currentBalanceMsg(currentPlayerName, currentPlayer.getBankAccount().getBalance()));
+            m.print(m.myTurnMsg(playerController.getPlayerArray()[nextPlayerTurnCount].getPlayerName()));
+
+            //I GUI sættes spillers balance
+            guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.getBankAccount().getBalance());
+
+
+            //TODO commenter ud for autoroll
+            guiView.getMyGUI().showMessage(currentPlayerName +" "+ fieldController.getFields()[currentPlayer.getFieldNumber()].getMsg());
+
+            //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
+            turnCount = (turnCount + 1) % playerController.getPlayerArray().length;
+            m.print(m.lineMsg());
         }
     }
 
     private void startMessage() {
         String start;
-        String startMSG = "Spillet er klar - \nSkriv \"Start\" og tryk enter for at starte og slå de første terninger!" +
-                "\n Tryk \"OK\" på spillepladen for at lade turen gå videre!";
+        String playerOne = playerController.getPlayerArray()[0].getPlayerName();
 
         do {
-            System.out.println(startMSG);
+            m.print(m.startMsg(playerOne));
 
             start = scan.nextLine();
         }
-        while (!start.toLowerCase().equals("start"));
+        while (!start.isEmpty());
 
         //Lukker scanner hvis der er fundet en vinder
-        if (playerController.playerArray[turnCount].getPlayerWin())
+        if (playerController.getPlayerArray()[turnCount].getPlayerWin())
             scan.close();
-
     }
 
-/*
-    *
-     * Loop der kører indtil spilleren har indtastet "roll"
-     * hvis spilleren har vunder lukkes scanneren
-*/
-/*    private void playerRollInput() {
-        String rollInput;
+    public void findWinner(Player[] playerArray) {
 
-        do {
-            System.out.println("Det er din tur " + playerController.playerArray[turnCount].getPlayerName() + "\nSkriv \"Roll\" og tryk enter for at slå med terningerne!");
+        boolean itsATie = false;
+        Player leadingPlayer = playerArray[0];
 
-            rollInput = scan.nextLine();
+        for (int i = 0; i < playerArray.length - 1; i++) {
+            if (playerArray[i + 1].getBankAccount().getBalance() > leadingPlayer.getBankAccount().getBalance()) {
+                leadingPlayer = playerArray[i + 1];
+            }
         }
-        while (!rollInput.toLowerCase().equals("roll"));
+        for (int j = 0; j < playerArray.length; j++) {
+            if (leadingPlayer.getPlayerName().equals(playerArray[j].getPlayerName()) == false) {
+                if (playerArray[j].getBankAccount().getBalance() == leadingPlayer.getBankAccount().getBalance()) {
+                    if (playerArray[j].getTotalPropertyValue() > leadingPlayer.getTotalPropertyValue()) {
+                        leadingPlayer = playerArray[j];
+                    } else if (playerArray[j].getTotalPropertyValue() == leadingPlayer.getTotalPropertyValue())
+                        itsATie = true;
+                }
+            }
+        }
+        printGameResult(itsATie, leadingPlayer);
+    }
 
-        //Lukker scanner hvis der er fundet en vinder
-        if (playerController.playerArray[turnCount].getPlayerWin())
-            scan.close();
-    }*/
+    private void printGameResult(boolean uafgjort, Player leadingPlayer) {
+        if (uafgjort) {
+            m.print(m.tieMsg());
+            guiView.getMyGUI().showMessage(m.tieMsg());
+        } else {
+            leadingPlayer.setPlayerWin();
+            m.print(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.getBankAccount().getBalance(), leadingPlayer.getTotalPropertyValue()));
+            guiView.getMyGUI().showMessage(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.getBankAccount().getBalance(), leadingPlayer.getTotalPropertyValue()));
 
+        }
+    }
 }

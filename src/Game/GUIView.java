@@ -1,23 +1,22 @@
 package Game;
 
-import gui_fields.GUI_Car;
-import gui_fields.GUI_Player;
-import gui_fields.GUI_Street;
+import Game.View.FieldPropertyNames;
+import gui_fields.*;
 import gui_main.GUI;
 
 import java.awt.*;
 
 public class GUIView {
 
-    GUI_Player[] myPlayers;
-    GUI gui = new GUI(MY_GUI_FIELDS);
+    private GUI_Player[] myPlayers;
+    private GUI gui = new GUI(MY_GUI_FIELDS);
 
-    public GUI getMyGUI(){
+    public GUI getMyGUI() {
         return gui;
     }
 
     //TODO: kun brug playerarray som parameter
-    public void createGUIPlayers(Player[] players){
+    public void createGUIPlayers(Player[] players, int startBalance) {
 
         Color[] myColors = {Color.RED, Color.BLUE, Color.YELLOW, Color.PINK, Color.GREEN, Color.BLACK, Color.WHITE, Color.CYAN};
 
@@ -28,31 +27,55 @@ public class GUIView {
         for (int i = 0; i < players.length; i++) {
             myCars[i] = new GUI_Car();
             myCars[i].setPrimaryColor(myColors[i]);
-            myPlayers[i] = new GUI_Player(players[i].getPlayerName(), 1000, myCars[i]);
+            myPlayers[i] = new GUI_Player(players[i].getPlayerName(), startBalance, myCars[i]);
             gui.addPlayer(myPlayers[i]);
 
         }
     }
 
-    public GUI_Player getGUIPlayer(int currentPlayer){
+    public GUI_Player getGUIPlayer(int currentPlayer) {
         return myPlayers[currentPlayer];
     }
 
-    public static final GUI_Street[] MY_GUI_FIELDS = {
-            new GUI_Street("START", "GOOD LUCK", " ", " ", Color.RED, Color.BLACK),
-            new GUI_Street("1", " ", " ", " ", Color.RED, Color.BLACK),
-            new GUI_Street("2", "TOWER", "Et helligt tårn er gemt her.. \n(+250 kr)", "250 kr", Color.LIGHT_GRAY, Color.BLACK),
-            new GUI_Street("3", "CRATER", "Pas på krateret!! \n(-100 kr)", "-100kr", Color.YELLOW, Color.BLUE),
-            new GUI_Street("4", "PALACE GATES", "Hvad gemmer sig mon bag paladsets porte? \n(+100 kr)", "100 kr", Color.BLUE, Color.PINK),
-            new GUI_Street("5", "COLD DESSERT", "Pak kufferten, for ellers .. \n(-20 kr)", "-20 kr", Color.ORANGE, Color.BLUE),
-            new GUI_Street("6", "WALLED CITY", "Det siges man skal investere i mursten .. (+180 kr)", "180 kr", Color.PINK, Color.RED),
-            new GUI_Street("7", "MONASTERY", "Hils på munke", "0 kr", Color.GREEN, Color.BLUE),
-            new GUI_Street("8", "BLACK CAVE", "Sku' ha' gået til Louis Nielsen \n(-70 kr)", "-70 kr", Color.BLACK, Color.GREEN),
-            new GUI_Street("9", "HUTS IN THE MOUNTAIN", "Kan du finde hytten? \n(+60 kr)", "60kr", Color.WHITE, Color.BLUE),
-            new GUI_Street("10", "THE WEREWALL", "Vogt dig.. ikke for sarte sjæle \n(-80 kr)", "-80 kr", Color.BLUE, Color.YELLOW),
-            new GUI_Street("11", "THE PIT", "Take Care, man skulle jo nødig, tabe noget \n(-50 kr)", "-50 kr", Color.PINK, Color.BLUE),
-            new GUI_Street("12", "GOLDMINE", "$$$ KACHING $$$ \n(+650 kr)", "650 kr", Color.ORANGE, Color.YELLOW),
-            new GUI_Street("13", "QUICKSAND", "No trespassing \n(-300 kr)", "-300kr", Color.YELLOW, Color.RED),
-            new GUI_Street("14", "'RONA HOTBOX", "Kom og hyg", " ", Color.MAGENTA, Color.YELLOW),
-            new GUI_Street("15", "BALLERUP PIZZA BURGER GRILL", "Vand til 5 kr", "200kr", Color.CYAN, Color.BLACK)};
+    public static final GUI_Field[] MY_GUI_FIELDS = {
+
+            new GUI_Start(FieldPropertyNames.instanceOf().number(1), "", "", Color.white, Color.BLACK),
+            new GUI_Street("1", "1M", FieldPropertyNames.instanceOf().number(2), "1M", new Color(156, 73, 18), Color.BLACK),
+            new GUI_Street("2", "1M", FieldPropertyNames.instanceOf().number(3), "1M", new Color(156, 73, 18), Color.BLACK),
+            new GUI_Chance(),
+            new GUI_Street("4", "1M", FieldPropertyNames.instanceOf().number(5), "1M", new Color(35, 184, 208), Color.BLACK),
+            new GUI_Street("5", "1M", FieldPropertyNames.instanceOf().number(6), "1M", new Color(35, 184, 208), Color.BLACK),
+            new GUI_Jail("", "6", FieldPropertyNames.instanceOf().number(7), FieldPropertyNames.instanceOf().number(6), Color.gray, Color.black),
+            new GUI_Street("7", "2M", FieldPropertyNames.instanceOf().number(8), "2M", new Color(232, 12, 228, 255), Color.black),
+            new GUI_Street("8", "2M", FieldPropertyNames.instanceOf().number(9), "2M", new Color(232, 12, 228), Color.black),
+            new GUI_Chance(),
+            new GUI_Street("10", "2M", FieldPropertyNames.instanceOf().number(11), "2M", new Color(255, 162, 0), Color.black),
+            new GUI_Street("11", "2M", FieldPropertyNames.instanceOf().number(12), "2M", new Color(255, 162, 0), Color.black),
+            new GUI_Refuge(),
+            new GUI_Street("13", "3M", FieldPropertyNames.instanceOf().number(14), "3M", Color.red, Color.black),
+            new GUI_Street("14", "3M", FieldPropertyNames.instanceOf().number(15), "3M", Color.red, Color.black),
+            new GUI_Chance(),
+            new GUI_Street("16", "3M", FieldPropertyNames.instanceOf().number(17), "3M", Color.yellow, Color.black),
+            new GUI_Street("17", "3M", FieldPropertyNames.instanceOf().number(18), "3M", Color.yellow, Color.black),
+            new GUI_Jail("", "18", FieldPropertyNames.instanceOf().number(19), FieldPropertyNames.instanceOf().number(19), Color.gray, Color.black),
+            new GUI_Street("19", "4M", FieldPropertyNames.instanceOf().number(20), "4M", new Color(11, 132, 55), Color.black),
+            new GUI_Street("20", "4M", FieldPropertyNames.instanceOf().number(21), "4M", new Color(11, 132, 55), Color.black),
+            new GUI_Chance(),
+            new GUI_Street("22", "5M", FieldPropertyNames.instanceOf().number(23), "5M", Color.blue, Color.black),
+            new GUI_Street("23", "5M", FieldPropertyNames.instanceOf().number(24), "5M", Color.blue, Color.black),
+    };
+
+
+    public void removeAllCarsFromChanceFields(int currentPlayer) {
+        MY_GUI_FIELDS[3].setCar(myPlayers[currentPlayer], false);
+        MY_GUI_FIELDS[9].setCar(myPlayers[currentPlayer], false);
+        MY_GUI_FIELDS[15].setCar(myPlayers[currentPlayer], false);
+        MY_GUI_FIELDS[21].setCar(myPlayers[currentPlayer], false);
+    }
+
+    public void removeCarFromJailField(int currentPlayer) {
+        MY_GUI_FIELDS[18].setCar(myPlayers[currentPlayer], false);
+    }
+
 }
+

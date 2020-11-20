@@ -5,7 +5,6 @@ package Game;
  *  @author Gruppe11
  */
 public class Driver {
-
     //game controller skal være static for at fungere i static main
     static GameController ny = new GameController();
 
@@ -14,7 +13,7 @@ public class Driver {
      * @param args
      */
     public static void main(String[] args) {
-       ny.gameController();
+     ny.gameController();
 
     }
 }

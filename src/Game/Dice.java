@@ -8,8 +8,6 @@ import gui_fields.GUI_Street;
  */
 public class Dice {
 
-    private int die1;
-    private int die2;
     private int diceValue;
 
     /**
