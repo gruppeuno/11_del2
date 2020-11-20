@@ -4,11 +4,13 @@ import Game.Fields.*;
 import Game.Fields.ChanceCard;
 import Game.View.FieldMessages;
 import Game.View.FieldPropertyNames;
+import Game.View.FieldcontrollerMessages;
 import gui_main.GUI;
 
 import java.util.ArrayList;
 
 public class FieldController {
+    FieldcontrollerMessages fieldcontrollerMessages = new FieldcontrollerMessages();
 
     FieldMessages fm = new FieldMessages();
 
@@ -65,9 +67,9 @@ public class FieldController {
     //Todo: lav om så der ikke laves 2 metoder til at randomize chancekort. evt. bland kortene i chancecomtroller constructor
     //Af low coupling grunde..
     public void doRandomize() {
-        System.out.println("Kortenes rækkefølge var: " + chanceCardController);
+        System.out.println(fieldcontrollerMessages.number(1) + chanceCardController);
         chanceCardController.randomizeChance();
-        System.out.println("Kortenes rækkefølge er nu: " + chanceCardController);
+        System.out.println(fieldcontrollerMessages.number(2) + chanceCardController);
     }
 
     public void landOnProperty(Player player, PlayerController playerController, Property property, GUIView guiView) {
@@ -95,7 +97,7 @@ public class FieldController {
 
         if (!player.getBankAccount().getBankrupt()) {
             property.setOwner(player.getPlayerName());
-            System.out.println("Du køber den for " + fieldPrice + "M");
+            System.out.println(fieldcontrollerMessages.number(3) + fieldPrice + fieldcontrollerMessages.number(4));
         }
     }
 
@@ -112,8 +114,8 @@ public class FieldController {
             propertyOwner.getBankAccount().addBalance(fieldRent);
 
         if (!player.getBankAccount().getBankrupt()) {
-            System.out.println(player.getPlayerName() + " betalte " + fieldRent + "M i husleje til " + propertyOwner.getPlayerName()
-                    + "\n" + propertyOwner.getPlayerName() + " har nu " + propertyOwner.getBankAccount().getBalance() + "M");
+            System.out.println(player.getPlayerName() + fieldcontrollerMessages.number(4) + fieldRent + fieldcontrollerMessages.number(5) + propertyOwner.getPlayerName()
+                    + "\n" + propertyOwner.getPlayerName() + fieldcontrollerMessages.number(6)+ propertyOwner.getBankAccount().getBalance() + fieldcontrollerMessages.number(7));
         }
     }
 
@@ -152,14 +154,14 @@ public class FieldController {
          if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName())) {
              payRent(player, playerController, property, guiView);}
          else if (!(property.getOwnerName() == null) && property.getOwnerName().equals(player.getPlayerName())) {
-             System.out.println("Du ejer allerede denne grund. Turen går videre");
+             System.out.println(fieldcontrollerMessages.number(8) +" "+ fieldcontrollerMessages.number(9));
          }
          else if (!property.getOwnedByPlayer()) {
              if (!player.getBankAccount().getBankrupt()) {
                  property.setOwner(player.getPlayerName());
                  player.addPropertyOwned(property);
                  propertyTakenCounter++;
-                 System.out.println(player.getPlayerName() + " fik " + property.getName() + " helt gratis");
+                 System.out.println(player.getPlayerName() + fieldcontrollerMessages.number(10) + property.getName() + fieldcontrollerMessages.number(11));
              }
          }
      }
@@ -179,7 +181,7 @@ public class FieldController {
                          tempPlayer.getBankAccount().addBalance(property.getFieldPrice());
                      }
                  }
-                 System.out.println("Du køber " + property.getName() + " af " + property.getOwnerName() + " og sælger modtager " + property.getFieldPrice() + "M");
+                 System.out.println(fieldcontrollerMessages.number(12) + property.getName() + fieldcontrollerMessages.number(13) + property.getOwnerName() +fieldcontrollerMessages.number(14)  + property.getFieldPrice() + fieldcontrollerMessages.number(15));
                  property.setOwner(player.getPlayerName());
                  player.getBankAccount().subBalance(property.getFieldPrice());
 
@@ -207,7 +209,7 @@ public class FieldController {
                     propertiesAsStringArray[i] = ((Property) player.getPropertiesOwned().toArray()[i]).toString();
                 }
 
-                String propertyToSell = guiView.getMyGUI().getUserSelection("Vælg grund du vil sælge, du skal sælge grunde for " + missingPayment + "M for at betale din afgift", propertiesAsStringArray);
+                String propertyToSell = guiView.getMyGUI().getUserSelection(fieldcontrollerMessages.number(16) + missingPayment + fieldcontrollerMessages.number(17), propertiesAsStringArray);
                 for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
 
                     if (propertyToSell.equals(propertiesAsStringArray[i])) {

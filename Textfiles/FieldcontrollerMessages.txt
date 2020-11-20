@@ -1,0 +1,17 @@
+Kortenes rækkefølge var:
+Kortenes rækkefølge er nu:
+Du køber den for
+M
+betalte
+M i husleje til
+Har nu
+M
+Du ejer allerede denne grund. Turen går videre
+fik
+helt gratis
+Du køber
+af 
+og sælger modtager 
+M
+Vælg grund du vil sælge du skal sælge grunde for
+M for at betale din afgift"
