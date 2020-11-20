@@ -172,7 +172,7 @@ public class FieldController {
      public void chanceCardBuyProperty(Player player, PlayerController playerController, GUIView guiView) {
          Property property = getProperty(player);
 
-         if (getPropertyTaken() >= 4) {
+         if (getPropertyTaken() >= 16) {
 
                  for (Player tempPlayer : playerController.getPlayerArray()) {
 

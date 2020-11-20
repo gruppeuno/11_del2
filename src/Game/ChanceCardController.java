@@ -378,7 +378,7 @@ public class ChanceCardController {
 
         tempMove = player.getFieldNumber();
 
-       int propertyAvailArr[] = {1,2,4,5,7,8,10,11,13,14,16,17,19,20,22,23};
+       int[] propertyAvailArr = {1,2,4,5,7,8,10,11,13,14,16,17,19,20,22,23};
        String arrOut = "";
 
        for (int availProp : propertyAvailArr) {
