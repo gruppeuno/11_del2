@@ -1,6 +1,7 @@
 package Game;
 
 import Game.Fields.Property;
+import Game.View.PlayerControllerMessages;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,6 +17,7 @@ public class PlayerController {
     private int numberOfPlayers;
     private Scanner scan = new Scanner(System.in);
     private Player[] playerArray;
+    PlayerControllerMessages playerControllerMessages = new PlayerControllerMessages();
 
     /**
      * kører for-loop og scanner hver spillers
@@ -25,19 +27,19 @@ public class PlayerController {
         numberOfPlayers();
         createPlayers();
         setStartBalance();
-        System.out.println("YNGSTE SPILLER! du er spiller 1");
+        System.out.println(playerControllerMessages.number(1));
         for (int i = 0; i < playerArray.length; i++) {
             int nr = i + 1;
-            System.out.println("spiller " + nr + " indtast dit navn:");
+            System.out.println(playerControllerMessages.number(2) + nr + " " + playerControllerMessages.number(3));
             String currentName = scan.next();
 
             while (checkPlayerName(currentName, playerArray)) {
-                System.out.print("Ugyldigt navn! prøv igen! (3-12 bogstaver) \nNavn må ikke være ens");
+                System.out.print(playerControllerMessages.number(4) + "\n" + playerControllerMessages.number(5));
                 currentName = scan.next();
             }
             playerArray[i].setPlayerName(currentName.toUpperCase());
         }
-        System.out.println("========================================\n");
+        System.out.println(playerControllerMessages.number(6)+ "\n");
     }
 
     /**
@@ -48,18 +50,18 @@ public class PlayerController {
         final int MAX = 4;
         final int MIN = 2;
         //While loop til at sikre at der er indtastet mellem 2-4 spillere
-        System.out.println("Indtast antal spillere (2-4) :");
+        System.out.println(playerControllerMessages.number(7));
         do {
             while (!scan.hasNextInt()) {
-                System.out.println("Ugyldigt input. Indtast et antal spillere mellem 2-4");
+                System.out.println(playerControllerMessages.number(8));
                 scan.next();
             }
             numberOfPlayers = scan.nextInt();
 
             if (numberOfPlayers < MIN || numberOfPlayers > MAX)
-                System.out.println("Ugyldigt antal spillere. Indtast et antal spillere mellem 2-4");
+                System.out.println(playerControllerMessages.number(9));
         } while (numberOfPlayers < MIN || numberOfPlayers > MAX);
-        System.out.println("antal spillere: " + numberOfPlayers + "\n");
+        System.out.println(playerControllerMessages.number(10) + numberOfPlayers + "\n");
     }
 
     /**
