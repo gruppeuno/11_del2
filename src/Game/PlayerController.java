@@ -32,7 +32,7 @@ public class PlayerController {
             String currentName = scan.next();
 
             while (checkPlayerName(currentName, playerArray)) {
-                System.out.print("Ugyldigt navn! prøv igen! (3-12 bogstaver)");
+                System.out.print("Ugyldigt navn! prøv igen! (3-12 bogstaver) \nNavn må ikke være ens");
                 currentName = scan.next();
             }
             playerArray[i].setPlayerName(currentName.toUpperCase());
