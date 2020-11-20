@@ -119,7 +119,7 @@ public class ChanceCardController {
             default:
                 System.out.println(ccm.number(2));
         }
-        if (i >= (chanceArray.length - 1)) {
+        if (i > (chanceArray.length - 1)) {
             i = 0;
         } else {
             i++;
