@@ -27,7 +27,7 @@ public class PlayerController {
         System.out.println(playerControllerMessages.number(1));
         for (int i = 0; i < playerArray.length; i++) {
             int nr = i + 1;
-            System.out.println(playerControllerMessages.number(2) + nr + " " + playerControllerMessages.number(3));
+            System.out.println(playerControllerMessages.number(2) + " " + nr + " " + playerControllerMessages.number(3));
             String currentName = scan.next();
 
             while (checkPlayerName(currentName, playerArray)) {
