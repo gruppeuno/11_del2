@@ -7,9 +7,9 @@ public class FieldPropertyNames extends Messages {
 
     private static FieldPropertyNames fieldPropertyNames;
 
-    public static FieldPropertyNames instanceOf(){
+    public static FieldPropertyNames instanceOf() {
 
-        if (fieldPropertyNames == null){
+        if (fieldPropertyNames == null) {
             fieldPropertyNames = new FieldPropertyNames();
         }
         return fieldPropertyNames;
@@ -22,7 +22,6 @@ public class FieldPropertyNames extends Messages {
         } else {
             readFromFile(totalReadFieldNameMessages,"Textfiles/FieldPropertyNames.txt");
         }
-    }
 
     @Override
     public String number(int n) {
