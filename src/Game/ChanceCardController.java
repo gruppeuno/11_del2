@@ -1,6 +1,7 @@
 package Game;
 
 import Game.Fields.Property;
+import Game.View.ChanceCardMessages;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -8,18 +9,18 @@ import java.util.Scanner;
 //TODO: der bliver ikke købt en grund når man lander 5 felter fremmme
 public class ChanceCardController {
 
-
-
     private static boolean cardUse;
     private int i;
     private int tempMove;
+    ChanceCardMessages ccm = new ChanceCardMessages();
 
     private int[] chanceArray;
 
     public ChanceCardController() {
         cardUse = false;
         i = 0;
-        chanceArray = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+        chanceArray = new int[]{1,2};
+        //chanceArray = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
     }
 
     //Tager vores arrays indhold, og sætter det i en tilfældig rækkefølge.
@@ -51,7 +52,7 @@ public class ChanceCardController {
 
     public void chanceCard(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
 
-        System.out.println("C H A N C E K O R T");
+        System.out.println(ccm.number(1));
 
         switch (chanceArray[i]) {
 
@@ -116,9 +117,9 @@ public class ChanceCardController {
                 chancekort20(player, playerController, fieldController, guiView);
                 break;
             default:
-                System.out.println("Der skete en fejl");
+                System.out.println(ccm.number(2));
         }
-        if (i > (chanceArray.length - 1)) {
+        if (i >= (chanceArray.length - 1)) {
             i = 0;
         } else {
             i++;
@@ -126,41 +127,41 @@ public class ChanceCardController {
 }
     private void chancekort1 (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         Player players [] = playerController.getPlayerArray();
-        System.out.println( players[0].getPlayerName() + " " + "NÆSTE TUR skal du drøne frem og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n");
+        System.out.println(players[0].getPlayerName() + " " + ccm.number(16) + " " + ccm.number(17) + ccm.number(21) + "\n" + ccm.number(22) + "\n" + ccm.number(4) + "\n" + ccm.number(5) + "\n");
         players[0].setSelectFieldCard(true);
         i++;
         chanceCard(player, playerController, fieldController, guiView);
     }
 
     private void chancekort2(Player player) {
-        System.out.println(">>Ryk til START<< \nmodtag 2M");
+        System.out.println(ccm.number(5)+ "\n" + ccm.number(6));
         moveToStart(player);
         addBank(player, 2);
     }
 
     private void chancekort3(Player player, PlayerController playerController) {
-        System.out.println(">>Ryk OP TIL 5 felter frem<<");
+        System.out.println(ccm.number(7));
         moveFieldPLayerSelect(player, 1, 5, playerController);
     }
 
     private void chancekort4(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
-        System.out.println(">>GRATIS FELT<<\nRyk frem til ORANGE felt\nHvis det er ledigt, får du det GRATIS!\nEllers BETAL til ejeren:(");
+        System.out.println(ccm.number(8) +"\n" + ccm.number(9) + ccm.number(29)+ " " + ccm.number(34) + "\n" + ccm.number(10) + "\n" + ccm.number(11));
 
-        moveSpecificFieldRange(player, "Orange", 10, 11);
+        moveSpecificFieldRange(player, ccm.number(37), 10, 11);
         takeFreeProperty(player, playerController, fieldController, guiView);
     }
 
     private void chancekort5(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         String valg;
 
-        String ryk = "ryk";
-        String traek = "træk";
+        String ryk = ccm.number(12);
+        String traek = ccm.number(13);
 
-        System.out.println("RYK 1 felt frem, eller TRÆK nyt chancekort!");
+        System.out.println(ccm.number(14));
 
         Scanner scan = new Scanner(System.in);
         do {
-            System.out.println("Skriv \"RYK\" eller \"TRÆK\"");
+            System.out.println(ccm.number(15));
             valg = scan.nextLine();
         }
         while (!((traek.equals(valg.toLowerCase())) || (ryk.equals(valg.toLowerCase()))));
@@ -175,20 +176,19 @@ public class ChanceCardController {
 
     private void chancekort6 (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         Player players [] = playerController.getPlayerArray();
-        System.out.println(players[1].getPlayerName() + " NÆSTE TUR skal du sejle frem og KØBE det første ledige felt du lander på!\nHvis der ikke er nogen ledige, så køb fra en anden spiller!"+
-                "\nE K S T R A   C H A N C E K O R T");
+        System.out.println(players[1].getPlayerName() + " " + ccm.number(16) + " " + ccm.number(18) + ccm.number(21) + "\n" + ccm.number(22) + "\n" + ccm.number(4) + "\n" + ccm.number(5) + "\n");
         players[1].setSelectFieldCard(true);
         i++;
         chanceCard(player, playerController, fieldController, guiView);
     }
 
     private void chancekort7(Player player) {
-        System.out.println("ÆV du har spist for meget slik :( \nBetal 2M til banken");
+        System.out.println(ccm.number(23)+ "\n" + ccm.number(24));
         subBank(player, 2);
     }
 
     private void chancekort8 (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
-        System.out.println(">>GRATIS FELT<<\nRyk frem til ORANGE eller GRØNT felt\nHvis det er ledigt får du det GRATIS!\nEllers BETAL til ejeren :(");
+        System.out.println(ccm.number(8) + "\n" + ccm.number(9) + ccm.number(29) + " " + ccm.number(31) + " " + ccm.number(32) + ccm.number(34) + "\n " + ccm.number(35) + "\n" + ccm.number(36));
         moveSpecificFieldRange(player, "Orange", 10, 11, "Grøn", 19, 20);
         takeFreeProperty(player, playerController, fieldController, guiView);
     }
@@ -310,7 +310,7 @@ public class ChanceCardController {
 
         do {
             System.out.println("VÆLG " + Color + " felt: " + minMove + " eller " + maxMove);
-            System.out.print("\nSkriv hvilket felt du ønsker her: ");
+            System.out.print("\nSkriv ønsket felt nummer: ");
             move = scan.nextInt();
         }
         while (!(minMove == move || maxMove == move));
@@ -388,7 +388,7 @@ public class ChanceCardController {
        System.out.println("Mulige felter du kan vælge i mellem: " + arrOut);
 
        Scanner scan = new Scanner(System.in);
-       System.out.print("Skriv her hvilket felt du vil lande på: ");
+       System.out.print("Skriv ønsket felts tal: ");
        player.setFieldNumber(scan.nextInt());
 
        checkOwnership(player, playerController, fieldController, guiView);}

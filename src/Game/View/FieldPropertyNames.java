@@ -3,7 +3,8 @@ package Game.View;
 import Game.Fields.Field;
 
 public class FieldPropertyNames extends Messages {
-    private boolean english = true;
+
+    private boolean english = false;
 
     private String[] totalReadFieldNameMessages = new String[25];
 
@@ -18,7 +19,7 @@ public class FieldPropertyNames extends Messages {
     }
 
     private FieldPropertyNames(){
-        if (english == true) {
+        if (LanguageController.instanceOf().loadLanguageChoice() == true) {
             readFromFile(totalReadFieldNameMessages, "Textfiles/FieldPropertyNamesENG.txt");
         } else {
             readFromFile(totalReadFieldNameMessages, "Textfiles/FieldPropertyNames.txt");
@@ -34,8 +35,5 @@ public class FieldPropertyNames extends Messages {
             }
         }
 
-        public void setEnglish() {
-            english = true;
-        }
     }
 
