@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class FieldController {
 
     FieldMessages fm = new FieldMessages();
-    FieldPropertyNames fp = new FieldPropertyNames();
 
     private int propertyTakenCounter = 0;
 
@@ -46,10 +45,10 @@ public class FieldController {
 
     //Når en spiller lander på et felt
 
-    public void landOnField(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
+    public void landOnField(Player player, PlayerController playerController, GUIView guiView) {
         isJustLeftJail(player);
 
-        chanceCardController.selectMoveProperty(player, playerController, fieldController, guiView);
+        chanceCardController.selectMoveProperty(player, playerController, this, guiView);
 
         Field field = fields[player.getFieldNumber()];
         System.out.println(field.getMsg());
@@ -85,7 +84,7 @@ public class FieldController {
         int fieldPrice = property.getFieldPrice();
 
         if (playerBalance < fieldPrice) {
-            sellProperty(player, fieldPrice, guiView, playerController, property);
+            sellProperty(player, fieldPrice, guiView);
         }
 
             player.getBankAccount().subBalance(fieldPrice);
@@ -106,7 +105,7 @@ public class FieldController {
         Player propertyOwner = playerController.getPlayerByName(property.getOwnerName());
 
         if (playerBalance < fieldRent) {
-            sellProperty(player, fieldRent, guiView, playerController, property);
+            sellProperty(player, fieldRent, guiView);
         }
 
             player.getBankAccount().subBalance(fieldRent);
@@ -169,6 +168,7 @@ public class FieldController {
         return propertyTakenCounter;
      }
 
+     //TODO: Skal ligge i chancecardcontroller
      public void chanceCardBuyProperty(Player player, PlayerController playerController, GUIView guiView) {
          Property property = getProperty(player);
 
@@ -196,10 +196,9 @@ public class FieldController {
 
          return (Property) fields[i];
      }
-    //TODO: metode til at fjerne property, spørg hjælpelærer, IKKE FÆRDIG
-    public void sellProperty(Player player, int payment, GUIView guiView, PlayerController playerController, Property property) {
-        String[] propertiesAsStringArray = new String[player.getPropertiesOwned().size()];
 
+    public void sellProperty(Player player, int payment, GUIView guiView) {
+        String[] propertiesAsStringArray = new String[player.getPropertiesOwned().size()];
         int missingPayment = payment - player.getBankAccount().getBalance();
 
         if (player.getTotalPropertyValue() > missingPayment) {
@@ -226,7 +225,7 @@ public class FieldController {
                         }
                     }
                 }
-            } while (player.getBankAccount().getBalance() < payment);
+            } while (player.getBankAccount().getBalance() <= payment);
         }
         if (player.getPropertiesOwned().size() == 0 && player.getBankAccount().getBalance() == 0)
             player.getBankAccount().setBankrupt(true);

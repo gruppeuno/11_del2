@@ -7,7 +7,7 @@ public class MessageController {
 
     //GameController Messages
     public void print(String string) {
-        System.out.println(string);
+        System.out.println("\n" + string);
     }
 
     public String playerDieRollMsg(String currentPlayerName, int dieValue) {

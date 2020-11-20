@@ -18,7 +18,7 @@ public class GameController {
     final private Die die = new Die();
     final private Scanner scan = new Scanner(System.in);
     final private GUIView guiView = new GUIView();
-    MessageController m = new MessageController();
+    final private MessageController m = new MessageController();
 
     /**
      * Main metode, kører spillet
@@ -36,19 +36,24 @@ public class GameController {
         guiView.createGUIPlayers(playerController.getPlayerArray(), playerController.getPlayerArray()[0].getBankAccount().getBalance());
         startMessage();
 
+        Player currentPlayer;
+        String currentPlayerName;
+        int nextPlayerTurnCount;
+        int previousField;
+
         while (!playerController.getPlayerArray()[turnCount].getBankAccount().getBankrupt()) {
 
             //Fokortelse af variabler
-            Player currentPlayer = playerController.getPlayerArray()[turnCount];
-            String currentPlayerName = currentPlayer.getPlayerName();
-            int nextPlayerTurnCount = (turnCount + 1) % playerController.getPlayerArray().length;
-            int previousField = currentPlayer.getFieldNumber();
+            currentPlayer = playerController.getPlayerArray()[turnCount];
+            currentPlayerName = currentPlayer.getPlayerName();
+            nextPlayerTurnCount = (turnCount + 1) % playerController.getPlayerArray().length;
+            previousField = currentPlayer.getFieldNumber();
 
-            //loop til afvente spillerens roll commando i consollen
-            //playerRollInput();
+
             //ruller terninger med RaffleCup samt opdaterer spillerens position
             //TODO: rigtig terning
             die.roll();
+            //TODO: bedre navngivning til "m"
             m.print(m.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
 
             //TODO: testterninger, SKAL KALDE SPILLERE "GAB" OG "SEB" FOR AT DET VIRKER (til test af sellProperty)
@@ -60,9 +65,10 @@ public class GameController {
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), false);
 
             playerController.movePlayer(currentPlayer, die.getDiceValue());
+
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), true);
 
-            fieldController.landOnField(currentPlayer, playerController, fieldController, guiView);
+            fieldController.landOnField(currentPlayer, playerController, guiView);
 
             guiView.getMyGUI().getFields()[previousField].setCar(guiView.getGUIPlayer(turnCount), false);
 
