@@ -3,7 +3,7 @@ package Game.View;
 import Game.Fields.Field;
 
 public class FieldPropertyNames extends Messages {
-    private boolean english = false;
+    private boolean english = true;
 
     private String[] totalReadFieldNameMessages = new String[24];
 
