@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class FieldController {
 
     FieldMessages fm = new FieldMessages();
-    FieldPropertyNames fp = new FieldPropertyNames();
 
     private int propertyTakenCounter = 0;
 

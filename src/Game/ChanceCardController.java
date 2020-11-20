@@ -1,8 +1,6 @@
 package Game;
 
-import Game.Fields.Property;
 import Game.View.ChanceCardMessages;
-
 import java.util.Random;
 import java.util.Scanner;
 

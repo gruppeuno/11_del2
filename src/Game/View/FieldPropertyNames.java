@@ -1,6 +1,5 @@
 package Game.View;
 
-import Game.Fields.Field;
 
 public class FieldPropertyNames extends Messages {
 

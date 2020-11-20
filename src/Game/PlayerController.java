@@ -1,9 +1,6 @@
 package Game;
 
-import Game.Fields.Property;
 import Game.View.PlayerControllerMessages;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
