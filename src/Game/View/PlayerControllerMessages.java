@@ -6,7 +6,7 @@ public class PlayerControllerMessages extends Messages {
 
     public PlayerControllerMessages(){
         if (LanguageController.instanceOf().loadLanguageChoice() == true) {
-            readFromFile(totalReadPlayerController, "Textfiles/FieldPropertyNamesENG.txt");
+            readFromFile(totalReadPlayerController, "Textfiles/PlayerController.txt");
         } else {
             readFromFile(totalReadPlayerController, "Textfiles/PlayerController.txt");
         }
