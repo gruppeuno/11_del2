@@ -9,6 +9,8 @@ import java.util.Scanner;
 //TODO: der bliver ikke købt en grund når man lander 5 felter fremmme
 public class ChanceCardController {
 
+
+
     private static boolean cardUse;
     private int i;
     private int tempMove;
@@ -19,8 +21,7 @@ public class ChanceCardController {
     public ChanceCardController() {
         cardUse = false;
         i = 0;
-        chanceArray = new int[]{1,2};
-        //chanceArray = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+        chanceArray = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
     }
 
     //Tager vores arrays indhold, og sætter det i en tilfældig rækkefølge.
@@ -108,7 +109,7 @@ public class ChanceCardController {
                 chancekort17(player, playerController, fieldController, guiView);
                 break;
             case 18://Chancekort 18
-                chancekort18(player);
+                chancekort18(player, playerController, fieldController, guiView);
                 break;
             case 19://Chancekort 19
                 chancekort19(player, playerController, fieldController, guiView);
@@ -261,8 +262,10 @@ public class ChanceCardController {
         takeFreeProperty(player, playerController, fieldController, guiView);
     }
 
-    private void chancekort18(Player player) {
+    private void chancekort18(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
+        System.out.println("Ryk frem til Skaterparken, hvis ingen ejer den får du den ellers skal du betale leje!");
         moveSpecificField(player, 10);
+        takeFreeProperty(player, playerController, fieldController, guiView);
     }
 
     private void chancekort19(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
@@ -388,23 +391,26 @@ public class ChanceCardController {
        System.out.println("Mulige felter du kan vælge i mellem: " + arrOut);
 
        Scanner scan = new Scanner(System.in);
-       System.out.print("Skriv ønsket felts tal: ");
-       player.setFieldNumber(scan.nextInt());
 
-       checkOwnership(player, playerController, fieldController, guiView);}
+       boolean withinArray = false;
+       System.out.print("Skriv her hvilket felt du vil lande på: ");
+       int move = scan.nextInt();
+
+       for (i = 0; i < propertyAvailArr.length; i++) {
+           if (move == propertyAvailArr[i]) {
+               withinArray = true;
+           }
+       }
+       if (!withinArray) {selectMoveProperty(player, playerController,fieldController, guiView);}
+
+
+       player.setFieldNumber(move);
+
+       fieldController.checkOwnership(player, playerController, fieldController, guiView);}
    }
 
-   public void checkOwnership (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
-
-        Property property = fieldController.getProperty(player);
-
-        if (property.getOwnerName() == null) {chooseProperty(player, playerController, fieldController, guiView);}
-        else if (property.getOwnerName().equals(player.getPlayerName())) {
-            System.out.println("Du skal vælge en grund du ikke selv ejer");
-            player.setFieldNumber(tempMove);
-            selectMoveProperty(player, playerController, fieldController, guiView);
-        }
-        else {chooseProperty(player, playerController, fieldController, guiView);}
+   public int getTempMove() {
+        return tempMove;
    }
 
    public void chooseProperty (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
