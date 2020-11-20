@@ -1,3 +1,4 @@
+/*
 package Game.View;
 
 public class LanguageController {
@@ -11,3 +12,4 @@ public class LanguageController {
     }
 
 }
+*/
