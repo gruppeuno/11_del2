@@ -1,12 +1,11 @@
 package Game.View;
 
 public class PlayerControllerMessages extends Messages {
-    private boolean english = false;
 
     private String[] totalReadPlayerController = new String[10];
 
     public PlayerControllerMessages(){
-        if (english == true) {
+        if (LanguageController.instanceOf().loadLanguageChoice() == true) {
             readFromFile(totalReadPlayerController, "Textfiles/FieldPropertyNamesENG.txt");
         } else {
             readFromFile(totalReadPlayerController, "Textfiles/PlayerController.txt");
@@ -22,7 +21,4 @@ public class PlayerControllerMessages extends Messages {
         }
     }
 
-    public void setEnglish() {
-        english = true;
-    }
 }

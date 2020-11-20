@@ -1,6 +1,5 @@
 
 package Game.View;
-import org.intellij.lang.annotations.Language;
 
 import java.util.Scanner;
 
