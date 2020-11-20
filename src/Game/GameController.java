@@ -26,6 +26,8 @@ public class GameController {
      */
     public void gameController() {
 
+        LanguageController.instanceOf();
+
         //TODO: Rigtige metode til at køre med 2-4 spillere samt tildele navne
         playerController.playerCreator();
         fieldController.doRandomize();

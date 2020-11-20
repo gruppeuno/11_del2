@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class LanguageController {
 
     private boolean english = false;
-    private String EN;
+    private String input;
     private static LanguageController languageController = null;
 
     public static LanguageController instanceOf(){
@@ -21,11 +21,11 @@ public class LanguageController {
     private LanguageController(){
 
         Scanner lc = new Scanner(System.in);
-        EN = lc.nextLine();
+        input = lc.nextLine();
 
-        System.out.println("EN for english" );
+        System.out.println("Type EN for english" );
 
-        if (EN.toLowerCase().equals("EN")){
+        if (input.toLowerCase().equals("EN")){
             setEnglish();
         }
     }
