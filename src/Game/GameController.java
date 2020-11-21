@@ -52,6 +52,7 @@ public class GameController {
             //loop til afvente spillerens roll commando i consollen
             //playerRollInput();
             //ruller terninger med RaffleCup samt opdaterer spillerens position
+            guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), false);
             //TODO: rigtig terning
             die.roll();
             m.print(m.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
@@ -61,8 +62,6 @@ public class GameController {
             //die.rollPlayer0();
             //else if(currentPlayerName.equals("SEB"))
             //die.rollPlayer1();
-
-            guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), false);
 
             playerController.movePlayer(currentPlayer, die.getDiceValue());
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), true);
@@ -75,6 +74,7 @@ public class GameController {
 
             guiView.removeAllCarsFromChanceFields(turnCount);
             guiView.removeCarFromJailField(turnCount);
+
 
             //Terningernes værdier sættes
             guiView.getMyGUI().setDie(die.getDiceValue());
