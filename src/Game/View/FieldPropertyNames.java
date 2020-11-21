@@ -17,7 +17,7 @@ public class FieldPropertyNames extends Messages {
         return fieldPropertyNames;
     }
 
-    private FieldPropertyNames(){
+    public FieldPropertyNames(){
         if (english == true) {
             readFromFile(totalReadFieldNameMessages, "Textfiles/FieldPropertyNamesENG.txt");
         } else {
