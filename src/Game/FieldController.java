@@ -127,6 +127,13 @@ public class FieldController {
             }
         }
     }
+    public boolean getCheckIfProperty (Player player) {
+        Field field = fields[player.getFieldNumber()];
+        if (field instanceof Property) {
+            return true;
+        }
+        return false;
+    }
 
     public Field[] getFields() {
         return fields;

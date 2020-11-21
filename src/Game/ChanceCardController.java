@@ -1,6 +1,9 @@
 package Game;
 
+import Game.Fields.Property;
 import Game.View.ChanceCardMessages;
+import gui_main.GUI;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -62,7 +65,7 @@ public class ChanceCardController {
                 chancekort2(player);
                 break;
             case 3: //Chance Kort 3
-                chancekort3(player, playerController);
+                chancekort3(player, playerController, fieldController, guiView);
                 break;
             case 4: //Chance Kort 4
                 chancekort4(player, playerController, fieldController, guiView);
@@ -138,9 +141,17 @@ public class ChanceCardController {
         addBank(player, 2);
     }
 
-    private void chancekort3(Player player, PlayerController playerController) {
+    private void chancekort3(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         System.out.println(ccm.number(7));
         moveFieldPLayerSelect(player, 1, 5, playerController);
+
+        if (fieldController.getCheckIfProperty(player)) {
+        fieldController.buyProperty(player, playerController, guiView);}
+
+        else {
+            System.out.println(player.getPlayerName() + " er blevet rykket.");
+        }
+
     }
 
     private void chancekort4(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
