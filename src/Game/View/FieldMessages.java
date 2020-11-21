@@ -6,7 +6,7 @@ public class FieldMessages extends Messages {
 
     public FieldMessages() {
 
-        if (LanguageController.instanceOf().loadLanguageChoice() == true){
+        if (LanguageController.instanceOf().getEnglish() == true){
             readFromFile(totalReadFieldMessages,"Textfiles/FieldMessagesENG.txt");
         } else {
             readFromFile(totalReadFieldMessages,"Textfiles/FieldMessages.txt");

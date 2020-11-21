@@ -12,21 +12,20 @@ import java.util.Scanner;
 
 public class GameController {
 
+    ChangeLanguage c = new ChangeLanguage();
     private int turnCount;
+    final private GUIView guiView = new GUIView();
     //skaber nye objekter af Field, RaffleCup og PlayerCreator
     final private FieldController fieldController = new FieldController();
     final private PlayerController playerController = new PlayerController();
     final private Die die = new Die();
     final private Scanner scan = new Scanner(System.in);
-    final private GUIView guiView = new GUIView();
     MessageController m = new MessageController();
 
     /**
      * Main metode, kører spillet
      */
     public void gameController() {
-
-        LanguageController.instanceOf();
 
         //TODO: Rigtige metode til at køre med 2-4 spillere samt tildele navne
         playerController.playerCreator();
@@ -152,4 +151,5 @@ public class GameController {
 
         }
     }
+
 }

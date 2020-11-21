@@ -16,7 +16,7 @@ public class FieldPropertyNames extends Messages {
     }
 
     private FieldPropertyNames(){
-        if (LanguageController.instanceOf().loadLanguageChoice() == true) {
+        if (LanguageController.instanceOf().getEnglish() == true) {
             readFromFile(totalReadFieldNameMessages, "Textfiles/FieldPropertyNamesENG.txt");
         } else {
             readFromFile(totalReadFieldNameMessages, "Textfiles/FieldPropertyNames.txt");

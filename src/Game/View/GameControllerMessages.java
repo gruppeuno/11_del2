@@ -6,7 +6,7 @@ public class GameControllerMessages extends Messages {
 
     public GameControllerMessages() {
 
-        if (LanguageController.instanceOf().loadLanguageChoice() == true){
+        if (LanguageController.instanceOf().getEnglish() == true){
             readFromFile(totalGameMessages,"Textfiles/GameControllerMessagesENG.txt");
         } else {
             readFromFile(totalGameMessages,"Textfiles/GameControllerMessages.txt");
