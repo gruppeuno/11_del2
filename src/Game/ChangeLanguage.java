@@ -11,7 +11,7 @@ public class ChangeLanguage {
     }
 
     public void checkLanguage(){
-        System.out.println("Type EN for english" );
+        System.out.println("Tast DA for dansk og EN for engelsk" );
 
         Scanner lc = new Scanner(System.in);
         String input = lc.nextLine();
