@@ -3,11 +3,10 @@ package Game.View;
 public class ChanceCardMessages extends Messages{
 
     private String[] totalReadFieldMessages = new String[59];
-    private boolean english = false;
 
     public ChanceCardMessages() {
 
-        if (english == true){
+        if (LanguageController.instanceOf().getEnglish() == true){
             readFromFile(totalReadFieldMessages,"Textfiles/ChanceCardMessages.txt");
         } else {
             readFromFile(totalReadFieldMessages,"Textfiles/ChanceCardMessages.txt");

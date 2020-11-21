@@ -12,21 +12,22 @@ import java.util.Scanner;
 
 public class GameController {
 
+    ChangeLanguage c = new ChangeLanguage();
     private int turnCount;
     //skaber nye objekter af Field, RaffleCup og PlayerCreator
     final private FieldController fieldController = new FieldController();
     final private PlayerController playerController = new PlayerController();
     final private Die die = new Die();
     final private Scanner scan = new Scanner(System.in);
-    private GUIView guiView;
+    final private GUIView guiView = new GUIView();
     MessageController m = new MessageController();
 
     /**
      * Main metode, kører spillet
      */
     public void gameController() {
-        checkLanguage();
-        guiView = new GUIView();
+
+        LanguageController.instanceOf();
 
         //TODO: Rigtige metode til at køre med 2-4 spillere samt tildele navne
         playerController.playerCreator();
@@ -152,19 +153,4 @@ public class GameController {
 
         }
     }
-
-    public void checkLanguage(){
-
-        System.out.println("Type EN for english" );
-
-        Scanner lc = new Scanner(System.in);
-        String input = lc.nextLine();
-
-        if (input.toLowerCase().equals("en")){
-            LanguageController.instanceOf().loadLanguageChoice();
-        } else {
-
-        }
-    }
-
 }

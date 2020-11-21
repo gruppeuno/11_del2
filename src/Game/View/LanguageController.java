@@ -18,7 +18,7 @@ public class LanguageController {
 
     }
 
-    public void loadLanguageChoice(){
+    public void setEnglish(){
         english = true;
     }
 
