@@ -1,5 +1,7 @@
 package Game;
 
+import Game.View.LanguageController;
+
 import java.util.Scanner;
 
 /**
@@ -23,6 +25,8 @@ public class GameController {
      * Main metode, kører spillet
      */
     public void gameController() {
+
+        LanguageController.instanceOf();
 
         //TODO: Rigtige metode til at køre med 2-4 spillere samt tildele navne
         playerController.playerCreator();

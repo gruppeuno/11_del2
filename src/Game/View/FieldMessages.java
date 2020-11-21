@@ -3,11 +3,10 @@ package Game.View;
 public class FieldMessages extends Messages {
 
     private String[] totalReadFieldMessages = new String[24];
-    private boolean english = true;
 
     public FieldMessages() {
 
-        if (english == true){
+        if (LanguageController.instanceOf().loadLanguageChoice() == true){
             readFromFile(totalReadFieldMessages,"Textfiles/FieldMessagesENG.txt");
         } else {
             readFromFile(totalReadFieldMessages,"Textfiles/FieldMessages.txt");
@@ -21,9 +20,6 @@ public class FieldMessages extends Messages {
         } else {
             return "findes ikke";
         }
-    }
-
-    public void setEnglish(){
     }
 
     }
