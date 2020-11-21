@@ -3,11 +3,10 @@ package Game.View;
 public class GameControllerMessages extends Messages {
 
     private String[] totalGameMessages = new String[14];
-    private boolean english = true;
 
     public GameControllerMessages() {
 
-        if (english == true){
+        if (LanguageController.instanceOf().getEnglish() == true){
             readFromFile(totalGameMessages,"Textfiles/GameControllerMessagesENG.txt");
         } else {
             readFromFile(totalGameMessages,"Textfiles/GameControllerMessages.txt");
@@ -22,4 +21,6 @@ public class GameControllerMessages extends Messages {
             return "findes ikke";
         }
     }
+
+
 }

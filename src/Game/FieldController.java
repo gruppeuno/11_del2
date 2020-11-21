@@ -5,7 +5,6 @@ import Game.Fields.ChanceCard;
 import Game.View.FieldMessages;
 import Game.View.FieldPropertyNames;
 import Game.View.FieldcontrollerMessages;
-import gui_main.GUI;
 
 import java.util.ArrayList;
 
@@ -16,7 +15,7 @@ public class FieldController {
 
     private int propertyTakenCounter = 0;
 
-    final Field[] fields = {
+    public final Field[] fields = {
             new Start(FieldPropertyNames.instanceOf().number(1),0, fm.number(1)),
             new Property(FieldPropertyNames.instanceOf().number(2), 1, 1, fm.number(2), "brown"),
             new Property(FieldPropertyNames.instanceOf().number(3), 2, 1, fm.number(3), "brown"),
@@ -78,10 +77,12 @@ public class FieldController {
 
             //feltet er ikke ejet, køb felt
         else if (!property.getOwnedByPlayer())
-            buyProperty(player, playerController, property, guiView);
+            buyProperty(player, playerController, guiView);
     }
 
-    public void buyProperty(Player player, PlayerController playerController, Property property, GUIView guiView) {
+    public void buyProperty(Player player, PlayerController playerController, GUIView guiView) {
+        Property property = getPropertyInstance(player);
+
         int playerBalance = player.getBankAccount().getBalance();
         int fieldPrice = property.getFieldPrice();
 
@@ -128,6 +129,13 @@ public class FieldController {
             }
         }
     }
+    public boolean getCheckIfProperty (Player player) {
+        Field field = fields[player.getFieldNumber()];
+        if (field instanceof Property) {
+            return true;
+        }
+        return false;
+    }
 
     public Field[] getFields() {
         return fields;
@@ -136,6 +144,7 @@ public class FieldController {
     public void isJustLeftJail(Player player) {
         if (player.getIsInPrison() == true) {
             player.freeOfJail();
+
         }
     }
     //TODO: PlayerController og Jail bliver ikke brugt her
@@ -150,7 +159,7 @@ public class FieldController {
     }
 
      public void freeProperty(Player player, PlayerController playerController, GUIView guiView){
-         Property property = getProperty(player);
+         Property property = getPropertyInstance(player);
          if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName())) {
              payRent(player, playerController, property, guiView);}
          else if (!(property.getOwnerName() == null) && property.getOwnerName().equals(player.getPlayerName())) {
@@ -171,7 +180,7 @@ public class FieldController {
      }
 
      public void chanceCardBuyProperty(Player player, PlayerController playerController, GUIView guiView) {
-         Property property = getProperty(player);
+         Property property = getPropertyInstance(player);
 
          if (getPropertyTaken() >= 16) {
 
@@ -187,15 +196,28 @@ public class FieldController {
 
          }
          else if (!property.getOwnedByPlayer()) {
-             buyProperty(player, playerController, property, guiView);
+             buyProperty(player, playerController, guiView);
          }
      }
 
+    public void checkOwnership (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
 
-     public Property getProperty(Player player) {
+        Property property = getPropertyInstance(player);
+
+        if (property.getOwnerName() == null) {chanceCardController.chooseProperty(player, playerController, fieldController, guiView);}
+        else if (property.getOwnerName().equals(player.getPlayerName())) {
+            System.out.println("Du skal vælge en grund du ikke selv ejer");
+            player.setFieldNumber(chanceCardController.getTempMove());
+            chanceCardController.selectMoveProperty(player, playerController, fieldController, guiView);
+        }
+        else {chanceCardController.chooseProperty(player, playerController, fieldController, guiView);}
+    }
+
+     public Property getPropertyInstance(Player player) {
          int i = player.getFieldNumber();
+         Property property = (Property) fields[i];
 
-         return (Property) fields[i];
+         return property;
      }
     //TODO: metode til at fjerne property, spørg hjælpelærer, IKKE FÆRDIG
     public void sellProperty(Player player, int payment, GUIView guiView, PlayerController playerController, Property property) {

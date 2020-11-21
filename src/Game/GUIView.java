@@ -1,15 +1,21 @@
 package Game;
 
 import Game.View.FieldPropertyNames;
+import Game.View.LanguageController;
 import gui_fields.*;
 import gui_main.GUI;
 
 import java.awt.*;
+import java.util.Scanner;
 
 public class GUIView {
 
     private GUI_Player[] myPlayers;
-    private GUI gui = new GUI(MY_GUI_FIELDS);
+    private GUI gui;
+
+    public GUIView(){
+        gui = new GUI(MY_GUI_FIELDS);
+    }
 
     public GUI getMyGUI() {
         return gui;

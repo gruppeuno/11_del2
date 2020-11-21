@@ -1,0 +1,10 @@
+YNGSTE SPILLER! du er spiller 1
+spiller
+indtast dit navn:
+Ugyldigt navn! prøv igen! (3-12 bogstaver)
+Navn må ikke være ens
+========================================
+Indtast antal spillere (2-4) :
+Ugyldigt input. Indtast et antal spillere mellem 2-4
+Ugyldigt antal spillere. Indtast et antal spillere mellem 2-4
+antal spillere

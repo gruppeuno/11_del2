@@ -1,15 +1,15 @@
 package Game.View;
 
-public class FieldMessages extends Messages {
+public class ChanceCardMessages extends Messages{
 
-    private String[] totalReadFieldMessages = new String[24];
+    private String[] totalReadFieldMessages = new String[59];
 
-    public FieldMessages() {
+    public ChanceCardMessages() {
 
         if (LanguageController.instanceOf().getEnglish() == true){
-            readFromFile(totalReadFieldMessages,"Textfiles/FieldMessagesENG.txt");
+            readFromFile(totalReadFieldMessages,"Textfiles/ChanceCardMessages.txt");
         } else {
-            readFromFile(totalReadFieldMessages,"Textfiles/FieldMessages.txt");
+            readFromFile(totalReadFieldMessages,"Textfiles/ChanceCardMessages.txt");
         }
     }
 
@@ -21,6 +21,4 @@ public class FieldMessages extends Messages {
             return "findes ikke";
         }
     }
-
-    }
-
+}

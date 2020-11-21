@@ -30,6 +30,8 @@ public class Property extends Field {
         return ownerName;
     }
 
+    public String getName() {return name;}
+
     public void setOwner(String playerName) {
         this.ownerName = playerName;
         this.ownedByPlayer = true;
@@ -66,6 +68,6 @@ public class Property extends Field {
 
     @Override
     public String toString() {
-        return "Ejendom: " + super.name + " Pris: " + fieldPrice + " Felt nummer: " + super.fieldNumber;
+        return "Felt " + super.fieldNumber + ":" + super.name + " : " + fieldPrice + "M";
     }
 }
