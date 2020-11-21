@@ -55,7 +55,7 @@ public class ChanceCardController {
     public void chanceCard(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
 
         System.out.println(ccm.number(1));
-
+        
         switch (chanceArray[i]) {
 
             case 1: //Chance Kort 1
@@ -121,17 +121,22 @@ public class ChanceCardController {
             default:
                 System.out.println(ccm.number(2));
         }
-        if (i > (chanceArray.length - 1)) {
+    nextCard();
+}
+
+    private void nextCard() {
+        if (i >= (chanceArray.length - 1)) {
             i = 0;
         } else {
             i++;
         }
-}
+    }
+
     private void chancekort1 (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         Player players [] = playerController.getPlayerArray();
         System.out.println(players[0].getPlayerName() + " " + ccm.number(16) + " " + ccm.number(17) + ccm.number(21) + "\n" + ccm.number(22) + "\n" + ccm.number(4) + "\n" + ccm.number(5) + "\n");
         players[0].setSelectFieldCard(true);
-        i++;
+        nextCard();
         chanceCard(player, playerController, fieldController, guiView);
     }
 
@@ -180,7 +185,7 @@ public class ChanceCardController {
             moveField(player, 1);
             fieldController.buyProperty(player, playerController, guiView);
         } else if (valg.toLowerCase().equals(traek)) {
-            i++;
+            nextCard();
             chanceCard(player, playerController, fieldController, guiView);
         }
     }
@@ -189,7 +194,7 @@ public class ChanceCardController {
         Player players [] = playerController.getPlayerArray();
         System.out.println(players[1].getPlayerName() + " " + ccm.number(16) + " " + ccm.number(18) + ccm.number(21) + "\n" + ccm.number(22) + "\n" + ccm.number(4) + "\n" + ccm.number(5) + "\n");
         players[1].setSelectFieldCard(true);
-        i++;
+        nextCard();
         chanceCard(player, playerController, fieldController, guiView);
     }
 
@@ -219,7 +224,7 @@ public class ChanceCardController {
         }
 
         if (getJailCardUse() == true) {
-            i++;
+            nextCard();
             chanceCard(player, playerController, fieldController, guiView);
         }
     }
@@ -235,7 +240,7 @@ public class ChanceCardController {
         System.out.println(players[2].getPlayerName() + " NÆSTE TUR skal du liste hen og KØBE det første ledige felt du lander på!\nHvis der ikke er " +
                 "nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n" +"\nE K S T R A   C H A N C E K O R T");
         players[2].setSelectFieldCard(true); }
-        i++;
+        nextCard();
         chanceCard(player, playerController, fieldController, guiView);
     }
 
@@ -245,7 +250,7 @@ public class ChanceCardController {
         System.out.println(players[3].getPlayerName() + " NÆSTE NÆSTE TUR skal du hoppe hen og KØBE det første ledige felt du lander på!\nHvis der ikke er " +
                 "nogen ledige, så køb fra en anden spiller!\nDu får et chancekort mere\n" + "\nE K S T R A   C H A N C E K O R T");
         players[3].setSelectFieldCard(true); }
-        i++;
+        nextCard();
         chanceCard(player, playerController, fieldController, guiView);
     }
 
@@ -382,12 +387,6 @@ public class ChanceCardController {
          fieldController.freeProperty(player, playerController, guiView);
    }
 
-   //Spiller 1 er bil
-    // Spiller 2 er skib
-    // spiller 3 hund
-    // spiller 4 kat
-
-
    public void selectMoveProperty (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
 
         if (player.getSelectFieldCard()) {
@@ -401,7 +400,7 @@ public class ChanceCardController {
 
            arrOut += availProp + " ";
        }
-       System.out.println("Mulige felter du kan vælge i mellem: " + arrOut);
+       System.out.println(player.getPlayerName() + " du kan vælge mellem disse felter: " + arrOut);
 
        Scanner scan = new Scanner(System.in);
 
