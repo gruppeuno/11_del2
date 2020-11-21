@@ -135,6 +135,7 @@ public class FieldController {
     public void isJustLeftJail(Player player) {
         if (player.getIsInPrison() == true) {
             player.freeOfJail();
+
         }
     }
     //TODO: PlayerController og Jail bliver ikke brugt her
