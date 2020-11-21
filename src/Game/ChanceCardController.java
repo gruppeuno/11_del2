@@ -31,11 +31,11 @@ public class ChanceCardController {
         Random rand = new Random();
 
         //TODO: skal testes - Den er blevet testet, bare ikke skrevet ind som en jUnit endnu..
-        for (int i = 0; i < chanceArray.length; i++) {
+        for (int c = 0; c < chanceArray.length; c++) {
             int random = rand.nextInt(chanceArray.length);
             int temp = chanceArray[random];
-            chanceArray[random] = chanceArray[i];
-            chanceArray[i] = temp;
+            chanceArray[random] = chanceArray[c];
+            chanceArray[c] = temp;
         }
     }
 
@@ -408,8 +408,8 @@ public class ChanceCardController {
        System.out.print("Skriv her hvilket felt du vil lande på: ");
        int move = scan.nextInt();
 
-       for (i = 0; i < propertyAvailArr.length; i++) {
-           if (move == propertyAvailArr[i]) {
+       for (int c = 0; c < propertyAvailArr.length; c++) {
+           if (move == propertyAvailArr[c]) {
                withinArray = true;
            }
        }
