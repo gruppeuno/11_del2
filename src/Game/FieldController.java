@@ -4,12 +4,12 @@ import Game.Fields.*;
 import Game.Fields.ChanceCard;
 import Game.View.FieldMessages;
 import Game.View.FieldPropertyNames;
-import Game.View.FieldcontrollerMessages;
+import Game.View.FieldControllerMessages;
 
 import java.util.ArrayList;
 
 public class FieldController {
-    FieldcontrollerMessages fieldcontrollerMessages = new FieldcontrollerMessages();
+    FieldControllerMessages fieldcontrollerMessages = new FieldControllerMessages();
 
     FieldMessages fm = new FieldMessages();
 
@@ -98,7 +98,7 @@ public class FieldController {
 
         if (!player.getBankAccount().getBankrupt()) {
             property.setOwner(player.getPlayerName());
-            System.out.println(fieldcontrollerMessages.number(3) + fieldPrice + fieldcontrollerMessages.number(4));
+            System.out.println(fieldcontrollerMessages.number(3) + " " + fieldPrice + fieldcontrollerMessages.number(4));
         }
     }
 
@@ -115,8 +115,8 @@ public class FieldController {
             propertyOwner.getBankAccount().addBalance(fieldRent);
 
         if (!player.getBankAccount().getBankrupt()) {
-            System.out.println(player.getPlayerName() + fieldcontrollerMessages.number(4) + fieldRent + fieldcontrollerMessages.number(5) + propertyOwner.getPlayerName()
-                    + "\n" + propertyOwner.getPlayerName() + fieldcontrollerMessages.number(6)+ propertyOwner.getBankAccount().getBalance() + fieldcontrollerMessages.number(7));
+            System.out.println(player.getPlayerName() + " " + fieldcontrollerMessages.number(5) + " " + fieldRent + fieldcontrollerMessages.number(6) + " " + propertyOwner.getPlayerName()
+                    + "\n" + propertyOwner.getPlayerName() + " " + fieldcontrollerMessages.number(7) + " " + propertyOwner.getBankAccount().getBalance());
         }
     }
 
@@ -170,7 +170,7 @@ public class FieldController {
                  property.setOwner(player.getPlayerName());
                  player.addPropertyOwned(property);
                  propertyTakenCounter++;
-                 System.out.println(player.getPlayerName() + fieldcontrollerMessages.number(10) + property.getName() + fieldcontrollerMessages.number(11));
+                 System.out.println(player.getPlayerName() + " " + fieldcontrollerMessages.number(10) + " " + property.getName() + " " + fieldcontrollerMessages.number(11));
              }
          }
      }
