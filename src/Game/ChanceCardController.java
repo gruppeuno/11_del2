@@ -125,7 +125,7 @@ public class ChanceCardController {
 }
 
     private void nextCard() {
-        if (i > (chanceArray.length - 1)) {
+        if (i >= (chanceArray.length - 1)) {
             i = 0;
         } else {
             i++;
