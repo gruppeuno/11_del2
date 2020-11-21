@@ -167,6 +167,7 @@ public class ChanceCardController {
 
         if (valg.toLowerCase().equals(ryk)) {
             moveField(player, 1);
+            fieldController.buyProperty(player, playerController, guiView);
         } else if (valg.toLowerCase().equals(traek)) {
             i++;
             chanceCard(player, playerController, fieldController, guiView);
@@ -401,7 +402,6 @@ public class ChanceCardController {
            }
        }
        if (!withinArray) {selectMoveProperty(player, playerController,fieldController, guiView);}
-
 
        player.setFieldNumber(move);
 

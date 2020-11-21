@@ -4,7 +4,6 @@ import Game.Fields.*;
 import Game.Fields.ChanceCard;
 import Game.View.FieldMessages;
 import Game.View.FieldPropertyNames;
-import gui_main.GUI;
 
 import java.util.ArrayList;
 
@@ -80,7 +79,7 @@ public class FieldController {
     }
 
     public void buyProperty(Player player, PlayerController playerController, GUIView guiView) {
-        Property property = getProperty(player);
+        Property property = getPropertyInstance(player);
 
         int playerBalance = player.getBankAccount().getBalance();
         int fieldPrice = property.getFieldPrice();
@@ -97,7 +96,7 @@ public class FieldController {
 
         if (!player.getBankAccount().getBankrupt()) {
             property.setOwner(player.getPlayerName());
-            System.out.println("Du køber den for " + fieldPrice + "M");
+            System.out.println("Du køber " + property.getName() + " for " + fieldPrice + "M");
         }
     }
 
@@ -152,7 +151,7 @@ public class FieldController {
 
 
      public void freeProperty(Player player, PlayerController playerController, GUIView guiView){
-         Property property = getProperty(player);
+         Property property = getPropertyInstance(player);
          if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName())) {
              payRent(player, playerController, property, guiView);}
          else if (!(property.getOwnerName() == null) && property.getOwnerName().equals(player.getPlayerName())) {
@@ -173,7 +172,7 @@ public class FieldController {
      }
 
      public void chanceCardBuyProperty(Player player, PlayerController playerController, GUIView guiView) {
-         Property property = getProperty(player);
+         Property property = getPropertyInstance(player);
 
          if (getPropertyTaken() >= 16) {
 
@@ -195,9 +194,7 @@ public class FieldController {
 
     public void checkOwnership (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
 
-        //!!!!DENNE HER MÅ IKKE BRUGE CASTING FRA GETPROPERTY, Den kan slet ikke finde ud af det når chanceCard kommer med ind..!!!!
-        int i = player.getFieldNumber();
-        Property property = (Property) fields[i];
+        Property property = getPropertyInstance(player);
 
         if (property.getOwnerName() == null) {chanceCardController.chooseProperty(player, playerController, fieldController, guiView);}
         else if (property.getOwnerName().equals(player.getPlayerName())) {
@@ -208,7 +205,7 @@ public class FieldController {
         else {chanceCardController.chooseProperty(player, playerController, fieldController, guiView);}
     }
 
-     public Property getProperty(Player player) {
+     public Property getPropertyInstance(Player player) {
          int i = player.getFieldNumber();
          Property property = (Property) fields[i];
 

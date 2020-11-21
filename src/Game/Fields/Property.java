@@ -30,6 +30,8 @@ public class Property extends Field {
         return ownerName;
     }
 
+    public String getName() {return name;}
+
     public void setOwner(String playerName) {
         this.ownerName = playerName;
         this.ownedByPlayer = true;
