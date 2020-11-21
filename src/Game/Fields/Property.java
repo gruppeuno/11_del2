@@ -68,6 +68,6 @@ public class Property extends Field {
 
     @Override
     public String toString() {
-        return "Ejendom: " + super.name + " Pris: " + fieldPrice + " Felt nummer: " + super.fieldNumber;
+        return "Felt " + super.fieldNumber + ":" + super.name + " : " + fieldPrice + "M";
     }
 }

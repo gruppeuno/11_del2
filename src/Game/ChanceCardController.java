@@ -325,6 +325,9 @@ public class ChanceCardController {
             System.out.println("VÆLG " + Color + " felt: " + minMove + " eller " + maxMove);
             System.out.print("\nSkriv ønsket felt nummer: ");
             move = scan.nextInt();
+            if (move < minMove || move > maxMove){
+
+            }
         }
         while (!(minMove == move || maxMove == move));
 

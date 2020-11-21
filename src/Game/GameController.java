@@ -18,15 +18,15 @@ public class GameController {
     final private PlayerController playerController = new PlayerController();
     final private Die die = new Die();
     final private Scanner scan = new Scanner(System.in);
-    final private GUIView guiView = new GUIView();
+    private GUIView guiView;
     MessageController m = new MessageController();
 
     /**
      * Main metode, kører spillet
      */
     public void gameController() {
-
-        LanguageController.instanceOf();
+        checkLanguage();
+        guiView = new GUIView();
 
         //TODO: Rigtige metode til at køre med 2-4 spillere samt tildele navne
         playerController.playerCreator();
@@ -152,4 +152,19 @@ public class GameController {
 
         }
     }
+
+    public void checkLanguage(){
+
+        System.out.println("Type EN for english" );
+
+        Scanner lc = new Scanner(System.in);
+        String input = lc.nextLine();
+
+        if (input.toLowerCase().equals("en")){
+            LanguageController.instanceOf().loadLanguageChoice();
+        } else {
+
+        }
+    }
+
 }
