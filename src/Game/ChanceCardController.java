@@ -402,9 +402,10 @@ public class ChanceCardController {
        }
        if (!withinArray) {selectMoveProperty(player, playerController,fieldController, guiView);}
 
+       else if (withinArray) {
        player.setFieldNumber(move);
 
-       fieldController.checkOwnership(player, playerController, fieldController, guiView);}
+       fieldController.checkOwnership(player, playerController, fieldController, guiView);}}
    }
 
    public int getTempMove() {

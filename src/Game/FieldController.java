@@ -149,8 +149,6 @@ public class FieldController {
         }
     }
 
-
-
      public void freeProperty(Player player, PlayerController playerController, GUIView guiView){
          Property property = getPropertyInstance(player);
          if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName())) {
