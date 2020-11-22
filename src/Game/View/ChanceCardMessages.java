@@ -2,12 +2,12 @@ package Game.View;
 
 public class ChanceCardMessages extends Messages{
 
-    private String[] totalReadFieldMessages = new String[59];
+    private String[] totalReadFieldMessages = new String[62];
 
     public ChanceCardMessages() {
 
         if (LanguageController.instanceOf().getEnglish() == true){
-            readFromFile(totalReadFieldMessages,"Textfiles/ChanceCardMessages.txt");
+            readFromFile(totalReadFieldMessages,"Textfiles/ChanceCardMessagesENG.txt");
         } else {
             readFromFile(totalReadFieldMessages,"Textfiles/ChanceCardMessages.txt");
         }
