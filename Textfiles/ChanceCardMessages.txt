@@ -17,7 +17,7 @@ NÆSTE TUR skal du
 drøne
 sejle
 liste
-hoppe 20
+hoppe
  frem og KØBE det første ledige felt du lander på!
 Hvis der ikke er nogen ledige, så køb fra en anden spiller!
 ÆV du har spist for meget slik :(
@@ -26,16 +26,15 @@ BRUNT
 GULT
 GRØNT
 LYSEBLÅT
-RØDT
-ORANGE 29
+ORANGE
 PINK
 eller
 GRØNT
 MØRKEBLÅT
-felt 34
+felt
 Hvis det er ledigt får du det GRATIS
 Ellers BETAL til ejeren :(
-Orange 37
+Orange
 Grøn
 Lyseblå
 Pink
@@ -45,7 +44,7 @@ Du har fået et 'Gratis ud af fængsel kort'
 Du bruger det automatisk næste gang du ryger i fængsel!
 Du har fået
 RYK til Strandpromenaden
-Du modtager 1M fra alle andre spillere.
+Du modtager 1M fra alle andre spillere
 Du har nu
 >>Du har lavet alle dine lektier<<
 Modtag 2M fra Banken
@@ -56,3 +55,8 @@ Skriv ønsket felt tal
 Mulige felter du kan vælge i mellem:
 Skriv ønsket felts tal:
 Du skal vælge en grund du ikke selv ejer
+ er blevet rykket."
+RØDT
+Skaterparken, hvis ingen ejer den får du den ellers skal du betale leje!
+brun
+gul

@@ -163,7 +163,7 @@ public class FieldController {
          if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName())) {
              payRent(player, playerController, property, guiView);}
          else if (!(property.getOwnerName() == null) && property.getOwnerName().equals(player.getPlayerName())) {
-             System.out.println(fieldcontrollerMessages.number(8) +" "+ fieldcontrollerMessages.number(9));
+             System.out.println(fieldcontrollerMessages.number(9));
          }
          else if (!property.getOwnedByPlayer()) {
              if (!player.getBankAccount().getBankrupt()) {
