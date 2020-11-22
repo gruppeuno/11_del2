@@ -1,8 +1,9 @@
 package Game.View;
 
+
 public class FieldPropertyNames extends Messages {
 
-    private String[] totalReadFieldNameMessages = new String[24];
+    private String[] totalReadFieldNameMessages = new String[25];
 
     private static FieldPropertyNames fieldPropertyNames;
 
@@ -14,16 +15,22 @@ public class FieldPropertyNames extends Messages {
         return fieldPropertyNames;
     }
 
-    public FieldPropertyNames() {
-        readFromFile(totalReadFieldNameMessages, "Textfiles/FieldPropertyNames.txt");
-    }
-
-    @Override
-    public String number(int n) {
-        if (n <= totalReadFieldNameMessages.length && n >= 0){
-            return totalReadFieldNameMessages[n];
+    private FieldPropertyNames(){
+        if (LanguageController.instanceOf().getEnglish() == true) {
+            readFromFile(totalReadFieldNameMessages, "Textfiles/FieldPropertyNamesENG.txt");
         } else {
-            return "findes ikke";
+            readFromFile(totalReadFieldNameMessages, "Textfiles/FieldPropertyNames.txt");
         }
     }
-}
+
+        @Override
+        public String number(int n){
+            if (n <= totalReadFieldNameMessages.length && n >= 1) {
+                return totalReadFieldNameMessages[n - 1];
+            } else {
+                return "findes ikke";
+            }
+        }
+
+    }
+

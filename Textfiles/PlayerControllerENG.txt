@@ -1,0 +1,10 @@
+YOUNGEST PLAYER! you are 1st player
+player
+type your name:
+Invalid name! try again! (3-12 letters)
+Names must not be the same
+=======================================
+Enter number of players (2-4):
+Invalid input. Please enter a number of players between 2-4
+Invalid number of players. Enter a number of players between 2-4
+number of players

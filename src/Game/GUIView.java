@@ -1,15 +1,21 @@
 package Game;
 
 import Game.View.FieldPropertyNames;
+import Game.View.LanguageController;
 import gui_fields.*;
 import gui_main.GUI;
 
 import java.awt.*;
+import java.util.Scanner;
 
 public class GUIView {
 
     private GUI_Player[] myPlayers;
-    private GUI gui = new GUI(MY_GUI_FIELDS);
+    private GUI gui;
+
+    public GUIView(){
+        gui = new GUI(MY_GUI_FIELDS);
+    }
 
     public GUI getMyGUI() {
         return gui;
@@ -39,30 +45,30 @@ public class GUIView {
 
     public static final GUI_Field[] MY_GUI_FIELDS = {
 
-            new GUI_Start(FieldPropertyNames.instanceOf().number(0), "", "", Color.white, Color.BLACK),
-            new GUI_Street("1", "1M", FieldPropertyNames.instanceOf().number(1), "1M", new Color(156, 73, 18), Color.BLACK),
-            new GUI_Street("2", "1M", FieldPropertyNames.instanceOf().number(2), "1M", new Color(156, 73, 18), Color.BLACK),
+            new GUI_Start(FieldPropertyNames.instanceOf().number(1), "", "", Color.white, Color.BLACK),
+            new GUI_Street("1", "1M", FieldPropertyNames.instanceOf().number(2), "1M", new Color(156, 73, 18), Color.BLACK),
+            new GUI_Street("2", "1M", FieldPropertyNames.instanceOf().number(3), "1M", new Color(156, 73, 18), Color.BLACK),
             new GUI_Chance(),
-            new GUI_Street("4", "1M", FieldPropertyNames.instanceOf().number(3), "1M", new Color(35, 184, 208), Color.BLACK),
-            new GUI_Street("5", "1M", FieldPropertyNames.instanceOf().number(4), "1M", new Color(35, 184, 208), Color.BLACK),
-            new GUI_Jail("", "6", FieldPropertyNames.instanceOf().number(6), FieldPropertyNames.instanceOf().number(6), Color.gray, Color.black),
-            new GUI_Street("7", "2M", FieldPropertyNames.instanceOf().number(7), "2M", new Color(232, 12, 228, 255), Color.black),
-            new GUI_Street("8", "2M", FieldPropertyNames.instanceOf().number(8), "2M", new Color(232, 12, 228), Color.black),
+            new GUI_Street("4", "1M", FieldPropertyNames.instanceOf().number(5), "1M", new Color(35, 184, 208), Color.BLACK),
+            new GUI_Street("5", "1M", FieldPropertyNames.instanceOf().number(6), "1M", new Color(35, 184, 208), Color.BLACK),
+            new GUI_Jail("", "6", FieldPropertyNames.instanceOf().number(7), FieldPropertyNames.instanceOf().number(6), Color.gray, Color.black),
+            new GUI_Street("7", "2M", FieldPropertyNames.instanceOf().number(8), "2M", new Color(232, 12, 228, 255), Color.black),
+            new GUI_Street("8", "2M", FieldPropertyNames.instanceOf().number(9), "2M", new Color(232, 12, 228), Color.black),
             new GUI_Chance(),
-            new GUI_Street("10", "2M", FieldPropertyNames.instanceOf().number(10), "2M", new Color(255, 162, 0), Color.black),
-            new GUI_Street("11", "2M", FieldPropertyNames.instanceOf().number(11), "2M", new Color(255, 162, 0), Color.black),
+            new GUI_Street("10", "2M", FieldPropertyNames.instanceOf().number(11), "2M", new Color(255, 162, 0), Color.black),
+            new GUI_Street("11", "2M", FieldPropertyNames.instanceOf().number(12), "2M", new Color(255, 162, 0), Color.black),
             new GUI_Refuge(),
-            new GUI_Street("13", "3M", FieldPropertyNames.instanceOf().number(13), "3M", Color.red, Color.black),
-            new GUI_Street("14", "3M", FieldPropertyNames.instanceOf().number(14), "3M", Color.red, Color.black),
+            new GUI_Street("13", "3M", FieldPropertyNames.instanceOf().number(14), "3M", Color.red, Color.black),
+            new GUI_Street("14", "3M", FieldPropertyNames.instanceOf().number(15), "3M", Color.red, Color.black),
             new GUI_Chance(),
-            new GUI_Street("16", "3M", FieldPropertyNames.instanceOf().number(16), "3M", Color.yellow, Color.black),
-            new GUI_Street("17", "3M", FieldPropertyNames.instanceOf().number(17), "3M", Color.yellow, Color.black),
-            new GUI_Jail("", "18", FieldPropertyNames.instanceOf().number(18), FieldPropertyNames.instanceOf().number(19), Color.gray, Color.black),
-            new GUI_Street("19", "4M", FieldPropertyNames.instanceOf().number(19), "4M", new Color(11, 132, 55), Color.black),
-            new GUI_Street("20", "4M", FieldPropertyNames.instanceOf().number(20), "4M", new Color(11, 132, 55), Color.black),
+            new GUI_Street("16", "3M", FieldPropertyNames.instanceOf().number(17), "3M", Color.yellow, Color.black),
+            new GUI_Street("17", "3M", FieldPropertyNames.instanceOf().number(18), "3M", Color.yellow, Color.black),
+            new GUI_Jail("", "18", FieldPropertyNames.instanceOf().number(19), FieldPropertyNames.instanceOf().number(19), Color.gray, Color.black),
+            new GUI_Street("19", "4M", FieldPropertyNames.instanceOf().number(20), "4M", new Color(11, 132, 55), Color.black),
+            new GUI_Street("20", "4M", FieldPropertyNames.instanceOf().number(21), "4M", new Color(11, 132, 55), Color.black),
             new GUI_Chance(),
-            new GUI_Street("22", "5M", FieldPropertyNames.instanceOf().number(22), "5M", Color.blue, Color.black),
-            new GUI_Street("23", "5M", FieldPropertyNames.instanceOf().number(23), "5M", Color.blue, Color.black),
+            new GUI_Street("22", "5M", FieldPropertyNames.instanceOf().number(23), "5M", Color.blue, Color.black),
+            new GUI_Street("23", "5M", FieldPropertyNames.instanceOf().number(24), "5M", Color.blue, Color.black),
     };
 
 
