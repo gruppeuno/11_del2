@@ -48,13 +48,7 @@ public class GameController {
             //loop til afvente spillerens roll commando i consollen
             //playerRollInput();
             //ruller terninger med RaffleCup samt opdaterer spillerens position
-            for (Player player : playerController.getPlayerArray()){
-                m.print(player.getPlayerName() + ":");
-                for (int i = 0; i < player.getPropertiesOwned().size(); i++){
-                    m.print("[" +player.getPropertiesOwned().get(i).getName() + "]");
-                }
-                m.println("");
-            }
+            printOwnedProperties();
 
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), false);
             //TODO: rigtig terning
@@ -158,4 +152,15 @@ public class GameController {
 
         }
     }
+
+    private void printOwnedProperties(){
+        for (Player player : playerController.getPlayerArray()){
+            m.print(player.getPlayerName() + ":");
+            for (int i = 0; i < player.getPropertiesOwned().size(); i++){
+                m.print("[" +player.getPropertiesOwned().get(i).getName() + "]");
+            }
+            m.println("");
+        }
+    }
+
 }
