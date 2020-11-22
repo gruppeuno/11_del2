@@ -210,7 +210,7 @@ public class ChanceCardController {
     }
 
     private void chancekort9 (Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
-        System.out.println(ccm.number(8) + "\n" + ccm.number(9) + " " + ccm.number(28) + " " + ccm.number(34) + "\n" + ccm.number(10) + "\n " + "Ellers BETAL til ejeren:(");
+        System.out.println(ccm.number(8) + "\n" + ccm.number(9) + " " + ccm.number(28) + " " + ccm.number(34) + "\n" + ccm.number(10) + "\n " + ccm.number(11));
         moveSpecificFieldRange(player, ccm.number(39), 4, 5);
         takeFreeProperty(player, playerController, fieldController, guiView);
     }
@@ -259,8 +259,8 @@ public class ChanceCardController {
     }
 
     private void chancekort15(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
-        System.out.println(ccm.number(8)+"\n" + ccm.number(9) + ccm.number(30) +  " " + ccm.number(31) + " "  + ccm.number(33) + " " + ccm.number(34) + "\n" + ccm.number(10) + "\n " + "\n" + "Ellers BETAL til ejeren:(");
-        moveSpecificFieldRange(player, "Pink", 7, 8, ccm.number(41), 22, 23);
+        System.out.println(ccm.number(8)+"\n" + ccm.number(9) + ccm.number(30) +  " " + ccm.number(31) + " "  + ccm.number(33) + " " + ccm.number(34) + "\n" + ccm.number(10) + "\n " + "\n" + ccm.number(11));
+        moveSpecificFieldRange(player, ccm.number(40), 7, 8, ccm.number(41), 22, 23);
         takeFreeProperty(player, playerController, fieldController, guiView);
     }
 
@@ -270,7 +270,7 @@ public class ChanceCardController {
     }
 
     private void chancekort17(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
-        System.out.println(ccm.number(8)+ "\n" + ccm.number(9) + ccm.number(59) + " " + ccm.number(34) + "\n" + ccm.number(10) + "\n" + "Ellers BETAL leje til ejeren");
+        System.out.println(ccm.number(8)+ "\n" + ccm.number(9) + ccm.number(59) + " " + ccm.number(34) + "\n" + ccm.number(10) + "\n" + ccm.number(11));
         moveSpecificFieldRange(player, ccm.number(42), 13, 14);
         takeFreeProperty(player, playerController, fieldController, guiView);
     }
@@ -282,13 +282,13 @@ public class ChanceCardController {
     }
 
     private void chancekort19(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
-        System.out.println(ccm.number(8) + "\n" + ccm.number(9)  + ccm.number(28) +  " " + ccm.number(31) + " " + ccm.number(27) + " " + ccm.number(34) + "\n" + ccm.number(10) + "\n "+ "Ellers BETAL leje til ejeren:(");
-        moveSpecificFieldRange(player, "Lyseblå", 4, 5, "Rød", 13, 14);
+        System.out.println(ccm.number(8) + "\n" + ccm.number(9)  + ccm.number(28) +  " " + ccm.number(31) + " " + ccm.number(27) + " " + ccm.number(34) + "\n" + ccm.number(10) + "\n "+ ccm.number(11));
+        moveSpecificFieldRange(player, ccm.number(39), 4, 5, ccm.number(42), 13, 14);
         takeFreeProperty(player, playerController, fieldController, guiView);
     }
 
     private void chancekort20(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
-        System.out.println(ccm.number(8) + "\n" + ccm.number(9)  + ccm.number(25) +  " " + ccm.number(31) + " " + ccm.number(26) + " " + ccm.number(34) +"\n" + ccm.number(10) + "\n " + "Ellers BETAL leje til ejeren");
+        System.out.println(ccm.number(8) + "\n" + ccm.number(9)  + ccm.number(25) +  " " + ccm.number(31) + " " + ccm.number(26) + " " + ccm.number(34) +"\n" + ccm.number(10) + "\n " + ccm.number(11));
         moveSpecificFieldRange(player, ccm.number(61), 1, 2, ccm.number(62), 16, 17);
         takeFreeProperty(player, playerController, fieldController, guiView);
     }
