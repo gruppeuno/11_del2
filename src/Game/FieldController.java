@@ -66,9 +66,7 @@ public class FieldController {
     //Todo: lav om så der ikke laves 2 metoder til at randomize chancekort. evt. bland kortene i chancecomtroller constructor
     //Af low coupling grunde..
     public void doRandomize() {
-        System.out.println(fieldcontrollerMessages.number(1) + chanceCardController);
         chanceCardController.randomizeChance();
-        System.out.println(fieldcontrollerMessages.number(2) + chanceCardController);
     }
 
     public void landOnProperty(Player player, PlayerController playerController, Property property, GUIView guiView) {
