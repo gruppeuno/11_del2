@@ -1,7 +1,5 @@
 package Game;
 
-import Game.View.LanguageController;
-
 import java.util.Scanner;
 
 /**
@@ -50,10 +48,18 @@ public class GameController {
             //loop til afvente spillerens roll commando i consollen
             //playerRollInput();
             //ruller terninger med RaffleCup samt opdaterer spillerens position
+            for (Player player : playerController.getPlayerArray()){
+                m.print(player.getPlayerName() + ":");
+                for (int i = 0; i < player.getPropertiesOwned().size(); i++){
+                    m.print("[" +player.getPropertiesOwned().get(i).getName() + "]");
+                }
+                m.println("");
+            }
+
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), false);
             //TODO: rigtig terning
             die.roll();
-            m.print(m.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
+            m.println(m.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
 
             //TODO: testterninger, SKAL KALDE SPILLERE "GAB" OG "SEB" FOR AT DET VIRKER (til test af sellProperty)
             //if(currentPlayerName.equals("GAB"))
@@ -81,13 +87,13 @@ public class GameController {
 
             if (currentPlayer.getBankAccount().getBankrupt()) {
                 guiView.getMyGUI().showMessage(currentPlayerName + m.bankruptMsg(currentPlayerName));
-                m.print(m.bankruptMsg(currentPlayerName));
+                m.println(m.bankruptMsg(currentPlayerName));
                 findWinner(playerController.getPlayerArray());
                 break;
             }
 
-            m.print(m.currentBalanceMsg(currentPlayerName, currentPlayer.getBankAccount().getBalance()));
-            m.print(m.myTurnMsg(playerController.getPlayerArray()[nextPlayerTurnCount].getPlayerName()));
+            m.println(m.currentBalanceMsg(currentPlayerName, currentPlayer.getBankAccount().getBalance()));
+            m.println(m.myTurnMsg(playerController.getPlayerArray()[nextPlayerTurnCount].getPlayerName()));
 
             //I GUI sættes spillers balance
             guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.getBankAccount().getBalance());
@@ -98,7 +104,7 @@ public class GameController {
 
             //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
             turnCount = (turnCount + 1) % playerController.getPlayerArray().length;
-            m.print(m.lineMsg());
+            m.println(m.lineMsg());
         }
     }
 
@@ -107,7 +113,7 @@ public class GameController {
         String playerOne = playerController.getPlayerArray()[0].getPlayerName();
 
         do {
-            m.print(m.startMsg(playerOne));
+            m.println(m.startMsg(playerOne));
 
             start = scan.nextLine();
         }
@@ -143,11 +149,11 @@ public class GameController {
 
     private void printGameResult(boolean uafgjort, Player leadingPlayer) {
         if (uafgjort) {
-            m.print(m.tieMsg());
+            m.println(m.tieMsg());
             guiView.getMyGUI().showMessage(m.tieMsg());
         } else {
             leadingPlayer.setPlayerWin();
-            m.print(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.getBankAccount().getBalance(), leadingPlayer.getTotalPropertyValue()));
+            m.println(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.getBankAccount().getBalance(), leadingPlayer.getTotalPropertyValue()));
             guiView.getMyGUI().showMessage(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.getBankAccount().getBalance(), leadingPlayer.getTotalPropertyValue()));
 
         }

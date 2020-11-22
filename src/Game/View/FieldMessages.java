@@ -21,6 +21,5 @@ public class FieldMessages extends Messages {
             return "findes ikke";
         }
     }
-
     }
 

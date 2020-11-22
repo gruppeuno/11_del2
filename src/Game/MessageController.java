@@ -6,12 +6,16 @@ public class MessageController {
     GameControllerMessages gm = new GameControllerMessages();
 
     //GameController Messages
-    public void print(String string) {
+    public void println(String string) {
         System.out.println(string);
     }
 
+    public void print(String string) {
+        System.out.print(string);
+    }
+
     public String playerDieRollMsg(String currentPlayerName, int dieValue) {
-        return (currentPlayerName + " " + gm.number(1) + " " + dieValue);
+        return ("\n"+ currentPlayerName + " " + gm.number(1) + " " + dieValue);
     }
 
     public String bankruptMsg(String currentPlayerName) {
