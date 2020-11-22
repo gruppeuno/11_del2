@@ -9,10 +9,10 @@ receive 2M
 Move forward to
 If it's available, you'll get it for FREE!
 Otherwise PAY UP to the owner :(
-empire
-features
+move
+draw
 MOVE 1 field forward, or DRAW a new chance card!
-Type "SMOKE" or "PULL"
+Type "move" or "draw"
 NEXT TRIP you must
 drone
 sail
