@@ -27,7 +27,7 @@ class DiceTest {
 
         Die DiceTest = new Die();
 
-            for (int i = 0; i < 10000; i++){
+            for (int rolls = 0; rolls < 10000; rolls++){
                 DiceTest.roll();
                 int x = DiceTest.getDiceValue();
 
