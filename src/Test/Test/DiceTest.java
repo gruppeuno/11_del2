@@ -3,6 +3,7 @@ package Test;
 import Game.Die;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DiceTest {
@@ -24,6 +25,7 @@ class DiceTest {
         int five = 0;
         int six = 0;
         int totalValue;
+        boolean prettyClose = false;
 
         Die DiceTest = new Die();
 
@@ -76,13 +78,19 @@ class DiceTest {
 
             System.out.println("\n" + "average eyes per die roll: " + averageEyesIn10000Rolls);
 
+        if (averageEyesIn10000Rolls < 3.6 && averageEyesIn10000Rolls > 3.4){
+            prettyClose = true;
+        }
+
+        boolean actual = true;
+        assertEquals(actual,prettyClose);
+
         }
 
 
         public double getAverage(double totalValue, double numbers){
         return (totalValue)/(numbers);
         }
-
         }
 
 
