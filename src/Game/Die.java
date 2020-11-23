@@ -1,7 +1,5 @@
 package Game;
 
-import gui_fields.GUI_Street;
-
 /**
  * RaffleCup
  *

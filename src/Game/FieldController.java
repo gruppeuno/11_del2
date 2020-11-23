@@ -1,10 +1,9 @@
 package Game;
 
 import Game.Fields.*;
-import Game.Fields.ChanceCard;
+import Game.View.FieldControllerMessages;
 import Game.View.FieldMessages;
 import Game.View.FieldPropertyNames;
-import Game.View.FieldControllerMessages;
 
 import java.util.ArrayList;
 
