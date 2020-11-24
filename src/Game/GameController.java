@@ -41,7 +41,6 @@ public class GameController {
         Player currentPlayer;
         String currentPlayerName;
         int nextPlayerTurnCount;
-        int previousField;
 
         while (!playerController.getPlayerArray()[turnCount].getBankAccount().getBankrupt()) {
 
@@ -49,7 +48,6 @@ public class GameController {
             currentPlayer = playerController.getPlayerArray()[turnCount];
             currentPlayerName = currentPlayer.getPlayerName();
             nextPlayerTurnCount = (turnCount + 1) % playerController.getPlayerArray().length;
-            previousField = currentPlayer.getFieldNumber();
 
 
             //ruller terninger med RaffleCup samt opdaterer spillerens position
@@ -72,8 +70,6 @@ public class GameController {
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), true);
 
             fieldController.landOnField(currentPlayer, playerController, guiView);
-
-            guiView.getMyGUI().getFields()[previousField].setCar(guiView.getGUIPlayer(turnCount), false);
 
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), true);
 
