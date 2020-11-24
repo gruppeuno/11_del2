@@ -56,6 +56,7 @@ public class GameController {
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), false);
             //TODO: rigtig terning
             die.roll();
+            guiView.getMyGUI().setDie(die.getDiceValue());
             //TODO: bedre navngivning til "m"
             m.println(m.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
 
@@ -76,11 +77,9 @@ public class GameController {
             guiView.removeAllCarsFromChanceFields(turnCount);
             guiView.removeCarFromJailField(turnCount);
 
+            //I GUI sættes spillers balance
+            guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.getBankAccount().getBalance());
 
-            //Terningernes værdier sættes
-            guiView.getMyGUI().setDie(die.getDiceValue());
-
-            //placerer spillers bil på det rette felt
 
             if (currentPlayer.getBankAccount().getBankrupt()) {
                 guiView.getMyGUI().showMessage(currentPlayerName + m.bankruptMsg(currentPlayerName));
@@ -92,12 +91,9 @@ public class GameController {
             m.println(m.currentBalanceMsg(currentPlayerName, currentPlayer.getBankAccount().getBalance()));
             m.println(m.myTurnMsg(playerController.getPlayerArray()[nextPlayerTurnCount].getPlayerName()));
 
-            //I GUI sættes spillers balance
-            guiView.getGUIPlayer(turnCount).setBalance(currentPlayer.getBankAccount().getBalance());
-
 
             //TODO commenter ud for autoroll
-            guiView.getMyGUI().showMessage(currentPlayerName +" "+ fieldController.getFields()[currentPlayer.getFieldNumber()].getMsg());
+            //guiView.getMyGUI().showMessage(currentPlayerName +" "+ fieldController.getFields()[currentPlayer.getFieldNumber()].getMsg());
 
             //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
             turnCount = (turnCount + 1) % playerController.getPlayerArray().length;
