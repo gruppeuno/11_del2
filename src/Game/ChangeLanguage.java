@@ -11,7 +11,7 @@ public class ChangeLanguage {
     }
 
     public void checkLanguage(){
-        System.out.println("Tast DA for dansk og EN for engelsk" );
+        System.out.println("(Tast EN og tryk ENTER for at ændre sprog til engelsk) \nTryk ENTER for at starte spil ");
 
         Scanner lc = new Scanner(System.in);
         String input = lc.nextLine();
