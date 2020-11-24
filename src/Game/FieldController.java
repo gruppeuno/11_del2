@@ -222,7 +222,7 @@ public class FieldController {
         String[] propertiesAsStringArray = new String[player.getPropertiesOwned().size()];
         int missingPayment = payment - player.getBankAccount().getBalance();
 
-        if (player.getTotalPropertyValue() > missingPayment) {
+        if (player.getTotalPropertyValue() >= missingPayment) {
             do {
                 for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
                     propertiesAsStringArray[i] = ((Property) player.getPropertiesOwned().toArray()[i]).toString();
@@ -246,9 +246,10 @@ public class FieldController {
                         }
                     }
                 }
-            } while (player.getBankAccount().getBalance() <= payment);
+            } while (player.getBankAccount().getBalance() < payment);
         }
-        if (player.getPropertiesOwned().size() == 0 && player.getBankAccount().getBalance() == 0)
+
+        if (player.getTotalPropertyValue()== 0 && player.getBankAccount().getBalance() == 0)
             player.getBankAccount().setBankrupt(true);
     }
 

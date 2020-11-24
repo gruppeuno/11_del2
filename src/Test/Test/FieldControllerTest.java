@@ -1,5 +1,12 @@
 package Test;
 
+import Game.FieldController;
+import Game.Fields.Property;
+import Game.GUIView;
+import Game.Player;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class FieldControllerTest {
 
 
@@ -293,4 +300,24 @@ class FieldControllerTest {
 //        int actual = 1;
 //        assertEquals(actual,((Property) fieldController.getFields()[2]).getFieldRent());
 //    }
+
+    @Test
+    public void excactlyBankruptWhileSellPropertyTest(){
+        Player player = new Player("gab");
+        GUIView guiView= new GUIView();
+        FieldController fieldController = new FieldController();
+        Property testProperty = new Property("testVej1", 2,5,"test","rød");
+
+        int pay = 5;
+
+        testProperty.setOwner("gab");
+        player.addPropertyOwned(testProperty);
+        player.getBankAccount().setBalance(0);
+
+        fieldController.sellProperty(player,pay,guiView);
+
+        int actual = 0;
+        assertEquals(actual,player.getTotalPropertyValue());
+
+    }
 }

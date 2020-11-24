@@ -119,10 +119,6 @@ public class GameController {
             start = scan.nextLine();
         }
         while (!start.isEmpty());
-
-        //Lukker scanner hvis der er fundet en vinder
-        if (playerController.getPlayerArray()[turnCount].getPlayerWin())
-            scan.close();
     }
 
     public void findWinner(Player[] playerArray) {
@@ -146,6 +142,7 @@ public class GameController {
             }
         }
         printGameResult(itsATie, leadingPlayer);
+        scan.close();
     }
 
     private void printGameResult(boolean uafgjort, Player leadingPlayer) {

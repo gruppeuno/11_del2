@@ -68,6 +68,8 @@ class GameControllerTest {
           playerController.getPlayerArray()[3].addPropertyOwned(p5);
 
           gameControllerTest.findWinner(playerController.getPlayerArray());
+          //TODO: mangler assert muligvis
+
   }
 
   //tester om spillere med samme balance bliver afgjort efter propertyValue
