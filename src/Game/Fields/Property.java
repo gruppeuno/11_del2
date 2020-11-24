@@ -1,11 +1,5 @@
 package Game.Fields;
 
-import Game.Player;
-import Game.PlayerController;
-
-import java.util.ArrayList;
-import java.util.Collections;
-
 /**
  * Field
  *

@@ -1,9 +1,5 @@
 package Game;
 
-import Game.View.LanguageController;
-
-import java.util.Scanner;
-
 /**
  *  Game
  *  @author Gruppe11
