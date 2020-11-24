@@ -249,11 +249,11 @@ public class FieldController {
             } while (player.getBankAccount().getBalance() < payment);
         }
         else{
-            player.getBankAccount().setBankrupt(true);
+            player.getBankAccount().setBankrupt();
         }
 
-        if (player.getTotalPropertyValue()== 0 && player.getBankAccount().getBalance() == 0)
-            player.getBankAccount().setBankrupt(true);
+        if (player.getTotalPropertyValue()== 0 && player.getBankAccount().getBalance()<=payment)
+            player.getBankAccount().setBankrupt();
     }
 
     public void removePropertyOwner(Property property, Player player) {

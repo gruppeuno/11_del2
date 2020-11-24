@@ -301,6 +301,9 @@ class FieldControllerTest {
 //        assertEquals(actual,((Property) fieldController.getFields()[2]).getFieldRent());
 //    }
 
+
+
+    /** Test af at spillerens totale property værdi går fra 5 til 0*/
     @Test
     public void excactlyBankruptWhileSellPropertyTest(){
         Player player = new Player("gab");
@@ -316,8 +319,7 @@ class FieldControllerTest {
 
         fieldController.sellProperty(player,pay,guiView);
 
-        int actual = 0;
-        assertEquals(actual,player.getTotalPropertyValue());
-
+        boolean actual = true;
+        assertEquals(actual,player.getBankAccount().getBankrupt());
     }
 }

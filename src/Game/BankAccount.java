@@ -23,8 +23,8 @@ public class BankAccount {
             balance -= value;
     }
 
-    public void setBankrupt(boolean bankrupt) {
-        this.bankrupt = bankrupt;
+    public void setBankrupt() {
+        bankrupt = true;
     }
 
     public void setBalance(int setValue) {
