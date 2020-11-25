@@ -1,8 +1,12 @@
 package Test;
 
+import Game.ChangeLanguage;
 import Game.Fields.Property;
 import Game.GameController;
 import Game.PlayerController;
+import Game.View.LanguageController;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,7 +21,7 @@ class GameControllerTest {
 
       PlayerController playerController = new PlayerController();
       playerController.createPlayers(4);
-      GameController gameControllerTest = new GameController();
+      GameController gameControllerTest = new GameController(true);
 
       playerController.getPlayerArray()[0].getBankAccount().setBalance(2);
       playerController.getPlayerArray()[1].getBankAccount().setBalance(3);
@@ -48,7 +52,8 @@ class GameControllerTest {
   public void findWinnerTieTest(){
           PlayerController playerController = new PlayerController();
           playerController.createPlayers(4);
-          GameController gameControllerTest = new GameController();
+          GameController gameControllerTest = new GameController(true);
+
 
           playerController.getPlayerArray()[0].getBankAccount().setBalance(5);
           playerController.getPlayerArray()[1].getBankAccount().setBalance(5);
@@ -75,9 +80,11 @@ class GameControllerTest {
   //tester om spillere med samme balance bliver afgjort efter propertyValue
   @Test
   public void findWinnerEqualBalanceTest(){
+
       PlayerController playerController = new PlayerController();
       playerController.createPlayers(4);
-      GameController gameControllerTest = new GameController();
+      GameController gameControllerTest = new GameController(true);
+
 
       playerController.getPlayerArray()[0].getBankAccount().setBalance(5);
       playerController.getPlayerArray()[1].getBankAccount().setBalance(5);

@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class FieldControllerTest {
 
 
-
     /**Test af landOnJail*//*
     @Test
     public void isPlayerInJail(){

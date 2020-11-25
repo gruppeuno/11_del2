@@ -11,16 +11,36 @@ import java.util.Scanner;
 
 public class GameController {
 
-    //nb meget vigtigt ChangeLanguage står først
-    ChangeLanguage c = new ChangeLanguage();
-    private int turnCount;
-    //skaber nye objekter af Field, RaffleCup og PlayerCreator
-    final private FieldController fieldController = new FieldController();
-    final private PlayerController playerController = new PlayerController();
-    final private Die die = new Die();
-    final private Scanner scan = new Scanner(System.in);
-    final private GUIView guiView = new GUIView();
-    final private MessageController m = new MessageController();
+        //nb meget vigtigt ChangeLanguage står først
+        ChangeLanguage c;
+        private int turnCount;
+        //skaber nye objekter af Field, RaffleCup og PlayerCreator
+        private FieldController fieldController;
+        private PlayerController playerController;
+        private Die die;
+        private Scanner scan;
+        private GUIView guiView;
+        private MessageController m;
+
+        public GameController(){
+            c = new ChangeLanguage();
+            fieldController = new FieldController();
+            playerController = new PlayerController();
+            die = new Die();
+            scan = new Scanner(System.in);
+            guiView = new GUIView();
+            m = new MessageController();
+        }
+
+        public GameController(boolean test){
+
+            fieldController = new FieldController();
+            playerController = new PlayerController();
+            die = new Die();
+            scan = new Scanner(System.in);
+            guiView = new GUIView();
+            m = new MessageController();
+        }
 
     /**
      * Main metode, kører spillet
@@ -54,6 +74,7 @@ public class GameController {
             printOwnedProperties();
 
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), false);
+
             //TODO: rigtig terning
             die.roll();
             guiView.getMyGUI().setDie(die.getDiceValue());
