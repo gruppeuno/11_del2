@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class GameController {
 
         //nb meget vigtigt ChangeLanguage står først
-        ChangeLanguage c;
+        LanguageChange languageChange;
         private int turnCount;
         //skaber nye objekter af Field, RaffleCup og PlayerCreator
         private FieldController fieldController;
@@ -23,7 +23,7 @@ public class GameController {
         private MessageController msgController;
 
         public GameController(){
-            c = new ChangeLanguage();
+            languageChange = new LanguageChange();
             fieldController = new FieldController();
             playerController = new PlayerController();
             die = new Die();
@@ -47,12 +47,10 @@ public class GameController {
      */
     public void gameController() {
 
-        //TODO: Rigtige metode til at køre med 2-4 spillere samt tildele navne
+        //metode til at køre med 2-4 spillere samt tildele navne
         playerController.playerCreator();
+        //metode som shuffler chancekort
         fieldController.doRandomize();
-
-        //TODO: test metode til 2 spillere
-        //playerController.createPlayers(2);
 
         //laver spillere i GUI
         guiView.createGUIPlayers(playerController.getPlayerArray(), playerController.getPlayerArray()[0].getBankAccount().getBalance());
@@ -75,10 +73,10 @@ public class GameController {
 
             guiView.getMyGUI().getFields()[currentPlayer.getFieldNumber()].setCar(guiView.getGUIPlayer(turnCount), false);
 
-            //TODO: rigtig terning
+            //kaster terning
             die.roll();
             guiView.getMyGUI().setDie(die.getDiceValue());
-            //TODO: bedre navngivning til "m"
+
             msgController.println(msgController.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
 
             playerController.movePlayer(currentPlayer, die.getDiceValue());
@@ -107,8 +105,8 @@ public class GameController {
             msgController.println(msgController.myTurnMsg(playerController.getPlayerArray()[nextPlayerTurnCount].getPlayerName()));
 
 
-            //TODO commenter ud for autoroll
-            //guiView.getMyGUI().showMessage(currentPlayerName +" "+ fieldController.getFields()[currentPlayer.getFieldNumber()].getMsg());
+            //ok knap som ruller terninger
+            guiView.getMyGUI().showMessage(currentPlayerName +" "+ fieldController.getFields()[currentPlayer.getFieldNumber()].getMsg());
 
             //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
             turnCount = (turnCount + 1) % playerController.getPlayerArray().length;

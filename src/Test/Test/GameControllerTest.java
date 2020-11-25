@@ -1,12 +1,8 @@
 package Test;
 
-import Game.ChangeLanguage;
 import Game.Fields.Property;
 import Game.GameController;
 import Game.PlayerController;
-import Game.View.LanguageController;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

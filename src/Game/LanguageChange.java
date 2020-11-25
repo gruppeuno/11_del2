@@ -4,11 +4,11 @@ import Game.View.LanguageController;
 
 import java.util.Scanner;
 
-public class ChangeLanguage {
+public class LanguageChange {
 
     private String input;
 
-    public ChangeLanguage(){
+    public LanguageChange(){
         checkLanguage();
     }
 
