@@ -12,10 +12,6 @@ public class ChangeLanguage {
         checkLanguage();
     }
 
-    public ChangeLanguage(boolean isChanged){
-        LanguageController.instanceOf().setEnglish();
-    }
-
     public void checkLanguage(){
         System.out.println("(Tast EN og tryk ENTER for at ændre sprog til engelsk) \nTryk ENTER for at starte spil ");
 

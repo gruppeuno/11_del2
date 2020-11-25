@@ -20,7 +20,7 @@ public class GameController {
         private Die die;
         private Scanner scan;
         private GUIView guiView;
-        private MessageController m;
+        private MessageController msgController;
 
         public GameController(){
             c = new ChangeLanguage();
@@ -29,7 +29,7 @@ public class GameController {
             die = new Die();
             scan = new Scanner(System.in);
             guiView = new GUIView();
-            m = new MessageController();
+            msgController = new MessageController();
         }
 
         public GameController(boolean test){
@@ -39,7 +39,7 @@ public class GameController {
             die = new Die();
             scan = new Scanner(System.in);
             guiView = new GUIView();
-            m = new MessageController();
+            msgController = new MessageController();
         }
 
     /**
@@ -79,13 +79,7 @@ public class GameController {
             die.roll();
             guiView.getMyGUI().setDie(die.getDiceValue());
             //TODO: bedre navngivning til "m"
-            m.println(m.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
-
-            //TODO: testterninger, SKAL KALDE SPILLERE "GAB" OG "SEB" FOR AT DET VIRKER (til test af sellProperty)
-            //if(currentPlayerName.equals("GAB"))
-            //die.rollPlayer0();
-            //else if(currentPlayerName.equals("SEB"))
-            //die.rollPlayer1();
+            msgController.println(msgController.playerDieRollMsg(currentPlayerName, die.getDiceValue()));
 
             playerController.movePlayer(currentPlayer, die.getDiceValue());
 
@@ -103,14 +97,14 @@ public class GameController {
 
 
             if (currentPlayer.getBankAccount().getBankrupt()) {
-                guiView.getMyGUI().showMessage(currentPlayerName + m.bankruptMsg(currentPlayerName));
-                m.println(m.bankruptMsg(currentPlayerName));
+                guiView.getMyGUI().showMessage(currentPlayerName + msgController.bankruptMsg(currentPlayerName));
+                msgController.println(msgController.bankruptMsg(currentPlayerName));
                 findWinner(playerController.getPlayerArray());
                 break;
             }
 
-            m.println(m.currentBalanceMsg(currentPlayerName, currentPlayer.getBankAccount().getBalance()));
-            m.println(m.myTurnMsg(playerController.getPlayerArray()[nextPlayerTurnCount].getPlayerName()));
+            msgController.println(msgController.currentBalanceMsg(currentPlayerName, currentPlayer.getBankAccount().getBalance()));
+            msgController.println(msgController.myTurnMsg(playerController.getPlayerArray()[nextPlayerTurnCount].getPlayerName()));
 
 
             //TODO commenter ud for autoroll
@@ -118,7 +112,7 @@ public class GameController {
 
             //giver turen til spiller 1 fra den sidste spiller, eller giver turen videre fra spiller 1 til 2 fx
             turnCount = (turnCount + 1) % playerController.getPlayerArray().length;
-            m.println(m.lineMsg());
+            msgController.println(msgController.lineMsg());
         }
     }
 
@@ -127,7 +121,7 @@ public class GameController {
         String playerOne = playerController.getPlayerArray()[0].getPlayerName();
 
         do {
-            m.println(m.startMsg(playerOne));
+            msgController.println(msgController.startMsg(playerOne));
 
             start = scan.nextLine();
         }
@@ -160,23 +154,23 @@ public class GameController {
 
     private void printGameResult(boolean uafgjort, Player leadingPlayer) {
         if (uafgjort) {
-            m.println(m.tieMsg());
-            guiView.getMyGUI().showMessage(m.tieMsg());
+            msgController.println(msgController.tieMsg());
+            guiView.getMyGUI().showMessage(msgController.tieMsg());
         } else {
             leadingPlayer.setPlayerWin();
-            m.println(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.getBankAccount().getBalance(), leadingPlayer.getTotalPropertyValue()));
-            guiView.getMyGUI().showMessage(m.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.getBankAccount().getBalance(), leadingPlayer.getTotalPropertyValue()));
+            msgController.println(msgController.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.getBankAccount().getBalance(), leadingPlayer.getTotalPropertyValue()));
+            guiView.getMyGUI().showMessage(msgController.winMsg(leadingPlayer.getPlayerName(), leadingPlayer.getBankAccount().getBalance(), leadingPlayer.getTotalPropertyValue()));
 
         }
     }
 
     private void printOwnedProperties(){
         for (Player player : playerController.getPlayerArray()){
-            m.print(player.getPlayerName() + ":");
+            msgController.print(player.getPlayerName() + ":");
             for (int i = 0; i < player.getPropertiesOwned().size(); i++){
-                m.print("[" +player.getPropertiesOwned().get(i).getName() + "]");
+                msgController.print("[" +player.getPropertiesOwned().get(i).getName() + "]");
             }
-            m.println("");
+            msgController.println("");
         }
     }
 
