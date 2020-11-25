@@ -1,17 +1,17 @@
-Kortenes rækkefølge var:
-Kortenes rækkefølge er nu:
-Du køber den for
+Kortenes raekkefoelge var:
+Kortenes raekkefoelge er nu:
+Du koeber den for
 M
 betalte
 M i husleje til
 har nu
 M
-Du ejer allerede denne grund. Turen går videre
+Du ejer allerede denne grund. Turen gaar videre
 fik
 helt gratis
-Du køber
+Du koeber
 af 
-og sælger modtager 
+og saelger modtager
 M
-Vælg grund du vil sælge du skal sælge grunde for
+Vaelg grund du vil saelge du skal saelge grunde for
 M for at betale din afgift"

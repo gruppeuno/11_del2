@@ -1,6 +1,6 @@
 C H A N C E K O R T
 Der skete en fejl
-Hvis der ikke er nogen ledige, så koeb fra en anden spiller!
+Hvis der ikke er nogen ledige, så køb fra en anden spiller!
 Du får et chancekort mere
 >>Ryk til START<<
 modtag 2M
@@ -10,38 +10,38 @@ Ryk frem til
 Hvis det er ledigt, får du det GRATIS!
 Ellers BETAL til ejeren:(
 ryk
-traek
-RYK 1 felt frem, eller TRAEK nyt chancekort!
-Skriv "RYK" eller "TRAEK"
-NAESTE TUR skal du
-droene
+træk
+RYK 1 felt frem, eller TRÆK nyt chancekort!
+Skriv "RYK" eller "TRÆK"
+NÆSTE TUR skal du
+drøne
 sejle
 liste
 hoppe
- frem og KOEBE det foerste ledige felt du lander på!
-Hvis der ikke er nogen ledige, så koeb fra en anden spiller!
-AEV du har spist for meget slik :(
+ frem og KØBE det første ledige felt du lander på!
+Hvis der ikke er nogen ledige, så køb fra en anden spiller!
+ÆV du har spist for meget slik :(
 Betal 2M til banken
 BRUNT
 GULT
-GROENT
-LYSEBLAAT
+GRØNT
+LYSEBLÅT
 ORANGE
 PINK
 eller
-GROENT
-MOERKEBLAAT
+GRØNT
+MØRKEBLÅT
 felt
 Hvis det er ledigt får du det GRATIS
 Ellers BETAL til ejeren :(
 Orange
-Groen
+Grøn
 Lyseblå
 Pink
-Moerkeblå
-Roed
-Du har fået et 'Gratis ud af faengsel kort'
-Du bruger det automatisk naeste gang du ryger i faengsel!
+Mørkeblå
+Rød
+Du har fået et 'Gratis ud af fængsel kort'
+Du bruger det automatisk næste gang du ryger i fængsel!
 Du har fået
 RYK til Strandpromenaden
 Du modtager 1M fra alle andre spillere
@@ -50,13 +50,13 @@ Du har nu
 Modtag 2M fra Banken
 Skriv tal mellem
 og
-VAELG
-Skriv oensket felt tal
-Mulige felter du kan vaelge i mellem:
-Skriv oensket felts tal:
-Du skal vaelge en grund du ikke selv ejer
+VÆLG
+Skriv ønsket felt tal
+Mulige felter du kan vælge i mellem:
+Skriv ønsket felts tal:
+Du skal vælge en grund du ikke selv ejer
  er blevet rykket."
-ROEDT
+RØDT
 Skaterparken, hvis ingen ejer den får du den ellers skal du betale leje!
 brun
 gul
