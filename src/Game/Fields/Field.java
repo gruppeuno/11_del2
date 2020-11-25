@@ -1,8 +1,5 @@
 package Game.Fields;
 
-import Game.Player;
-import Game.PlayerController;
-
 abstract public class Field {
     protected String name;
     protected int fieldNumber;

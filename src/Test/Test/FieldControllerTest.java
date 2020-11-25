@@ -1,17 +1,13 @@
 package Test;
 
 import Game.FieldController;
-import Game.Fields.Jail;
 import Game.Fields.Property;
 import Game.GUIView;
 import Game.Player;
-import Game.PlayerController;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FieldControllerTest {
-
 
 
     /**Test af landOnJail*//*
@@ -303,4 +299,26 @@ class FieldControllerTest {
 //        int actual = 1;
 //        assertEquals(actual,((Property) fieldController.getFields()[2]).getFieldRent());
 //    }
+
+
+
+    /** Test af at spillerens totale property værdi går fra 5 til 0*/
+    @Test
+    public void excactlyBankruptWhileSellPropertyTest(){
+        Player player = new Player("gab");
+        GUIView guiView= new GUIView();
+        FieldController fieldController = new FieldController();
+        Property testProperty = new Property("testVej1", 2,5,"test","rød");
+
+        int pay = 5;
+
+        testProperty.setOwner("gab");
+        player.addPropertyOwned(testProperty);
+        player.getBankAccount().setBalance(0);
+
+        fieldController.sellProperty(player,pay,guiView);
+
+        boolean actual = true;
+        assertEquals(actual,player.getBankAccount().getBankrupt());
+    }
 }

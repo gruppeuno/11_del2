@@ -1,11 +1,5 @@
 package Game.Fields;
 
-import Game.Player;
-import Game.PlayerController;
-
-import java.util.ArrayList;
-import java.util.Collections;
-
 /**
  * Field
  *
@@ -29,6 +23,8 @@ public class Property extends Field {
     public String getOwnerName() {
         return ownerName;
     }
+
+    public String getName() {return name;}
 
     public void setOwner(String playerName) {
         this.ownerName = playerName;
@@ -66,6 +62,6 @@ public class Property extends Field {
 
     @Override
     public String toString() {
-        return "Ejendom: " + super.name + " Pris: " + fieldPrice + " Felt nummer: " + super.fieldNumber;
+        return "Felt " + super.fieldNumber + ":" + super.name + " : " + fieldPrice + "M";
     }
 }

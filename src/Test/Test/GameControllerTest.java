@@ -5,7 +5,7 @@ import Game.GameController;
 import Game.PlayerController;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GameControllerTest {
 
@@ -17,7 +17,7 @@ class GameControllerTest {
 
       PlayerController playerController = new PlayerController();
       playerController.createPlayers(4);
-      GameController gameControllerTest = new GameController();
+      GameController gameControllerTest = new GameController(true);
 
       playerController.getPlayerArray()[0].getBankAccount().setBalance(2);
       playerController.getPlayerArray()[1].getBankAccount().setBalance(3);
@@ -48,7 +48,8 @@ class GameControllerTest {
   public void findWinnerTieTest(){
           PlayerController playerController = new PlayerController();
           playerController.createPlayers(4);
-          GameController gameControllerTest = new GameController();
+          GameController gameControllerTest = new GameController(true);
+
 
           playerController.getPlayerArray()[0].getBankAccount().setBalance(5);
           playerController.getPlayerArray()[1].getBankAccount().setBalance(5);
@@ -68,14 +69,18 @@ class GameControllerTest {
           playerController.getPlayerArray()[3].addPropertyOwned(p5);
 
           gameControllerTest.findWinner(playerController.getPlayerArray());
+          //TODO: mangler assert muligvis
+
   }
 
   //tester om spillere med samme balance bliver afgjort efter propertyValue
   @Test
   public void findWinnerEqualBalanceTest(){
+
       PlayerController playerController = new PlayerController();
       playerController.createPlayers(4);
-      GameController gameControllerTest = new GameController();
+      GameController gameControllerTest = new GameController(true);
+
 
       playerController.getPlayerArray()[0].getBankAccount().setBalance(5);
       playerController.getPlayerArray()[1].getBankAccount().setBalance(5);

@@ -9,7 +9,11 @@ import java.awt.*;
 public class GUIView {
 
     private GUI_Player[] myPlayers;
-    private GUI gui = new GUI(MY_GUI_FIELDS);
+    private GUI gui;
+
+    public GUIView(){
+        gui = new GUI(MY_GUI_FIELDS);
+    }
 
     public GUI getMyGUI() {
         return gui;

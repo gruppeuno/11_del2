@@ -7,4 +7,4 @@ Navn må ikke være ens
 Indtast antal spillere (2-4) :
 Ugyldigt input. Indtast et antal spillere mellem 2-4
 Ugyldigt antal spillere. Indtast et antal spillere mellem 2-4
-antal spillere:
+antal spillere
