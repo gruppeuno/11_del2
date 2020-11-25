@@ -22,7 +22,7 @@ public class GameOutputModel {
         return (currentPlayerName + " " + gm.number(2));
     }
 
-    public String currentBalanceMsg(String currentPlayerName, int balance) {
+    public String currentBalanceMsg(int balance) {
         return gm.number(3) + " " + balance + gm.number(4);
     }
 

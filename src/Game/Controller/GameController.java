@@ -106,7 +106,7 @@ public class GameController {
                 break;
             }
 
-            msgController.println(msgController.currentBalanceMsg(currentPlayerName, currentPlayer.getBankAccount().getBalance()));
+            msgController.println(msgController.currentBalanceMsg(currentPlayer.getBankAccount().getBalance()));
             msgController.println(msgController.myTurnMsg(playerController.getPlayerArray()[nextPlayerTurnCount].getPlayerName()));
 
 

@@ -13,7 +13,7 @@ public class LanguageChangeController {
     }
 
     public void checkLanguage(){
-        System.out.println("(Tast EN og tryk ENTER for at ændre sprog til engelsk) \nTryk ENTER for at starte spil ");
+        System.out.println("(Type EN and press ENTER for English) \nTryk ENTER for at starte spil ");
 
         Scanner lc = new Scanner(System.in);
         input = lc.nextLine();
