@@ -1,6 +1,6 @@
 package Game;
 
-import Game.View.ChanceCardMessages;
+import Game.View.ChanceCardMessageController;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -11,7 +11,7 @@ public class ChanceCardController {
     private static boolean cardUse;
     private int i;
     private int tempMove;
-    ChanceCardMessages ccm = new ChanceCardMessages();
+    ChanceCardMessageController ccm = new ChanceCardMessageController();
 
     private int[] chanceArray;
 

@@ -1,12 +1,12 @@
 package Game.View;
 
-public class GameControllerMessages extends Messages {
+public class GameControllerMessageController extends MessageControllerModel {
 
     private String[] totalGameMessages = new String[14];
 
-    public GameControllerMessages() {
+    public GameControllerMessageController() {
 
-        if (LanguageController.instanceOf().getEnglish() == true){
+        if (LanguageModel.instanceOf().getEnglish() == true){
             readFromFile(totalGameMessages,"Textfiles/GameControllerMessagesENG.txt");
         } else {
             readFromFile(totalGameMessages,"Textfiles/GameControllerMessages.txt");

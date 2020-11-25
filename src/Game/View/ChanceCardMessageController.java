@@ -1,12 +1,12 @@
 package Game.View;
 
-public class ChanceCardMessages extends Messages{
+public class ChanceCardMessageController extends MessageControllerModel {
 
     private String[] totalReadFieldMessages = new String[62];
 
-    public ChanceCardMessages() {
+    public ChanceCardMessageController() {
 
-        if (LanguageController.instanceOf().getEnglish() == true){
+        if (LanguageModel.instanceOf().getEnglish() == true){
             readFromFile(totalReadFieldMessages,"Textfiles/ChanceCardMessagesENG.txt");
         } else {
             readFromFile(totalReadFieldMessages,"Textfiles/ChanceCardMessages.txt");

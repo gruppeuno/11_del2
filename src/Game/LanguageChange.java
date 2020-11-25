@@ -1,6 +1,6 @@
 package Game;
 
-import Game.View.LanguageController;
+import Game.View.LanguageModel;
 
 import java.util.Scanner;
 
@@ -19,7 +19,7 @@ public class LanguageChange {
         input = lc.nextLine();
 
         if (input.toLowerCase().equals("en")){
-            LanguageController.instanceOf().setEnglish();
+            LanguageModel.instanceOf().setEnglish();
         } else {
 
         }

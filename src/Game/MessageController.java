@@ -1,9 +1,9 @@
 package Game;
 
-import Game.View.GameControllerMessages;
+import Game.View.GameControllerMessageController;
 
 public class MessageController {
-    GameControllerMessages gm = new GameControllerMessages();
+    GameControllerMessageController gm = new GameControllerMessageController();
 
     //GameController Messages
     public void println(String string) {

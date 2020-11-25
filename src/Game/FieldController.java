@@ -1,44 +1,44 @@
 package Game;
 
 import Game.Fields.*;
-import Game.View.FieldControllerMessages;
-import Game.View.FieldMessages;
-import Game.View.FieldPropertyNames;
+import Game.View.FieldControllerMessageController;
+import Game.View.FieldMessageController;
+import Game.View.FieldPropertyNameController;
 
 import java.util.ArrayList;
 
 public class FieldController {
-    FieldControllerMessages fieldcontrollerMessages = new FieldControllerMessages();
+    FieldControllerMessageController fieldControllerMessages = new FieldControllerMessageController();
 
-    FieldMessages fm = new FieldMessages();
+    FieldMessageController fm = new FieldMessageController();
 
     private int propertyTakenCounter = 0;
 
     public final Field[] fields = {
-            new Start(FieldPropertyNames.instanceOf().number(1),0, fm.number(1)),
-            new Property(FieldPropertyNames.instanceOf().number(2), 1, 1, fm.number(2), "brown"),
-            new Property(FieldPropertyNames.instanceOf().number(3), 2, 1, fm.number(3), "brown"),
-            new ChanceCard(FieldPropertyNames.instanceOf().number(4), 3, fm.number(4)),
-            new Property(FieldPropertyNames.instanceOf().number(5), 4, 1, fm.number(5), "lightBlue"),
-            new Property(FieldPropertyNames.instanceOf().number(6), 5, 1, fm.number(6), "lightBlue"),
-            new JailVisit(FieldPropertyNames.instanceOf().number(7), 6, fm.number(7)),
-            new Property(FieldPropertyNames.instanceOf().number(8), 7, 2, fm.number(8), "pink"),
-            new Property(FieldPropertyNames.instanceOf().number(9), 8, 2, fm.number(9), "pink"),
-            new ChanceCard(FieldPropertyNames.instanceOf().number(10), 9, fm.number(10)),
-            new Property(FieldPropertyNames.instanceOf().number(11), 10, 2, fm.number(11), "gold"),
-            new Property(FieldPropertyNames.instanceOf().number(12), 11, 2, fm.number(12), "gold"),
-            new Parking(FieldPropertyNames.instanceOf().number(13), 12, fm.number(13)),
-            new Property(FieldPropertyNames.instanceOf().number(14), 13, 3, fm.number(14), "red"),
-            new Property(FieldPropertyNames.instanceOf().number(15), 14, 3, fm.number(15), "red"),
-            new ChanceCard(FieldPropertyNames.instanceOf().number(16), 15, fm.number(16)),
-            new Property(FieldPropertyNames.instanceOf().number(17), 16, 3, fm.number(17), "yellow"),
-            new Property(FieldPropertyNames.instanceOf().number(18), 17, 3, fm.number(18), "yellow"),
-            new Jail(FieldPropertyNames.instanceOf().number(19), 18, fm.number(19)),
-            new Property(FieldPropertyNames.instanceOf().number(20), 19, 4, fm.number(20), "green"),
-            new Property(FieldPropertyNames.instanceOf().number(21), 20, 4, fm.number(21), "green"),
-            new ChanceCard(FieldPropertyNames.instanceOf().number(22), 21, fm.number(22)),
-            new Property(FieldPropertyNames.instanceOf().number(23), 22, 5, fm.number(23), "blue"),
-            new Property(FieldPropertyNames.instanceOf().number(24), 23, 5, fm.number(24), "blue")
+            new Start(FieldPropertyNameController.instanceOf().number(1),0, fm.number(1)),
+            new Property(FieldPropertyNameController.instanceOf().number(2), 1, 1, fm.number(2), "brown"),
+            new Property(FieldPropertyNameController.instanceOf().number(3), 2, 1, fm.number(3), "brown"),
+            new ChanceCard(FieldPropertyNameController.instanceOf().number(4), 3, fm.number(4)),
+            new Property(FieldPropertyNameController.instanceOf().number(5), 4, 1, fm.number(5), "lightBlue"),
+            new Property(FieldPropertyNameController.instanceOf().number(6), 5, 1, fm.number(6), "lightBlue"),
+            new JailVisit(FieldPropertyNameController.instanceOf().number(7), 6, fm.number(7)),
+            new Property(FieldPropertyNameController.instanceOf().number(8), 7, 2, fm.number(8), "pink"),
+            new Property(FieldPropertyNameController.instanceOf().number(9), 8, 2, fm.number(9), "pink"),
+            new ChanceCard(FieldPropertyNameController.instanceOf().number(10), 9, fm.number(10)),
+            new Property(FieldPropertyNameController.instanceOf().number(11), 10, 2, fm.number(11), "gold"),
+            new Property(FieldPropertyNameController.instanceOf().number(12), 11, 2, fm.number(12), "gold"),
+            new Parking(FieldPropertyNameController.instanceOf().number(13), 12, fm.number(13)),
+            new Property(FieldPropertyNameController.instanceOf().number(14), 13, 3, fm.number(14), "red"),
+            new Property(FieldPropertyNameController.instanceOf().number(15), 14, 3, fm.number(15), "red"),
+            new ChanceCard(FieldPropertyNameController.instanceOf().number(16), 15, fm.number(16)),
+            new Property(FieldPropertyNameController.instanceOf().number(17), 16, 3, fm.number(17), "yellow"),
+            new Property(FieldPropertyNameController.instanceOf().number(18), 17, 3, fm.number(18), "yellow"),
+            new Jail(FieldPropertyNameController.instanceOf().number(19), 18, fm.number(19)),
+            new Property(FieldPropertyNameController.instanceOf().number(20), 19, 4, fm.number(20), "green"),
+            new Property(FieldPropertyNameController.instanceOf().number(21), 20, 4, fm.number(21), "green"),
+            new ChanceCard(FieldPropertyNameController.instanceOf().number(22), 21, fm.number(22)),
+            new Property(FieldPropertyNameController.instanceOf().number(23), 22, 5, fm.number(23), "blue"),
+            new Property(FieldPropertyNameController.instanceOf().number(24), 23, 5, fm.number(24), "blue")
     };
 
     private final ChanceCardController chanceCardController = new ChanceCardController();
@@ -95,7 +95,7 @@ public class FieldController {
 
         if (!player.getBankAccount().getBankrupt()) {
             property.setOwner(player.getPlayerName());
-            System.out.println(fieldcontrollerMessages.number(3) + " " + fieldPrice + fieldcontrollerMessages.number(4));
+            System.out.println(fieldControllerMessages.number(3) + " " + fieldPrice + fieldControllerMessages.number(4));
         }
     }
 
@@ -112,8 +112,8 @@ public class FieldController {
             propertyOwner.getBankAccount().addBalance(fieldRent);
 
         if (!player.getBankAccount().getBankrupt()) {
-            System.out.println(player.getPlayerName() + " " + fieldcontrollerMessages.number(5) + " " + fieldRent + fieldcontrollerMessages.number(6) + " " + propertyOwner.getPlayerName()
-                    + "\n" + propertyOwner.getPlayerName() + " " + fieldcontrollerMessages.number(7) + " " + propertyOwner.getBankAccount().getBalance());
+            System.out.println(player.getPlayerName() + " " + fieldControllerMessages.number(5) + " " + fieldRent + fieldControllerMessages.number(6) + " " + propertyOwner.getPlayerName()
+                    + "\n" + propertyOwner.getPlayerName() + " " + fieldControllerMessages.number(7) + " " + propertyOwner.getBankAccount().getBalance());
         }
     }
 
@@ -160,14 +160,14 @@ public class FieldController {
          if (property.getOwnedByPlayer() && !property.getOwnerName().equals(player.getPlayerName())) {
              payRent(player, playerController, property, guiView);}
          else if (!(property.getOwnerName() == null) && property.getOwnerName().equals(player.getPlayerName())) {
-             System.out.println(fieldcontrollerMessages.number(9));
+             System.out.println(fieldControllerMessages.number(9));
          }
          else if (!property.getOwnedByPlayer()) {
              if (!player.getBankAccount().getBankrupt()) {
                  property.setOwner(player.getPlayerName());
                  player.addPropertyOwned(property);
                  propertyTakenCounter++;
-                 System.out.println(player.getPlayerName() + " " + fieldcontrollerMessages.number(10) + " " + property.getName() + " " + fieldcontrollerMessages.number(11));
+                 System.out.println(player.getPlayerName() + " " + fieldControllerMessages.number(10) + " " + property.getName() + " " + fieldControllerMessages.number(11));
              }
          }
      }
@@ -188,7 +188,7 @@ public class FieldController {
                          tempPlayer.getBankAccount().addBalance(property.getFieldPrice());
                      }
                  }
-                 System.out.println(fieldcontrollerMessages.number(12) + property.getName() + fieldcontrollerMessages.number(13) + property.getOwnerName() +fieldcontrollerMessages.number(14)  + property.getFieldPrice() + fieldcontrollerMessages.number(15));
+                 System.out.println(fieldControllerMessages.number(12) + property.getName() + fieldControllerMessages.number(13) + property.getOwnerName() + fieldControllerMessages.number(14)  + property.getFieldPrice() + fieldControllerMessages.number(15));
                  property.setOwner(player.getPlayerName());
                  player.getBankAccount().subBalance(property.getFieldPrice());
 
@@ -228,7 +228,7 @@ public class FieldController {
                     propertiesAsStringArray[i] = ((Property) player.getPropertiesOwned().toArray()[i]).toString();
                 }
 
-                String propertyToSell = guiView.getMyGUI().getUserSelection(fieldcontrollerMessages.number(16) + missingPayment + fieldcontrollerMessages.number(17), propertiesAsStringArray);
+                String propertyToSell = guiView.getMyGUI().getUserSelection(fieldControllerMessages.number(16) + missingPayment + fieldControllerMessages.number(17), propertiesAsStringArray);
                 for (int i = 0; i < player.getPropertiesOwned().size(); i++) {
 
                     if (propertyToSell.equals(propertiesAsStringArray[i])) {

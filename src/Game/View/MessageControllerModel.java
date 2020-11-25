@@ -3,7 +3,7 @@ package Game.View;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public abstract class Messages {
+public abstract class MessageControllerModel {
 
     public void readFromFile(String[] array, String filepath) {
 

@@ -1,12 +1,12 @@
 package Game.View;
 
-public class FieldMessages extends Messages {
+public class FieldMessageController extends MessageControllerModel {
 
     private String[] totalReadFieldMessages = new String[24];
 
-    public FieldMessages() {
+    public FieldMessageController() {
 
-        if (LanguageController.instanceOf().getEnglish() == true){
+        if (LanguageModel.instanceOf().getEnglish() == true){
             readFromFile(totalReadFieldMessages,"Textfiles/FieldMessagesENG.txt");
         } else {
             readFromFile(totalReadFieldMessages,"Textfiles/FieldMessages.txt");

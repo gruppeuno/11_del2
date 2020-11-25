@@ -1,22 +1,22 @@
 package Game.View;
 
 
-public class FieldPropertyNames extends Messages {
+public class FieldPropertyNameController extends MessageControllerModel {
 
     private String[] totalReadFieldNameMessages = new String[25];
 
-    private static FieldPropertyNames fieldPropertyNames;
+    private static FieldPropertyNameController fieldPropertyNames;
 
-    public static FieldPropertyNames instanceOf() {
+    public static FieldPropertyNameController instanceOf() {
 
         if (fieldPropertyNames == null) {
-            fieldPropertyNames = new FieldPropertyNames();
+            fieldPropertyNames = new FieldPropertyNameController();
         }
         return fieldPropertyNames;
     }
 
-    private FieldPropertyNames(){
-        if (LanguageController.instanceOf().getEnglish() == true) {
+    private FieldPropertyNameController(){
+        if (LanguageModel.instanceOf().getEnglish() == true) {
             readFromFile(totalReadFieldNameMessages, "Textfiles/FieldPropertyNamesENG.txt");
         } else {
             readFromFile(totalReadFieldNameMessages, "Textfiles/FieldPropertyNames.txt");
