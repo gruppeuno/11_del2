@@ -5,7 +5,7 @@ M i banken
 ========================================
 >>> VELKOMMEN TIL MONOPOLY JUNIOR <<<
 Tast ENTER for at starte spillet med 1. KAST !!!
-Tryk på OK KNAP for at kaste terningen
+Tryk paa OK KNAP for at kaste terningen
 \nSkriv \"Roll\" og tryk enter for at slå med terningerne!
 roll
 SPILLET ER UAFGJORT!!!
