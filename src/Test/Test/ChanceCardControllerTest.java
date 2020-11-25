@@ -1,10 +1,10 @@
 package Test;
 
-import Game.*;
-import Game.Fields.ChanceCard;
-import Game.Fields.Field;
-import Game.Fields.Jail;
-import Game.Fields.Property;
+import Game.Controller.ChanceCardController;
+import Game.Controller.FieldController;
+import Game.Controller.PlayerController;
+import Game.Model.Player;
+import Game.View.GUIView;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

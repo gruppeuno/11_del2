@@ -1,0 +1,14 @@
+YOU ROLLED
+IS BANKRUPT!
+you've got
+M in the bank
+=======================================
+>>> WELCOME TO MONOPOLY JUNIOR <<<
+Press ENTER to start the game with 1st THROW !!!
+Press OK BUTTON to roll the dice
+\ nWrite \ "Roll \" and press enter to roll the dice!
+roll
+THE GAME IS A DRAW !!!
+  HAS WON WITH
+Mil AND
+M IN PROPERTIES !!

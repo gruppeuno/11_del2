@@ -1,8 +1,8 @@
 package Test;
 
-import Game.Fields.Property;
-import Game.Player;
-import Game.PlayerController;
+import Game.Model.Property;
+import Game.Model.Player;
+import Game.Controller.PlayerController;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

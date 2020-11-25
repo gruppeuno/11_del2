@@ -1,5 +1,7 @@
 package Game;
 
+import Game.Controller.GameController;
+
 /**
  *  Game
  *  @author Gruppe11
