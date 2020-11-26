@@ -13,6 +13,7 @@ public class FieldController {
     private int propertyTakenCounter = 0;
 
     public final Field[] fields = {
+
             new Start(FieldPropertyNameController.instanceOf().number(1),0, fm.number(1)),
             new Property(FieldPropertyNameController.instanceOf().number(2), 1, 1, fm.number(2), "brown"),
             new Property(FieldPropertyNameController.instanceOf().number(3), 2, 1, fm.number(3), "brown"),

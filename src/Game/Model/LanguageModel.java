@@ -15,7 +15,6 @@ public class LanguageModel {
     }
 
     private LanguageModel(){
-
     }
 
     public void setEnglish(){

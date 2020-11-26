@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class GameController {
 
         //nb meget vigtigt ChangeLanguage står først
-        LanguageChangeController languageChanger;
+        private LanguageChangeController languageChanger;
         private int turnCount;
         //skaber nye objekter af Field, RaffleCup og PlayerCreator
         private FieldController fieldController;
