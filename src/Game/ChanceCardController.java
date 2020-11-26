@@ -2,6 +2,7 @@ package Game;
 
 import Game.View.ChanceCardMessages;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -144,7 +145,7 @@ public class ChanceCardController {
 
     private void chancekort3(Player player, PlayerController playerController, FieldController fieldController, GUIView guiView) {
         System.out.println(ccm.number(7));
-        moveFieldPLayerSelect(player, 1, 5, playerController);
+        moveFieldPlayerSelect(player, 1, 5, playerController);
 
         if (fieldController.getCheckIfProperty(player)) {
         fieldController.buyProperty(player, playerController, guiView);}
@@ -293,18 +294,23 @@ public class ChanceCardController {
         player.setFieldNumber(player.getFieldNumber()+ move);
     }
 
-    public void moveFieldPLayerSelect(Player player, int minField, int maxField, PlayerController playerController) {
+    public void moveFieldPlayerSelect(Player player, int minField, int maxField, PlayerController playerController) {
         int move;
 
         Scanner scan = new Scanner(System.in);
 
-        do {
-            System.out.println(ccm.number(51) + " " + minField + " " + ccm.number(52) + " " + maxField);
-            move = scan.nextInt();
-        }
-        while (minField > move || maxField < move);
+        try {
+            do {
+                System.out.println(ccm.number(51) + " " + minField + " " + ccm.number(52) + " " + maxField);
+                move = scan.nextInt();
+            }
+            while (minField > move || maxField < move);
 
-        playerController.movePlayer(player, move);
+            playerController.movePlayer(player, move);
+        }
+        catch (InputMismatchException exception) {
+            moveFieldPlayerSelect(player, 1, 5, playerController);
+        }
     }
 
     public void moveToStart(Player player) {
@@ -315,37 +321,48 @@ public class ChanceCardController {
         player.setFieldNumber(field);
     }
 
-    public void moveSpecificFieldRange(Player player, String Color, int minMove, int maxMove) {
+    public void moveSpecificFieldRange(Player player, String color, int minMove, int maxMove) {
         int move;
 
         Scanner scan = new Scanner(System.in);
 
-        do {
-            System.out.println(ccm.number(53) + " " + Color + " felt: " + minMove +  " " + ccm.number(31) + " "  + maxMove);
-            System.out.print("\n" + ccm.number(54) + " : ");
-            move = scan.nextInt();
-            if (move < minMove || move > maxMove){
+        try {
+            do {
+                System.out.println(ccm.number(53) + " " + color + " felt: " + minMove + " " + ccm.number(31) + " " + maxMove);
+                System.out.print("\n" + ccm.number(54) + " : ");
+                move = scan.nextInt();
+                if (move < minMove || move > maxMove) {
 
+                }
             }
-        }
-        while (!(minMove == move || maxMove == move));
+            while (!(minMove == move || maxMove == move));
 
-        player.setFieldNumber(move);
+            player.setFieldNumber(move);
+        }
+        catch (InputMismatchException exception) {
+            moveSpecificFieldRange(player, color, minMove, maxMove);
+        }
     }
 
-    public void moveSpecificFieldRange(Player player, String Color, int minMove, int maxMove, String Color2, int minMove2, int maxMove2) {
+    public void moveSpecificFieldRange(Player player, String color, int minMove, int maxMove, String color2, int minMove2, int maxMove2) {
         int move;
         Scanner scan = new Scanner(System.in);
 
-        do {
-            System.out.println(ccm.number(53) + " " + Color + " " + ccm.number(31) + " " + Color2 + " " + ccm.number(34) + " : " + minMove + ", " + maxMove + ", "
-                    + minMove2 +  " " + ccm.number(31) + " "  + maxMove2);
-            System.out.print("\n" + ccm.number(54) +" ");
-            move = scan.nextInt();
-        }
-        while (!(minMove == move || maxMove == move || minMove2 == move || maxMove2 == move));
+        try {
 
-        player.setFieldNumber(move);
+            do {
+                System.out.println(ccm.number(53) + " " + color + " " + ccm.number(31) + " " + color2 + " " + ccm.number(34) + " : " + minMove + ", " + maxMove + ", "
+                        + minMove2 + " " + ccm.number(31) + " " + maxMove2);
+                System.out.print("\n" + ccm.number(54) + " ");
+                move = scan.nextInt();
+            }
+            while (!(minMove == move || maxMove == move || minMove2 == move || maxMove2 == move));
+
+            player.setFieldNumber(move);
+        }
+        catch (InputMismatchException exception) {
+            moveSpecificFieldRange(player, color, minMove, maxMove, color2, minMove2, maxMove2);
+        }
     }
 
     public void addBank(Player player, int moneyChange) {
@@ -385,34 +402,42 @@ public class ChanceCardController {
 
         if (player.getSelectFieldCard()) {
 
-        tempMove = player.getFieldNumber();
+            tempMove = player.getFieldNumber();
 
-       int[] propertyAvailArr = {1,2,4,5,7,8,10,11,13,14,16,17,19,20,22,23};
-       String arrOut = "";
+            int[] propertyAvailArr = {1, 2, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 19, 20, 22, 23};
+            String arrOut = "";
 
-       for (int availProp : propertyAvailArr) {
+            for (int availProp : propertyAvailArr) {
 
-           arrOut += availProp + " ";
-       }
-       System.out.println(player.getPlayerName() + " " + ccm.number(55) + " " + arrOut);
+                arrOut += availProp + " ";
+            }
+            System.out.println(player.getPlayerName() + " " + ccm.number(55) + " " + arrOut);
 
-       Scanner scan = new Scanner(System.in);
+            Scanner scan = new Scanner(System.in);
 
-       boolean withinArray = false;
-       System.out.print(ccm.number(54));
-       int move = scan.nextInt();
+            boolean withinArray = false;
+            System.out.print(ccm.number(54));
+            try {
+                int move = scan.nextInt();
 
-       for (int c = 0; c < propertyAvailArr.length; c++) {
-           if (move == propertyAvailArr[c]) {
-               withinArray = true;
-           }
-       }
-       if (!withinArray) {selectMoveProperty(player, playerController,fieldController, guiView);}
+                for (int c = 0; c < propertyAvailArr.length; c++) {
+                    if (move == propertyAvailArr[c]) {
+                        withinArray = true;
+                    }
+                }
 
-       else if (withinArray) {
-       player.setFieldNumber(move);
+                if (!withinArray) {
+                    selectMoveProperty(player, playerController, fieldController, guiView);
+                } else if (withinArray) {
+                    player.setFieldNumber(move);
 
-       fieldController.checkOwnership(player, playerController, fieldController, guiView);}}
+                    fieldController.checkOwnership(player, playerController, fieldController, guiView);
+               }
+            }
+            catch (InputMismatchException exception) {
+              selectMoveProperty(player, playerController, fieldController, guiView);
+            }
+        }
    }
 
    public int getTempMove() {

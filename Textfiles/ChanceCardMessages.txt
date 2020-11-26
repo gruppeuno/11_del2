@@ -53,7 +53,7 @@ og
 VÆLG
 Skriv ønsket felt tal
 Mulige felter du kan vælge i mellem:
-Skriv ønsket felts tal:
+Skriv ønsket felts tal: 
 Du skal vælge en grund du ikke selv ejer
  er blevet rykket."
 RØDT
